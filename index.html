@@ -21,55 +21,67 @@
       --accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
       --text-main: #f1f5f9;
       --border-color: rgba(255, 255, 255, 0.07);
+      --card-radius: 1.5rem;
     }
 
-    /* Темы */
+    /* Тема: Сакура */
     body.theme-sakura {
-      --bg-main: #1a0f14;
-      --card-bg: rgba(45, 20, 32, 0.75);
+      --bg-main: #1c0d15;
+      --card-bg: rgba(42, 18, 30, 0.8);
       --accent: #f472b6;
       --accent-gradient: linear-gradient(135deg, #f472b6 0%, #db2777 100%);
-      --border-color: rgba(244, 114, 182, 0.15);
+      --border-color: rgba(244, 114, 182, 0.2);
+      --card-radius: 2rem 1rem 2rem 1.2rem;
     }
 
+    /* Тема: Сакура ЧБ */
     body.theme-sakura_bw {
-      --bg-main: #121212;
-      --card-bg: rgba(26, 26, 26, 0.85);
+      --bg-main: #0d0d0d;
+      --card-bg: rgba(24, 24, 24, 0.85);
       --accent: #e5e5e5;
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
-      --border-color: rgba(255, 255, 255, 0.15);
+      --border-color: rgba(255, 255, 255, 0.2);
+      --card-radius: 2rem 1rem 2rem 1.2rem;
     }
 
+    /* Тема: Классика */
     body.theme-classic {
       --bg-main: #090d16;
       --card-bg: rgba(15, 23, 42, 0.75);
       --accent: #10b981;
       --accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
       --border-color: rgba(255, 255, 255, 0.07);
+      --card-radius: 1.5rem;
     }
 
+    /* Тема: Чистый ЧБ */
     body.theme-noir {
       --bg-main: #000000;
       --card-bg: rgba(18, 18, 18, 0.9);
       --accent: #ffffff;
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #737373 100%);
-      --border-color: rgba(255, 255, 255, 0.2);
+      --border-color: rgba(255, 255, 255, 0.25);
+      --card-radius: 0.75rem;
     }
 
+    /* Тема: Дзен (Matcha & Wood) */
     body.theme-matcha {
-      --bg-main: #131815;
-      --card-bg: rgba(26, 36, 30, 0.8);
+      --bg-main: #111713;
+      --card-bg: rgba(22, 33, 26, 0.85);
       --accent: #84cc16;
       --accent-gradient: linear-gradient(135deg, #84cc16 0%, #65a30d 100%);
-      --border-color: rgba(132, 204, 22, 0.15);
+      --border-color: rgba(132, 204, 22, 0.25);
+      --card-radius: 1.8rem;
     }
 
+    /* Тема: Кибер-Сакура */
     body.theme-cyber {
-      --bg-main: #0d061f;
-      --card-bg: rgba(30, 15, 53, 0.75);
+      --bg-main: #0b051a;
+      --card-bg: rgba(26, 12, 46, 0.8);
       --accent: #a855f7;
       --accent-gradient: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-      --border-color: rgba(168, 85, 247, 0.2);
+      --border-color: rgba(168, 85, 247, 0.3);
+      --card-radius: 1rem 2rem 1rem 2rem;
     }
 
     body {
@@ -89,7 +101,9 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      transition: border-radius 0.4s ease, border 0.4s ease;
     }
     .custom-scrollbar::-webkit-scrollbar {
       width: 4px;
@@ -139,21 +153,17 @@
       color: #f1f5f9;
     }
 
-    /* Анимация лепестков сакуры */
-    .sakura-container {
+    /* Анимированный фон и сакура/дерево */
+    .bg-animated-decor {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 999;
       overflow: hidden;
-      display: none;
-    }
-    body.theme-sakura .sakura-container, body.theme-sakura_bw .sakura-container {
-      display: block;
     }
     @keyframes fall {
       0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) translateX(100px) rotate(360deg); opacity: 0.2; }
+      100% { transform: translateY(110vh) translateX(80px) rotate(360deg); opacity: 0.2; }
     }
     .petal {
       position: absolute;
@@ -163,18 +173,17 @@
     }
   </style>
 </head>
-<body class="min-h-screen p-3 sm:p-6 pb-28">
+<body class="min-h-screen p-3 sm:p-6 pb-28 theme-sakura">
 
-  <!-- Фоновые падающие лепестки для тем сакуры -->
-  <div class="sakura-container" id="sakuraContainer"></div>
+  <div class="bg-animated-decor" id="decorContainer"></div>
 
   <div class="max-w-4xl mx-auto space-y-5">
     
-    <!-- Шапка и премиум навигация -->
-    <header class="glass-card rounded-3xl p-4 sm:p-6 space-y-4">
+    <!-- Шапка -->
+    <header class="glass-card p-4 sm:p-6 space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3.5">
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl shadow-inner" style="color: var(--accent);">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border flex items-center justify-center text-2xl shadow-inner" style="color: var(--accent); border-color: var(--border-color);">
             ⚡
           </div>
           <div>
@@ -184,7 +193,7 @@
         </div>
       </div>
 
-      <!-- Навигационные вкладки -->
+      <!-- Навигация -->
       <nav class="grid grid-cols-4 gap-1.5 p-1 bg-slate-950/60 rounded-2xl border border-slate-800/80">
         <button type="button" onclick="switchMainTab('diary')" id="mainTab_diary" class="py-2.5 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex flex-col sm:flex-row items-center justify-center gap-1.5 tab-active">
           <span>📊</span><span>Рацион</span>
@@ -201,16 +210,14 @@
       </nav>
     </header>
 
-    <!-- ================= ВКЛАДКА 1: РАЦИОН И ДНЕВНИК ================= -->
+    <!-- ВКЛАДКА 1: РАЦИОН -->
     <div id="view_diary" class="space-y-5">
-      
-      <!-- Сводка дня -->
-      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-5">
+      <div class="glass-card p-5 sm:p-6 space-y-5">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📅</span> Выбранная дата
           </h2>
-          <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="bg-slate-900/90 border border-slate-700/80 rounded-xl px-3.5 py-2 text-xs font-bold focus:outline-none shadow-inner" style="color: var(--accent);">
+          <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="bg-slate-900/90 border rounded-xl px-3.5 py-2 text-xs font-bold focus:outline-none shadow-inner" style="color: var(--accent); border-color: var(--border-color);">
         </div>
 
         <div class="flex flex-col sm:flex-row items-center gap-6">
@@ -261,13 +268,13 @@
         </div>
       </div>
 
-      <!-- Добавление блюд из каталога -->
-      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
+      <!-- Каталог блюд -->
+      <div class="glass-card p-5 sm:p-6 space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>🍲</span> Каталог блюд (135+)
           </h2>
-          <select id="mealTypeSelect" class="bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2 text-xs font-bold focus:outline-none" style="color: var(--accent);">
+          <select id="mealTypeSelect" class="bg-slate-900 border rounded-xl px-3.5 py-2 text-xs font-bold focus:outline-none" style="color: var(--accent); border-color: var(--border-color);">
             <option value="Завтрак">🌅 Завтрак</option>
             <option value="Обед">☀️ Обед</option>
             <option value="Ужин">🌙 Ужин</option>
@@ -278,13 +285,12 @@
         <div class="space-y-3">
           <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">🔍</span>
-            <input id="foodSearchInput" type="text" placeholder="Быстрый поиск (борщ, самса, воппер, суши...)" oninput="filterFoodCatalog()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl pl-10 pr-20 py-3 text-xs text-white focus:outline-none shadow-inner">
+            <input id="foodSearchInput" type="text" placeholder="Быстрый поиск (борщ, самса, воппер, суши...)" oninput="filterFoodCatalog()" class="w-full bg-slate-900/90 border rounded-2xl pl-10 pr-20 py-3 text-xs text-white focus:outline-none shadow-inner" style="border-color: var(--border-color);">
             <button type="button" onclick="aiSearchCatalogFood()" class="absolute right-2 top-2 bottom-2 px-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-[11px] font-bold transition border border-slate-700">
               ✨ ИИ
             </button>
           </div>
 
-          <!-- Категории с прокруткой -->
           <div class="flex gap-1.5 overflow-x-auto pb-1.5 custom-scrollbar text-[11px]">
             <button type="button" onclick="setCategoryFilter('all')" id="cat_all" class="px-3.5 py-2 rounded-xl font-bold text-slate-950 flex-shrink-0 shadow-md" style="background: var(--accent);">Все</button>
             <button type="button" onclick="setCategoryFilter('canteen')" id="cat_canteen" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🍲 Столовая</button>
@@ -300,11 +306,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="sm:col-span-2">
             <label class="block text-[11px] text-slate-400 font-semibold mb-1">Выберите блюдо</label>
-            <select id="dbFoodSelect" onchange="updateDbPreview()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-3.5 py-3 text-xs text-white focus:outline-none shadow-inner"></select>
+            <select id="dbFoodSelect" onchange="updateDbPreview()" class="w-full bg-slate-900/90 border rounded-2xl px-3.5 py-3 text-xs text-white focus:outline-none shadow-inner" style="border-color: var(--border-color);"></select>
           </div>
           <div>
             <label class="block text-[11px] text-slate-400 font-semibold mb-1">Вес (г)</label>
-            <input id="dbWeightInput" type="number" value="250" min="10" max="2000" step="10" oninput="updateDbPreview()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-3.5 py-3 text-xs text-white font-bold focus:outline-none shadow-inner">
+            <input id="dbWeightInput" type="number" value="250" min="10" max="2000" step="10" oninput="updateDbPreview()" class="w-full bg-slate-900/90 border rounded-2xl px-3.5 py-3 text-xs text-white font-bold focus:outline-none shadow-inner" style="border-color: var(--border-color);">
           </div>
         </div>
 
@@ -329,8 +335,8 @@
         </div>
       </div>
 
-      <!-- Список съеденного -->
-      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
+      <!-- Дневник -->
+      <div class="glass-card p-5 sm:p-6 space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📋</span> Приемы пищи
@@ -341,10 +347,9 @@
       </div>
     </div>
 
-
-    <!-- ================= ВКЛАДКА 2: ИИ-СКАНЕР ================= -->
+    <!-- ВКЛАДКА 2: ИИ-СКАНЕР -->
     <div id="view_scanner" class="hidden space-y-5">
-      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-5">
+      <div class="glass-card p-5 sm:p-6 space-y-5">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📸</span> AI-Сканер еды по фото
@@ -361,7 +366,6 @@
             <input id="geminiApiKey" type="password" placeholder="Вставьте ваш API-ключ (AIzaSy...)" oninput="saveApiKey()" class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
             <button type="button" onclick="clearApiKey()" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white text-xs border border-slate-800">Сброс</button>
           </div>
-          <p class="text-[10px] text-slate-400">Если поле пустое, сканирование работает по встроенным демо-пресетам.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -405,10 +409,9 @@
       </div>
     </div>
 
-
-    <!-- ================= ВКЛАДКА 3: КАЛЕНДАРЬ ================= -->
+    <!-- ВКЛАДКА 3: КАЛЕНДАРЬ -->
     <div id="view_calendar" class="hidden space-y-5">
-      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
+      <div class="glass-card p-5 sm:p-6 space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📅</span> Календарь питания
@@ -428,15 +431,14 @@
       </div>
     </div>
 
-
-    <!-- ================= ВКЛАДКА 4: ПРОФИЛЬ ================= -->
+    <!-- ВКЛАДКА 4: ПРОФИЛЬ -->
     <div id="view_profile" class="hidden space-y-5">
-      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
+      <div class="glass-card p-5 sm:p-6 space-y-4">
         <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
           <span>👤</span> Профиль и настройки
         </h2>
 
-        <!-- ВЫБОР ТЕМЫ ПРИЛОЖЕНИЯ -->
+        <!-- ВЫБОР ТЕМЫ -->
         <div class="space-y-2 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
           <label class="block text-xs font-bold text-slate-300">🎨 Тема оформления:</label>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -507,7 +509,7 @@
 
   </div>
 
-  <!-- ВСПЛЫВАЮЩЕЕ ОКНО РЕЗУЛЬТАТОВ СКАНЕРА ПО ФОТО -->
+  <!-- ВСПЛЫВАЮЩЕЕ ОКНО РЕЗУЛЬТАТОВ СКАНЕРА -->
   <div id="aiPopupModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="glass-card bg-slate-900 border w-full max-w-lg rounded-3xl p-6 space-y-4 popup-animate shadow-2xl" style="border-color: var(--border-color);">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -555,7 +557,7 @@
     let calendarCurrentYear = new Date().getFullYear();
     let calendarCurrentMonth = new Date().getMonth();
 
-    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v9')) || {
+    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v10')) || {
       profile: { name: 'Maksim', gender: 'male', age: 24, height: 180, weight: 75, activity: 1.375, goal: 'maint', theme: 'sakura' },
       days: {},
       apiKey: ''
@@ -608,30 +610,33 @@
       populateFoodSelect();
       renderActiveDay();
       renderCalendar();
-      initSakuraPetals();
+      initDecorAnimation(state.profile.theme);
     }
 
-    // Генерация лепестков сакуры
-    function initSakuraPetals() {
-      const container = document.getElementById('sakuraContainer');
+    // Динамическая генерация анимаций фона (лепестки сакуры или листья матчи)
+    function initDecorAnimation(theme) {
+      const container = document.getElementById('decorContainer');
       container.innerHTML = '';
-      const count = 18;
+      if (theme !== 'sakura' && theme !== 'sakura_bw' && theme !== 'matcha' && theme !== 'cyber') return;
+
+      const count = theme === 'matcha' ? 12 : 18;
       for (let i = 0; i < count; i++) {
-        const petal = document.createElement('div');
-        petal.className = 'petal';
+        const item = document.createElement('div');
+        item.className = 'petal';
         const size = Math.random() * 8 + 6;
-        petal.style.width = `${size}px`;
-        petal.style.height = `${size * 1.4}px`;
-        petal.style.left = `${Math.random() * 100}vw`;
-        petal.style.animationDuration = `${Math.random() * 6 + 5}s`;
-        petal.style.animationDelay = `${Math.random() * 5}s`;
-        container.appendChild(petal);
+        item.style.width = `${size}px`;
+        item.style.height = `${size * (theme === 'matcha' ? 2 : 1.4)}px`;
+        item.style.left = `${Math.random() * 100}vw`;
+        item.style.animationDuration = `${Math.random() * 6 + 5}s`;
+        item.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(item);
       }
     }
 
     function setTheme(themeName) {
       state.profile.theme = themeName;
       applyTheme(themeName);
+      initDecorAnimation(themeName);
       persistState();
     }
 
@@ -702,15 +707,15 @@
       document.getElementById('profActivity').value = p.activity;
       document.getElementById('profGoal').value = p.goal;
 
-      document.getElementById('profGenderMale').className = p.gender === 'male' ? 'py-2.5 rounded-2xl text-xs font-bold border' : 'py-2.5 rounded-2xl text-xs font-bold border bg-slate-900 border-slate-700/80 text-slate-400';
+      const mBtn = document.getElementById('profGenderMale');
       if (p.gender === 'male') {
-        document.getElementById('profGenderMale').style.background = 'var(--accent)';
-        document.getElementById('profGenderMale').style.color = '#090d16';
-        document.getElementById('profGenderMale').style.borderColor = 'var(--accent)';
+        mBtn.style.background = 'var(--accent)';
+        mBtn.style.color = '#090d16';
+        mBtn.style.borderColor = 'var(--accent)';
       } else {
-        document.getElementById('profGenderMale').style.background = '';
-        document.getElementById('profGenderMale').style.color = '';
-        document.getElementById('profGenderMale').style.borderColor = '';
+        mBtn.style.background = '';
+        mBtn.style.color = '';
+        mBtn.style.borderColor = '';
       }
 
       const targets = getCalculatedTargets();
@@ -899,7 +904,7 @@
       cont.innerHTML = '';
       dayData.diary.forEach(item => {
         const el = document.createElement('div');
-        el.className = 'flex items-center justify-between gap-3 bg-slate-900/90 border border-slate-800/80 rounded-2xl p-3.5 shadow-sm';
+        el.className = 'glass-card flex items-center justify-between gap-3 p-3.5 shadow-sm';
         el.innerHTML = `
           <div class="space-y-1">
             <div class="flex items-center gap-2 text-[10px]">
@@ -1088,7 +1093,7 @@
         const pct = Math.round((eaten / targets.cal) * 100);
 
         const cell = document.createElement('div');
-        cell.className = `p-2 rounded-2xl border flex flex-col items-center justify-between min-h-[72px] cursor-pointer transition ${dateKey === activeDate ? 'bg-opacity-20 shadow-lg' : 'border-slate-800 bg-slate-900/80 hover:border-slate-700'}`;
+        cell.className = `glass-card p-2 flex flex-col items-center justify-between min-h-[72px] cursor-pointer transition`;
         if (dateKey === activeDate) {
           cell.style.borderColor = 'var(--accent)';
           cell.style.background = 'rgba(16, 185, 129, 0.15)';
@@ -1109,12 +1114,12 @@
     }
 
     function persistState() {
-      localStorage.setItem('rayuncalc_state_v9', JSON.stringify(state));
+      localStorage.setItem('rayuncalc_state_v10', JSON.stringify(state));
     }
 
     function resetAllData() {
       if (confirm('Сбросить данные?')) {
-        localStorage.removeItem('rayuncalc_state_v9');
+        localStorage.removeItem('rayuncalc_state_v10');
         location.reload();
       }
     }
