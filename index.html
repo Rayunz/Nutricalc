@@ -16,77 +16,93 @@
   <style>
     :root {
       --bg-main: #090d16;
-      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-bg: rgba(15, 23, 42, 0.85);
       --accent: #10b981;
       --accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
       --text-main: #f1f5f9;
-      --border-color: rgba(255, 255, 255, 0.07);
+      --border-color: rgba(255, 255, 255, 0.08);
       --card-radius: 1.5rem;
+      --bg-pattern: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+      --pattern-size: 24px 24px;
     }
 
     /* Тема: Сакура */
     body.theme-sakura {
       --bg-main: #1c0d15;
-      --card-bg: rgba(42, 18, 30, 0.8);
+      --card-bg: rgba(42, 18, 30, 0.88);
       --accent: #f472b6;
       --accent-gradient: linear-gradient(135deg, #f472b6 0%, #db2777 100%);
-      --border-color: rgba(244, 114, 182, 0.2);
+      --border-color: rgba(244, 114, 182, 0.25);
       --card-radius: 2rem 1rem 2rem 1.2rem;
+      --bg-pattern: radial-gradient(rgba(244, 114, 182, 0.08) 2px, transparent 2px), linear-gradient(0deg, rgba(244, 114, 182, 0.03) 1px, transparent 1px);
+      --pattern-size: 32px 32px;
     }
 
     /* Тема: Сакура ЧБ */
     body.theme-sakura_bw {
       --bg-main: #0d0d0d;
-      --card-bg: rgba(24, 24, 24, 0.85);
+      --card-bg: rgba(24, 24, 24, 0.9);
       --accent: #e5e5e5;
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
       --border-color: rgba(255, 255, 255, 0.2);
       --card-radius: 2rem 1rem 2rem 1.2rem;
+      --bg-pattern: radial-gradient(rgba(255, 255, 255, 0.06) 2px, transparent 2px);
+      --pattern-size: 30px 30px;
     }
 
     /* Тема: Классика */
     body.theme-classic {
       --bg-main: #090d16;
-      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-bg: rgba(15, 23, 42, 0.85);
       --accent: #10b981;
       --accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      --border-color: rgba(255, 255, 255, 0.07);
+      --border-color: rgba(255, 255, 255, 0.08);
       --card-radius: 1.5rem;
+      --bg-pattern: linear-gradient(30deg, rgba(16, 185, 129, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(16, 185, 129, 0.03) 87.5%, rgba(16, 185, 129, 0.03));
+      --pattern-size: 40px 40px;
     }
 
     /* Тема: Чистый ЧБ */
     body.theme-noir {
       --bg-main: #000000;
-      --card-bg: rgba(18, 18, 18, 0.9);
+      --card-bg: rgba(18, 18, 18, 0.92);
       --accent: #ffffff;
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #737373 100%);
       --border-color: rgba(255, 255, 255, 0.25);
       --card-radius: 0.75rem;
+      --bg-pattern: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      --pattern-size: 20px 20px;
     }
 
-    /* Тема: Дзен (Matcha & Wood) */
+    /* Тема: Дзен (Matcha) */
     body.theme-matcha {
       --bg-main: #111713;
-      --card-bg: rgba(22, 33, 26, 0.85);
+      --card-bg: rgba(22, 33, 26, 0.9);
       --accent: #84cc16;
       --accent-gradient: linear-gradient(135deg, #84cc16 0%, #65a30d 100%);
       --border-color: rgba(132, 204, 22, 0.25);
       --card-radius: 1.8rem;
+      --bg-pattern: radial-gradient(rgba(132, 204, 22, 0.07) 1.5px, transparent 1.5px);
+      --pattern-size: 28px 28px;
     }
 
     /* Тема: Кибер-Сакура */
     body.theme-cyber {
       --bg-main: #0b051a;
-      --card-bg: rgba(26, 12, 46, 0.8);
+      --card-bg: rgba(26, 12, 46, 0.85);
       --accent: #a855f7;
       --accent-gradient: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-      --border-color: rgba(168, 85, 247, 0.3);
+      --border-color: rgba(168, 85, 247, 0.35);
       --card-radius: 1rem 2rem 1rem 2rem;
+      --bg-pattern: linear-gradient(45deg, rgba(168, 85, 247, 0.04) 25%, transparent 25%), linear-gradient(-45deg, rgba(236, 72, 153, 0.04) 25%, transparent 25%);
+      --pattern-size: 36px 36px;
     }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg-main);
+      background-color: var(--bg-main);
+      background-image: var(--bg-pattern);
+      background-size: var(--pattern-size);
       color: var(--text-main);
       -webkit-tap-highlight-color: transparent;
       background-attachment: fixed;
@@ -103,7 +119,7 @@
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-      transition: border-radius 0.4s ease, border 0.4s ease;
+      transition: border-radius 0.4s ease, border 0.4s ease, background 0.4s ease;
     }
     .custom-scrollbar::-webkit-scrollbar {
       width: 4px;
@@ -153,13 +169,17 @@
       color: #f1f5f9;
     }
 
-    /* Анимированный фон и сакура/дерево */
-    .bg-animated-decor {
+    /* Анимация падающих лепестков */
+    .sakura-container {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 999;
       overflow: hidden;
+      display: none;
+    }
+    body.sakura-enabled .sakura-container {
+      display: block;
     }
     @keyframes fall {
       0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
@@ -173,9 +193,9 @@
     }
   </style>
 </head>
-<body class="min-h-screen p-3 sm:p-6 pb-28 theme-sakura">
+<body class="min-h-screen p-3 sm:p-6 pb-28 theme-sakura sakura-enabled">
 
-  <div class="bg-animated-decor" id="decorContainer"></div>
+  <div class="sakura-container" id="decorContainer"></div>
 
   <div class="max-w-4xl mx-auto space-y-5">
     
@@ -183,7 +203,7 @@
     <header class="glass-card p-4 sm:p-6 space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3.5">
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border flex items-center justify-center text-2xl shadow-inner" style="color: var(--accent); border-color: var(--border-color);">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/15 border flex items-center justify-center text-2xl shadow-inner" style="color: var(--accent); border-color: var(--border-color);">
             ⚡
           </div>
           <div>
@@ -438,9 +458,12 @@
           <span>👤</span> Профиль и настройки
         </h2>
 
-        <!-- ВЫБОР ТЕМЫ -->
-        <div class="space-y-2 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
-          <label class="block text-xs font-bold text-slate-300">🎨 Тема оформления:</label>
+        <!-- ВЫБОР ТЕМЫ И ТУМБЛЕР ЛЕПЕСТКОВ -->
+        <div class="space-y-3 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold text-slate-300">🎨 Тема оформления:</label>
+            <button type="button" onclick="toggleSakuraRain()" id="sakuraRainToggle" class="px-3 py-1.5 rounded-xl text-[11px] font-bold border transition" style="border-color: var(--border-color); color: var(--accent);">🌸 Лепестки: ВКЛ</button>
+          </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
             <button type="button" onclick="setTheme('sakura')" id="theme_sakura" class="py-2.5 px-3 rounded-xl text-xs font-bold border transition text-left">🌸 Сакура</button>
             <button type="button" onclick="setTheme('sakura_bw')" id="theme_sakura_bw" class="py-2.5 px-3 rounded-xl text-xs font-bold border transition text-left">🏴 Сакура ЧБ</button>
@@ -557,14 +580,15 @@
     let calendarCurrentYear = new Date().getFullYear();
     let calendarCurrentMonth = new Date().getMonth();
 
-    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v10')) || {
-      profile: { name: 'Maksim', gender: 'male', age: 24, height: 180, weight: 75, activity: 1.375, goal: 'maint', theme: 'sakura' },
+    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v11')) || {
+      profile: { name: 'Maksim', gender: 'male', age: 24, height: 180, weight: 75, activity: 1.375, goal: 'maint', theme: 'sakura', sakuraRain: true },
       days: {},
       apiKey: ''
     };
 
     if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
     if (!state.profile.theme) state.profile.theme = 'sakura';
+    if (state.profile.sakuraRain === undefined) state.profile.sakuraRain = true;
 
     const foodCatalog = [
       { category: 'canteen', name: 'Борщ украинский со сметаной', p: 5.2, f: 4.8, c: 8.5, cal: 92, weight: 350 },
@@ -606,26 +630,26 @@
       document.getElementById('activeDateInput').value = activeDate;
       if (state.apiKey) document.getElementById('geminiApiKey').value = state.apiKey;
       applyTheme(state.profile.theme);
+      updateSakuraRainUI();
       loadProfileToUI();
       populateFoodSelect();
       renderActiveDay();
       renderCalendar();
-      initDecorAnimation(state.profile.theme);
+      initDecorAnimation();
     }
 
-    // Динамическая генерация анимаций фона (лепестки сакуры или листья матчи)
-    function initDecorAnimation(theme) {
+    function initDecorAnimation() {
       const container = document.getElementById('decorContainer');
       container.innerHTML = '';
-      if (theme !== 'sakura' && theme !== 'sakura_bw' && theme !== 'matcha' && theme !== 'cyber') return;
+      if (!state.profile.sakuraRain) return;
 
-      const count = theme === 'matcha' ? 12 : 18;
+      const count = 16;
       for (let i = 0; i < count; i++) {
         const item = document.createElement('div');
         item.className = 'petal';
         const size = Math.random() * 8 + 6;
         item.style.width = `${size}px`;
-        item.style.height = `${size * (theme === 'matcha' ? 2 : 1.4)}px`;
+        item.style.height = `${size * 1.4}px`;
         item.style.left = `${Math.random() * 100}vw`;
         item.style.animationDuration = `${Math.random() * 6 + 5}s`;
         item.style.animationDelay = `${Math.random() * 5}s`;
@@ -633,15 +657,32 @@
       }
     }
 
+    function toggleSakuraRain() {
+      state.profile.sakuraRain = !state.profile.sakuraRain;
+      updateSakuraRainUI();
+      initDecorAnimation();
+      persistState();
+    }
+
+    function updateSakuraRainUI() {
+      const btn = document.getElementById('sakuraRainToggle');
+      if (state.profile.sakuraRain) {
+        document.body.classList.add('sakura-enabled');
+        if (btn) { btn.textContent = '🌸 Лепестки: ВКЛ'; btn.style.background = 'var(--accent)'; btn.style.color = '#090d16'; }
+      } else {
+        document.body.classList.remove('sakura-enabled');
+        if (btn) { btn.textContent = '🚫 Лепестки: ВЫКЛ'; btn.style.background = ''; btn.style.color = 'var(--accent)'; }
+      }
+    }
+
     function setTheme(themeName) {
       state.profile.theme = themeName;
       applyTheme(themeName);
-      initDecorAnimation(themeName);
       persistState();
     }
 
     function applyTheme(themeName) {
-      document.body.className = `min-h-screen p-3 sm:p-6 pb-28 theme-${themeName}`;
+      document.body.className = `min-h-screen p-3 sm:p-6 pb-28 theme-${themeName} ${state.profile.sakuraRain ? 'sakura-enabled' : ''}`;
       ['sakura', 'sakura_bw', 'classic', 'noir', 'matcha', 'cyber'].forEach(t => {
         const btn = document.getElementById('theme_' + t);
         if (btn) {
@@ -1114,12 +1155,12 @@
     }
 
     function persistState() {
-      localStorage.setItem('rayuncalc_state_v10', JSON.stringify(state));
+      localStorage.setItem('rayuncalc_state_v11', JSON.stringify(state));
     }
 
     function resetAllData() {
       if (confirm('Сбросить данные?')) {
-        localStorage.removeItem('rayuncalc_state_v10');
+        localStorage.removeItem('rayuncalc_state_v11');
         location.reload();
       }
     }
