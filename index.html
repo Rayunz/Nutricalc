@@ -3,28 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>RayunCalc — Калькулятор рациона и AI-сканер по фото</title>
+  <title>RayunCalc — Умный рацион и AI-сканер</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0f172a;
-      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #090d16;
+      color: #f1f5f9;
       -webkit-tap-highlight-color: transparent;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
+      background-attachment: fixed;
     }
     input[type="range"] {
       accent-color: #10b981;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.3);
     }
     .custom-scrollbar::-webkit-scrollbar {
       width: 4px;
       height: 4px;
     }
     .custom-scrollbar::-webkit-scrollbar-track {
-      background: #1e293b;
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 4px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #475569;
+      background: rgba(71, 85, 105, 0.8);
       border-radius: 4px;
     }
     @keyframes scanline {
@@ -38,113 +53,127 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, transparent, #10b981, #34d399, #10b981, transparent);
-      box-shadow: 0 0 15px 3px rgba(16, 185, 129, 0.7);
+      box-shadow: 0 0 20px 4px rgba(16, 185, 129, 0.8);
       animation: scanline 2.2s ease-in-out infinite;
+    }
+    .tab-active {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #090d16;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+    }
+    .tab-inactive {
+      background: rgba(30, 41, 59, 0.6);
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .tab-inactive:hover {
+      background: rgba(51, 65, 85, 0.8);
+      color: #f1f5f9;
     }
   </style>
 </head>
-<body class="min-h-screen p-3 sm:p-6 pb-24">
+<body class="min-h-screen p-3 sm:p-6 pb-28">
 
-  <div class="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+  <div class="max-w-4xl mx-auto space-y-5">
     
-    <!-- Шапка и мобильное меню -->
-    <header class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-4 sm:p-5 backdrop-blur shadow-xl space-y-4">
+    <!-- Шапка и премиум навигация -->
+    <header class="glass-card rounded-3xl p-4 sm:p-6 space-y-4">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-xl sm:text-2xl font-bold shadow-inner">
+        <div class="flex items-center gap-3.5">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl shadow-inner">
             ⚡
           </div>
           <div>
             <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">Rayun<span class="text-emerald-400">Calc</span></h1>
-            <p class="text-xs text-slate-400">Умный рацион и ИИ-сканер</p>
+            <p class="text-xs text-slate-400 font-medium">Премиальный рацион & AI Vision</p>
           </div>
         </div>
       </div>
 
-      <!-- Навигация по вкладкам (адаптирована для телефонов) -->
-      <nav class="grid grid-cols-4 gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700/80">
-        <button type="button" onclick="switchMainTab('diary')" id="mainTab_diary" class="py-2.5 px-1 sm:px-3 rounded-lg text-[11px] sm:text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-1 bg-emerald-500 text-slate-950 shadow">
+      <!-- Навигационные вкладки -->
+      <nav class="grid grid-cols-4 gap-1.5 p-1 bg-slate-950/60 rounded-2xl border border-slate-800/80">
+        <button type="button" onclick="switchMainTab('diary')" id="mainTab_diary" class="py-2.5 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex flex-col sm:flex-row items-center justify-center gap-1.5 tab-active">
           <span>📊</span><span>Рацион</span>
         </button>
-        <button type="button" onclick="switchMainTab('scanner')" id="mainTab_scanner" class="py-2.5 px-1 sm:px-3 rounded-lg text-[11px] sm:text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-white">
+        <button type="button" onclick="switchMainTab('scanner')" id="mainTab_scanner" class="py-2.5 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex flex-col sm:flex-row items-center justify-center gap-1.5 tab-inactive">
           <span>📸</span><span>AI-Фото</span>
         </button>
-        <button type="button" onclick="switchMainTab('calendar')" id="mainTab_calendar" class="py-2.5 px-1 sm:px-3 rounded-lg text-[11px] sm:text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-white">
+        <button type="button" onclick="switchMainTab('calendar')" id="mainTab_calendar" class="py-2.5 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex flex-col sm:flex-row items-center justify-center gap-1.5 tab-inactive">
           <span>📅</span><span>Календарь</span>
         </button>
-        <button type="button" onclick="switchMainTab('profile')" id="mainTab_profile" class="py-2.5 px-1 sm:px-3 rounded-lg text-[11px] sm:text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-white">
+        <button type="button" onclick="switchMainTab('profile')" id="mainTab_profile" class="py-2.5 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex flex-col sm:flex-row items-center justify-center gap-1.5 tab-inactive">
           <span>👤</span><span>Профиль</span>
         </button>
       </nav>
     </header>
 
     <!-- ================= ВКЛАДКА 1: РАЦИОН И ДНЕВНИК ================= -->
-    <div id="view_diary" class="space-y-4 sm:space-y-6">
+    <div id="view_diary" class="space-y-5">
       
       <!-- Сводка дня -->
-      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 space-y-4">
+      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-5">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-            <span>📅</span> Дата
+            <span>📅</span> Выбранная дата
           </h2>
-          <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-emerald-400 font-semibold focus:outline-none">
+          <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="bg-slate-900/90 border border-slate-700/80 rounded-xl px-3.5 py-2 text-xs text-emerald-400 font-bold focus:outline-none focus:border-emerald-500 shadow-inner">
         </div>
 
         <div class="flex flex-col sm:flex-row items-center gap-6">
-          <div class="relative w-32 h-32 flex-shrink-0">
+          <div class="relative w-36 h-36 flex-shrink-0">
             <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="42" stroke="#1e293b" stroke-width="10" fill="none" />
               <circle id="calRing" cx="50" cy="50" r="42" stroke="#10b981" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" class="transition-all duration-500" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <span id="eatenCalBig" class="text-xl font-extrabold text-white">0</span>
-              <span class="text-[10px] text-slate-400">из <span id="targetCalSmall">2400</span></span>
+              <span id="eatenCalBig" class="text-2xl font-extrabold text-white tracking-tight">0</span>
+              <span class="text-[10px] text-slate-400 font-medium">из <span id="targetCalSmall">2400</span></span>
             </div>
           </div>
 
-          <div class="flex-1 w-full space-y-2.5">
+          <div class="flex-1 w-full space-y-3">
             <div>
               <div class="flex justify-between text-xs mb-1">
-                <span class="text-sky-400 font-semibold">Белки</span>
-                <span class="text-slate-300"><b id="eatenProt">0</b> / <span id="targetProt">150</span> г</span>
+                <span class="text-sky-400 font-bold">Белки</span>
+                <span class="text-slate-300 font-medium"><b id="eatenProt">0</b> / <span id="targetProt">150</span> г</span>
               </div>
-              <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
-                <div id="barProt" class="h-full bg-sky-400 rounded-full transition-all" style="width: 0%"></div>
+              <div class="w-full h-2.5 bg-slate-950/80 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                <div id="barProt" class="h-full bg-gradient-to-r from-sky-500 to-sky-400 rounded-full transition-all duration-500" style="width: 0%"></div>
               </div>
             </div>
             <div>
               <div class="flex justify-between text-xs mb-1">
-                <span class="text-amber-400 font-semibold">Жиры</span>
-                <span class="text-slate-300"><b id="eatenFat">0</b> / <span id="targetFat">70</span> г</span>
+                <span class="text-amber-400 font-bold">Жиры</span>
+                <span class="text-slate-300 font-medium"><b id="eatenFat">0</b> / <span id="targetFat">70</span> г</span>
               </div>
-              <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
-                <div id="barFat" class="h-full bg-amber-400 rounded-full transition-all" style="width: 0%"></div>
+              <div class="w-full h-2.5 bg-slate-950/80 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                <div id="barFat" class="h-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full transition-all duration-500" style="width: 0%"></div>
               </div>
             </div>
             <div>
               <div class="flex justify-between text-xs mb-1">
-                <span class="text-purple-400 font-semibold">Углеводы</span>
-                <span class="text-slate-300"><b id="eatenCarb">0</b> / <span id="targetCarb">240</span> г</span>
+                <span class="text-purple-400 font-bold">Углеводы</span>
+                <span class="text-slate-300 font-medium"><b id="eatenCarb">0</b> / <span id="targetCarb">240</span> г</span>
               </div>
-              <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
-                <div id="barCarb" class="h-full bg-purple-400 rounded-full transition-all" style="width: 0%"></div>
+              <div class="w-full h-2.5 bg-slate-950/80 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                <div id="barCarb" class="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full transition-all duration-500" style="width: 0%"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div id="remainBanner" class="bg-slate-900 border border-slate-700/80 rounded-xl p-3 text-center text-xs text-slate-300">
+        <div id="remainBanner" class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-3.5 text-center text-xs text-slate-300 font-medium">
           Осталось на день: <b id="remainCal" class="text-emerald-400">2400 ккал</b>
         </div>
       </div>
 
       <!-- Добавление блюд из каталога -->
-      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 space-y-4">
+      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-            <span>🍲</span> Добавить из базы (135+ блюд)
+            <span>🍲</span> Каталог блюд (135+)
           </h2>
-          <select id="mealTypeSelect" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold text-emerald-400 focus:outline-none">
+          <select id="mealTypeSelect" class="bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2 text-xs font-bold text-emerald-400 focus:outline-none">
             <option value="Завтрак">🌅 Завтрак</option>
             <option value="Обед">☀️ Обед</option>
             <option value="Ужин">🌙 Ужин</option>
@@ -155,128 +184,128 @@
         <div class="space-y-3">
           <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">🔍</span>
-            <input id="foodSearchInput" type="text" placeholder="Поиск (борщ, самса, воппер, суши...)" oninput="filterFoodCatalog()" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-20 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
-            <button type="button" onclick="aiSearchCatalogFood()" class="absolute right-1.5 top-1.5 bottom-1.5 px-2.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 rounded-lg text-[10px] font-semibold transition">
+            <input id="foodSearchInput" type="text" placeholder="Быстрый поиск (борщ, самса, воппер, суши...)" oninput="filterFoodCatalog()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl pl-10 pr-20 py-3 text-xs text-white focus:outline-none focus:border-emerald-500 shadow-inner">
+            <button type="button" onclick="aiSearchCatalogFood()" class="absolute right-2 top-2 bottom-2 px-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 rounded-xl text-[11px] font-bold transition">
               ✨ ИИ
             </button>
           </div>
 
           <!-- Категории с прокруткой -->
-          <div class="flex gap-1.5 overflow-x-auto pb-1 custom-scrollbar text-[11px]">
-            <button type="button" onclick="setCategoryFilter('all')" id="cat_all" class="px-3 py-1.5 rounded-lg font-semibold bg-emerald-500 text-slate-950 flex-shrink-0">Все</button>
-            <button type="button" onclick="setCategoryFilter('canteen')" id="cat_canteen" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0">🍲 Столовая</button>
-            <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0">🛒 Магазины</button>
-            <button type="button" onclick="setCategoryFilter('bakery')" id="cat_bakery" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0">🥐 Выпечка</button>
-            <button type="button" onclick="setCategoryFilter('fastfood')" id="cat_fastfood" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0">🍔 Фастфуд</button>
-            <button type="button" onclick="setCategoryFilter('panasian')" id="cat_panasian" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0">🍜 Паназия</button>
-            <button type="button" onclick="setCategoryFilter('fitness')" id="cat_fitness" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0">🍫 ПП</button>
-            <button type="button" onclick="setCategoryFilter('base')" id="cat_base" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0">🥩 Базовые</button>
+          <div class="flex gap-1.5 overflow-x-auto pb-1.5 custom-scrollbar text-[11px]">
+            <button type="button" onclick="setCategoryFilter('all')" id="cat_all" class="px-3.5 py-2 rounded-xl font-bold bg-emerald-500 text-slate-950 flex-shrink-0 shadow-md">Все</button>
+            <button type="button" onclick="setCategoryFilter('canteen')" id="cat_canteen" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🍲 Столовая</button>
+            <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🛒 Магазины</button>
+            <button type="button" onclick="setCategoryFilter('bakery')" id="cat_bakery" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🥐 Выпечка</button>
+            <button type="button" onclick="setCategoryFilter('fastfood')" id="cat_fastfood" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🍔 Фастфуд</button>
+            <button type="button" onclick="setCategoryFilter('panasian')" id="cat_panasian" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🍜 Паназия</button>
+            <button type="button" onclick="setCategoryFilter('fitness')" id="cat_fitness" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🍫 ПП</button>
+            <button type="button" onclick="setCategoryFilter('base')" id="cat_base" class="px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0">🥩 Базовые</button>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="sm:col-span-2">
-            <label class="block text-[11px] text-slate-400 mb-1">Выбрать блюдо</label>
-            <select id="dbFoodSelect" onchange="updateDbPreview()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500"></select>
+            <label class="block text-[11px] text-slate-400 font-semibold mb-1">Выберите блюдо</label>
+            <select id="dbFoodSelect" onchange="updateDbPreview()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-3.5 py-3 text-xs text-white focus:outline-none focus:border-emerald-500 shadow-inner"></select>
           </div>
           <div>
-            <label class="block text-[11px] text-slate-400 mb-1">Вес порции (г)</label>
-            <input id="dbWeightInput" type="number" value="250" min="10" max="2000" step="10" oninput="updateDbPreview()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none">
+            <label class="block text-[11px] text-slate-400 font-semibold mb-1">Вес (г)</label>
+            <input id="dbWeightInput" type="number" value="250" min="10" max="2000" step="10" oninput="updateDbPreview()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-3.5 py-3 text-xs text-white font-bold focus:outline-none shadow-inner">
           </div>
         </div>
 
-        <div class="flex items-center gap-2 text-[11px] text-slate-400 pt-1">
-          <span>Множитель:</span>
-          <button type="button" onclick="setPortionMultiplier(0.5)" class="px-2 py-1 bg-slate-900 border border-slate-700 rounded">0.5x</button>
-          <button type="button" onclick="setPortionMultiplier(1)" class="px-2 py-1 bg-slate-900 border border-slate-700 rounded">1x</button>
-          <button type="button" onclick="setPortionMultiplier(1.5)" class="px-2 py-1 bg-slate-900 border border-slate-700 rounded">1.5x</button>
-          <button type="button" onclick="setPortionMultiplier(2)" class="px-2 py-1 bg-slate-900 border border-slate-700 rounded">2x</button>
+        <div class="flex items-center gap-2 text-[11px] text-slate-400 pt-1 font-medium">
+          <span>Порция:</span>
+          <button type="button" onclick="setPortionMultiplier(0.5)" class="px-2.5 py-1 bg-slate-900 border border-slate-700/70 rounded-lg hover:bg-slate-800">0.5x</button>
+          <button type="button" onclick="setPortionMultiplier(1)" class="px-2.5 py-1 bg-slate-900 border border-slate-700/70 rounded-lg hover:bg-slate-800">1x</button>
+          <button type="button" onclick="setPortionMultiplier(1.5)" class="px-2.5 py-1 bg-slate-900 border border-slate-700/70 rounded-lg hover:bg-slate-800">1.5x</button>
+          <button type="button" onclick="setPortionMultiplier(2)" class="px-2.5 py-1 bg-slate-900 border border-slate-700/70 rounded-lg hover:bg-slate-800">2x</button>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-900 border border-slate-700/80 rounded-xl p-3.5">
-          <div class="flex items-center gap-3 text-xs flex-wrap">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
+          <div class="flex items-center gap-3 text-xs flex-wrap font-medium">
             <span>Калории: <b id="dbPrevCal" class="text-emerald-400">0</b> ккал</span>
             <span>Б: <b id="dbPrevP" class="text-sky-400">0</b>г</span>
             <span>Ж: <b id="dbPrevF" class="text-amber-400">0</b>г</span>
             <span>У: <b id="dbPrevC" class="text-purple-400">0</b>г</span>
           </div>
-          <button type="button" onclick="addDbFood()" class="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition shadow">
+          <button type="button" onclick="addDbFood()" class="w-full sm:w-auto py-3 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-extrabold text-xs transition shadow-lg shadow-emerald-500/25">
             + Добавить в день
           </button>
         </div>
       </div>
 
       <!-- Список съеденного -->
-      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 space-y-4">
+      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📋</span> Приемы пищи
           </h2>
-          <span id="diaryCountBadge" class="text-xs text-slate-400">0 поз.</span>
+          <span id="diaryCountBadge" class="text-xs text-slate-400 font-semibold">0 поз.</span>
         </div>
-        <div id="diaryContainer" class="space-y-3 max-h-[360px] overflow-y-auto custom-scrollbar pr-1"></div>
+        <div id="diaryContainer" class="space-y-3 max-h-[380px] overflow-y-auto custom-scrollbar pr-1"></div>
       </div>
     </div>
 
 
     <!-- ================= ВКЛАДКА 2: ИИ-СКАНЕР ================= -->
-    <div id="view_scanner" class="hidden space-y-4 sm:space-y-6">
-      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 space-y-4">
+    <div id="view_scanner" class="hidden space-y-5">
+      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-5">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📸</span> AI-Сканер еды по фото
           </h2>
-          <span class="text-[10px] text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30">Gemini Vision</span>
+          <span class="text-[10px] text-emerald-400 font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30">Gemini Vision</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div id="dropZone" onclick="document.getElementById('photoInput').click()" class="relative group cursor-pointer border-2 border-dashed border-slate-600 hover:border-emerald-400 rounded-2xl p-5 flex flex-col items-center justify-center text-center min-h-[200px] bg-slate-900/60 overflow-hidden">
+          <div id="dropZone" onclick="document.getElementById('photoInput').click()" class="relative group cursor-pointer border-2 border-dashed border-slate-700 hover:border-emerald-400 rounded-3xl p-5 flex flex-col items-center justify-center text-center min-h-[220px] bg-slate-950/50 overflow-hidden transition-all">
             <input id="photoInput" type="file" accept="image/*" capture="environment" class="hidden" onchange="handlePhotoUpload(event)">
-            <img id="photoPreview" src="" alt="Preview" class="hidden absolute inset-0 w-full h-full object-cover rounded-2xl opacity-80" />
-            <div id="scannerOverlay" class="hidden absolute inset-0 bg-slate-950/70 backdrop-blur-[2px] flex flex-col items-center justify-center z-10">
+            <img id="photoPreview" src="" alt="Preview" class="hidden absolute inset-0 w-full h-full object-cover rounded-3xl opacity-80" />
+            <div id="scannerOverlay" class="hidden absolute inset-0 bg-slate-950/80 backdrop-blur-[3px] flex flex-col items-center justify-center z-10">
               <div class="scanner-beam"></div>
-              <div class="w-8 h-8 border-3 border-emerald-400 border-t-transparent rounded-full animate-spin mb-2"></div>
-              <span class="text-[11px] font-bold text-emerald-300">РАСПОЗНАВАНИЕ...</span>
+              <div class="w-9 h-9 border-3 border-emerald-400 border-t-transparent rounded-full animate-spin mb-2"></div>
+              <span class="text-[11px] font-extrabold text-emerald-300 tracking-widest">AI АНАЛИЗ...</span>
             </div>
-            <div id="uploadPrompt" class="relative z-0 space-y-2">
-              <div class="w-10 h-10 mx-auto rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-xl">📷</div>
+            <div id="uploadPrompt" class="relative z-0 space-y-2.5">
+              <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-2xl shadow-inner group-hover:scale-105 transition">📷</div>
               <div class="text-xs font-bold text-white">Снять или загрузить фото</div>
-              <p class="text-[11px] text-slate-400">Нажмите для выбора снимка</p>
+              <p class="text-[11px] text-slate-400 font-medium">Нажмите для выбора снимка тарелки</p>
             </div>
           </div>
 
-          <div class="bg-slate-900/80 border border-slate-700/70 rounded-2xl p-4 space-y-3">
-            <span class="text-xs font-bold text-slate-400 block">⚡ Быстрый тест на примерах:</span>
+          <div class="bg-slate-950/60 border border-slate-800/80 rounded-3xl p-4 sm:p-5 space-y-3">
+            <span class="text-xs font-bold text-slate-400 block uppercase tracking-wider">⚡ Быстрый тест на примерах:</span>
             <div class="grid grid-cols-2 gap-2">
-              <button type="button" onclick="runDemoPhoto('poke')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left flex items-center gap-2">
-                <span class="text-xl">🥗</span>
-                <div><div class="text-xs font-bold text-white">Поке</div><div class="text-[9px] text-slate-400">~485 ккал</div></div>
+              <button type="button" onclick="runDemoPhoto('poke')" class="p-2.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-left flex items-center gap-2.5 transition">
+                <span class="text-2xl">🥗</span>
+                <div><div class="text-xs font-bold text-white">Поке</div><div class="text-[10px] text-slate-400">~485 ккал</div></div>
               </button>
-              <button type="button" onclick="runDemoPhoto('burger')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left flex items-center gap-2">
-                <span class="text-xl">🍔</span>
-                <div><div class="text-xs font-bold text-white">Бургер</div><div class="text-[9px] text-slate-400">~870 ккал</div></div>
+              <button type="button" onclick="runDemoPhoto('burger')" class="p-2.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-left flex items-center gap-2.5 transition">
+                <span class="text-2xl">🍔</span>
+                <div><div class="text-xs font-bold text-white">Бургер</div><div class="text-[10px] text-slate-400">~870 ккал</div></div>
               </button>
-              <button type="button" onclick="runDemoPhoto('tom_yum')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left flex items-center gap-2">
-                <span class="text-xl">🍜</span>
-                <div><div class="text-xs font-bold text-white">Том Ям</div><div class="text-[9px] text-slate-400">~540 ккал</div></div>
+              <button type="button" onclick="runDemoPhoto('tom_yum')" class="p-2.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-left flex items-center gap-2.5 transition">
+                <span class="text-2xl">🍜</span>
+                <div><div class="text-xs font-bold text-white">Том Ям</div><div class="text-[10px] text-slate-400">~540 ккал</div></div>
               </button>
-              <button type="button" onclick="runDemoPhoto('carbonara')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left flex items-center gap-2">
-                <span class="text-xl">🍝</span>
-                <div><div class="text-xs font-bold text-white">Карбонара</div><div class="text-[9px] text-slate-400">~620 ккал</div></div>
+              <button type="button" onclick="runDemoPhoto('carbonara')" class="p-2.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-left flex items-center gap-2.5 transition">
+                <span class="text-2xl">🍝</span>
+                <div><div class="text-xs font-bold text-white">Карбонара</div><div class="text-[10px] text-slate-400">~620 ккал</div></div>
               </button>
             </div>
           </div>
         </div>
 
-        <div id="aiResultBox" class="hidden bg-slate-900 border border-emerald-500/40 rounded-2xl p-4 space-y-3">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <div id="aiResultBox" class="hidden bg-slate-950/80 border border-emerald-500/40 rounded-3xl p-4 sm:p-5 space-y-3.5">
+          <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
             <h3 id="aiDishTitle" class="text-sm font-extrabold text-white">Блюдо</h3>
-            <span id="aiConfidenceBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">95%</span>
+            <span id="aiConfidenceBadge" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">95%</span>
           </div>
-          <div id="aiDetectedList" class="space-y-2 max-h-40 overflow-y-auto custom-scrollbar pr-1"></div>
-          <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
-            <div>Всего: <b id="aiTotalCal" class="text-emerald-400">0 ккал</b></div>
-            <button type="button" onclick="addAiItemsToDiary()" class="py-2 px-4 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs">
+          <div id="aiDetectedList" class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1"></div>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs font-semibold">
+            <div>Всего: <b id="aiTotalCal" class="text-emerald-400 text-sm">0 ккал</b></div>
+            <button type="button" onclick="addAiItemsToDiary()" class="py-2.5 px-5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-950 font-extrabold text-xs shadow-lg shadow-emerald-500/25">
               + Добавить в дневник
             </button>
           </div>
@@ -286,68 +315,68 @@
 
 
     <!-- ================= ВКЛАДКА 3: КАЛЕНДАРЬ ================= -->
-    <div id="view_calendar" class="hidden space-y-4 sm:space-y-6">
-      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 space-y-4">
+    <div id="view_calendar" class="hidden space-y-5">
+      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📅</span> Календарь питания
           </h2>
           <div class="flex items-center gap-2">
-            <button type="button" onclick="changeCalendarMonth(-1)" class="p-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-300">◀</button>
-            <span id="calMonthTitle" class="text-xs sm:text-sm font-bold text-emerald-400 min-w-[100px] text-center">Октябрь 2026</span>
-            <button type="button" onclick="changeCalendarMonth(1)" class="p-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-300">▶</button>
+            <button type="button" onclick="changeCalendarMonth(-1)" class="p-2 rounded-xl bg-slate-900 border border-slate-700/80 text-slate-300 hover:bg-slate-800">◀</button>
+            <span id="calMonthTitle" class="text-xs sm:text-sm font-extrabold text-emerald-400 min-w-[120px] text-center">Октябрь 2026</span>
+            <button type="button" onclick="changeCalendarMonth(1)" class="p-2 rounded-xl bg-slate-900 border border-slate-700/80 text-slate-300 hover:bg-slate-800">▶</button>
           </div>
         </div>
 
-        <div class="grid grid-cols-7 gap-1.5 text-center text-[10px] text-slate-400 font-semibold pb-1 border-b border-slate-700/70">
+        <div class="grid grid-cols-7 gap-1.5 text-center text-[11px] text-slate-400 font-bold pb-1 border-b border-slate-800">
           <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div>
         </div>
 
-        <div id="calendarGrid" class="grid grid-cols-7 gap-1.5"></div>
+        <div id="calendarGrid" class="grid grid-cols-7 gap-2"></div>
       </div>
     </div>
 
 
     <!-- ================= ВКЛАДКА 4: ПРОФИЛЬ ================= -->
-    <div id="view_profile" class="hidden space-y-4 sm:space-y-6">
-      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-6 space-y-4">
+    <div id="view_profile" class="hidden space-y-5">
+      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
         <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
           <span>👤</span> Профиль и параметры КБЖУ
         </h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
-            <label class="block text-xs text-slate-300 mb-1">Имя</label>
-            <input id="profileName" type="text" value="Maksim" oninput="saveProfile()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Имя</label>
+            <input id="profileName" type="text" value="Maksim" oninput="saveProfile()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-3.5 py-2.5 text-xs text-white font-medium focus:outline-none">
           </div>
           <div>
-            <label class="block text-xs text-slate-300 mb-1">Пол</label>
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Пол</label>
             <div class="grid grid-cols-2 gap-2">
-              <button type="button" onclick="setGender('male')" id="profGenderMale" class="py-2 rounded-xl text-xs font-semibold border bg-emerald-500/20 border-emerald-500 text-emerald-300">Мужчина</button>
-              <button type="button" onclick="setGender('female')" id="profGenderFemale" class="py-2 rounded-xl text-xs font-semibold border bg-slate-900 border-slate-700 text-slate-400">Женщина</button>
+              <button type="button" onclick="setGender('male')" id="profGenderMale" class="py-2.5 rounded-2xl text-xs font-bold border bg-emerald-500/20 border-emerald-500 text-emerald-300">Мужчина</button>
+              <button type="button" onclick="setGender('female')" id="profGenderFemale" class="py-2.5 rounded-2xl text-xs font-bold border bg-slate-900 border-slate-700/80 text-slate-400">Женщина</button>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
           <div>
-            <label class="block text-xs text-slate-300 mb-1">Возраст: <b id="profAgeLbl" class="text-emerald-400">24</b></label>
-            <input id="profAge" type="range" min="14" max="80" value="24" oninput="saveProfile()" class="w-full">
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Возраст: <b id="profAgeLbl" class="text-emerald-400">24</b></label>
+            <input id="profAge" type="range" min="14" max="80" value="24" oninput="saveProfile()" class="w-full mt-2">
           </div>
           <div>
-            <label class="block text-xs text-slate-300 mb-1">Рост (см): <b id="profHeightLbl" class="text-emerald-400">180</b></label>
-            <input id="profHeight" type="range" min="140" max="220" value="180" oninput="saveProfile()" class="w-full">
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Рост (см): <b id="profHeightLbl" class="text-emerald-400">180</b></label>
+            <input id="profHeight" type="range" min="140" max="220" value="180" oninput="saveProfile()" class="w-full mt-2">
           </div>
           <div>
-            <label class="block text-xs text-slate-300 mb-1">Вес (кг): <b id="profWeightLbl" class="text-emerald-400">75</b></label>
-            <input id="profWeight" type="range" min="40" max="160" step="0.5" value="75" oninput="saveProfile()" class="w-full">
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Вес (кг): <b id="profWeightLbl" class="text-emerald-400">75</b></label>
+            <input id="profWeight" type="range" min="40" max="160" step="0.5" value="75" oninput="saveProfile()" class="w-full mt-2">
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
-            <label class="block text-xs text-slate-300 mb-1">Активность</label>
-            <select id="profActivity" onchange="saveProfile()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Активность</label>
+            <select id="profActivity" onchange="saveProfile()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-3.5 py-2.5 text-xs text-white font-medium">
               <option value="1.2">Сидячий (1.2)</option>
               <option value="1.375" selected>Легкие трен. 1-3 р. (1.375)</option>
               <option value="1.55">Умеренная 3-5 р. (1.55)</option>
@@ -355,8 +384,8 @@
             </select>
           </div>
           <div>
-            <label class="block text-xs text-slate-300 mb-1">Цель</label>
-            <select id="profGoal" onchange="saveProfile()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Цель</label>
+            <select id="profGoal" onchange="saveProfile()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl px-3.5 py-2.5 text-xs text-white font-medium">
               <option value="loss">Похудение (-15%)</option>
               <option value="maint" selected>Поддержание</option>
               <option value="gain">Набор (+15%)</option>
@@ -364,9 +393,9 @@
           </div>
         </div>
 
-        <div class="bg-slate-900 border border-slate-700/80 rounded-xl p-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
-          <div>Норма: <b id="profCalcSummary" class="text-emerald-400">2400 ккал</b></div>
-          <button type="button" onclick="resetAllData()" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 border border-rose-500/30">Сбросить</button>
+        <div class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div>Норма: <b id="profCalcSummary" class="text-emerald-400 font-bold">2400 ккал</b></div>
+          <button type="button" onclick="resetAllData()" class="px-3.5 py-2 rounded-xl bg-rose-500/25 hover:bg-rose-500/35 text-rose-300 border border-rose-500/40 font-bold transition">Сбросить всё</button>
         </div>
       </div>
     </div>
@@ -379,7 +408,7 @@
     let calendarCurrentYear = new Date().getFullYear();
     let calendarCurrentMonth = new Date().getMonth();
 
-    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v5')) || {
+    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v6')) || {
       profile: { name: 'Maksim', gender: 'male', age: 24, height: 180, weight: 75, activity: 1.375, goal: 'maint' },
       days: {}
     };
@@ -430,7 +459,6 @@
       renderCalendar();
     }
 
-    // Надежное переключение вкладок
     function switchMainTab(tabId) {
       ['diary', 'scanner', 'calendar', 'profile'].forEach(t => {
         const viewEl = document.getElementById('view_' + t);
@@ -438,9 +466,9 @@
         if (viewEl) viewEl.classList.toggle('hidden', t !== tabId);
         if (btnEl) {
           if (t === tabId) {
-            btnEl.className = 'py-2.5 px-1 sm:px-3 rounded-lg text-[11px] sm:text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-1 bg-emerald-500 text-slate-950 shadow';
+            btnEl.className = 'py-2.5 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex flex-col sm:flex-row items-center justify-center gap-1.5 tab-active';
           } else {
-            btnEl.className = 'py-2.5 px-1 sm:px-3 rounded-lg text-[11px] sm:text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-white';
+            btnEl.className = 'py-2.5 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex flex-col sm:flex-row items-center justify-center gap-1.5 tab-inactive';
           }
         }
       });
@@ -459,8 +487,8 @@
       document.getElementById('profActivity').value = p.activity;
       document.getElementById('profGoal').value = p.goal;
 
-      document.getElementById('profGenderMale').className = p.gender === 'male' ? 'py-2 rounded-xl text-xs font-semibold border bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'py-2 rounded-xl text-xs font-semibold border bg-slate-900 border-slate-700 text-slate-400';
-      document.getElementById('profGenderFemale').className = p.gender === 'female' ? 'py-2 rounded-xl text-xs font-semibold border bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'py-2 rounded-xl text-xs font-semibold border bg-slate-900 border-slate-700 text-slate-400';
+      document.getElementById('profGenderMale').className = p.gender === 'male' ? 'py-2.5 rounded-2xl text-xs font-bold border bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'py-2.5 rounded-2xl text-xs font-bold border bg-slate-900 border-slate-700/80 text-slate-400';
+      document.getElementById('profGenderFemale').className = p.gender === 'female' ? 'py-2.5 rounded-2xl text-xs font-bold border bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'py-2.5 rounded-2xl text-xs font-bold border bg-slate-900 border-slate-700/80 text-slate-400';
 
       const targets = getCalculatedTargets();
       document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б: ${targets.p}г, Ж: ${targets.f}г, У: ${targets.c}г)`;
@@ -515,7 +543,7 @@
       ['all', 'canteen', 'store', 'bakery', 'fastfood', 'panasian', 'fitness', 'base'].forEach(c => {
         const btn = document.getElementById('cat_' + c);
         if (btn) {
-          btn.className = (c === cat) ? 'px-3 py-1.5 rounded-lg font-semibold bg-emerald-500 text-slate-950 flex-shrink-0' : 'px-3 py-1.5 rounded-lg font-semibold bg-slate-900 text-slate-300 border border-slate-700 flex-shrink-0';
+          btn.className = (c === cat) ? 'px-3.5 py-2 rounded-xl font-bold bg-emerald-500 text-slate-950 flex-shrink-0 shadow-md' : 'px-3.5 py-2 rounded-xl font-bold bg-slate-900/90 text-slate-300 border border-slate-700/70 flex-shrink-0';
         }
       });
       filterFoodCatalog();
@@ -573,7 +601,7 @@
         p: Math.round(food.p * mult),
         f: Math.round(food.f * mult),
         c: Math.round(food.c * mult),
-        badge: 'База'
+        badge: 'Каталог'
       };
 
       if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
@@ -635,27 +663,27 @@
       document.getElementById('diaryCountBadge').textContent = `${dayData.diary.length} поз.`;
 
       if (dayData.diary.length === 0) {
-        cont.innerHTML = `<div class="text-center py-6 text-xs text-slate-500">Дневник пуст. Выберите блюдо выше.</div>`;
+        cont.innerHTML = `<div class="text-center py-8 text-xs text-slate-500 font-medium">Дневник пуст. Выберите блюдо из каталога выше.</div>`;
         return;
       }
 
       cont.innerHTML = '';
       dayData.diary.forEach(item => {
         const el = document.createElement('div');
-        el.className = 'flex items-center justify-between gap-2 bg-slate-900 border border-slate-700/80 rounded-xl p-3';
+        el.className = 'flex items-center justify-between gap-3 bg-slate-900/90 border border-slate-800/80 rounded-2xl p-3.5 shadow-sm';
         el.innerHTML = `
-          <div class="space-y-0.5">
+          <div class="space-y-1">
             <div class="flex items-center gap-2 text-[10px]">
-              <span class="font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">${item.meal}</span>
-              <span class="text-slate-400">${item.weight}г</span>
+              <span class="font-extrabold px-2 py-0.5 rounded-lg bg-slate-800 text-slate-300">${item.meal}</span>
+              <span class="text-slate-400 font-medium">${item.weight}г</span>
             </div>
             <div class="text-xs font-bold text-white">${item.name}</div>
-            <div class="flex items-center gap-2 text-[11px] text-slate-400">
-              <span class="text-emerald-400 font-bold">${item.cal} ккал</span>
+            <div class="flex items-center gap-2.5 text-[11px] text-slate-400 font-medium">
+              <span class="text-emerald-400 font-extrabold">${item.cal} ккал</span>
               <span>Б:${item.p} Ж:${item.f} У:${item.c}</span>
             </div>
           </div>
-          <button type="button" onclick="removeDiaryItem(${item.id})" class="p-2 text-slate-500 hover:text-rose-400">✕</button>
+          <button type="button" onclick="removeDiaryItem(${item.id})" class="p-2 text-slate-500 hover:text-rose-400 transition">✕</button>
         `;
         cont.appendChild(el);
       });
@@ -714,12 +742,12 @@
         const cal = Math.round((item.p100*m*4) + (item.f100*m*9) + (item.c100*m*4));
         tCal += cal;
         const row = document.createElement('div');
-        row.className = 'flex items-center justify-between bg-slate-950 p-2 rounded-xl text-xs';
+        row.className = 'flex items-center justify-between bg-slate-900/90 border border-slate-800 p-2.5 rounded-2xl text-xs';
         row.innerHTML = `
-          <div><div class="text-white font-semibold">${item.name}</div><div class="text-[10px] text-slate-400">${cal} ккал</div></div>
-          <div class="flex items-center gap-1">
-            <input type="number" value="${item.weight}" oninput="aiCurrentItems[${idx}].weight = parseFloat(this.value)||0; renderAiDetectedItems()" class="w-14 bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-right text-white font-bold text-xs">
-            <span class="text-slate-400">г</span>
+          <div><div class="text-white font-bold">${item.name}</div><div class="text-[10px] text-slate-400 font-medium">${cal} ккал</div></div>
+          <div class="flex items-center gap-1.5">
+            <input type="number" value="${item.weight}" oninput="aiCurrentItems[${idx}].weight = parseFloat(this.value)||0; renderAiDetectedItems()" class="w-16 bg-slate-950 border border-slate-700/80 rounded-xl px-2 py-1 text-right text-white font-bold text-xs">
+            <span class="text-slate-400 font-semibold">г</span>
           </div>
         `;
         list.appendChild(row);
@@ -735,7 +763,7 @@
         const c = Math.round(item.c100 * m);
         const cal = Math.round((p*4) + (f*9) + (c*4));
         if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
-        state.days[activeDate].diary.unshift({ id: Date.now()+Math.random(), meal: 'Обед', name: item.name, weight: item.weight, cal, p, f, c, badge: '📸 ИИ' });
+        state.days[activeDate].diary.unshift({ id: Date.now()+Math.random(), meal: 'Обед', name: item.name, weight: item.weight, cal, p, f, c, badge: '📸 AI' });
       });
       persistState();
       switchMainTab('diary');
@@ -772,11 +800,11 @@
         const pct = Math.round((eaten / targets.cal) * 100);
 
         const cell = document.createElement('div');
-        cell.className = `p-1.5 sm:p-2 rounded-xl border flex flex-col items-center justify-between min-h-[65px] cursor-pointer ${dateKey === activeDate ? 'border-emerald-400 bg-emerald-500/10' : 'border-slate-700/70 bg-slate-900'}`;
+        cell.className = `p-2 rounded-2xl border flex flex-col items-center justify-between min-h-[72px] cursor-pointer transition ${dateKey === activeDate ? 'border-emerald-400 bg-emerald-500/15 shadow-lg shadow-emerald-500/10' : 'border-slate-800 bg-slate-900/80 hover:border-slate-700'}`;
         cell.innerHTML = `
-          <div class="w-full flex justify-between text-[9px]"><span class="font-bold text-white">${d}</span>${eaten>0?`<span class="text-[8px] text-emerald-400">${pct}%</span>`:''}</div>
-          <div class="text-[11px] font-extrabold ${eaten>0?'text-emerald-400':'text-slate-600'}">${eaten || '—'}</div>
-          <div class="text-[8px] text-slate-500">/${targets.cal}</div>
+          <div class="w-full flex justify-between text-[10px]"><span class="font-extrabold text-white">${d}</span>${eaten>0?`<span class="text-[9px] font-bold text-emerald-400">${pct}%</span>`:''}</div>
+          <div class="text-xs font-extrabold ${eaten>0?'text-emerald-400':'text-slate-600'}">${eaten || '—'}</div>
+          <div class="text-[9px] text-slate-500 font-medium">/${targets.cal}</div>
         `;
         cell.onclick = () => {
           activeDate = dateKey;
@@ -789,12 +817,12 @@
     }
 
     function persistState() {
-      localStorage.setItem('rayuncalc_state_v5', JSON.stringify(state));
+      localStorage.setItem('rayuncalc_state_v6', JSON.stringify(state));
     }
 
     function resetAllData() {
       if (confirm('Сбросить данные?')) {
-        localStorage.removeItem('rayuncalc_state_v5');
+        localStorage.removeItem('rayuncalc_state_v6');
         location.reload();
       }
     }
