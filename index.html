@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>RayunCalc — Умный рацион и AI-сканер</title>
   
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,8 +17,8 @@
   <style>
     :root {
       --bg-main: #12070d;
-      --card-bg: rgba(32, 11, 23, 0.76);
-      --box-bg: rgba(20, 6, 15, 0.82);
+      --card-bg: rgba(32, 11, 23, 0.78);
+      --box-bg: rgba(20, 6, 15, 0.84);
       --accent: #f472b6;
       --accent-soft: rgba(244, 114, 182, 0.22);
       --accent-gradient: linear-gradient(135deg, #f472b6 0%, #ec4899 55%, #be185d 100%);
@@ -30,54 +30,54 @@
 
     body.theme-sakura {
       --bg-main: #12060c;
-      --card-bg: rgba(34, 11, 24, 0.76);
-      --box-bg: rgba(22, 6, 15, 0.82);
+      --card-bg: rgba(34, 11, 24, 0.78);
+      --box-bg: rgba(22, 6, 15, 0.84);
       --accent: #f472b6;
       --accent-soft: rgba(244, 114, 182, 0.22);
       --accent-gradient: linear-gradient(135deg, #f9a8d4 0%, #f472b6 45%, #db2777 100%);
       --text-main: #fdf2f8;
       --border-color: rgba(244, 114, 182, 0.34);
-      --card-radius: 26px 12px 26px 12px;
-      --box-radius: 16px 8px 16px 8px;
+      --card-radius: 28px 12px 28px 12px;
+      --box-radius: 18px 8px 18px 8px;
     }
 
     body.theme-sakura_bw {
       --bg-main: #0a0a0c;
-      --card-bg: rgba(22, 22, 26, 0.80);
-      --box-bg: rgba(14, 14, 17, 0.86);
+      --card-bg: rgba(22, 22, 26, 0.82);
+      --box-bg: rgba(14, 14, 17, 0.88);
       --accent: #f4f4f5;
       --accent-soft: rgba(255, 255, 255, 0.15);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
       --text-main: #fafafa;
       --border-color: rgba(255, 255, 255, 0.26);
-      --card-radius: 26px 12px 26px 12px;
-      --box-radius: 16px 8px 16px 8px;
+      --card-radius: 28px 12px 28px 12px;
+      --box-radius: 18px 8px 18px 8px;
     }
 
     body.theme-matcha {
       --bg-main: #0f130d;
-      --card-bg: rgba(34, 25, 17, 0.84);
-      --box-bg: rgba(24, 17, 11, 0.88);
+      --card-bg: rgba(34, 25, 17, 0.85);
+      --box-bg: rgba(24, 17, 11, 0.9);
       --accent: #a3e635;
       --accent-soft: rgba(163, 230, 53, 0.2);
       --accent-gradient: linear-gradient(135deg, #bef264 0%, #84cc16 55%, #4d7c0f 100%);
       --text-main: #fefce8;
       --border-color: rgba(185, 135, 82, 0.42);
-      --card-radius: 18px 24px 16px 24px;
-      --box-radius: 12px 16px 12px 16px;
+      --card-radius: 18px 26px 16px 26px;
+      --box-radius: 12px 18px 12px 18px;
     }
 
     body.theme-cyber {
       --bg-main: #080312;
-      --card-bg: rgba(20, 8, 38, 0.80);
-      --box-bg: rgba(12, 4, 24, 0.86);
+      --card-bg: rgba(20, 8, 38, 0.82);
+      --box-bg: rgba(12, 4, 24, 0.88);
       --accent: #f43f5e;
       --accent-soft: rgba(244, 63, 94, 0.24);
       --accent-gradient: linear-gradient(135deg, #fb7185 0%, #e11d48 45%, #9333ea 100%);
       --text-main: #fae8ff;
       --border-color: rgba(244, 63, 94, 0.42);
-      --card-radius: 6px 22px 6px 22px;
-      --box-radius: 4px 14px 4px 14px;
+      --card-radius: 6px 24px 6px 24px;
+      --box-radius: 4px 16px 4px 16px;
     }
 
     body.theme-classic {
@@ -95,7 +95,7 @@
 
     body.theme-noir {
       --bg-main: #000000;
-      --card-bg: rgba(15, 15, 15, 0.90);
+      --card-bg: rgba(15, 15, 15, 0.9);
       --box-bg: rgba(8, 8, 8, 0.95);
       --accent: #ffffff;
       --accent-soft: rgba(255, 255, 255, 0.14);
@@ -126,16 +126,17 @@
       -webkit-backdrop-filter: blur(18px);
       border: 1.5px solid var(--border-color);
       border-radius: var(--card-radius);
-      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+      box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
       transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
       overflow: hidden;
     }
 
-    body.theme-sakura .glass-card {
+    body.theme-sakura .glass-card:nth-of-type(odd),
+    body.theme-sakura header.glass-card {
       background-image: 
-        radial-gradient(circle at 92% 12%, rgba(244, 114, 182, 0.20) 0%, transparent 45%),
-        radial-gradient(circle at 8% 88%, rgba(219, 39, 119, 0.12) 0%, transparent 50%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.24'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%239d174d' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(465,28) scale(0.9)' fill='%23fbcfe8'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23db2777'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(circle at 92% 12%, rgba(244, 114, 182, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 8% 88%, rgba(219, 39, 119, 0.14) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.28'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%239d174d' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M480 32 C450 60, 430 85, 390 105' stroke='%239d174d' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(415,28) scale(0.9)' fill='%23fbcfe8'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23db2777'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -143,7 +144,7 @@
     body.theme-sakura_bw .glass-card {
       background-image: 
         radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.12) 0%, transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.20'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%23a1a1aa' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(465,30) scale(0.95)' fill='%23ffffff'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%2352525b'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.22'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%23a1a1aa' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(465,30) scale(0.95)' fill='%23ffffff'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%2352525b'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -151,7 +152,7 @@
     body.theme-matcha .glass-card {
       background-image: 
         linear-gradient(135deg, rgba(62, 43, 27, 0.55) 0%, rgba(28, 22, 15, 0.75) 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23d99b66' stroke-opacity='0.16' stroke-width='1.5'%3E%3Cpath d='M0,40 C220,10 450,80 800,30'/%3E%3Cpath d='M0,95 C180,65 390,130 800,85'/%3E%3Cpath d='M0,155 C260,120 510,185 800,140'/%3E%3Cpath d='M0,215 C190,250 480,190 800,225'/%3E%3Cellipse cx='620' cy='180' rx='95' ry='28' stroke-opacity='0.12'/%3E%3C/g%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23d99b66' stroke-opacity='0.16' stroke-width='1.5'%3E%3Cpath d='M0,40 C220,10 450,80 800,30'/%3E%3Cpath d='M0,95 C180,65 390,130 800,85'/%3E%3Cpath d='M0,155 C260,120 510,185 800,140'/%3E%3Cpath d='M0,215 C190,250 480,190 800,225'/%3E%3C/g%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -163,14 +164,6 @@
       border: 1px solid var(--border-color);
       border-radius: var(--box-radius);
       transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    body.theme-matcha .themed-box {
-      background-image: 
-        linear-gradient(90deg, rgba(180, 130, 80, 0.12) 0%, rgba(60, 42, 24, 0.22) 50%, rgba(163, 230, 53, 0.06) 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q150,5 300,30 T400,20 M0,65 Q180,85 320,55 T400,70' fill='none' stroke='%23b48250' stroke-opacity='0.14' stroke-width='1.2'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: cover;
     }
 
     .hover-lift:hover {
@@ -191,6 +184,7 @@
     }
     .themed-btn-primary:hover {
       filter: brightness(1.08);
+      transform: translateY(-1px);
     }
     .themed-btn-primary:active {
       transform: scale(0.96);
@@ -211,24 +205,25 @@
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
       border-top: 1.5px solid var(--border-color);
+      box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.75);
       padding-bottom: env(safe-area-inset-bottom, 8px);
-      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    /* Выезжающая снизу шторка (Bottom Sheet) */
+    @keyframes sheetSlideUp {
+      from { transform: translateY(100%); opacity: 0.4; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .sheet-animate {
+      animation: sheetSlideUp 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     @keyframes tabSlideFade {
-      0% { opacity: 0; transform: translateY(10px) scale(0.99); }
+      0% { opacity: 0; transform: translateY(12px) scale(0.99); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
     .tab-view-enter {
-      animation: tabSlideFade 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    @keyframes sheetSlideUp {
-      0% { opacity: 0; transform: translateY(100%); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .sheet-animate {
-      animation: sheetSlideUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: tabSlideFade 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     @keyframes barShimmer {
@@ -272,21 +267,21 @@
     }
 
     @keyframes modalSpring {
-      0% { opacity: 0; transform: translateY(30px) scale(0.94); filter: blur(6px); }
-      70% { opacity: 1; transform: translateY(-3px) scale(1.01); filter: blur(0px); }
+      0% { opacity: 0; transform: translateY(35px) scale(0.92); filter: blur(8px); }
+      70% { opacity: 1; transform: translateY(-4px) scale(1.01); filter: blur(0px); }
       100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
     }
     .popup-animate {
-      animation: modalSpring 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: modalSpring 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     @keyframes itemCascadeIn {
-      0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+      0% { opacity: 0; transform: translateY(14px) scale(0.97); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
     .cascade-item {
       opacity: 0;
-      animation: itemCascadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: itemCascadeIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     @keyframes goofyWobble {
@@ -326,68 +321,68 @@
     .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
   </style>
 </head>
-<body class="min-h-screen p-2.5 sm:p-5 pb-28 theme-sakura">
+<body class="min-h-screen p-3 sm:p-5 pb-28 theme-sakura">
 
   <!-- РЕАЛИСТИЧНЫЕ ЖИВЫЕ ОБОИ НА HTML5 CANVAS -->
   <canvas id="bgCanvas"></canvas>
 
   <!-- ВСПЛЫВАЮЩИЙ ТОСТ -->
-  <div id="toastBanner" class="fixed top-4 left-1/2 -translate-x-1/2 z-[70] pointer-events-none hidden">
+  <div id="toastBanner" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden">
     <div class="glass-card px-4 py-2.5 flex items-center gap-2 text-xs font-extrabold text-white shadow-2xl border-2" style="border-color: var(--accent);">
       <span id="toastIcon">✅</span>
       <span id="toastText">Блюдо добавлено в рацион!</span>
     </div>
   </div>
 
-  <!-- ОСНОВНОЙ КОНТЕЙНЕР (КОМПАКТНЫЙ МОБИЛЬНЫЙ ФОРМАТ YAZIO / LIFESUM) -->
-  <div class="relative z-10 max-w-2xl mx-auto space-y-3.5">
+  <!-- ОСНОВНОЙ ИНТЕРФЕЙС (КОМПАКТНЫЙ MOBILE-FIRST КАК В YAZIO / LIFESUM) -->
+  <div class="relative z-10 max-w-2xl mx-auto space-y-4">
     
-    <!-- Компактная мобильная шапка -->
-    <header class="glass-card px-4 py-3 flex items-center justify-between gap-2">
-      <div class="flex items-center gap-2.5">
+    <!-- Компактная шапка -->
+    <header class="glass-card px-4 py-3.5 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
         <div class="w-10 h-10 themed-box flex items-center justify-center text-xl shadow-inner" style="color: var(--accent);">
           <span id="headerLogoEmoji">🌸</span>
         </div>
         <div>
-          <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-white leading-tight">
-            Rayun<span style="color: var(--accent);">Calc</span>
-          </h1>
-          <p id="themeSubtitle" class="text-[10px] text-slate-300 font-medium">AI-рацион • Без лишней прокрутки</p>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-white">Rayun<span style="color: var(--accent);">Calc</span></h1>
+            <span id="normModeBadge" onclick="openCustomCalModal()" class="cursor-pointer text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-white/10" style="color: var(--accent);">Авто-норма</span>
+          </div>
+          <p id="themeSubtitle" class="text-[11px] text-slate-300 font-medium">Умный рацион • AI-сканер блюд и товаров</p>
         </div>
       </div>
 
       <div class="flex items-center gap-1.5">
         <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="themed-box px-2.5 py-1.5 text-[11px] font-bold focus:outline-none" style="color: var(--accent);">
         <button type="button" onclick="togglePetals()" id="headerPetalsBtn" title="Вкл/Выкл лепестки" class="themed-box px-2.5 py-1.5 text-xs font-bold hover-lift">
-          <span id="headerPetalsText">🌸</span>
+          🌸
         </button>
       </div>
     </header>
 
-    <!-- ================= ВКЛАДКА 1: РАЦИОН (КОМПАКТНЫЙ ФОРМАТ YAZIO) ================= -->
+    <!-- ================= ВКЛАДКА 1: ДНЕВНИК В СТИЛЕ YAZIO (БЕЗ ДЛИННОГО СКРОЛЛА!) ================= -->
     <div id="view_diary" class="space-y-3.5 tab-view-enter">
       
-      <!-- ВЕРХНЯЯ КАРТОЧКА С ПЕРЕКЛЮЧАТЕЛЕМ: [📊 Сводка КБЖУ] ↔️ [🧠 Рекомендации] -->
-      <div class="glass-card p-4 space-y-3.5">
-        <div class="flex items-center justify-between gap-2">
-          <!-- Переключатель внутри одной карточки вместо длинной прокрутки -->
+      <!-- Верхняя карточка с переключателем: [📊 Сводка КБЖУ] ↔️ [🧠 Что съесть (Рекомендации)] -->
+      <div class="glass-card p-4 sm:p-5 space-y-4">
+        <div class="flex items-center justify-between gap-2 border-b border-white/10 pb-2.5">
           <div class="grid grid-cols-2 gap-1 bg-black/40 p-1 rounded-xl border border-white/10 flex-1">
-            <button type="button" onclick="switchTopHeroMode('summary')" id="heroTab_summary" class="py-1.5 px-2 rounded-lg text-[11px] font-extrabold transition themed-btn-primary">
+            <button type="button" onclick="switchHeroSlide('summary')" id="heroTab_summary" class="py-1.5 px-2 rounded-lg text-xs font-extrabold transition themed-btn-primary">
               📊 Сводка КБЖУ
             </button>
-            <button type="button" onclick="switchTopHeroMode('recs')" id="heroTab_recs" class="py-1.5 px-2 rounded-lg text-[11px] font-extrabold transition text-slate-300 hover:text-white">
+            <button type="button" onclick="switchHeroSlide('coach')" id="heroTab_coach" class="py-1.5 px-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white">
               🧠 Что съесть
             </button>
           </div>
 
-          <button type="button" onclick="openCustomCalModal()" class="themed-box px-2.5 py-2 text-[11px] font-extrabold flex items-center gap-1 hover-lift flex-shrink-0" style="color: var(--accent);">
-            <span>🎯</span><span id="normModeBadge">Норма ✏️</span>
+          <button type="button" onclick="openCustomCalModal()" class="themed-box px-2.5 py-2 text-[11px] font-extrabold hover-lift flex-shrink-0" style="color: var(--accent);">
+            🎯 Норма ✏️
           </button>
         </div>
 
-        <!-- ЭКРАН А: КОМПАКТНАЯ СВОДКА ДНЯ -->
-        <div id="heroPanel_summary" class="space-y-3">
-          <div class="flex items-center gap-4">
+        <!-- СЛАЙД 1: КОМПАКТНАЯ СВОДКА ДНЯ -->
+        <div id="heroSlide_summary" class="space-y-3.5">
+          <div class="flex items-center gap-4 sm:gap-6">
             <!-- Кольцо калорий -->
             <div onclick="openCustomCalModal()" class="relative w-28 h-28 sm:w-32 sm:h-32 flex-shrink-0 themed-box p-1.5 flex items-center justify-center cursor-pointer hover-lift">
               <svg class="w-full h-full -rotate-90 ring-glow" viewBox="0 0 100 100">
@@ -395,15 +390,15 @@
                 <circle id="calRing" cx="50" cy="50" r="40" stroke="var(--accent)" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2" class="transition-all duration-700 ease-out" />
               </svg>
               <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span id="eatenCalBig" class="text-xl sm:text-2xl font-extrabold text-white leading-none">0</span>
-                <span class="text-[9px] text-slate-300 font-medium mt-0.5">
+                <span id="eatenCalBig" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">0</span>
+                <span class="text-[9px] text-slate-300 font-medium">
                   из <b id="targetCalSmall" class="text-white underline decoration-dotted">2400</b>
                 </span>
               </div>
             </div>
 
-            <!-- Компактные полоски БЖУ -->
-            <div class="flex-1 space-y-2">
+            <!-- 3 полоски БЖУ -->
+            <div class="flex-1 grid grid-cols-1 gap-2">
               <div class="themed-box px-3 py-2">
                 <div class="flex justify-between text-[11px] mb-1">
                   <span class="text-sky-300 font-bold">🥩 Белки</span>
@@ -413,7 +408,6 @@
                   <div id="barProt" class="h-full bg-gradient-to-r from-sky-500 to-sky-300 rounded-full transition-all duration-700 shimmer-bar" style="width: 0%"></div>
                 </div>
               </div>
-
               <div class="themed-box px-3 py-2">
                 <div class="flex justify-between text-[11px] mb-1">
                   <span class="text-amber-300 font-bold">🥑 Жиры</span>
@@ -423,7 +417,6 @@
                   <div id="barFat" class="h-full bg-gradient-to-r from-amber-500 to-amber-300 rounded-full transition-all duration-700 shimmer-bar" style="width: 0%"></div>
                 </div>
               </div>
-
               <div class="themed-box px-3 py-2">
                 <div class="flex justify-between text-[11px] mb-1">
                   <span class="text-purple-300 font-bold">🍚 Углеводы</span>
@@ -437,106 +430,65 @@
           </div>
 
           <div class="flex items-center justify-between gap-2 themed-box px-3.5 py-2.5 text-xs">
-            <span id="remainBanner" class="text-slate-200 font-medium">Осталось: <b id="remainCal" style="color: var(--accent);">2400 ккал</b></span>
-            <button type="button" onclick="openCustomFoodModal()" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/15 text-[11px] font-extrabold text-white flex items-center gap-1 transition">
-              <span>✨</span><span>+ Своё блюдо</span>
+            <div id="remainBanner" class="text-slate-200 font-medium">
+              Осталось: <b id="remainCal" style="color: var(--accent);">2400 ккал</b>
+            </div>
+            <button type="button" onclick="openCustomFoodModal('')" class="px-3 py-1.5 themed-btn-primary text-[11px]">
+              ✨ + Своё блюдо
             </button>
           </div>
         </div>
 
-        <!-- ЭКРАН Б: УМНЫЕ РЕКОМЕНДАЦИИ ПО ЦЕЛИ (ДЕФИЦИТ / ПОДДЕРЖАНИЕ / НАБОР) -->
-        <div id="heroPanel_recs" class="hidden space-y-3">
+        <!-- СЛАЙД 2: УМНЫЕ РЕКОМЕНДАЦИИ ПО ЦЕЛИ (ДЕФИЦИТ / ПОДДЕРЖАНИЕ / НАБОР) -->
+        <div id="heroSlide_coach" class="hidden space-y-3">
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <span id="smartDeficitStatus" class="text-[11px] font-extrabold" style="color: var(--accent);">Анализ рациона...</span>
-            <div class="flex items-center gap-1 bg-black/40 p-1 rounded-xl border border-white/10">
-              <button type="button" onclick="setGoalQuick('loss')" id="quickGoal_loss" class="px-2 py-1 rounded-lg text-[10px] font-extrabold transition">🥗 Дефицит</button>
-              <button type="button" onclick="setGoalQuick('maint')" id="quickGoal_maint" class="px-2 py-1 rounded-lg text-[10px] font-extrabold transition">⚖️ Баланс</button>
-              <button type="button" onclick="setGoalQuick('gain')" id="quickGoal_gain" class="px-2 py-1 rounded-lg text-[10px] font-extrabold transition">💪 Набор</button>
+            <span id="smartDeficitStatus" class="text-xs font-extrabold" style="color: var(--accent);">Анализ рациона...</span>
+            <div class="flex items-center gap-1 bg-black/35 p-1 rounded-xl border border-white/10">
+              <button type="button" onclick="setGoalQuick('loss')" id="quickGoal_loss" class="px-2 py-1 rounded-lg text-[10px] font-extrabold transition">
+                🥗 ПП-Дефицит
+              </button>
+              <button type="button" onclick="setGoalQuick('maint')" id="quickGoal_maint" class="px-2 py-1 rounded-lg text-[10px] font-extrabold transition">
+                ⚖️ Баланс
+              </button>
+              <button type="button" onclick="setGoalQuick('gain')" id="quickGoal_gain" class="px-2 py-1 rounded-lg text-[10px] font-extrabold transition">
+                💪 Набор
+              </button>
             </div>
           </div>
+
           <p id="smartDeficitDescription" class="text-[11px] text-slate-300 leading-relaxed"></p>
           <div id="smartRecommendationsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
         </div>
       </div>
 
-      <!-- 4 КАРТОЧКИ ПРИЕМОВ ПИЩИ В СТИЛЕ YAZIO / LIFESUM (БЕЗ ДЛИННОГО СКРОЛЛА) -->
-      <div class="glass-card p-4 space-y-2.5">
-        <div class="flex items-center justify-between">
-          <h2 class="text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5">
-            <span>🍽️</span> Дневник приемов пищи
-          </h2>
-          <div class="flex items-center gap-1.5">
-            <button type="button" onclick="openCustomFoodModal()" class="themed-box px-2.5 py-1 text-[11px] font-extrabold hover-lift" style="color: var(--accent);">
-              ✨ + Своё (ИИ / Вручную)
-            </button>
-            <button type="button" onclick="openCatalogSheet()" class="themed-btn-primary px-3 py-1 text-[11px]">
-              🍲 Каталог
-            </button>
-          </div>
-        </div>
+      <!-- 4 КАРТОЧКИ ПРИЕМОВ ПИЩИ (КАК В YAZIO / LIFESUM — РАСКРЫВАЮТСЯ ПО ТАПУ, КНОПКА + ОТКРЫВАЕТ ШТОРКУ) -->
+      <div id="mealCardsWrapper" class="space-y-2.5"></div>
 
-        <!-- Контейнер 4 компактных карточек (Завтрак, Обед, Ужин, Перекус) -->
-        <div id="mealGroupsContainer" class="space-y-2"></div>
-      </div>
     </div>
 
     <!-- ================= ВКЛАДКА 2: ИИ-СКАНЕР ЕДЫ И МАГАЗИННЫХ ТОВАРОВ ================= -->
-    <div id="view_scanner" class="hidden space-y-3.5">
-      <div class="glass-card p-4 sm:p-5 space-y-4">
+    <div id="view_scanner" class="hidden space-y-4">
+      <div class="glass-card p-4 sm:p-6 space-y-4">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
-              <span>📸</span> AI-Сканер: Блюда и Товары
+              <span>📸</span> AI-Сканер еды и товаров
             </h2>
-            <p class="text-[11px] text-slate-300">Снимайте готовую еду, пачки лапши, батончики или таблицы КБЖУ</p>
+            <p class="text-[11px] text-slate-300">Распознает блюда на тарелке, пачки лапши, батончики и таблицы КБЖУ</p>
           </div>
           <span id="aiActiveModelBadge" class="text-[10px] font-bold px-2.5 py-1 themed-box" style="color: var(--accent);">gemini-3.8-flash</span>
-        </div>
-
-        <!-- Большая зона съемки фото -->
-        <div id="dropZone" onclick="triggerPhotoSelect()" class="relative group cursor-pointer border-2 border-dashed themed-box p-6 sm:p-8 flex flex-col items-center justify-center text-center min-h-[220px] overflow-hidden transition-all hover-lift" style="border-color: var(--border-color);">
-          <input id="photoInput" type="file" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
-          <img id="photoPreview" src="" alt="Preview" class="hidden absolute inset-0 w-full h-full object-cover opacity-85" />
-          <div id="scannerOverlay" class="hidden absolute inset-0 bg-black/80 backdrop-blur-[3px] flex flex-col items-center justify-center z-10 p-4">
-            <div class="scanner-beam"></div>
-            <div class="w-10 h-10 border-4 border-t-transparent rounded-full animate-spin mb-3" style="border-color: var(--accent); border-top-color: transparent;"></div>
-            <span id="scannerStatusText" class="text-xs font-extrabold tracking-widest text-center" style="color: var(--accent);">AI СКАНИРУЕТ ФОТО...</span>
-          </div>
-          <div id="uploadPrompt" class="relative z-0 space-y-2.5">
-            <div class="w-14 h-14 mx-auto themed-box flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition duration-300" style="color: var(--accent);">📷</div>
-            <div class="text-xs sm:text-sm font-extrabold text-white">Нажмите, чтобы сфотографировать еду или упаковку товара</div>
-            <div class="flex flex-wrap items-center justify-center gap-1.5 text-[10px] text-slate-300">
-              <span class="px-2 py-0.5 rounded-full bg-white/10">🍽️ Тарелка с едой</span>
-              <span class="px-2 py-0.5 rounded-full bg-white/10">🛒 Пачка / Упаковка из магазина</span>
-              <span class="px-2 py-0.5 rounded-full bg-white/10">🏷️ Этикетка КБЖУ</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Описать словами (исправлен фильтр + подключен Gemini AI) -->
-        <div class="themed-box p-3.5 space-y-2">
-          <div class="flex items-center justify-between">
-            <label class="text-xs text-white font-extrabold flex items-center gap-1.5">
-              <span>✍️</span> Описать словами блюдо или товар:
-            </label>
-            <span id="textAiSpinner" class="hidden text-[10px] font-bold animate-pulse" style="color: var(--accent);">⏳ ИИ считает КБЖУ...</span>
-          </div>
-          <div class="flex flex-col sm:flex-row gap-2">
-            <input id="customAiDishInput" type="text" placeholder="Например: 2 котлеты с пюре, лапша Булдак или шаурма" onkeydown="if(event.key==='Enter') analyzeTextDish()" class="flex-1 themed-box px-3.5 py-2.5 text-xs text-white focus:outline-none">
-            <button type="button" onclick="analyzeTextDish()" class="py-2.5 px-5 themed-btn-primary text-xs">✨ Рассчитать через ИИ</button>
-          </div>
         </div>
 
         <!-- Настройка API ключа -->
         <div class="themed-box p-3.5 space-y-2.5">
           <div class="flex items-center justify-between text-xs font-bold" style="color: var(--accent);">
-            <span>🔑 Настройки Gemini API</span>
+            <span>🔑 Ключ Gemini API</span>
             <span id="apiKeyStatus" class="text-[10px] text-slate-300 font-normal">Готов к работе</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <input id="geminiApiKey" type="password" placeholder="Ключ AIzaSy... (для облачного ИИ)" oninput="saveApiKey()" class="sm:col-span-2 themed-box px-3 py-2 text-xs text-white focus:outline-none">
-            <select id="geminiModelSelect" onchange="saveModelChoice()" class="themed-box px-3 py-2 text-xs text-white font-semibold focus:outline-none">
+            <input id="geminiApiKey" type="password" placeholder="Вставьте ключ AIzaSy..." oninput="saveApiKey()" class="sm:col-span-2 themed-box px-3 py-2 text-xs text-white focus:outline-none">
+            <select id="geminiModelSelect" onchange="saveModelChoice()" class="themed-box px-2.5 py-2 text-xs text-white font-semibold focus:outline-none">
               <option value="gemini-3.8-flash">⚡ gemini-3.8-flash</option>
               <option value="gemini-2.5-flash">🚀 gemini-2.5-flash</option>
               <option value="gemini-flash-latest">🔄 gemini-flash-latest</option>
@@ -544,19 +496,49 @@
           </div>
 
           <div class="flex flex-wrap gap-2">
-            <button type="button" onclick="testGeminiKey()" class="px-3.5 py-1.5 themed-btn-primary text-[11px]">🔍 Проверить ключ</button>
-            <button type="button" onclick="autoDetectBestModel()" class="px-3 py-1.5 themed-box text-[11px] text-white font-semibold hover-lift">✨ Авто-подбор модели</button>
-            <button type="button" onclick="clearApiKey()" class="px-3 py-1.5 themed-box text-slate-300 hover:text-white text-[11px]">Сброс</button>
+            <button type="button" onclick="testGeminiKey()" class="px-3.5 py-1.5 themed-btn-primary text-[11px]">🔍 Проверить</button>
+            <button type="button" onclick="autoDetectBestModel()" class="px-3 py-1.5 themed-box text-[11px] text-white font-semibold hover-lift">✨ Авто-модель</button>
+            <button type="button" onclick="clearApiKey()" class="px-3 py-1.5 themed-box text-slate-300 text-[11px]">Сброс</button>
           </div>
 
-          <div id="aiDiagnosticBox" class="hidden rounded-xl p-3 border text-xs space-y-1.5"></div>
+          <div id="aiDiagnosticBox" class="hidden rounded-xl p-3 border text-xs space-y-2"></div>
+        </div>
+
+        <!-- Зона съемки: Тарелка ИЛИ Упаковка товара из магазина -->
+        <div id="dropZone" onclick="triggerPhotoSelect()" class="relative group cursor-pointer border-2 border-dashed themed-box p-6 sm:p-8 flex flex-col items-center justify-center text-center min-h-[230px] overflow-hidden transition-all hover-lift" style="border-color: var(--border-color);">
+          <input id="photoInput" type="file" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
+          <img id="photoPreview" src="" alt="Preview" class="hidden absolute inset-0 w-full h-full object-cover opacity-85" />
+          <div id="scannerOverlay" class="hidden absolute inset-0 bg-black/75 backdrop-blur-[3px] flex flex-col items-center justify-center z-10 p-4">
+            <div class="scanner-beam"></div>
+            <div class="w-10 h-10 border-4 border-t-transparent rounded-full animate-spin mb-3" style="border-color: var(--accent); border-top-color: transparent;"></div>
+            <span id="scannerStatusText" class="text-xs font-extrabold tracking-widest text-center" style="color: var(--accent);">AI ИЩЕТ БЛЮДО ИЛИ ТОВАР...</span>
+          </div>
+          <div id="uploadPrompt" class="relative z-0 space-y-2.5">
+            <div class="flex items-center justify-center gap-2">
+              <div class="w-14 h-14 themed-box flex items-center justify-center text-3xl shadow-inner group-hover:scale-105 transition">🍲</div>
+              <div class="w-14 h-14 themed-box flex items-center justify-center text-3xl shadow-inner group-hover:scale-105 transition">🛒</div>
+            </div>
+            <div class="text-sm sm:text-base font-extrabold text-white">Сфотографировать блюдо или упаковку товара</div>
+            <p class="text-[11px] text-slate-300 font-medium max-w-md mx-auto">
+              Наведите на тарелку с едой, пачку лапши из магазина, батончик или этикетку с КБЖУ — ИИ сам определит бренд и калории!
+            </p>
+          </div>
+        </div>
+
+        <!-- Умный текстовый расчет (с поддержкой Gemini AI и без ложных срабатываний на "котлету") -->
+        <div class="themed-box p-4 space-y-2">
+          <label class="block text-xs text-slate-200 font-bold">✍️ Описать словами блюдо или магазинный товар:</label>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input id="customAiDishInput" type="text" placeholder="Например: 2 котлеты с пюре и компот ИЛИ лапша Булдак пачка" class="flex-1 themed-box px-3.5 py-2.5 text-xs text-white focus:outline-none">
+            <button type="button" id="textAnalyzeBtn" onclick="analyzeTextDish()" class="py-2.5 px-5 themed-btn-primary text-xs flex-shrink-0">✨ Найти и рассчитать</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ================= ВКЛАДКА 3: КАЛЕНДАРЬ ================= -->
-    <div id="view_calendar" class="hidden space-y-3.5">
-      <div class="glass-card p-4 sm:p-5 space-y-4">
+    <div id="view_calendar" class="hidden space-y-4">
+      <div class="glass-card p-5 space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📅</span> Календарь питания
@@ -572,21 +554,21 @@
           <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div>
         </div>
 
-        <div id="calendarGrid" class="grid grid-cols-7 gap-1.5"></div>
+        <div id="calendarGrid" class="grid grid-cols-7 gap-2"></div>
       </div>
     </div>
 
     <!-- ================= ВКЛАДКА 4: ТЕМЫ И ПРОФИЛЬ ================= -->
-    <div id="view_profile" class="hidden space-y-3.5">
-      <div class="glass-card p-4 sm:p-5 space-y-4">
+    <div id="view_profile" class="hidden space-y-4">
+      <div class="glass-card p-5 space-y-5">
         <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-          <span>🎨</span> Темы, норма калорий и профиль
+          <span>🎨</span> Живые обои и текстуры
         </h2>
 
-        <div class="themed-box p-3.5 space-y-2.5">
+        <div class="themed-box p-4 space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-white">Тема оформления:</span>
-            <button type="button" onclick="togglePetals()" id="profilePetalsBtn" class="px-3 py-1 themed-btn-primary text-[11px]">
+            <button type="button" onclick="togglePetals()" id="profilePetalsBtn" class="px-3 py-1.5 themed-btn-primary text-[11px]">
               🌸 Лепестки: ВКЛ
             </button>
           </div>
@@ -598,15 +580,15 @@
             </button>
             <button type="button" onclick="setTheme('sakura_bw')" id="theme_sakura_bw" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🏴</span>
-              <div><div class="text-xs font-extrabold text-white">Сакура ЧБ</div><div class="text-[9px] text-slate-300">Тушь Sumi-e</div></div>
+              <div><div class="text-xs font-extrabold text-white">Сакура ЧБ</div><div class="text-[9px] text-slate-300">Sumi-e тушь</div></div>
             </button>
             <button type="button" onclick="setTheme('matcha')" id="theme_matcha" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🍵</span>
-              <div><div class="text-xs font-extrabold text-white">Матча</div><div class="text-[9px] text-slate-300">Срез дерева</div></div>
+              <div><div class="text-xs font-extrabold text-white">Дзен</div><div class="text-[9px] text-slate-300">Матча & Дерево</div></div>
             </button>
             <button type="button" onclick="setTheme('cyber')" id="theme_cyber" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🌌</span>
-              <div><div class="text-xs font-extrabold text-white">Кибер-Сакура</div><div class="text-[9px] text-slate-300">Неон</div></div>
+              <div><div class="text-xs font-extrabold text-white">Кибер</div><div class="text-[9px] text-slate-300">Неон Токио</div></div>
             </button>
             <button type="button" onclick="setTheme('classic')" id="theme_classic" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">⚫</span>
@@ -614,53 +596,47 @@
             </button>
             <button type="button" onclick="setTheme('noir')" id="theme_noir" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🏴‍☠️</span>
-              <div><div class="text-xs font-extrabold text-white">Чистый ЧБ</div><div class="text-[9px] text-slate-300">Монохром</div></div>
+              <div><div class="text-xs font-extrabold text-white">Чистый ЧБ</div><div class="text-[9px] text-slate-300">Noir</div></div>
             </button>
           </div>
         </div>
 
         <!-- Установка своей нормы калорий в профиле -->
-        <div class="themed-box p-3.5 space-y-3 border-l-4" style="border-left-color: var(--accent);">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h3 class="text-xs sm:text-sm font-extrabold text-white">🎯 Режим расчета нормы калорий</h3>
-              <p class="text-[10px] text-slate-300">Автоматически по формуле или своя норма вручную</p>
-            </div>
+        <div class="themed-box p-4 space-y-3 border-l-4" style="border-left-color: var(--accent);">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-xs sm:text-sm font-extrabold text-white">🎯 Норма калорий</h3>
             <div class="grid grid-cols-2 gap-1 bg-black/40 p-1 rounded-xl border border-white/10">
               <button type="button" onclick="setCalorieMode(false)" id="modeBtn_auto" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition">🧮 Авто</button>
-              <button type="button" onclick="setCalorieMode(true)" id="modeBtn_custom" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition">✏️ Своя норма</button>
+              <button type="button" onclick="setCalorieMode(true)" id="modeBtn_custom" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition">✏️ Своя</button>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-center pt-1">
-            <div>
-              <label class="block text-[11px] text-slate-200 font-bold mb-1">Ваша норма калорий (ккал):</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-center">
+            <div class="flex items-center gap-2">
               <input id="profCustomCalInput" type="number" min="800" max="7000" step="50" value="2200" oninput="onProfileCustomCalInput(this.value)" class="w-full themed-box px-3 py-2 text-sm font-extrabold text-white focus:outline-none" style="color: var(--accent);">
+              <span class="text-xs font-bold text-slate-300">ккал</span>
             </div>
-            <div>
-              <label class="block text-[10px] text-slate-300 font-semibold mb-1">Быстрые пресеты:</label>
-              <div class="flex flex-wrap gap-1">
-                <button type="button" onclick="setCustomCalPreset(1500)" class="px-2 py-1 themed-box text-[10px] font-bold">1500</button>
-                <button type="button" onclick="setCustomCalPreset(1800)" class="px-2 py-1 themed-box text-[10px] font-bold">1800</button>
-                <button type="button" onclick="setCustomCalPreset(2000)" class="px-2 py-1 themed-box text-[10px] font-bold">2000</button>
-                <button type="button" onclick="setCustomCalPreset(2200)" class="px-2 py-1 themed-box text-[10px] font-bold">2200</button>
-                <button type="button" onclick="setCustomCalPreset(2500)" class="px-2 py-1 themed-box text-[10px] font-bold">2500</button>
-              </div>
+            <div class="flex flex-wrap gap-1">
+              <button type="button" onclick="setCustomCalPreset(1500)" class="px-2 py-1 themed-box text-[10px] font-bold">1500</button>
+              <button type="button" onclick="setCustomCalPreset(1800)" class="px-2 py-1 themed-box text-[10px] font-bold">1800</button>
+              <button type="button" onclick="setCustomCalPreset(2000)" class="px-2 py-1 themed-box text-[10px] font-bold">2000</button>
+              <button type="button" onclick="setCustomCalPreset(2200)" class="px-2 py-1 themed-box text-[10px] font-bold">2200</button>
+              <button type="button" onclick="setCustomCalPreset(2500)" class="px-2 py-1 themed-box text-[10px] font-bold">2500</button>
             </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-2 pt-1">
+          <div class="grid grid-cols-3 gap-2">
             <div class="themed-box p-2">
-              <label class="block text-[10px] text-sky-300 font-bold">🥩 Белки (г)</label>
-              <input id="profCustomP" type="number" min="20" max="450" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 border border-white/10 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-1">
+              <label class="block text-[9px] text-sky-300 font-bold">🥩 Белки (г)</label>
+              <input id="profCustomP" type="number" min="20" max="450" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
             </div>
             <div class="themed-box p-2">
-              <label class="block text-[10px] text-amber-300 font-bold">🥑 Жиры (г)</label>
-              <input id="profCustomF" type="number" min="20" max="300" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 border border-white/10 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-1">
+              <label class="block text-[9px] text-amber-300 font-bold">🥑 Жиры (г)</label>
+              <input id="profCustomF" type="number" min="20" max="300" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
             </div>
             <div class="themed-box p-2">
-              <label class="block text-[10px] text-purple-300 font-bold">🍚 Углеводы (г)</label>
-              <input id="profCustomC" type="number" min="20" max="700" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 border border-white/10 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-1">
+              <label class="block text-[9px] text-purple-300 font-bold">🍚 Углеводы (г)</label>
+              <input id="profCustomC" type="number" min="20" max="700" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
             </div>
           </div>
         </div>
@@ -669,7 +645,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs text-slate-300 font-semibold mb-1">Имя</label>
-            <input id="profileName" type="text" value="Maksim" oninput="saveProfile()" class="w-full themed-box px-3 py-2 text-xs text-white font-medium focus:outline-none">
+            <input id="profileName" type="text" value="Maksim" oninput="saveProfile()" class="w-full themed-box px-3.5 py-2 text-xs text-white font-medium focus:outline-none">
           </div>
           <div>
             <label class="block text-xs text-slate-300 font-semibold mb-1">Пол</label>
@@ -699,77 +675,69 @@
           <div>
             <label class="block text-xs text-slate-300 font-semibold mb-1">Активность</label>
             <select id="profActivity" onchange="saveProfile()" class="w-full themed-box px-3 py-2 text-xs text-white font-medium">
-              <option value="1.2">Сидячий образ жизни (1.2)</option>
-              <option value="1.375" selected>Тренировки 1-3 р/нед (1.375)</option>
-              <option value="1.55">Активность 3-5 р/нед (1.55)</option>
-              <option value="1.725">Высокая нагрузка (1.725)</option>
+              <option value="1.2">Сидячий (1.2)</option>
+              <option value="1.375" selected>Легкие трен. 1-3 р/нед (1.375)</option>
+              <option value="1.55">Умеренная 3-5 р/нед (1.55)</option>
+              <option value="1.725">Высокая 6-7 р/нед (1.725)</option>
             </select>
           </div>
           <div>
             <label class="block text-xs text-slate-300 font-semibold mb-1">Цель питания</label>
             <select id="profGoal" onchange="saveProfile()" class="w-full themed-box px-3 py-2 text-xs text-white font-bold">
-              <option value="loss">🥗 Дефицит (-15% • Только ПП)</option>
-              <option value="maint" selected>⚖️ Поддержание веса</option>
-              <option value="gain">💪 Набор массы (+15%)</option>
+              <option value="loss">🥗 Дефицит (-15% • Строго ПП)</option>
+              <option value="maint" selected>⚖️ Поддержание (Баланс)</option>
+              <option value="gain">💪 Набор (+15% • Масса)</option>
             </select>
           </div>
         </div>
 
-        <div class="themed-box p-3.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
-          <div>Суточная норма: <b id="profCalcSummary" class="font-bold" style="color: var(--accent);">2400 ккал</b></div>
-          <button type="button" onclick="resetAllData()" class="px-3 py-1.5 rounded-xl bg-rose-500/25 text-rose-300 border border-rose-500/40 font-bold">Сбросить всё</button>
+        <div class="themed-box p-3.5 flex items-center justify-between gap-2 text-xs">
+          <div>Норма: <b id="profCalcSummary" style="color: var(--accent);">2400 ккал</b></div>
+          <button type="button" onclick="resetAllData()" class="px-3 py-1.5 rounded-xl bg-rose-500/25 text-rose-300 border border-rose-500/40 font-bold">Сбросить</button>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- ================= НИЖНИЙ ТАБ-БАР ПОД БОЛЬШОЙ ПАЛЕЦ (КАК В YAZIO / LIFESUM) ================= -->
-  <nav class="fixed bottom-0 left-0 right-0 z-40 bottom-nav-glass px-2 pt-2">
-    <div class="max-w-md mx-auto grid grid-cols-5 items-center gap-1">
-      <button type="button" onclick="switchMainTab('diary')" id="mainTab_diary" class="py-1.5 flex flex-col items-center justify-center gap-0.5 rounded-xl transition font-extrabold" style="color: var(--accent);">
-        <span class="text-lg leading-none">📊</span>
-        <span class="text-[10px]">Рацион</span>
+  <!-- ================= НИЖНИЙ ТАБ-БАР КАК В YAZIO / LIFESUM (ПОД БОЛЬШОЙ ПАЛЕЦ) ================= -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bottom-nav-glass">
+    <div class="max-w-lg mx-auto px-3 py-2 grid grid-cols-5 items-center gap-1">
+      <button type="button" onclick="switchMainTab('diary')" id="mainTab_diary" class="py-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 text-[10px] font-extrabold transition" style="color: var(--accent);">
+        <span class="text-lg">📊</span><span>Дневник</span>
       </button>
-
-      <button type="button" onclick="switchMainTab('scanner')" id="mainTab_scanner" class="py-1.5 flex flex-col items-center justify-center gap-0.5 rounded-xl transition text-slate-400 font-bold">
-        <span class="text-lg leading-none">📸</span>
-        <span class="text-[10px]">AI-Сканер</span>
+      <button type="button" onclick="openCatalogSheet()" class="py-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold text-slate-300 hover:text-white transition">
+        <span class="text-lg">🍲</span><span>Каталог</span>
       </button>
-
-      <!-- Центральная кнопка быстрого добавления блюда -->
-      <div class="flex justify-center -mt-4">
-        <button type="button" onclick="openCatalogSheet()" class="w-13 h-13 px-4 py-3 rounded-2xl themed-btn-primary shadow-xl flex flex-col items-center justify-center leading-none">
-          <span class="text-lg font-extrabold">＋</span>
-          <span class="text-[9px] font-extrabold mt-0.5">Блюдо</span>
+      <!-- Центральная кнопка быстрого AI-Скана -->
+      <div class="flex justify-center -mt-5">
+        <button type="button" onclick="switchMainTab('scanner')" id="mainTab_scanner" class="w-14 h-14 rounded-2xl themed-btn-primary flex flex-col items-center justify-center shadow-2xl border-2 border-white/20">
+          <span class="text-xl leading-none">📸</span>
+          <span class="text-[9px] font-extrabold mt-0.5">AI-Скан</span>
         </button>
       </div>
-
-      <button type="button" onclick="switchMainTab('calendar')" id="mainTab_calendar" class="py-1.5 flex flex-col items-center justify-center gap-0.5 rounded-xl transition text-slate-400 font-bold">
-        <span class="text-lg leading-none">📅</span>
-        <span class="text-[10px]">Календарь</span>
+      <button type="button" onclick="switchMainTab('calendar')" id="mainTab_calendar" class="py-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold text-slate-300 hover:text-white transition">
+        <span class="text-lg">📅</span><span>Календарь</span>
       </button>
-
-      <button type="button" onclick="switchMainTab('profile')" id="mainTab_profile" class="py-1.5 flex flex-col items-center justify-center gap-0.5 rounded-xl transition text-slate-400 font-bold">
-        <span class="text-lg leading-none">🎨</span>
-        <span class="text-[10px]">Профиль</span>
+      <button type="button" onclick="switchMainTab('profile')" id="mainTab_profile" class="py-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold text-slate-300 hover:text-white transition">
+        <span class="text-lg">🎨</span><span>Профиль</span>
       </button>
     </div>
   </nav>
 
   <!-- ================= ВЫЕЗЖАЮЩАЯ ШТОРКА КАТАЛОГА БЛЮД (BOTTOM SHEET) ================= -->
   <div id="catalogSheetModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="glass-card w-full max-w-xl rounded-t-3xl sm:rounded-3xl p-4 sm:p-6 space-y-3.5 sheet-animate max-h-[90vh] overflow-y-auto custom-scrollbar">
+    <div class="glass-card w-full max-w-xl rounded-t-3xl sm:rounded-3xl p-4 sm:p-6 space-y-3.5 sheet-animate max-h-[88vh] flex flex-col">
       <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
         <div class="flex items-center gap-2">
           <span class="text-lg">🍲</span>
           <div>
-            <h3 class="text-sm sm:text-base font-extrabold text-white leading-tight">Добавить в рацион</h3>
-            <span id="catalogTotalCountBadge" class="text-[10px] font-bold" style="color: var(--accent);">160+ блюд в базе</span>
+            <h3 class="text-sm sm:text-base font-extrabold text-white">Добавить в <span id="sheetMealLabel" style="color: var(--accent);">Завтрак</span></h3>
+            <span id="catalogTotalCountBadge" class="text-[10px] text-slate-300">База: 160+ блюд и товаров</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <select id="mealTypeSelect" class="themed-box px-3 py-1.5 text-xs font-bold focus:outline-none" style="color: var(--accent);">
+          <select id="mealTypeSelect" onchange="document.getElementById('sheetMealLabel').textContent = this.value" class="themed-box px-2.5 py-1.5 text-xs font-bold focus:outline-none" style="color: var(--accent);">
             <option value="Завтрак">🌅 Завтрак</option>
             <option value="Обед">☀️ Обед</option>
             <option value="Ужин">🌙 Ужин</option>
@@ -779,48 +747,39 @@
         </div>
       </div>
 
-      <!-- Поиск + Исправленная кнопка "+ Своё (ИИ / Вручную)" -->
-      <div class="space-y-2.5">
-        <div class="flex gap-2">
-          <div class="relative flex-1">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400 text-xs">🔍</span>
-            <input id="foodSearchInput" type="text" placeholder="Поиск (борщ, воппер, том ям, равиоли, творог...)" oninput="filterFoodCatalog()" class="w-full themed-box pl-8 pr-3 py-2.5 text-xs text-white focus:outline-none">
-          </div>
-          <button type="button" onclick="aiSearchCatalogFood()" class="px-3.5 py-2.5 themed-btn-primary text-xs flex items-center gap-1 flex-shrink-0">
-            <span>✨</span><span>+ Своё</span>
-          </button>
+      <!-- Поиск + Кнопка "+ Своё блюдо" (Ручной ввод или ИИ) -->
+      <div class="flex gap-2">
+        <div class="relative flex-1">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">🔍</span>
+          <input id="foodSearchInput" type="text" placeholder="Поиск (котлета, борщ, том ям, творог...)" oninput="filterFoodCatalog()" class="w-full themed-box pl-9 pr-3 py-2.5 text-xs text-white focus:outline-none">
         </div>
+        <button type="button" onclick="aiSearchCatalogFood()" class="px-3.5 py-2.5 themed-btn-primary text-xs flex-shrink-0">
+          ✨ + Своё
+        </button>
+      </div>
 
-        <!-- Категории -->
-        <div class="flex gap-1.5 overflow-x-auto pb-1 custom-scrollbar text-[11px]">
-          <button type="button" onclick="setCategoryFilter('all')" id="cat_all" class="px-3 py-1.5 font-bold flex-shrink-0 themed-btn-primary">Все</button>
-          <button type="button" onclick="setCategoryFilter('custom')" id="cat_custom" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">⭐ Мои блюда</button>
-          <button type="button" onclick="setCategoryFilter('fitness')" id="cat_fitness" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥗 ПП и 0-ккал</button>
-          <button type="button" onclick="setCategoryFilter('canteen')" id="cat_canteen" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍲 Столовая</button>
-          <button type="button" onclick="setCategoryFilter('panasian')" id="cat_panasian" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍜 Паназия</button>
-          <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🛒 Магазины</button>
-          <button type="button" onclick="setCategoryFilter('base')" id="cat_base" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥩 База</button>
-          <button type="button" onclick="setCategoryFilter('bakery')" id="cat_bakery" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥐 Выпечка</button>
-          <button type="button" onclick="setCategoryFilter('fastfood')" id="cat_fastfood" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍔 Фастфуд</button>
-          <button type="button" onclick="setCategoryFilter('drinks')" id="cat_drinks" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥤 Напитки</button>
-        </div>
+      <!-- Категории -->
+      <div class="flex gap-1.5 overflow-x-auto pb-1 custom-scrollbar text-[11px]">
+        <button type="button" onclick="setCategoryFilter('all')" id="cat_all" class="px-3 py-1.5 font-bold flex-shrink-0 themed-btn-primary">Все</button>
+        <button type="button" onclick="setCategoryFilter('fitness')" id="cat_fitness" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥗 ПП и 0-ккал</button>
+        <button type="button" onclick="setCategoryFilter('canteen')" id="cat_canteen" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍲 Столовая</button>
+        <button type="button" onclick="setCategoryFilter('panasian')" id="cat_panasian" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍜 Паназия</button>
+        <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🛒 Магазины</button>
+        <button type="button" onclick="setCategoryFilter('base')" id="cat_base" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥩 Базовые</button>
+        <button type="button" onclick="setCategoryFilter('bakery')" id="cat_bakery" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥐 Выпечка</button>
+        <button type="button" onclick="setCategoryFilter('fastfood')" id="cat_fastfood" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍔 Фастфуд</button>
+        <button type="button" onclick="setCategoryFilter('drinks')" id="cat_drinks" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥤 Напитки</button>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
         <div class="sm:col-span-2">
-          <label class="block text-[11px] text-slate-300 font-semibold mb-1">Выберите блюдо (<span id="filteredCountLbl">160</span> найдено)</label>
+          <label class="block text-[10px] text-slate-300 font-semibold mb-1">Выберите блюдо (<span id="filteredCountLbl">160</span> найдено)</label>
           <select id="dbFoodSelect" onchange="updateDbPreview()" class="w-full themed-box px-3 py-2.5 text-xs text-white focus:outline-none"></select>
         </div>
         <div>
-          <label class="block text-[11px] text-slate-300 font-semibold mb-1">Вес (г / мл)</label>
+          <label class="block text-[10px] text-slate-300 font-semibold mb-1">Вес (г / мл)</label>
           <input id="dbWeightInput" type="number" value="250" min="10" max="2000" step="10" oninput="updateDbPreview()" class="w-full themed-box px-3 py-2.5 text-xs text-white font-bold focus:outline-none">
         </div>
-      </div>
-
-      <!-- Подсказка, если в поиске ничего не нашлось -->
-      <div id="emptySearchPrompt" class="hidden themed-box p-3 flex items-center justify-between gap-2 text-xs">
-        <span class="text-slate-300">Нет в списке? Добавьте своё блюдо или найдите его через ИИ!</span>
-        <button type="button" onclick="aiSearchCatalogFood()" class="px-3 py-1.5 themed-btn-primary text-[11px] flex-shrink-0">✨ Найти / Создать</button>
       </div>
 
       <div class="flex items-center justify-between gap-2 text-[11px] text-slate-300">
@@ -831,152 +790,146 @@
           <button type="button" onclick="setPortionMultiplier(1.5)" class="px-2 py-1 themed-box">1.5x</button>
           <button type="button" onclick="setPortionMultiplier(2)" class="px-2 py-1 themed-box">2x</button>
         </div>
-        <button type="button" onclick="openCustomFoodModal()" class="underline font-bold" style="color: var(--accent);">
-          ✍️ Ввести своё блюдо вручную
-        </button>
+        <div class="font-medium">
+          <b id="dbPrevCal" style="color: var(--accent);">0</b> ккал • Б:<b id="dbPrevP" class="text-sky-300">0</b> Ж:<b id="dbPrevF" class="text-amber-300">0</b> У:<b id="dbPrevC" class="text-purple-300">0</b>
+        </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 themed-box p-3.5">
-        <div class="flex items-center gap-3 text-xs flex-wrap font-medium">
-          <span>Ккал: <b id="dbPrevCal" style="color: var(--accent);">0</b></span>
-          <span>Б: <b id="dbPrevP" class="text-sky-300">0</b>г</span>
-          <span>Ж: <b id="dbPrevF" class="text-amber-300">0</b>г</span>
-          <span>У: <b id="dbPrevC" class="text-purple-300">0</b>г</span>
-        </div>
-        <button type="button" onclick="addDbFood()" class="w-full sm:w-auto py-2.5 px-6 text-xs themed-btn-primary">
-          + Добавить в рацион
-        </button>
-      </div>
+      <button type="button" onclick="addDbFood()" class="w-full py-3.5 text-xs themed-btn-primary">
+        + Добавить в рацион
+      </button>
     </div>
   </div>
 
-  <!-- ================= ОКНО ДОБАВЛЕНИЯ СВОЕГО БЛЮДА / ТОВАРА (ИИ-ПОИСК ИЛИ ВРУЧНУЮ) ================= -->
-  <div id="customFoodModal" class="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
-    <div class="glass-card w-full max-w-md p-5 space-y-4 popup-animate shadow-2xl max-h-[92vh] overflow-y-auto custom-scrollbar">
-      <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+  <!-- ================= НОВОЕ ОКНО: ДОБАВИТЬ СВОЁ БЛЮДО ИЛИ ТОВАР (ВРУЧНУЮ ИЛИ ЧЕРЕЗ ИИ) ================= -->
+  <div id="customFoodModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+    <div class="glass-card w-full max-w-md p-5 sm:p-6 space-y-4 popup-animate shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
         <div>
-          <span class="text-[10px] font-extrabold uppercase tracking-wider block" style="color: var(--accent);">✨ Своё блюдо или товар из магазина</span>
-          <h3 class="text-base font-extrabold text-white">Добавить своё блюдо</h3>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider block" style="color: var(--accent);">✨ Своё блюдо или товар</span>
+          <h3 class="text-base font-extrabold text-white">Добавление своей позиции</h3>
         </div>
         <button type="button" onclick="closeCustomFoodModal()" class="w-8 h-8 themed-box flex items-center justify-center text-slate-300 hover:text-white">✕</button>
       </div>
 
-      <!-- Поле названия + кнопка "Найти КБЖУ через ИИ" -->
-      <div class="space-y-2">
-        <label class="block text-xs text-slate-200 font-bold">1. Название блюда или продукта:</label>
-        <div class="flex flex-col sm:flex-row gap-2">
-          <input id="cfNameInput" type="text" placeholder="Напр: Лапша Buldak, домашний плов, сырок..." class="flex-1 themed-box px-3.5 py-2.5 text-xs text-white font-bold focus:outline-none">
-          <button type="button" onclick="autoFillCustomFoodWithAI()" id="cfAiBtn" class="py-2.5 px-3.5 themed-btn-primary text-xs flex items-center justify-center gap-1.5 flex-shrink-0">
-            <span>🤖</span><span id="cfAiBtnText">Найти КБЖУ через ИИ</span>
-          </button>
-        </div>
-        <p id="cfAiStatusText" class="text-[10px] text-slate-300">
-          Нажмите <b>«🤖 Найти КБЖУ через ИИ»</b>, чтобы ИИ сам нашел калории и БЖУ, или впишите свои цифры с упаковки ниже!
-        </p>
-      </div>
-
-      <!-- Переключатель: вводить КБЖУ на 100 г или сразу на всю порцию -->
-      <div class="themed-box p-3.5 space-y-3">
-        <div class="flex items-center justify-between gap-2">
-          <span class="text-xs font-bold text-white">2. Пищевая ценность (КБЖУ):</span>
-          <div class="grid grid-cols-2 gap-1 bg-black/40 p-1 rounded-lg border border-white/10 text-[10px] font-extrabold">
-            <button type="button" onclick="setCustomFoodCalcMode('per100')" id="cfMode_per100" class="px-2 py-1 rounded themed-btn-primary">На 100 г</button>
-            <button type="button" onclick="setCustomFoodCalcMode('perPortion')" id="cfMode_perPortion" class="px-2 py-1 rounded text-slate-300">На всю порцию</button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2.5">
-          <div>
-            <label class="block text-[10px] text-slate-300 font-bold mb-1">Вес вашей порции (г / мл)</label>
-            <input id="cfWeightInput" type="number" min="5" max="3000" step="10" value="200" oninput="updateCustomFoodPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-3 py-2 text-xs font-extrabold text-white focus:outline-none">
-          </div>
-          <div>
-            <label id="cfCalLabel" class="block text-[10px] font-bold mb-1" style="color: var(--accent);">Калории (ккал на 100г)</label>
-            <input id="cfCalInput" type="number" min="0" max="3000" step="5" value="180" oninput="updateCustomFoodPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-3 py-2 text-xs font-extrabold text-white focus:outline-none">
-          </div>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2">
-          <div>
-            <label id="cfPLabel" class="block text-[10px] text-sky-300 font-bold mb-1">🥩 Белки (на 100г)</label>
-            <input id="cfPInput" type="number" min="0" max="300" step="0.5" value="12" oninput="updateCustomFoodPreview(true)" class="w-full bg-black/40 border border-white/15 rounded-xl px-2.5 py-1.5 text-xs font-extrabold text-white focus:outline-none">
-          </div>
-          <div>
-            <label id="cfFLabel" class="block text-[10px] text-amber-300 font-bold mb-1">🥑 Жиры (на 100г)</label>
-            <input id="cfFInput" type="number" min="0" max="300" step="0.5" value="8" oninput="updateCustomFoodPreview(true)" class="w-full bg-black/40 border border-white/15 rounded-xl px-2.5 py-1.5 text-xs font-extrabold text-white focus:outline-none">
-          </div>
-          <div>
-            <label id="cfCLabel" class="block text-[10px] text-purple-300 font-bold mb-1">🍚 Углеводы (100г)</label>
-            <input id="cfCInput" type="number" min="0" max="500" step="0.5" value="15" oninput="updateCustomFoodPreview(true)" class="w-full bg-black/40 border border-white/15 rounded-xl px-2.5 py-1.5 text-xs font-extrabold text-white focus:outline-none">
-          </div>
-        </div>
-
-        <!-- Итог за порцию -->
-        <div class="bg-black/40 rounded-xl p-2.5 flex items-center justify-between text-xs border border-white/10">
-          <span class="text-slate-300">Итого за порцию (<b id="cfPreviewWeight">200г</b>):</span>
-          <span class="font-extrabold"><b id="cfPreviewCal" style="color: var(--accent);">360 ккал</b> (Б:<span id="cfPreviewP">24</span> Ж:<span id="cfPreviewF">16</span> У:<span id="cfPreviewC">30</span>)</span>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-between gap-2">
-        <label class="text-xs text-slate-300 font-semibold">Куда добавить:</label>
-        <select id="cfMealSelect" class="themed-box px-3 py-1.5 text-xs font-bold focus:outline-none" style="color: var(--accent);">
-          <option value="Завтрак">🌅 Завтрак</option>
-          <option value="Обед">☀️ Обед</option>
-          <option value="Ужин">🌙 Ужин</option>
-          <option value="Перекус">🍏 Перекус</option>
-        </select>
-      </div>
-
-      <div class="grid grid-cols-2 gap-2.5 pt-1">
-        <button type="button" onclick="closeCustomFoodModal()" class="py-3 themed-box text-slate-200 text-xs font-bold">
-          Отмена
+      <!-- Переключатель: [🤖 ИИ сам найдет КБЖУ] / [✍️ Ввести КБЖУ вручную] -->
+      <div class="grid grid-cols-2 gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10">
+        <button type="button" onclick="switchCustomFoodTab('ai')" id="cfTab_ai" class="py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary">
+          🤖 ИИ найдет сам
         </button>
-        <button type="button" onclick="saveAndAddCustomFood()" class="py-3 themed-btn-primary text-xs">
-          ✅ Сохранить и внести
+        <button type="button" onclick="switchCustomFoodTab('manual')" id="cfTab_manual" class="py-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white">
+          ✍️ Занести самому
+        </button>
+      </div>
+
+      <!-- РЕЖИМ 1: ИИ САМ ИЩЕТ И ОПРЕДЕЛЯЕТ КБЖУ -->
+      <div id="cfBody_ai" class="space-y-3">
+        <div>
+          <label class="block text-xs text-slate-200 font-bold mb-1">Напишите название блюда или товара из магазина:</label>
+          <input id="cfAiQueryInput" type="text" placeholder="Например: Лапша Buldak 140г или домашняя котлета" class="w-full themed-box px-3.5 py-3 text-xs text-white focus:outline-none">
+        </div>
+        <p class="text-[11px] text-slate-300 leading-relaxed">
+          ИИ сам определит вес порции, калории, белки, жиры и углеводы, а затем откроет окно проверки, где всё можно подрегулировать.
+        </p>
+        <button type="button" id="cfAiSubmitBtn" onclick="runCustomFoodAiLookup()" class="w-full py-3.5 themed-btn-primary text-xs">
+          🔍 Найти и определить КБЖУ через ИИ
+        </button>
+      </div>
+
+      <!-- РЕЖИМ 2: РУЧНОЙ ВВОД СВОЕГО БЛЮДА / ТОВАРА -->
+      <div id="cfBody_manual" class="hidden space-y-3">
+        <div class="grid grid-cols-3 gap-2">
+          <div class="col-span-2">
+            <label class="block text-[11px] text-slate-300 font-bold mb-1">Название блюда / товара</label>
+            <input id="cfManualName" type="text" placeholder="Например: Протеиновый пудинг" class="w-full themed-box px-3 py-2 text-xs text-white focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-300 font-bold mb-1">Вес (г/мл)</label>
+            <input id="cfManualWeight" type="number" value="200" min="1" max="3000" class="w-full themed-box px-3 py-2 text-xs text-white font-bold focus:outline-none">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-[11px] text-slate-300 pt-1">
+          <span>Как вы указываете КБЖУ:</span>
+          <select id="cfManualCalcMode" class="themed-box px-2.5 py-1 text-[11px] text-white font-bold focus:outline-none">
+            <option value="per100">На 100 г (как на упаковке)</option>
+            <option value="perPortion">Сразу на всю порцию</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-4 gap-2">
+          <div class="themed-box p-2">
+            <label class="block text-[9px] font-bold" style="color: var(--accent);">🔥 Ккал</label>
+            <input id="cfManualCal" type="number" value="180" min="0" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+          </div>
+          <div class="themed-box p-2">
+            <label class="block text-[9px] text-sky-300 font-bold">🥩 Белки</label>
+            <input id="cfManualP" type="number" value="15" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+          </div>
+          <div class="themed-box p-2">
+            <label class="block text-[9px] text-amber-300 font-bold">🥑 Жиры</label>
+            <input id="cfManualF" type="number" value="6" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+          </div>
+          <div class="themed-box p-2">
+            <label class="block text-[9px] text-purple-300 font-bold">🍚 Углев.</label>
+            <input id="cfManualC" type="number" value="18" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+          </div>
+        </div>
+
+        <label class="flex items-center gap-2 text-xs text-slate-200 cursor-pointer pt-1">
+          <input id="cfSaveToCatalog" type="checkbox" checked class="rounded accent-pink-500">
+          <span>Сохранить блюдо в мой каталог для быстрого поиска</span>
+        </label>
+
+        <button type="button" onclick="saveManualCustomFood()" class="w-full py-3.5 themed-btn-primary text-xs">
+          ✅ Добавить в рацион
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ================= МОДАЛЬНОЕ ОКНО НАСТРОЙКИ СВОЕЙ НОРМЫ КАЛОРИЙ ================= -->
-  <div id="customCalModal" class="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
-    <div id="customCalCard" class="glass-card w-full max-w-md p-5 space-y-4 popup-animate shadow-2xl">
+  <!-- ================= МОДАЛЬНОЕ ОКНО СВОЕЙ НОРМЫ КАЛОРИЙ ================= -->
+  <div id="customCalModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div id="customCalCard" class="glass-card w-full max-w-md p-6 space-y-4 popup-animate shadow-2xl">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
         <div>
           <span class="text-[10px] font-extrabold uppercase tracking-wider block" style="color: var(--accent);">🎯 Персональная цель</span>
-          <h3 class="text-base font-extrabold text-white">Настройка своей нормы калорий</h3>
+          <h3 class="text-base sm:text-lg font-extrabold text-white">Настройка своей нормы калорий</h3>
         </div>
         <button type="button" onclick="closeCustomCalModal()" class="w-8 h-8 themed-box flex items-center justify-center text-slate-300 hover:text-white">✕</button>
       </div>
 
       <div class="grid grid-cols-2 gap-2 bg-black/40 p-1.5 rounded-xl border border-white/10">
-        <button type="button" onclick="setModalCalMode(false)" id="modalMode_auto" class="py-2 rounded-lg text-xs font-extrabold transition">🧮 Авто по формуле</button>
-        <button type="button" onclick="setModalCalMode(true)" id="modalMode_custom" class="py-2 rounded-lg text-xs font-extrabold transition">✏️ Своя норма</button>
+        <button type="button" onclick="setModalCalMode(false)" id="modalMode_auto" class="py-2 rounded-lg text-xs font-extrabold transition">
+          🧮 Авто по формуле
+        </button>
+        <button type="button" onclick="setModalCalMode(true)" id="modalMode_custom" class="py-2 rounded-lg text-xs font-extrabold transition">
+          ✏️ Своя норма
+        </button>
       </div>
 
       <div class="space-y-3">
         <div>
-          <label class="block text-xs text-slate-300 font-bold mb-1">Желаемая норма калорий на день:</label>
+          <label class="block text-xs text-slate-300 font-bold mb-1.5">Введите желаемую норму калорий на день:</label>
           <div class="flex items-center gap-2">
-            <input id="modalCustomCalInput" type="number" min="800" max="7000" step="50" value="2200" oninput="onModalCalInput(this.value)" class="flex-1 themed-box px-4 py-2.5 text-lg font-extrabold text-white text-center focus:outline-none" style="color: var(--accent);">
+            <input id="modalCustomCalInput" type="number" min="800" max="7000" step="50" value="2200" oninput="onModalCalInput(this.value)" class="flex-1 themed-box px-4 py-3 text-lg font-extrabold text-white text-center focus:outline-none" style="color: var(--accent);">
             <span class="text-sm font-extrabold text-slate-300">ккал</span>
           </div>
-          <input id="modalCustomCalRange" type="range" min="1000" max="4500" step="25" value="2200" oninput="onModalCalInput(this.value)" class="w-full mt-2">
+          <input id="modalCustomCalRange" type="range" min="1000" max="4500" step="25" value="2200" oninput="onModalCalInput(this.value)" class="w-full mt-2.5">
         </div>
 
-        <div class="grid grid-cols-6 gap-1">
-          <button type="button" onclick="onModalCalInput(1500)" class="py-1.5 themed-box text-[11px] font-bold">1500</button>
-          <button type="button" onclick="onModalCalInput(1800)" class="py-1.5 themed-box text-[11px] font-bold">1800</button>
-          <button type="button" onclick="onModalCalInput(2000)" class="py-1.5 themed-box text-[11px] font-bold">2000</button>
-          <button type="button" onclick="onModalCalInput(2200)" class="py-1.5 themed-box text-[11px] font-bold">2200</button>
-          <button type="button" onclick="onModalCalInput(2500)" class="py-1.5 themed-box text-[11px] font-bold">2500</button>
-          <button type="button" onclick="onModalCalInput(3000)" class="py-1.5 themed-box text-[11px] font-bold">3000</button>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+          <button type="button" onclick="onModalCalInput(1500)" class="py-1.5 themed-box text-xs font-bold hover-lift">1500</button>
+          <button type="button" onclick="onModalCalInput(1800)" class="py-1.5 themed-box text-xs font-bold hover-lift">1800</button>
+          <button type="button" onclick="onModalCalInput(2000)" class="py-1.5 themed-box text-xs font-bold hover-lift">2000</button>
+          <button type="button" onclick="onModalCalInput(2200)" class="py-1.5 themed-box text-xs font-bold hover-lift">2200</button>
+          <button type="button" onclick="onModalCalInput(2500)" class="py-1.5 themed-box text-xs font-bold hover-lift">2500</button>
+          <button type="button" onclick="onModalCalInput(3000)" class="py-1.5 themed-box text-xs font-bold hover-lift">3000</button>
         </div>
 
-        <div class="themed-box p-3 space-y-2">
+        <div class="themed-box p-3.5 space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] text-slate-300 font-bold">Норма БЖУ:</span>
+            <span class="text-[11px] text-slate-300 font-bold">Норма БЖУ (можно подправить):</span>
             <button type="button" onclick="recalcModalMacrosFromCal()" class="text-[10px] font-bold underline" style="color: var(--accent);">Пересчитать авто</button>
           </div>
           <div class="grid grid-cols-3 gap-2">
@@ -997,14 +950,14 @@
       </div>
 
       <div class="grid grid-cols-2 gap-3 pt-1">
-        <button type="button" onclick="closeCustomCalModal()" class="py-3 themed-box text-slate-200 text-xs font-bold">Отмена</button>
+        <button type="button" onclick="closeCustomCalModal()" class="py-3 themed-box text-slate-200 text-xs font-bold hover-lift">Отмена</button>
         <button type="button" onclick="saveCustomCalModal()" class="py-3 themed-btn-primary text-xs">✅ Сохранить норму</button>
       </div>
     </div>
   </div>
 
   <!-- ================= МОДАЛЬНОЕ ОКНО ОШИБКИ: "ЭТО НЕ ЕДА!" ================= -->
-  <div id="notFoodModal" class="fixed inset-0 z-[70] bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+  <div id="notFoodModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
     <div id="notFoodCard" class="glass-card w-full max-w-md p-6 text-center space-y-4 border-2 border-rose-500/50 shadow-2xl">
       <div class="text-6xl sm:text-7xl py-2 select-none">
         <span id="goofyEmojiDisplay" class="goofy-emoji-anim">🤪</span>
@@ -1032,18 +985,17 @@
     </div>
   </div>
 
-  <!-- ================= ВСПЛЫВАЮЩЕЕ ОКНО РЕЗУЛЬТАТОВ СКАНЕРА (БЛЮДО ИЛИ ТОВАР) ================= -->
-  <div id="aiPopupModal" class="fixed inset-0 z-[65] bg-black/80 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
-    <div id="aiPopupCard" class="glass-card w-full max-w-lg p-5 space-y-4 popup-animate shadow-2xl max-h-[92vh] overflow-y-auto custom-scrollbar">
+  <!-- ================= ВСПЛЫВАЮЩЕЕ ОКНО РЕЗУЛЬТАТОВ СКАНЕРА ================= -->
+  <div id="aiPopupModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+    <div id="aiPopupCard" class="glass-card w-full max-w-lg p-5 sm:p-6 space-y-4 popup-animate shadow-2xl max-h-[92vh] overflow-y-auto custom-scrollbar">
       <div class="flex items-start justify-between gap-3 border-b border-white/10 pb-3">
         <div class="flex-1">
-          <span id="popSourceLabel" class="text-[10px] font-extrabold uppercase tracking-wider block mb-1" style="color: var(--accent);">✨ Блюдо успешно распознано</span>
+          <span id="popSourceLabel" class="text-[10px] font-extrabold uppercase tracking-wider block mb-1" style="color: var(--accent);">✨ Блюдо / товар распознан</span>
           <input id="popDishTitleInput" type="text" value="Распознанное блюдо" class="w-full themed-box px-3 py-1.5 text-sm sm:text-base font-extrabold text-white focus:outline-none" />
         </div>
         <button type="button" onclick="closeAiModal()" class="w-8 h-8 themed-box flex items-center justify-center text-slate-300 hover:text-white flex-shrink-0">✕</button>
       </div>
 
-      <!-- Анимированная карточка главных цифр КБЖУ и Веса -->
       <div id="popMacroHero" class="themed-box p-4 space-y-3">
         <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
           <div>
@@ -1082,8 +1034,8 @@
       </div>
 
       <div>
-        <label class="block text-[11px] text-slate-300 font-semibold mb-1">Прием пищи (определен автоматически по времени):</label>
-        <select id="popMealSelect" class="w-full themed-box px-3.5 py-2 text-xs font-bold focus:outline-none" style="color: var(--accent);">
+        <label class="block text-[11px] text-slate-300 font-semibold mb-1">Прием пищи:</label>
+        <select id="popMealSelect" class="w-full themed-box px-3.5 py-2.5 text-xs font-bold focus:outline-none" style="color: var(--accent);">
           <option value="Завтрак">🌅 Завтрак</option>
           <option value="Обед">☀️ Обед</option>
           <option value="Ужин">🌙 Ужин</option>
@@ -1100,7 +1052,7 @@
       </div>
 
       <div class="grid grid-cols-2 gap-3 pt-1">
-        <button type="button" onclick="closeAiModal()" class="py-3 themed-box text-slate-200 text-xs font-bold">Отмена</button>
+        <button type="button" onclick="closeAiModal()" class="py-3 themed-box text-slate-200 text-xs font-bold hover-lift">Отмена</button>
         <button type="button" onclick="confirmAiModalAdd()" class="py-3 themed-btn-primary text-xs">✅ Внести сегодня</button>
       </div>
     </div>
@@ -1112,7 +1064,6 @@
     let calendarCurrentYear = new Date().getFullYear();
     let calendarCurrentMonth = new Date().getMonth();
 
-    // Подхватываем историю из прошлых версий
     let state = JSON.parse(localStorage.getItem('rayuncalc_state_v19')) ||
                 JSON.parse(localStorage.getItem('rayuncalc_state_v18')) ||
                 JSON.parse(localStorage.getItem('rayuncalc_state_v17')) || {
@@ -1153,12 +1104,11 @@
     let prevDashboardValues = { cal: 0, p: 0, f: 0, c: 0 };
     let modalTempUseCustom = false;
     let modalCustomMacrosDirty = false;
-    let customFoodCalcMode = 'per100'; // 'per100' или 'perPortion'
-    let expandedMeals = { 'Завтрак': false, 'Обед': false, 'Ужин': false, 'Перекус': false };
+    let expandedMeals = { 'Завтрак': true, 'Обед': false, 'Ужин': false, 'Перекус': false };
 
-    // ================= БАЗА БЛЮД (160+ ПОЗИЦИЙ + ПОЛЬЗОВАТЕЛЬСКИЕ БЛЮДА) =================
-    const baseFoodCatalog = [
-      // 1. ПП, ФИТНЕС И 0-КАЛОРИЙ (fitness)
+    // ================= БАЗА БЛЮД И МАГАЗИННЫХ ТОВАРОВ (165+ ПОЗИЦИЙ) =================
+    const foodCatalog = [
+      // ПП, ФИТНЕС И 0-КАЛОРИЙ
       { category: 'fitness', name: 'Куриная грудка су-вид со специями', p: 29.8, f: 2.1, c: 0.5, cal: 140, weight: 160, diet: true },
       { category: 'fitness', name: 'Филе индейки на пару с брокколи', p: 22.5, f: 1.8, c: 3.5, cal: 120, weight: 250, diet: true },
       { category: 'fitness', name: 'Творог обезжиренный 0.2%', p: 18.0, f: 0.2, c: 1.8, cal: 81, weight: 200, diet: true },
@@ -1186,7 +1136,7 @@
       { category: 'fitness', name: 'Желе фруктовое Zero (0 сахара)', p: 1.5, f: 0.0, c: 1.2, cal: 11, weight: 150, diet: true },
       { category: 'fitness', name: 'Паровая котлета из индейки с кабачком', p: 17.5, f: 3.8, c: 3.2, cal: 117, weight: 150, diet: true },
 
-      // 2. СТОЛОВАЯ И ДОМАШНЯЯ ЕДА (canteen)
+      // СТОЛОВАЯ И ДОМАШНЯЯ ЕДА
       { category: 'canteen', name: 'Борщ украинский с говядиной и сметаной', p: 5.2, f: 4.8, c: 8.5, cal: 92, weight: 350, diet: true },
       { category: 'canteen', name: 'Суп куриный с домашней лапшой', p: 6.1, f: 2.8, c: 7.4, cal: 75, weight: 320, diet: true },
       { category: 'canteen', name: 'Щи из свежей капусты с курицей', p: 4.5, f: 2.5, c: 5.8, cal: 64, weight: 350, diet: true },
@@ -1195,7 +1145,7 @@
       { category: 'canteen', name: 'Гороховый суп с копченостями', p: 6.5, f: 4.5, c: 11.2, cal: 112, weight: 330, diet: false },
       { category: 'canteen', name: 'Крем-суп грибной из шампиньонов', p: 3.5, f: 6.8, c: 7.5, cal: 105, weight: 300, diet: false },
       { category: 'canteen', name: 'Котлета куриная паровая', p: 18.5, f: 5.2, c: 5.0, cal: 141, weight: 120, diet: true },
-      { category: 'canteen', name: 'Котлета домашняя мясная жареная', p: 15.2, f: 14.5, c: 7.5, cal: 221, weight: 120, diet: false },
+      { category: 'canteen', name: 'Котлета домашняя мясная (свинина-говядина)', p: 15.2, f: 16.5, c: 7.5, cal: 239, weight: 120, diet: false },
       { category: 'canteen', name: 'Котлета по-киевски в панировке', p: 14.2, f: 18.5, c: 12.0, cal: 271, weight: 140, diet: false },
       { category: 'canteen', name: 'Гуляш из говядины с подливкой', p: 16.8, f: 9.5, c: 4.5, cal: 171, weight: 180, diet: true },
       { category: 'canteen', name: 'Бефстроганов из говядины в сметанном соусе', p: 15.5, f: 11.2, c: 4.8, cal: 182, weight: 180, diet: false },
@@ -1213,14 +1163,14 @@
       { category: 'canteen', name: 'Салат Винегрет овощной', p: 1.6, f: 4.8, c: 8.2, cal: 82, weight: 180, diet: true },
       { category: 'canteen', name: 'Салат Оливье с курицей', p: 7.2, f: 12.5, c: 8.4, cal: 175, weight: 180, diet: false },
 
-      // 3. ПАНАЗИЯ, СУШИ И ИТАЛИЯ (panasian)
+      // ПАНАЗИЯ, ЛАПША И ИТАЛИЯ
       { category: 'panasian', name: 'Суп Том Ям с креветками и грибами', p: 7.2, f: 4.8, c: 4.5, cal: 90, weight: 350, diet: true },
       { category: 'panasian', name: 'Суп Том Ям с индейкой', p: 8.5, f: 4.2, c: 4.6, cal: 91, weight: 350, diet: true },
       { category: 'panasian', name: 'Суп Фо Бо вьетнамский с говядиной', p: 8.2, f: 2.9, c: 9.5, cal: 97, weight: 450, diet: true },
       { category: 'panasian', name: 'Мисо-суп с тофу, вакаме и лососем', p: 5.5, f: 2.2, c: 3.8, cal: 57, weight: 280, diet: true },
+      { category: 'panasian', name: 'Лапша Samyang Buldak Cheese / Carbonara (пачка 140г)', p: 9.5, f: 14.2, c: 61.0, cal: 410, weight: 140, diet: false },
+      { category: 'panasian', name: 'Лапша Доширак / Шин Рамен (пачка 90-120г)', p: 8.5, f: 16.0, c: 64.0, cal: 435, weight: 110, diet: false },
       { category: 'panasian', name: 'Рамен со свининой чашу и маринованным яйцом', p: 9.2, f: 7.5, c: 15.8, cal: 168, weight: 420, diet: false },
-      { category: 'panasian', name: 'Лапша Samyang Buldak Carbonara (пачка)', p: 8.5, f: 14.2, c: 61.0, cal: 406, weight: 130, diet: false },
-      { category: 'panasian', name: 'Лапша Доширак / Шин Рамен в стакане', p: 7.5, f: 15.0, c: 58.0, cal: 397, weight: 90, diet: false },
       { category: 'panasian', name: 'Гречневая лапша Соба со свининой и овощами', p: 10.8, f: 7.8, c: 25.5, cal: 215, weight: 300, diet: false },
       { category: 'panasian', name: 'Гречневая лапша Соба с куриным филе и овощами', p: 12.5, f: 3.6, c: 24.0, cal: 178, weight: 280, diet: true },
       { category: 'panasian', name: 'Лапша Удон WOK с морепродуктами в соусе терияки', p: 11.4, f: 4.5, c: 27.0, cal: 194, weight: 300, diet: true },
@@ -1241,7 +1191,7 @@
       { category: 'panasian', name: 'Лазанья мясная классическая', p: 12.5, f: 11.8, c: 18.5, cal: 230, weight: 260, diet: false },
       { category: 'panasian', name: 'Салат Капрезе с моцареллой, томатами и песто', p: 9.5, f: 10.2, c: 3.8, cal: 145, weight: 200, diet: true },
 
-      // 4. МАГАЗИНЫ И ГОТОВАЯ ДОСТАВКА (store)
+      // МАГАЗИНЫ И ГОТОВАЯ ДОСТАВКА
       { category: 'store', name: 'Самокат: Куриное филе с гречкой и овощами', p: 14.5, f: 3.8, c: 18.2, cal: 165, weight: 280, diet: true },
       { category: 'store', name: 'Самокат: Индейка терияки с рисом басмати', p: 13.2, f: 3.5, c: 22.0, cal: 172, weight: 260, diet: true },
       { category: 'store', name: 'Самокат: Сырники из фермерского творога', p: 14.8, f: 8.5, c: 19.0, cal: 212, weight: 150, diet: false },
@@ -1263,7 +1213,7 @@
       { category: 'store', name: 'Хумус классический из нута с овощными палочками', p: 7.5, f: 9.8, c: 14.0, cal: 174, weight: 150, diet: true },
       { category: 'store', name: 'Окрошка на кефире с куриной грудкой', p: 6.2, f: 2.4, c: 5.5, cal: 68, weight: 350, diet: true },
 
-      // 5. МЯСО, РЫБА, ЯЙЦА, ОВОЩИ И БАЗОВЫЕ ПРОДУКТЫ (base)
+      // МЯСО, РЫБА, ЯЙЦА, ОВОЩИ И БАЗОВЫЕ ПРОДУКТЫ
       { category: 'base', name: 'Куриная грудка запеченная в духовке', p: 29.5, f: 3.2, c: 0.0, cal: 147, weight: 160, diet: true },
       { category: 'base', name: 'Куриное бедро без кожи тушеное', p: 21.5, f: 7.8, c: 0.0, cal: 156, weight: 150, diet: true },
       { category: 'base', name: 'Филе грудки индейки на гриле', p: 28.5, f: 2.2, c: 0.0, cal: 134, weight: 160, diet: true },
@@ -1289,7 +1239,7 @@
       { category: 'base', name: 'Арахисовая паста без сахара', p: 26.0, f: 49.0, c: 13.0, cal: 597, weight: 30, diet: false },
       { category: 'base', name: 'Хлеб цельнозерновой ржаной (2 ломтика)', p: 7.5, f: 1.8, c: 41.0, cal: 210, weight: 70, diet: true },
 
-      // 6. ВЫПЕЧКА И ПЕРЕКУСЫ (bakery)
+      // ВЫПЕЧКА И ПЕРЕКУСЫ
       { category: 'bakery', name: 'Самса тандырная с говядиной', p: 11.8, f: 16.5, c: 32.0, cal: 324, weight: 140, diet: false },
       { category: 'bakery', name: 'Самса слоеная с курицей', p: 12.4, f: 14.2, c: 30.5, cal: 299, weight: 135, diet: false },
       { category: 'bakery', name: 'Чебурек сочный с мясом', p: 9.5, f: 18.0, c: 30.5, cal: 322, weight: 150, diet: false },
@@ -1305,7 +1255,7 @@
       { category: 'bakery', name: 'Пирожок с мясом', p: 9.2, f: 11.5, c: 32.0, cal: 268, weight: 95, diet: false },
       { category: 'bakery', name: 'Синнабон (булочка с корицей и кремом)', p: 5.5, f: 16.5, c: 52.0, cal: 379, weight: 140, diet: false },
 
-      // 7. ФАСТФУД И ПИЦЦА (fastfood)
+      // ФАСТФУД И ПИЦЦА
       { category: 'fastfood', name: 'Воппер (Burger King) классический с говядиной', p: 11.5, f: 14.2, c: 18.5, cal: 248, weight: 270, diet: false },
       { category: 'fastfood', name: 'Двойной Воппер с сыром', p: 14.8, f: 18.0, c: 14.5, cal: 279, weight: 375, diet: false },
       { category: 'fastfood', name: 'Воппер Ролл в лепешке', p: 12.0, f: 15.0, c: 22.0, cal: 271, weight: 210, diet: false },
@@ -1325,12 +1275,13 @@
       { category: 'fastfood', name: 'Сырные медальоны с халапеньо (5 шт)', p: 12.5, f: 18.5, c: 22.0, cal: 305, weight: 100, diet: false },
       { category: 'fastfood', name: 'Кесадилья с курицей и чеддером', p: 14.0, f: 13.5, c: 24.5, cal: 275, weight: 200, diet: false },
 
-      // 8. НАПИТКИ И КОФЕ (drinks)
+      // НАПИТКИ И КОФЕ
       { category: 'drinks', name: 'Американо / Эспрессо без сахара', p: 0.2, f: 0.1, c: 0.3, cal: 3, weight: 250, diet: true },
       { category: 'drinks', name: 'Зеленый чай / Матча на воде без сахара', p: 0.5, f: 0.0, c: 0.5, cal: 4, weight: 300, diet: true },
       { category: 'drinks', name: 'Капучино на обезжиренном / кокосовом молоке без сахара', p: 2.4, f: 1.2, c: 3.5, cal: 34, weight: 300, diet: true },
       { category: 'drinks', name: 'Матча-латте на миндальном молоке без сахара', p: 1.5, f: 1.4, c: 2.2, cal: 28, weight: 300, diet: true },
       { category: 'drinks', name: 'Кола Зеро / Напиток без сахара (0 ккал)', p: 0.0, f: 0.0, c: 0.0, cal: 1, weight: 330, diet: true },
+      { category: 'drinks', name: 'Компот домашний из ягод и сухофруктов', p: 0.3, f: 0.1, c: 11.5, cal: 48, weight: 250, diet: true },
       { category: 'drinks', name: 'Кефир 1% био', p: 3.0, f: 1.0, c: 4.0, cal: 37, weight: 250, diet: true },
       { category: 'drinks', name: 'Латте классический с сиропом', p: 2.8, f: 2.6, c: 9.5, cal: 73, weight: 350, diet: false },
       { category: 'drinks', name: 'Раф кофе ванильный на сливках', p: 2.5, f: 8.5, c: 12.0, cal: 135, weight: 350, diet: false },
@@ -1338,25 +1289,29 @@
       { category: 'drinks', name: 'Белковый коктейль клубничный на молоке 1.5%', p: 10.5, f: 1.5, c: 4.8, cal: 75, weight: 300, diet: true }
     ];
 
-    function getFullFoodCatalog() {
-      return [...(state.customFoods || []), ...baseFoodCatalog];
+    // Добавляем сохраненные пользователем блюда в начало каталога
+    if (state.customFoods && state.customFoods.length > 0) {
+      state.customFoods.forEach(cf => foodCatalog.unshift(cf));
     }
 
-    // ИСПРАВЛЕННЫЙ ФИЛЬТР НЕСЪЕДОБНОГО (ПРОВЕРКА СТРОГО ПО ЦЕЛЫМ СЛОВАМ, БЕЗ ЛОЖНЫХ СРАБАТЫВАНИЙ НА "КОТЛЕТА" ИЛИ "КОМПОТ")
+    // ИСПРАВЛЕННЫЙ СПИСОК НЕСЪЕДОБНЫХ СЛОВ (ПРОВЕРКА СТРОГО ПО ЦЕЛЫМ СЛОВАМ!)
     const nonFoodExactWords = new Set([
-      'кот', 'кошка', 'котик', 'собака', 'пес', 'щенок', 'машина', 'автомобиль', 'телефон', 'айфон',
-      'компьютер', 'пк', 'монитор', 'клавиатура', 'мышка', 'наушники', 'микрофон', 'стол', 'стул',
-      'диван', 'кровать', 'шкаф', 'кроссовки', 'тапок', 'тапки', 'ботинок', 'носок', 'носки', 'куртка',
-      'штаны', 'стена', 'окно', 'дверь', 'камень', 'кирпич', 'песок', 'земля', 'палка', 'бумага',
-      'книга', 'тетрадь', 'ручка', 'карандаш', 'деньги', 'ключ', 'замок', 'мусор', 'стекло', 'железо',
-      'пластик', 'резина', 'бетон', 'асфальт', 'человек', 'селфи', 'рука', 'нога', 'палец', 'скриншот',
-      'мем', 'обои', 'пыль', 'воздух', 'пустота', 'cat', 'dog', 'car', 'phone', 'keyboard', 'shoe'
+      'кот', 'кошка', 'кота', 'собака', 'пес', 'машина', 'автомобиль', 'телефон', 'айфон',
+      'компьютер', 'пк', 'монитор', 'клавиатура', 'мышка', 'наушники', 'микрофон',
+      'стол', 'стул', 'диван', 'кровать', 'шкаф', 'кроссовки', 'тапок', 'тапки', 'ботинок',
+      'носок', 'носки', 'одежда', 'куртка', 'штаны', 'стена', 'окно', 'дверь',
+      'камень', 'кирпич', 'песок', 'земля', 'палка', 'бумага', 'книга', 'тетрадь',
+      'карандаш', 'деньги', 'ключ', 'замок', 'мусор', 'стекло', 'железо',
+      'пластик', 'резина', 'бетон', 'асфальт', 'человек', 'селфи', 'лицо',
+      'скриншот', 'мем', 'обои', 'ничего', 'пусто', 'воздух', 'пыль',
+      'cat', 'dog', 'car', 'phone', 'keyboard', 'mouse', 'shoe', 'wall', 'selfie', 'screenshot'
     ]);
 
     let currentCategoryFilter = 'all';
-    let filteredCatalog = [];
+    let filteredCatalog = [...foodCatalog];
     let popupAiItems = [];
 
+    // ================= ВСПЛЫВАЮЩИЙ ТОСТ =================
     let toastTimeout = null;
     function showToast(message, icon = '✅') {
       const banner = document.getElementById('toastBanner');
@@ -1371,7 +1326,7 @@
       }, 2400);
     }
 
-    // ================= ЖИВЫЕ ОБОИ НА HTML5 CANVAS =================
+    // ================= РЕАЛИСТИЧНЫЙ БОТАНИЧЕСКИЙ CANVAS-ДВИЖОК =================
     const bgCanvas = document.getElementById('bgCanvas');
     const bgCtx = bgCanvas.getContext('2d');
     let cw = window.innerWidth;
@@ -1391,13 +1346,13 @@
 
     function initParticles() {
       fallingParticles = [];
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 22; i++) {
         fallingParticles.push({
           x: Math.random() * cw,
           y: Math.random() * ch,
-          size: Math.random() * 6 + 6,
-          speedY: Math.random() * 0.65 + 0.35,
-          speedX: Math.random() * 0.5 - 0.1,
+          size: Math.random() * 7 + 6,
+          speedY: Math.random() * 0.7 + 0.4,
+          speedX: Math.random() * 0.6 - 0.1,
           angle: Math.random() * Math.PI * 2,
           spin: (Math.random() - 0.5) * 0.025,
           swayOffset: Math.random() * 100
@@ -1410,9 +1365,11 @@
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(rotation);
+
       for (let i = 0; i < 5; i++) {
         ctx.save();
         ctx.rotate((i * Math.PI * 2) / 5);
+
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.bezierCurveTo(-radius * 0.55, -radius * 0.35, -radius * 0.65, -radius * 0.95, -radius * 0.16, -radius * 1.15);
@@ -1439,6 +1396,17 @@
         ctx.fill();
         ctx.restore();
       }
+
+      ctx.strokeStyle = isBW ? 'rgba(82, 82, 91, 0.8)' : (isCyber ? '#fde047' : 'rgba(190, 24, 93, 0.75)');
+      ctx.lineWidth = 0.8;
+      for (let j = 0; j < 8; j++) {
+        const a = (j * Math.PI * 2) / 8 + 0.2;
+        const len = radius * 0.32;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(Math.cos(a) * len, Math.sin(a) * len);
+        ctx.stroke();
+      }
       ctx.restore();
     }
 
@@ -1447,6 +1415,7 @@
       ctx.translate(x, y);
       ctx.rotate(angle);
       ctx.scale(1, 0.75 + Math.sin(angle * 2) * 0.25);
+
       ctx.beginPath();
       ctx.moveTo(0, size * 0.5);
       ctx.bezierCurveTo(-size * 0.6, size * 0.1, -size * 0.7, -size * 0.6, -size * 0.18, -size * 0.85);
@@ -1455,10 +1424,13 @@
       ctx.bezierCurveTo(size * 0.7, -size * 0.6, size * 0.6, size * 0.1, 0, size * 0.5);
       ctx.closePath();
 
-      if (isMatcha) ctx.fillStyle = 'rgba(163, 230, 53, 0.65)';
-      else if (isBW) ctx.fillStyle = 'rgba(244, 244, 245, 0.75)';
-      else if (isCyber) ctx.fillStyle = 'rgba(244, 63, 94, 0.75)';
-      else ctx.fillStyle = 'rgba(251, 207, 232, 0.82)';
+      ctx.fillStyle = isMatcha
+        ? 'rgba(163, 230, 53, 0.65)'
+        : isBW
+          ? 'rgba(244, 244, 245, 0.75)'
+          : isCyber
+            ? 'rgba(244, 63, 94, 0.75)'
+            : 'rgba(251, 207, 232, 0.82)';
       ctx.fill();
       ctx.restore();
     }
@@ -1471,10 +1443,9 @@
       ctx.rotate(swayAngle);
 
       const barkColor = isBW ? '#3f3f46' : (isCyber ? '#4c1d95' : '#3b1525');
-      const barkHighlight = isBW ? '#71717a' : (isCyber ? '#ec4899' : '#702444');
-
       ctx.strokeStyle = barkColor;
       ctx.lineCap = 'round';
+
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.bezierCurveTo(-90, 40, -170, 35, -260, 85);
@@ -1482,21 +1453,18 @@
       ctx.lineWidth = 10;
       ctx.stroke();
 
-      ctx.lineWidth = 3.5;
-      ctx.strokeStyle = barkHighlight;
-      ctx.stroke();
-
       const blossoms = [
         { x: -85, y: 28, r: 15, rot: 0.2 },
         { x: -165, y: 48, r: 18, rot: 0.5 },
         { x: -255, y: 82, r: 20, rot: 0.3 },
-        { x: -375, y: 120, r: 17, rot: 0.6 },
-        { x: -425, y: 145, r: 13, rot: 2.3 }
+        { x: -375, y: 120, r: 17, rot: 0.6 }
       ];
+
       blossoms.forEach((b, idx) => {
         const localSway = Math.sin(animTime * 1.5 + idx) * 0.08;
         drawRealisticSakuraBlossom(ctx, b.x, b.y, b.r, b.rot + localSway, isBW, isCyber);
       });
+
       ctx.restore();
     }
 
@@ -1521,17 +1489,18 @@
           p.x += p.speedX + Math.sin(animTime + p.swayOffset) * 0.45;
           p.angle += p.spin;
           if (p.y > ch + 20) { p.y = -20; p.x = Math.random() * cw; }
-          if (p.x > cw + 20) p.x = -20;
-          if (p.x < -20) p.x = cw + 20;
           drawSinglePetal(bgCtx, p.x, p.y, p.size, p.angle, isBW, isCyber, isMatcha);
         });
       }
+
       requestAnimationFrame(animateWallpaper);
     }
 
-    // ================= ИНИЦИАЛИЗАЦИЯ =================
+    // ================= ИНИЦИАЛИЗАЦИЯ И UX ПЕРЕКЛЮЧАТЕЛИ =================
     function initApp() {
       document.getElementById('activeDateInput').value = activeDate;
+      document.getElementById('catalogTotalCountBadge').textContent = `База: ${foodCatalog.length} блюд и товаров`;
+
       if (state.apiKey) {
         document.getElementById('geminiApiKey').value = state.apiKey;
         document.getElementById('apiKeyStatus').textContent = 'Ключ сохранен';
@@ -1546,39 +1515,30 @@
       sel.value = state.preferredModel;
       document.getElementById('aiActiveModelBadge').textContent = state.preferredModel;
 
-      // По умолчанию раскрываем текущий по времени прием пищи
-      expandedMeals[getAutoMealType()] = true;
-
       applyTheme(state.profile.theme);
       loadProfileToUI();
-      filterFoodCatalog();
+      populateFoodSelect();
       renderActiveDay();
       renderCalendar();
       requestAnimationFrame(animateWallpaper);
     }
 
-    // Переключатель Сводка КБЖУ <-> Что съесть
-    function switchTopHeroMode(mode) {
-      const isSum = mode === 'summary';
-      document.getElementById('heroPanel_summary').classList.toggle('hidden', !isSum);
-      document.getElementById('heroPanel_recs').classList.toggle('hidden', isSum);
-
+    function switchHeroSlide(slide) {
+      const isSum = slide === 'summary';
+      document.getElementById('heroSlide_summary').classList.toggle('hidden', !isSum);
+      document.getElementById('heroSlide_coach').classList.toggle('hidden', isSum);
       document.getElementById('heroTab_summary').className = isSum
-        ? 'py-1.5 px-2 rounded-lg text-[11px] font-extrabold transition themed-btn-primary'
-        : 'py-1.5 px-2 rounded-lg text-[11px] font-extrabold transition text-slate-300 hover:text-white';
-      document.getElementById('heroTab_recs').className = !isSum
-        ? 'py-1.5 px-2 rounded-lg text-[11px] font-extrabold transition themed-btn-primary'
-        : 'py-1.5 px-2 rounded-lg text-[11px] font-extrabold transition text-slate-300 hover:text-white';
+        ? 'py-1.5 px-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-1.5 px-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+      document.getElementById('heroTab_coach').className = !isSum
+        ? 'py-1.5 px-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-1.5 px-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
     }
 
-    // Открытие и закрытие выезжающей шторки каталога
-    function openCatalogSheet(preselectedMeal) {
-      if (preselectedMeal) {
-        document.getElementById('mealTypeSelect').value = preselectedMeal;
-      } else {
-        document.getElementById('mealTypeSelect').value = getAutoMealType();
-      }
-      filterFoodCatalog();
+    function openCatalogSheet(mealName) {
+      const targetMeal = mealName || getAutoMealType();
+      document.getElementById('mealTypeSelect').value = targetMeal;
+      document.getElementById('sheetMealLabel').textContent = targetMeal;
       const modal = document.getElementById('catalogSheetModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -1590,374 +1550,6 @@
       modal.classList.remove('flex');
     }
 
-    // ================= ОКНО "СВОЁ БЛЮДО" (ИИ-ПОИСК + РУЧНОЙ ВВОД) =================
-    function aiSearchCatalogFood() {
-      const searchVal = document.getElementById('foodSearchInput').value.trim();
-      if (searchVal) {
-        const badReason = isNonFoodOrGibberishText(searchVal);
-        if (badReason) {
-          triggerNotFoodError(badReason);
-          return;
-        }
-      }
-      openCustomFoodModal(searchVal);
-    }
-
-    function openCustomFoodModal(prefillName = '') {
-      const currentMeal = document.getElementById('mealTypeSelect')?.value || getAutoMealType();
-      document.getElementById('cfMealSelect').value = currentMeal;
-      document.getElementById('cfNameInput').value = prefillName || '';
-      document.getElementById('cfAiStatusText').innerHTML = 'Нажмите <b>«🤖 Найти КБЖУ через ИИ»</b>, чтобы ИИ сам определил калории и БЖУ, или впишите свои цифры ниже!';
-
-      setCustomFoodCalcMode('per100');
-      updateCustomFoodPreview();
-
-      const modal = document.getElementById('customFoodModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-
-      // Если пользователь уже ввел название в поиск каталога и нажал "+ Своё" — сразу запускаем ИИ-поиск КБЖУ!
-      if (prefillName && prefillName.length >= 2) {
-        autoFillCustomFoodWithAI();
-      }
-    }
-
-    function closeCustomFoodModal() {
-      const modal = document.getElementById('customFoodModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    function setCustomFoodCalcMode(mode) {
-      customFoodCalcMode = mode;
-      const is100 = mode === 'per100';
-      document.getElementById('cfMode_per100').className = is100 ? 'px-2 py-1 rounded themed-btn-primary' : 'px-2 py-1 rounded text-slate-300';
-      document.getElementById('cfMode_perPortion').className = !is100 ? 'px-2 py-1 rounded themed-btn-primary' : 'px-2 py-1 rounded text-slate-300';
-
-      const suffix = is100 ? '(на 100г)' : '(на порцию)';
-      document.getElementById('cfCalLabel').textContent = `Калории ${suffix}`;
-      document.getElementById('cfPLabel').textContent = `🥩 Белки ${suffix}`;
-      document.getElementById('cfFLabel').textContent = `🥑 Жиры ${suffix}`;
-      document.getElementById('cfCLabel').textContent = `🍚 Углеводы ${suffix}`;
-      updateCustomFoodPreview();
-    }
-
-    function updateCustomFoodPreview(recalcCalFromMacros = false) {
-      const w = Math.max(1, parseFloat(document.getElementById('cfWeightInput').value) || 100);
-      let p = parseFloat(document.getElementById('cfPInput').value) || 0;
-      let f = parseFloat(document.getElementById('cfFInput').value) || 0;
-      let c = parseFloat(document.getElementById('cfCInput').value) || 0;
-      let cal = parseFloat(document.getElementById('cfCalInput').value) || 0;
-
-      if (recalcCalFromMacros) {
-        cal = Math.round(p * 4 + f * 9 + c * 4);
-        document.getElementById('cfCalInput').value = cal;
-      }
-
-      const mult = customFoodCalcMode === 'per100' ? (w / 100) : 1;
-      const finalCal = Math.round(cal * mult);
-      const finalP = Math.round(p * mult);
-      const finalF = Math.round(f * mult);
-      const finalC = Math.round(c * mult);
-
-      document.getElementById('cfPreviewWeight').textContent = `${Math.round(w)}г`;
-      document.getElementById('cfPreviewCal').textContent = `${finalCal} ккал`;
-      document.getElementById('cfPreviewP').textContent = `${finalP}г`;
-      document.getElementById('cfPreviewF').textContent = `${finalF}г`;
-      document.getElementById('cfPreviewC').textContent = `${finalC}г`;
-    }
-
-    // ИИ-поиск КБЖУ для любого блюда или магазинного товара в окне "+ Своё"
-    async function autoFillCustomFoodWithAI() {
-      const query = document.getElementById('cfNameInput').value.trim();
-      const statusEl = document.getElementById('cfAiStatusText');
-      const btnText = document.getElementById('cfAiBtnText');
-
-      if (!query) {
-        statusEl.innerHTML = '<span class="text-rose-300 font-bold">⚠️ Сначала напишите название блюда или товара в поле выше!</span>';
-        return;
-      }
-
-      const badReason = isNonFoodOrGibberishText(query);
-      if (badReason) {
-        triggerNotFoodError(badReason);
-        return;
-      }
-
-      btnText.textContent = '⏳ ИИ ищет...';
-      statusEl.innerHTML = '<span style="color: var(--accent);">🔍 ИИ ищет пищевую ценность продукта...</span>';
-
-      const key = state.apiKey.trim();
-
-      // 1. Если есть API-ключ Gemini — запрашиваем точные данные у нейросети
-      if (key.length > 15) {
-        const modelsToTry = [state.preferredModel || 'gemini-3.8-flash', 'gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-flash-latest']
-          .filter((v, i, a) => a.indexOf(v) === i);
-
-        for (const modelName of modelsToTry) {
-          try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${key}`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                contents: [{
-                  parts: [{
-                    text: `Ты база данных диетологии и магазинных товаров. Пользователь ищет: "${query}". Если это НЕ ЕДА и НЕ НАПИТОК (например, мебель, животное, техника), верни СТРОГО JSON: {"isFood": false, "detectedObject": "${query}"}. Если это еда, блюдо или магазинный продукт, верни СТРОГО чистый JSON без markdown с КБЖУ на 100 грамм и стандартным весом порции/упаковки: {"isFood": true, "name": "Точное название", "weight": 200, "cal100": 210, "p100": 12, "f100": 9, "c100": 20}`
-                  }]
-                }]
-              })
-            });
-            const data = await response.json();
-            if (data.error) {
-              const mMatch = (data.error.message || '').match(/use models\/([a-zA-Z0-9.\-_]+)/);
-              if (mMatch && mMatch[1] && !modelsToTry.includes(mMatch[1])) modelsToTry.push(mMatch[1]);
-              continue;
-            }
-            const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-            const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-            if (jsonMatch) {
-              const parsed = JSON.parse(jsonMatch[0]);
-              btnText.textContent = 'Найти КБЖУ через ИИ';
-
-              if (parsed.isFood === false) {
-                triggerNotFoodError(parsed.detectedObject || query);
-                return;
-              }
-
-              setCustomFoodCalcMode('per100');
-              document.getElementById('cfNameInput').value = parsed.name || query;
-              document.getElementById('cfWeightInput').value = Math.round(parsed.weight || 200);
-              document.getElementById('cfCalInput').value = Math.round(parsed.cal100 || 180);
-              document.getElementById('cfPInput').value = Math.round((parsed.p100 || 10) * 10) / 10;
-              document.getElementById('cfFInput').value = Math.round((parsed.f100 || 8) * 10) / 10;
-              document.getElementById('cfCInput').value = Math.round((parsed.c100 || 18) * 10) / 10;
-              updateCustomFoodPreview();
-
-              statusEl.innerHTML = `<span class="text-emerald-300 font-bold">✅ Найдено через Gemini AI (${modelName})! Вы можете подправить цифры или сразу сохранить.</span>`;
-              return;
-            }
-          } catch (e) {}
-        }
-      }
-
-      // 2. Умный локальный поиск и анализатор (работает мгновенно даже без ключа API!)
-      setTimeout(() => {
-        btnText.textContent = 'Найти КБЖУ через ИИ';
-        const estimated = estimateFoodLocally(query);
-        setCustomFoodCalcMode('per100');
-        document.getElementById('cfNameInput').value = estimated.name;
-        document.getElementById('cfWeightInput').value = estimated.weight;
-        document.getElementById('cfCalInput').value = estimated.cal;
-        document.getElementById('cfPInput').value = estimated.p;
-        document.getElementById('cfFInput').value = estimated.f;
-        document.getElementById('cfCInput').value = estimated.c;
-        updateCustomFoodPreview();
-
-        statusEl.innerHTML = `<span class="text-emerald-300 font-bold">✨ КБЖУ рассчитаны автоматически! Проверьте вес порции и нажмите «Сохранить и внести».</span>`;
-      }, 300);
-    }
-
-    // Умный локальный определитель КБЖУ по ключевым словам
-    function estimateFoodLocally(query) {
-      const q = query.toLowerCase().trim();
-      const all = getFullFoodCatalog();
-      const match = all.find(f => f.name.toLowerCase().includes(q) || q.includes(f.name.toLowerCase().split(' ')[0]));
-      if (match) {
-        return { name: query, weight: match.weight, cal: match.cal, p: match.p, f: match.f, c: match.c };
-      }
-      if (/булдак|buldak|samyang|доширак|рамен|лапша/i.test(q)) {
-        return { name: query, weight: 130, cal: 405, p: 8.5, f: 14.5, c: 60.0 };
-      }
-      if (/сырок|глазирован/i.test(q)) {
-        return { name: query, weight: 45, cal: 390, p: 7.5, f: 24.0, c: 35.0 };
-      }
-      if (/котлет/i.test(q)) {
-        return { name: query, weight: 120, cal: 210, p: 16.5, f: 13.0, c: 6.5 };
-      }
-      if (/шаурм|шаверм|донер/i.test(q)) {
-        return { name: query, weight: 340, cal: 245, p: 12.8, f: 11.2, c: 23.5 };
-      }
-      if (/компот|морс|сок/i.test(q)) {
-        return { name: query, weight: 250, cal: 45, p: 0.2, f: 0.0, c: 11.0 };
-      }
-      if (/шоколад|конфет|батончик|печень/i.test(q)) {
-        return { name: query, weight: 60, cal: 480, p: 6.5, f: 25.0, c: 57.0 };
-      }
-      if (/чипс|сухарик|снек/i.test(q)) {
-        return { name: query, weight: 90, cal: 510, p: 6.0, f: 31.0, c: 52.0 };
-      }
-      if (/салат|овощ/i.test(q)) {
-        return { name: query, weight: 200, cal: 85, p: 3.5, f: 5.0, c: 6.5 };
-      }
-      if (/суп|бульон|борщ|щи/i.test(q)) {
-        return { name: query, weight: 350, cal: 78, p: 5.5, f: 3.5, c: 6.5 };
-      }
-      return { name: query, weight: 200, cal: 185, p: 12.0, f: 8.0, c: 16.0 };
-    }
-
-    function saveAndAddCustomFood() {
-      const name = document.getElementById('cfNameInput').value.trim();
-      if (!name) {
-        alert('Пожалуйста, укажите название блюда или продукта.');
-        return;
-      }
-
-      const badReason = isNonFoodOrGibberishText(name);
-      if (badReason) {
-        triggerNotFoodError(badReason);
-        return;
-      }
-
-      const w = Math.max(5, parseFloat(document.getElementById('cfWeightInput').value) || 100);
-      const rawCal = Math.max(0, parseFloat(document.getElementById('cfCalInput').value) || 0);
-      const rawP = Math.max(0, parseFloat(document.getElementById('cfPInput').value) || 0);
-      const rawF = Math.max(0, parseFloat(document.getElementById('cfFInput').value) || 0);
-      const rawC = Math.max(0, parseFloat(document.getElementById('cfCInput').value) || 0);
-
-      // Приводим к значениям на 100 г для сохранения в базу
-      const factorTo100 = customFoodCalcMode === 'per100' ? 1 : (100 / w);
-      const cal100 = Math.round(rawCal * factorTo100);
-      const p100 = Math.round(rawP * factorTo100 * 10) / 10;
-      const f100 = Math.round(rawF * factorTo100 * 10) / 10;
-      const c100 = Math.round(rawC * factorTo100 * 10) / 10;
-
-      const isDietFriendly = cal100 <= 190 && f100 <= 12;
-
-      // Сохраняем в пользовательский каталог (если такого еще нет)
-      const existingIdx = state.customFoods.findIndex(f => f.name.toLowerCase() === name.toLowerCase());
-      const customFoodObj = {
-        category: 'custom',
-        name,
-        p: p100,
-        f: f100,
-        c: c100,
-        cal: cal100,
-        weight: Math.round(w),
-        diet: isDietFriendly
-      };
-      if (existingIdx >= 0) {
-        state.customFoods[existingIdx] = customFoodObj;
-      } else {
-        state.customFoods.unshift(customFoodObj);
-      }
-
-      // Сразу добавляем в дневник за сегодня
-      const meal = document.getElementById('cfMealSelect').value || getAutoMealType();
-      const mult = w / 100;
-      const diaryItem = {
-        id: Date.now() + Math.random(),
-        meal,
-        name,
-        weight: Math.round(w),
-        cal: Math.round(cal100 * mult),
-        p: Math.round(p100 * mult),
-        f: Math.round(f100 * mult),
-        c: Math.round(c100 * mult),
-        badge: '⭐ Моё блюдо'
-      };
-
-      if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
-      state.days[activeDate].diary.unshift(diaryItem);
-      expandedMeals[meal] = true;
-
-      persistState();
-      filterFoodCatalog();
-      closeCustomFoodModal();
-      closeCatalogSheet();
-      switchMainTab('diary');
-      renderActiveDay();
-      showToast(`«${name}» (+${diaryItem.cal} ккал) сохранено и внесено!`, '⭐');
-    }
-
-    // ================= 4 КАРТОЧКИ ПРИЕМОВ ПИЩИ (ГАРМОШКА В СТИЛЕ YAZIO) =================
-    function toggleMealExpand(mealName) {
-      expandedMeals[mealName] = !expandedMeals[mealName];
-      renderMealCards();
-    }
-
-    function renderMealCards() {
-      const container = document.getElementById('mealGroupsContainer');
-      if (!container) return;
-
-      const dayData = state.days[activeDate] || { diary: [] };
-      const mealMeta = [
-        { key: 'Завтрак', icon: '🌅', sub: 'Утренний заряд' },
-        { key: 'Обед', icon: '☀️', sub: 'Основной прием' },
-        { key: 'Ужин', icon: '🌙', sub: 'Вечерний рацион' },
-        { key: 'Перекус', icon: '🍏', sub: 'Снеки и напитки' }
-      ];
-
-      container.innerHTML = '';
-
-      mealMeta.forEach(m => {
-        const items = dayData.diary.filter(i => i.meal === m.key);
-        let mCal = 0, mP = 0, mF = 0, mC = 0;
-        items.forEach(i => { mCal += i.cal; mP += i.p; mF += i.f; mC += i.c; });
-
-        const isOpen = !!expandedMeals[m.key];
-        const card = document.createElement('div');
-        card.className = 'themed-box overflow-hidden transition-all';
-
-        let itemsHtml = '';
-        if (isOpen) {
-          if (items.length === 0) {
-            itemsHtml = `
-              <div class="px-3.5 py-3 border-t border-white/10 text-[11px] text-slate-400 flex items-center justify-between">
-                <span>Пока ничего не записано</span>
-                <button type="button" onclick="openCatalogSheet('${m.key}')" class="font-bold underline" style="color: var(--accent);">+ Выбрать блюдо</button>
-              </div>
-            `;
-          } else {
-            itemsHtml = `<div class="border-t border-white/10 divide-y divide-white/5 bg-black/20">` +
-              items.map(item => `
-                <div class="px-3.5 py-2.5 flex items-center justify-between gap-2 text-xs">
-                  <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-1.5">
-                      <span class="font-bold text-white truncate">${item.name}</span>
-                      ${item.badge ? `<span class="text-[9px] px-1.5 py-0.5 rounded bg-white/10 text-slate-200 flex-shrink-0">${item.badge}</span>` : ''}
-                    </div>
-                    <div class="text-[10px] text-slate-300 mt-0.5">
-                      <span>${item.weight} г</span> • <b style="color: var(--accent);">${item.cal} ккал</b> • Б:${item.p}г Ж:${item.f}г У:${item.c}г
-                    </div>
-                  </div>
-                  <button type="button" onclick="removeDiaryItem(${item.id})" class="w-7 h-7 themed-box flex items-center justify-center text-slate-400 hover:text-rose-400 flex-shrink-0">✕</button>
-                </div>
-              `).join('') + `</div>`;
-          }
-        }
-
-        card.innerHTML = `
-          <div class="p-3 flex items-center justify-between gap-2 cursor-pointer select-none" onclick="toggleMealExpand('${m.key}')">
-            <div class="flex items-center gap-3 min-w-0">
-              <div class="w-10 h-10 rounded-xl bg-black/35 border border-white/10 flex items-center justify-center text-lg flex-shrink-0">
-                ${m.icon}
-              </div>
-              <div class="min-w-0">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs sm:text-sm font-extrabold text-white">${m.key}</span>
-                  ${items.length > 0 ? `<span class="text-[10px] px-1.5 py-0.5 rounded-full bg-white/10 text-slate-200 font-bold">${items.length}</span>` : ''}
-                </div>
-                <div class="text-[10px] text-slate-300 truncate">
-                  ${mCal > 0 ? `<b style="color: var(--accent);">${mCal} ккал</b> • Б:${mP}г Ж:${mF}г У:${mC}г` : m.sub}
-                </div>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-2 flex-shrink-0">
-              <button type="button" onclick="event.stopPropagation(); openCatalogSheet('${m.key}')" class="w-8 h-8 rounded-xl themed-btn-primary flex items-center justify-center text-sm font-extrabold shadow">
-                ＋
-              </button>
-              <span class="text-slate-400 text-xs px-1 transition-transform ${isOpen ? 'rotate-180' : ''}">▼</span>
-            </div>
-          </div>
-          ${itemsHtml}
-        `;
-
-        container.appendChild(card);
-      });
-    }
-
-    // ================= ТЕМА И НАВИГАЦИЯ =================
     function togglePetals() {
       state.profile.petalsEnabled = !state.profile.petalsEnabled;
       updatePetalsButtons();
@@ -1965,15 +1557,8 @@
     }
 
     function updatePetalsButtons() {
-      const hBtnText = document.getElementById('headerPetalsText');
       const pBtn = document.getElementById('profilePetalsBtn');
-      if (state.profile.petalsEnabled) {
-        if (hBtnText) hBtnText.textContent = '🌸 ВКЛ';
-        if (pBtn) pBtn.textContent = '🌸 Лепестки: ВКЛ';
-      } else {
-        if (hBtnText) hBtnText.textContent = '🚫 ВЫКЛ';
-        if (pBtn) pBtn.textContent = '🚫 Лепестки: ВЫКЛ';
-      }
+      if (pBtn) pBtn.textContent = state.profile.petalsEnabled ? '🌸 Лепестки: ВКЛ' : '🚫 Лепестки: ВЫКЛ';
     }
 
     function setTheme(themeName) {
@@ -1982,22 +1567,13 @@
       else if (themeName === 'sakura' || themeName === 'sakura_bw') state.profile.petalsEnabled = true;
       applyTheme(themeName);
       persistState();
-      showToast('Тема оформления обновлена!', '🎨');
+      showToast('Тема обновлена!', '🎨');
     }
 
     function applyTheme(themeName) {
-      document.body.className = `min-h-screen p-2.5 sm:p-5 pb-28 theme-${themeName}`;
+      document.body.className = `min-h-screen p-3 sm:p-5 pb-28 theme-${themeName}`;
       const logos = { sakura: '🌸', sakura_bw: '🏴', matcha: '🍵', cyber: '🌌', classic: '⚡', noir: '🏴‍☠️' };
-      const subtitles = {
-        sakura: 'Живая Сакура • Умный рацион',
-        sakura_bw: 'Сакура ЧБ • Японская тушь',
-        matcha: 'Японский Дзен • Срез дерева',
-        cyber: 'Кибер-Сакура • Неоновый стиль',
-        classic: 'Классика • Изумрудное стекло',
-        noir: 'Чистый ЧБ • Минимализм'
-      };
       document.getElementById('headerLogoEmoji').textContent = logos[themeName] || '🌸';
-      document.getElementById('themeSubtitle').textContent = subtitles[themeName] || '';
 
       ['sakura', 'sakura_bw', 'matcha', 'cyber', 'classic', 'noir'].forEach(t => {
         const btn = document.getElementById('theme_' + t);
@@ -2025,14 +1601,8 @@
             viewEl.classList.add('hidden');
           }
         }
-        if (btnEl) {
-          if (t === tabId) {
-            btnEl.className = 'py-1.5 flex flex-col items-center justify-center gap-0.5 rounded-xl transition font-extrabold scale-105';
-            btnEl.style.color = 'var(--accent)';
-          } else {
-            btnEl.className = 'py-1.5 flex flex-col items-center justify-center gap-0.5 rounded-xl transition text-slate-400 font-bold hover:text-white';
-            btnEl.style.color = '';
-          }
+        if (btnEl && t !== 'scanner') {
+          btnEl.style.color = (t === tabId) ? 'var(--accent)' : '';
         }
       });
       if (tabId === 'calendar') renderCalendar();
@@ -2046,7 +1616,517 @@
       return 'Перекус';
     }
 
-    // ================= СВОЯ НОРМА КАЛОРИЙ =================
+    // ================= ИСПРАВЛЕННЫЙ АНТИ-СПАМ ФИЛЬТР (БЕЗ ЛОЖНЫХ СРАБАТЫВАНИЙ НА "КОТЛЕТУ"!) =================
+    function isNonFoodOrGibberishText(str) {
+      const clean = str.toLowerCase().trim();
+      if (clean.length < 2) return 'Слишком короткая надпись';
+      if (/^[0-9\W_]+$/.test(clean)) return 'Набор цифр и символов';
+      if (/(йцук|фыва|ячсм|qwerty|asdf|zxcv|ахах|бред|хрень|фигня)/i.test(clean)) {
+        return `Абракадабра («${str}»)`;
+      }
+      if (!/[аеёиоуыэюяaeiouy]/i.test(clean) && clean.length > 3) {
+        return `Непонятный набор букв («${str}»)`;
+      }
+      // Разбиваем строку строго на отдельные слова (чтобы "котлета" не считалась словом "кот")
+      const words = clean.split(/[^a-zа-яё0-9]+/i).filter(Boolean);
+      for (const w of words) {
+        if (nonFoodExactWords.has(w)) {
+          return str;
+        }
+      }
+      return null;
+    }
+
+    function triggerNotFoodError(detectedThing = 'Непонятный несъедобный объект') {
+      const goofyEmojis = ['🤪', '🗿', '🤡', '🤨', '🫠', '🥴'];
+      const chosenEmoji = goofyEmojis[Math.floor(Math.random() * goofyEmojis.length)];
+      document.getElementById('goofyEmojiDisplay').textContent = chosenEmoji;
+
+      document.getElementById('notFoodReasonText').innerHTML = `
+        ИИ обнаружил на вашем запросе: <b class="text-rose-300">«${detectedThing}»</b>.<br>
+        Это явно не еда, жевать это мы категорически не советуем и считать тут нечего! ${chosenEmoji}
+      `;
+
+      const modal = document.getElementById('notFoodModal');
+      const card = document.getElementById('notFoodCard');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      card.classList.remove('error-modal-shake');
+      void card.offsetWidth;
+      card.classList.add('error-modal-shake');
+    }
+
+    function closeNotFoodModal() {
+      const modal = document.getElementById('notFoodModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // ================= ДОБАВЛЕНИЕ СВОЕГО БЛЮДА ИЛИ ТОВАРА (ИИ ИЛИ ВРУЧНУЮ) =================
+    function aiSearchCatalogFood() {
+      const q = document.getElementById('foodSearchInput').value.trim();
+      closeCatalogSheet();
+      openCustomFoodModal(q);
+    }
+
+    function openCustomFoodModal(prefillText = '') {
+      document.getElementById('cfAiQueryInput').value = prefillText;
+      document.getElementById('cfManualName').value = prefillText;
+      switchCustomFoodTab('ai');
+      const modal = document.getElementById('customFoodModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCustomFoodModal() {
+      const modal = document.getElementById('customFoodModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function switchCustomFoodTab(tab) {
+      const isAi = tab === 'ai';
+      document.getElementById('cfBody_ai').classList.toggle('hidden', !isAi);
+      document.getElementById('cfBody_manual').classList.toggle('hidden', isAi);
+      document.getElementById('cfTab_ai').className = isAi
+        ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+      document.getElementById('cfTab_manual').className = !isAi
+        ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+    }
+
+    async function runCustomFoodAiLookup() {
+      const query = document.getElementById('cfAiQueryInput').value.trim();
+      if (!query) {
+        showToast('Введите название блюда или товара!', '✍️');
+        return;
+      }
+      closeCustomFoodModal();
+      await processSmartTextFoodQuery(query);
+    }
+
+    function saveManualCustomFood() {
+      const name = document.getElementById('cfManualName').value.trim();
+      if (!name) {
+        showToast('Введите название блюда!', '✍️');
+        return;
+      }
+      const nonFood = isNonFoodOrGibberishText(name);
+      if (nonFood) {
+        closeCustomFoodModal();
+        triggerNotFoodError(nonFood);
+        return;
+      }
+
+      const weight = Math.max(1, parseFloat(document.getElementById('cfManualWeight').value) || 100);
+      const mode = document.getElementById('cfManualCalcMode').value;
+      const rawCal = Math.max(0, parseFloat(document.getElementById('cfManualCal').value) || 0);
+      const rawP = Math.max(0, parseFloat(document.getElementById('cfManualP').value) || 0);
+      const rawF = Math.max(0, parseFloat(document.getElementById('cfManualF').value) || 0);
+      const rawC = Math.max(0, parseFloat(document.getElementById('cfManualC').value) || 0);
+
+      let finalCal, finalP, finalF, finalC, p100, f100, c100, cal100;
+      if (mode === 'per100') {
+        const mult = weight / 100;
+        finalCal = Math.round(rawCal * mult);
+        finalP = Math.round(rawP * mult);
+        finalF = Math.round(rawF * mult);
+        finalC = Math.round(rawC * mult);
+        cal100 = rawCal; p100 = rawP; f100 = rawF; c100 = rawC;
+      } else {
+        finalCal = Math.round(rawCal);
+        finalP = Math.round(rawP);
+        finalF = Math.round(rawF);
+        finalC = Math.round(rawC);
+        const div = weight / 100;
+        cal100 = Math.round(rawCal / div);
+        p100 = +(rawP / div).toFixed(1);
+        f100 = +(rawF / div).toFixed(1);
+        c100 = +(rawC / div).toFixed(1);
+      }
+
+      const meal = document.getElementById('mealTypeSelect').value || getAutoMealType();
+
+      if (document.getElementById('cfSaveToCatalog').checked) {
+        const newCatItem = {
+          category: 'store',
+          name: `⭐ ${name}`,
+          p: p100,
+          f: f100,
+          c: c100,
+          cal: cal100,
+          weight,
+          diet: f100 <= 12
+        };
+        state.customFoods.unshift(newCatItem);
+        foodCatalog.unshift(newCatItem);
+        filterFoodCatalog();
+      }
+
+      if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
+      state.days[activeDate].diary.unshift({
+        id: Date.now() + Math.random(),
+        meal,
+        name,
+        weight,
+        cal: finalCal,
+        p: finalP,
+        f: finalF,
+        c: finalC,
+        badge: '✍️ Своё'
+      });
+
+      expandedMeals[meal] = true;
+      persistState();
+      closeCustomFoodModal();
+      renderActiveDay();
+      showToast(`Добавлено: ${name} (+${finalCal} ккал)`);
+    }
+
+    // ================= GEMINI AI РАСЧЕТ ТЕКСТА И ТОВАРОВ =================
+    async function analyzeTextDish() {
+      const text = document.getElementById('customAiDishInput').value.trim();
+      if (!text) {
+        showToast('Напишите блюдо или товар в поле ввода!', '✍️');
+        return;
+      }
+      await processSmartTextFoodQuery(text);
+    }
+
+    async function processSmartTextFoodQuery(text) {
+      const nonFoodReason = isNonFoodOrGibberishText(text);
+      if (nonFoodReason) {
+        triggerNotFoodError(nonFoodReason);
+        return;
+      }
+
+      const btn = document.getElementById('textAnalyzeBtn');
+      if (btn) btn.textContent = '⏳ ИИ считает...';
+
+      const key = state.apiKey.trim();
+      if (key.length > 15) {
+        const model = state.preferredModel || 'gemini-3.8-flash';
+        try {
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{
+                parts: [{
+                  text: `Ты эксперт-диетолог и база магазинных товаров. Пользователь написал: "${text}". Если это НЕ съедобно (например, мебель, техника, камень, животное), верни СТРОГО JSON без markdown: {"isFood": false, "detectedObject": "название предмета"}. Если это еда, напиток или магазинный товар (лапша, снэк, блюдо), найди его реальные КБЖУ и верни СТРОГО JSON без markdown: {"isFood": true, "title": "Точное название блюда или товара", "items": [{"name": "Компонент / Продукт", "weight": 200, "p100": 12, "f100": 8, "c100": 25}]}`
+                }]
+              }]
+            })
+          });
+          const data = await res.json();
+          const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+          const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const parsed = JSON.parse(jsonMatch[0]);
+            if (btn) btn.textContent = '✨ Найти и рассчитать';
+            if (parsed.isFood === false) {
+              triggerNotFoodError(parsed.detectedObject || text);
+              return;
+            }
+            if (parsed.items && parsed.items.length > 0) {
+              openAiModalWithData(parsed.title || text, parsed.items, `✨ Найдено через Gemini AI (${model})`);
+              return;
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (btn) btn.textContent = '✨ Найти и рассчитать';
+
+      // Умный локальный поиск по 165+ позициям и ключевым корням
+      const q = text.toLowerCase();
+      const words = q.split(/[^a-zа-яё0-9]+/i).filter(w => w.length >= 3);
+      const matches = foodCatalog.filter(f => {
+        const fn = f.name.toLowerCase();
+        return fn.includes(q) || words.some(w => fn.includes(w.slice(0, Math.max(3, w.length - 1))));
+      });
+
+      if (matches.length > 0) {
+        const items = matches.slice(0, 3).map(m => ({
+          name: m.name,
+          weight: m.weight,
+          p100: m.p,
+          f100: m.f,
+          c100: m.c
+        }));
+        openAiModalWithData(text, items, '✨ Найдено в базе продуктов');
+      } else {
+        openAiModalWithData(text, [
+          { name: text, weight: 220, p100: 13, f100: 9, c100: 21 }
+        ], '✨ Оценка КБЖУ (можно подрегулировать)');
+      }
+    }
+
+    // ================= AI-СКАНЕР ФОТО (ТАРЕЛКИ + МАГАЗИННЫЕ ТОВАРЫ И УПАКОВКИ) =================
+    function saveApiKey() {
+      state.apiKey = document.getElementById('geminiApiKey').value.trim();
+      document.getElementById('apiKeyStatus').textContent = state.apiKey ? 'Ключ сохранен' : 'Ключ не введен';
+      persistState();
+    }
+
+    function saveModelChoice() {
+      state.preferredModel = document.getElementById('geminiModelSelect').value;
+      document.getElementById('aiActiveModelBadge').textContent = state.preferredModel;
+      persistState();
+    }
+
+    function clearApiKey() {
+      state.apiKey = '';
+      document.getElementById('geminiApiKey').value = '';
+      document.getElementById('apiKeyStatus').textContent = 'Ключ сброшен';
+      document.getElementById('aiDiagnosticBox').classList.add('hidden');
+      persistState();
+    }
+
+    function showDiagnosticMessage(type, title, desc, actionBtnHtml = '') {
+      const box = document.getElementById('aiDiagnosticBox');
+      box.classList.remove('hidden');
+      box.className = type === 'success'
+        ? 'rounded-xl p-3 border border-emerald-500/40 bg-emerald-950/50 text-emerald-200 text-xs space-y-1.5'
+        : type === 'warn'
+          ? 'rounded-xl p-3 border border-amber-500/40 bg-amber-950/60 text-amber-200 text-xs space-y-1.5'
+          : 'rounded-xl p-3 border border-rose-500/40 bg-rose-950/60 text-rose-200 text-xs space-y-1.5';
+      box.innerHTML = `
+        <div class="font-extrabold">${title}</div>
+        <div class="leading-relaxed opacity-95">${desc}</div>
+        ${actionBtnHtml ? `<div class="pt-1">${actionBtnHtml}</div>` : ''}
+      `;
+    }
+
+    async function autoDetectBestModel() {
+      const key = state.apiKey.trim();
+      if (!key) {
+        showDiagnosticMessage('warn', '🔑 Введите API-ключ', 'Вставьте ваш ключ AIzaSy... в поле выше.');
+        return null;
+      }
+      document.getElementById('apiKeyStatus').textContent = '⏳ Поиск моделей...';
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
+        const data = await res.json();
+        if (data.error) {
+          explainAndFixApiError(data.error.message || 'Ошибка доступа');
+          return null;
+        }
+        const models = (data.models || [])
+          .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+          .map(m => m.name.replace('models/', ''));
+
+        const preferredOrder = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-flash-latest'];
+        let found = preferredOrder.find(p => models.includes(p)) || models.find(m => m.includes('flash')) || models[0];
+        if (found) {
+          state.preferredModel = found;
+          const sel = document.getElementById('geminiModelSelect');
+          if (![...sel.options].some(o => o.value === found)) {
+            const opt = document.createElement('option');
+            opt.value = found;
+            opt.textContent = `✨ ${found}`;
+            sel.appendChild(opt);
+          }
+          sel.value = found;
+          document.getElementById('aiActiveModelBadge').textContent = found;
+          document.getElementById('apiKeyStatus').textContent = `✅ ${found}`;
+          persistState();
+          showDiagnosticMessage('success', `✅ Подключена модель: ${found}`, 'Распознавание блюд и магазинных товаров готово к работе!');
+          return found;
+        }
+      } catch (e) {
+        showDiagnosticMessage('error', '⚠️ Ошибка сети', 'Проверьте интернет или включите VPN.');
+      }
+      return null;
+    }
+
+    function explainAndFixApiError(rawMessage) {
+      const msg = String(rawMessage || '');
+      const suggestedMatch = msg.match(/models\/([a-zA-Z0-9.\-_]+)/g);
+      if (msg.includes('no longer available') || msg.includes('not found') || msg.includes('not supported')) {
+        let suggestedModel = 'gemini-3.8-flash';
+        if (suggestedMatch && suggestedMatch.length > 0) {
+          const lastMatch = suggestedMatch[suggestedMatch.length - 1].replace('models/', '');
+          if (lastMatch && !msg.includes(`model models/${lastMatch} is no longer`)) {
+            suggestedModel = lastMatch;
+          }
+        }
+        state.preferredModel = suggestedModel;
+        const sel = document.getElementById('geminiModelSelect');
+        if (![...sel.options].some(o => o.value === suggestedModel)) {
+          const opt = document.createElement('option');
+          opt.value = suggestedModel;
+          opt.textContent = `⚡ ${suggestedModel}`;
+          sel.appendChild(opt);
+        }
+        sel.value = suggestedModel;
+        document.getElementById('aiActiveModelBadge').textContent = suggestedModel;
+        persistState();
+        showDiagnosticMessage('warn', `🔄 Модель обновлена на ${suggestedModel}`, `Сервер сообщил: "${msg}". Мы автоматически переключили модель.`);
+        return;
+      }
+      if (msg.toLowerCase().includes('location is not supported')) {
+        showDiagnosticMessage('warn', '🌍 Включите VPN', 'Google API блокирует прямые запросы без VPN.');
+        return;
+      }
+      showDiagnosticMessage('warn', 'ℹ️ Ответ Google API', msg);
+    }
+
+    async function testGeminiKey() {
+      const key = state.apiKey.trim();
+      if (!key) {
+        showDiagnosticMessage('warn', '🔑 Ключ не введен', 'Вставьте ваш ключ Gemini API выше.');
+        return;
+      }
+      const model = state.preferredModel || 'gemini-3.8-flash';
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contents: [{ parts: [{ text: 'ОК' }] }] })
+        });
+        const data = await res.json();
+        if (data.candidates) {
+          document.getElementById('apiKeyStatus').textContent = `✅ ${model} активна`;
+          showDiagnosticMessage('success', `🎉 Ключ и модель ${model} работают!`, 'Можете фотографировать как готовые блюда, так и товары из магазина.');
+        } else {
+          explainAndFixApiError(data.error?.message || 'Ошибка API');
+        }
+      } catch (e) {
+        showDiagnosticMessage('error', '🌐 Нет связи', 'Проверьте интернет или VPN.');
+      }
+    }
+
+    function triggerPhotoSelect() {
+      const input = document.getElementById('photoInput');
+      input.value = '';
+      input.click();
+    }
+
+    function compressAndAnalyzeImage(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const maxDim = 800;
+            let w = img.width, h = img.height;
+            if (w > h && w > maxDim) { h = Math.round((h * maxDim) / w); w = maxDim; }
+            else if (h > maxDim) { w = Math.round((w * maxDim) / h); h = maxDim; }
+            canvas.width = w; canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+            resolve({ dataUrl: jpegDataUrl, base64: jpegDataUrl.split(',')[1] });
+          };
+          img.onerror = reject;
+          img.src = evt.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handlePhotoUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const scanner = document.getElementById('scannerOverlay');
+      const statusText = document.getElementById('scannerStatusText');
+      const preview = document.getElementById('photoPreview');
+      const prompt = document.getElementById('uploadPrompt');
+
+      scanner.classList.remove('hidden');
+      statusText.textContent = 'СЖАТИЕ И АНАЛИЗ ФОТО...';
+
+      try {
+        const processed = await compressAndAnalyzeImage(file);
+        preview.src = processed.dataUrl;
+        preview.classList.remove('hidden');
+        prompt.classList.add('opacity-0');
+
+        const key = state.apiKey.trim();
+
+        if (key.length > 15) {
+          const modelsToTry = [
+            state.preferredModel || 'gemini-3.8-flash',
+            'gemini-3.8-flash',
+            'gemini-2.5-flash',
+            'gemini-flash-latest'
+          ].filter((v, i, a) => a.indexOf(v) === i);
+
+          let lastApiError = '';
+
+          for (const modelName of modelsToTry) {
+            statusText.textContent = `AI РАСПОЗНАЕТ БЛЮДО / ТОВАР (${modelName})...`;
+            try {
+              const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${key}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  contents: [{
+                    parts: [
+                      { text: 'Ты эксперт-диетолог и сканер магазинных товаров. Посмотри на фото. 1) Если на фото НЕ ЕДА, НЕ НАПИТОК и НЕ УПАКОВКА ПРОДУКТА (например: человек, кот, собака, клавиатура, обувь, машина, мебель, пустая комната), верни СТРОГО чистый JSON без markdown: {"isFood": false, "detectedObject": "краткое название предмета на русском"}. 2) Если на фото МАГАЗИННЫЙ ТОВАР В УПАКОВКЕ (например: пачка лапши, батончик, йогурт, снек, напиток, готовый лоток или таблица КБЖУ на этикетке), прочитай бренд, название, вес упаковки и найди его КБЖУ на 100г. 3) Если на фото ГОТОВОЕ БЛЮДО на тарелке, разложи его на ингредиенты. Верни СТРОГО чистый JSON без markdown: {"isFood": true, "isPackagedProduct": true/false, "title": "Точное название блюда или Брендового товара", "items": [{"name": "Название продукта / ингредиента", "weight": 140, "p100": 10, "f100": 14, "c100": 58}]}' },
+                      { inline_data: { mime_type: 'image/jpeg', data: processed.base64 } }
+                    ]
+                  }]
+                })
+              });
+              const data = await response.json();
+
+              if (data.error) {
+                lastApiError = data.error.message || '';
+                const mMatch = lastApiError.match(/use models\/([a-zA-Z0-9.\-_]+)/);
+                if (mMatch && mMatch[1] && !modelsToTry.includes(mMatch[1])) {
+                  modelsToTry.push(mMatch[1]);
+                }
+                continue;
+              }
+
+              const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+              const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+              if (jsonMatch) {
+                const parsed = JSON.parse(jsonMatch[0]);
+                state.preferredModel = modelName;
+                document.getElementById('aiActiveModelBadge').textContent = modelName;
+                persistState();
+                scanner.classList.add('hidden');
+
+                if (parsed.isFood === false) {
+                  triggerNotFoodError(parsed.detectedObject || 'Несъедобный предмет на фото');
+                  return;
+                }
+
+                if (parsed.items && parsed.items.length > 0) {
+                  const badgeTitle = parsed.isPackagedProduct
+                    ? `🛒 Магазинный товар распознан (${modelName})`
+                    : `✨ Блюдо распознано (${modelName})`;
+                  openAiModalWithData(parsed.title || 'Распознанный продукт', parsed.items, badgeTitle);
+                  return;
+                }
+              }
+            } catch (apiErr) {
+              lastApiError = apiErr.message || 'Ошибка соединения';
+            }
+          }
+
+          scanner.classList.add('hidden');
+          if (lastApiError) explainAndFixApiError(lastApiError);
+          return;
+        }
+
+        scanner.classList.add('hidden');
+        showDiagnosticMessage('warn', '🔑 Введите ключ Gemini API', 'Для распознавания фотографий блюд и магазинных этикеток вставьте ключ AIzaSy... в поле выше.');
+      } catch (err) {
+        scanner.classList.add('hidden');
+        triggerNotFoodError('Поврежденный файл');
+      }
+    }
+
+    // ================= УПРАВЛЕНИЕ СВОЕЙ НОРМОЙ КАЛОРИЙ И БЖУ =================
     function getAutoMacrosForCalories(calValue) {
       const p = state.profile;
       const protShare = p.goal === 'loss' ? 0.33 : 0.30;
@@ -2090,7 +2170,7 @@
       persistState();
       renderActiveDay();
       renderCalendar();
-      showToast(useCustom ? 'Включена своя норма калорий 🎯' : 'Включен авто-расчет 🧮', '⚡');
+      showToast(useCustom ? 'Включена своя норма 🎯' : 'Включена авто-формула 🧮', '⚡');
     }
 
     function onProfileCustomCalInput(val) {
@@ -2100,16 +2180,14 @@
       state.profile.customCal = num;
       if (!state.profile.useCustomMacros) {
         const m = getAutoMacrosForCalories(num);
-        state.profile.customP = m.p;
-        state.profile.customF = m.f;
-        state.profile.customC = m.c;
+        state.profile.customP = m.p; state.profile.customF = m.f; state.profile.customC = m.c;
         document.getElementById('profCustomP').value = m.p;
         document.getElementById('profCustomF').value = m.f;
         document.getElementById('profCustomC').value = m.c;
       }
       updateCalorieModeButtonsUI();
       const targets = getCalculatedTargets();
-      document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б: ${targets.p}г, Ж: ${targets.f}г, У: ${targets.c}г)`;
+      document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б:${targets.p} Ж:${targets.f} У:${targets.c})`;
       persistState();
       renderActiveDay();
       renderCalendar();
@@ -2119,7 +2197,7 @@
       document.getElementById('profCustomCalInput').value = calVal;
       state.profile.useCustomMacros = false;
       onProfileCustomCalInput(calVal);
-      showToast(`Установлена норма: ${calVal} ккал`, '🎯');
+      showToast(`Норма: ${calVal} ккал`, '🎯');
     }
 
     function onProfileCustomMacroInput() {
@@ -2129,9 +2207,7 @@
       if (pVal > 0 && fVal > 0 && cVal > 0) {
         state.profile.useCustomCal = true;
         state.profile.useCustomMacros = true;
-        state.profile.customP = pVal;
-        state.profile.customF = fVal;
-        state.profile.customC = cVal;
+        state.profile.customP = pVal; state.profile.customF = fVal; state.profile.customC = cVal;
         updateCalorieModeButtonsUI();
         persistState();
         renderActiveDay();
@@ -2145,12 +2221,14 @@
       const badge = document.getElementById('normModeBadge');
 
       if (btnAuto && btnCustom) {
-        btnAuto.className = !isCustom ? 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition themed-btn-primary' : 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition text-slate-300';
-        btnCustom.className = isCustom ? 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition themed-btn-primary' : 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition text-slate-300';
+        btnAuto.className = !isCustom
+          ? 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition themed-btn-primary'
+          : 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition text-slate-300';
+        btnCustom.className = isCustom
+          ? 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition themed-btn-primary'
+          : 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition text-slate-300';
       }
-      if (badge) {
-        badge.textContent = isCustom ? 'Своя норма ✏️' : 'Норма ✏️';
-      }
+      if (badge) badge.textContent = isCustom ? '🎯 Своя норма' : '🧮 Авто-норма';
     }
 
     function openCustomCalModal() {
@@ -2191,8 +2269,12 @@
     }
 
     function updateModalCalModeButtons() {
-      document.getElementById('modalMode_auto').className = !modalTempUseCustom ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary' : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300';
-      document.getElementById('modalMode_custom').className = modalTempUseCustom ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary' : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300';
+      document.getElementById('modalMode_auto').className = !modalTempUseCustom
+        ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300';
+      document.getElementById('modalMode_custom').className = modalTempUseCustom
+        ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300';
     }
 
     function onModalCalInput(val) {
@@ -2232,191 +2314,598 @@
       renderActiveDay();
       renderCalendar();
       closeCustomCalModal();
-      showToast(`Норма калорий сохранена: ${getCalculatedTargets().cal} ккал`, '🎯');
+      showToast(`Норма сохранена: ${getCalculatedTargets().cal} ккал!`, '🎯');
     }
 
-    // ================= ИСПРАВЛЕННАЯ ПРОВЕРКА "ЭТО НЕ ЕДА!" (ПО ЦЕЛЫМ СЛОВАМ) =================
-    function triggerNotFoodError(detectedThing = 'Непонятный несъедобный объект') {
-      const goofyEmojis = ['🤪', '🗿', '🤡', '🤨', '🫠', '🥴'];
-      const chosenEmoji = goofyEmojis[Math.floor(Math.random() * goofyEmojis.length)];
-      document.getElementById('goofyEmojiDisplay').textContent = chosenEmoji;
+    // ================= ПЛАВНАЯ АНИМАЦИЯ ЦИФР И ОКНО РЕЗУЛЬТАТОВ СКАНЕРА =================
+    function animateNumberValue(elId, endVal, suffix = '', duration = 650, startVal = 0) {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      const startTime = performance.now();
+      const from = Math.round(startVal);
+      const to = Math.round(endVal);
+      if (from === to) { el.textContent = `${to}${suffix}`; return; }
 
-      document.getElementById('notFoodReasonText').innerHTML = `
-        ИИ обнаружил на вашем запросе: <b class="text-rose-300">«${detectedThing}»</b>.<br>
-        Это явно не еда, жевать это мы категорически не советуем и считать тут нечего! ${chosenEmoji}
-      `;
+      function step(now) {
+        const progress = Math.min(1, (now - startTime) / duration);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        el.textContent = `${Math.round(from + (to - from) * eased)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
 
-      const modal = document.getElementById('notFoodModal');
-      const card = document.getElementById('notFoodCard');
+    function openAiModalWithData(title, items, sourceText) {
+      popupAiItems = items;
+      document.getElementById('popDishTitleInput').value = title;
+      document.getElementById('popSourceLabel').textContent = sourceText || '✨ AI Распознавание';
+      document.getElementById('popMealSelect').value = getAutoMealType();
+
+      const modal = document.getElementById('aiPopupModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
-
-      card.classList.remove('error-modal-shake');
-      void card.offsetWidth;
-      card.classList.add('error-modal-shake');
+      renderPopupModalItems(true);
     }
 
-    function closeNotFoodModal() {
-      const modal = document.getElementById('notFoodModal');
+    function addBlankIngredientToPopup() {
+      popupAiItems.push({ name: 'Доп. ингредиент', weight: 100, p100: 10, f100: 5, c100: 15 });
+      renderPopupModalItems(false);
+    }
+
+    function removePopupIngredient(idx) {
+      popupAiItems.splice(idx, 1);
+      renderPopupModalItems(false);
+    }
+
+    function renderPopupModalItems(animateReveal = false) {
+      const list = document.getElementById('popIngredientsList');
+      list.innerHTML = '';
+      let totalWeight = 0, totalCal = 0, totalP = 0, totalF = 0, totalC = 0;
+
+      popupAiItems.forEach((item, idx) => {
+        const w = parseFloat(item.weight) || 0;
+        totalWeight += w;
+        const m = w / 100;
+        const p = Math.round(item.p100 * m);
+        const f = Math.round(item.f100 * m);
+        const c = Math.round(item.c100 * m);
+        const cal = Math.round((p * 4) + (f * 9) + (c * 4));
+        totalP += p; totalF += f; totalC += c; totalCal += cal;
+
+        const row = document.createElement('div');
+        row.className = `themed-box p-2.5 flex items-center justify-between gap-2 text-xs ${animateReveal ? 'cascade-item' : ''}`;
+        if (animateReveal) row.style.animationDelay = `${100 + idx * 90}ms`;
+        row.innerHTML = `
+          <div class="flex-1 min-w-0">
+            <input type="text" value="${item.name}" oninput="popupAiItems[${idx}].name = this.value" class="w-full bg-transparent text-white font-bold focus:outline-none" />
+            <div class="text-[10px] text-slate-300 mt-0.5">
+              <b style="color: var(--accent);">${cal} ккал</b> • Б:${p}г Ж:${f}г У:${c}г
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 flex-shrink-0">
+            <input type="number" value="${w}" min="0" max="2000" step="10" oninput="popupAiItems[${idx}].weight = parseFloat(this.value)||0; updatePopupTotalsOnly()" onchange="renderPopupModalItems(false)" class="w-16 bg-black/40 border border-white/15 rounded-lg px-2 py-1 text-right text-white font-extrabold text-xs">
+            <span class="text-slate-300 text-[11px]">г</span>
+            <button type="button" onclick="removePopupIngredient(${idx})" class="text-slate-400 hover:text-rose-400 px-1">✕</button>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+
+      const macroSum = Math.max(1, totalP + totalF + totalC);
+      document.getElementById('popBarP').style.width = `${Math.min(100, Math.round((totalP / macroSum) * 100))}%`;
+      document.getElementById('popBarF').style.width = `${Math.min(100, Math.round((totalF / macroSum) * 100))}%`;
+      document.getElementById('popBarC').style.width = `${Math.min(100, Math.round((totalC / macroSum) * 100))}%`;
+
+      if (animateReveal) {
+        animateNumberValue('popTotalWeight', totalWeight, ' г', 700, 0);
+        animateNumberValue('popTotalCal', totalCal, ' ккал', 850, 0);
+        animateNumberValue('popTotalP', totalP, ' г', 750, 0);
+        animateNumberValue('popTotalF', totalF, ' г', 750, 0);
+        animateNumberValue('popTotalC', totalC, ' г', 750, 0);
+      } else {
+        updatePopupTotalsOnly();
+      }
+    }
+
+    function updatePopupTotalsOnly() {
+      let totalWeight = 0, totalCal = 0, totalP = 0, totalF = 0, totalC = 0;
+      popupAiItems.forEach(item => {
+        const w = parseFloat(item.weight) || 0;
+        totalWeight += w;
+        const m = w / 100;
+        const p = Math.round(item.p100 * m);
+        const f = Math.round(item.f100 * m);
+        const c = Math.round(item.c100 * m);
+        totalP += p; totalF += f; totalC += c;
+        totalCal += Math.round((p * 4) + (f * 9) + (c * 4));
+      });
+      document.getElementById('popTotalWeight').textContent = `${totalWeight} г`;
+      document.getElementById('popTotalCal').textContent = `${totalCal} ккал`;
+      document.getElementById('popTotalP').textContent = `${totalP} г`;
+      document.getElementById('popTotalF').textContent = `${totalF} г`;
+      document.getElementById('popTotalC').textContent = `${totalC} г`;
+    }
+
+    function closeAiModal() {
+      const modal = document.getElementById('aiPopupModal');
       modal.classList.add('hidden');
       modal.classList.remove('flex');
     }
 
-    // Точная проверка по отдельным словам (теперь "котлета" никогда не совпадет со словом "кот")
-    function isNonFoodOrGibberishText(str) {
-      const clean = str.toLowerCase().trim();
-      if (clean.length < 2) return 'Слишком короткая надпись';
-      if (/^[0-9\W_]+$/.test(clean)) return 'Набор цифр и символов';
-      if (/(йцук|фыва|ячсм|qwerty|asdf|zxcv|ахах|бред|хрень|фигня)/i.test(clean)) {
-        return `Абракадабра («${str}»)`;
-      }
-      if (!/[аеёиоуыэюяaeiouy]/i.test(clean) && clean.length > 3) {
-        return `Непонятный набор букв («${str}»)`;
-      }
+    function confirmAiModalAdd() {
+      const meal = document.getElementById('popMealSelect').value;
+      const customTitle = document.getElementById('popDishTitleInput').value.trim();
 
-      const words = clean.split(/[^а-яёa-z0-9]+/i).filter(Boolean);
-      for (const w of words) {
-        if (nonFoodExactWords.has(w)) {
-          return str;
-        }
-      }
-      return null;
-    }
+      let totalW = 0, totalCal = 0, totalP = 0, totalF = 0, totalC = 0;
+      popupAiItems.forEach(item => {
+        if (item.weight <= 0) return;
+        const m = item.weight / 100;
+        const p = Math.round(item.p100 * m);
+        const f = Math.round(item.f100 * m);
+        const c = Math.round(item.c100 * m);
+        totalW += item.weight;
+        totalP += p; totalF += f; totalC += c;
+        totalCal += Math.round((p * 4) + (f * 9) + (c * 4));
+      });
+      if (totalW <= 0) return;
 
-    // ================= ИИ-СКАНЕР ФОТО (ТАРЕЛКА + МАГАЗИННЫЕ ТОВАРЫ / УПАКОВКИ + ЭТИКЕТКИ) =================
-    function saveApiKey() {
-      state.apiKey = document.getElementById('geminiApiKey').value.trim();
-      document.getElementById('apiKeyStatus').textContent = state.apiKey ? 'Ключ сохранен' : 'Ключ не введен';
+      if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
+      state.days[activeDate].diary.unshift({
+        id: Date.now() + Math.random(),
+        meal,
+        name: customTitle || 'Блюдо по фото',
+        weight: totalW,
+        cal: totalCal,
+        p: totalP,
+        f: totalF,
+        c: totalC,
+        badge: '📸 AI'
+      });
+
+      expandedMeals[meal] = true;
       persistState();
+      closeAiModal();
+      switchMainTab('diary');
+      renderActiveDay();
+      showToast(`«${customTitle || 'Блюдо'}» (+${totalCal} ккал) внесено!`);
     }
 
-    function saveModelChoice() {
-      state.preferredModel = document.getElementById('geminiModelSelect').value;
-      document.getElementById('aiActiveModelBadge').textContent = state.preferredModel;
+    // ================= УМНЫЕ РЕКОМЕНДАЦИИ И СВОРАЧИВАЕМЫЕ КАРТОЧКИ ПРИЕМОВ ПИЩИ =================
+    function setGoalQuick(newGoal) {
+      state.profile.goal = newGoal;
+      document.getElementById('profGoal').value = newGoal;
+      loadProfileToUI();
       persistState();
+      renderActiveDay();
     }
 
-    function clearApiKey() {
-      state.apiKey = '';
-      document.getElementById('geminiApiKey').value = '';
-      document.getElementById('apiKeyStatus').textContent = 'Ключ сброшен';
-      document.getElementById('aiDiagnosticBox').classList.add('hidden');
-      persistState();
+    function updateQuickGoalButtonsUI() {
+      const currentGoal = state.profile.goal || 'maint';
+      ['loss', 'maint', 'gain'].forEach(g => {
+        const btn = document.getElementById('quickGoal_' + g);
+        if (!btn) return;
+        btn.className = (g === currentGoal)
+          ? 'px-2 py-1 rounded-lg text-[10px] font-extrabold transition themed-btn-primary'
+          : 'px-2 py-1 rounded-lg text-[10px] font-extrabold transition text-slate-300';
+      });
     }
 
-    function showDiagnosticMessage(type, title, desc, actionBtnHtml = '') {
-      const box = document.getElementById('aiDiagnosticBox');
-      box.classList.remove('hidden');
-      box.className = type === 'success'
-        ? 'rounded-xl p-3 border border-emerald-500/40 bg-emerald-950/50 text-emerald-200 text-xs space-y-1.5'
-        : (type === 'warn'
-            ? 'rounded-xl p-3 border border-amber-500/40 bg-amber-950/60 text-amber-200 text-xs space-y-1.5'
-            : 'rounded-xl p-3 border border-rose-500/40 bg-rose-950/60 text-rose-200 text-xs space-y-1.5');
-      box.innerHTML = `<div class="font-extrabold">${title}</div><div class="leading-relaxed opacity-95">${desc}</div>${actionBtnHtml ? `<div class="pt-1">${actionBtnHtml}</div>` : ''}`;
-    }
+    function renderSmartDeficitAnalysis(targets, eatenCal, eatenP, eatenF, eatenC) {
+      updateQuickGoalButtonsUI();
+      const defCal = Math.max(0, targets.cal - eatenCal);
+      const defP = Math.max(0, targets.p - eatenP);
+      const defF = Math.max(0, targets.f - eatenF);
+      const defC = Math.max(0, targets.c - eatenC);
+      const goal = state.profile.goal || 'maint';
 
-    async function autoDetectBestModel() {
-      const key = state.apiKey.trim();
-      if (!key) {
-        showDiagnosticMessage('warn', '🔑 Сначала введите API-ключ', 'Вставьте ключ AIzaSy... в поле выше.');
-        return null;
-      }
-      document.getElementById('apiKeyStatus').textContent = '⏳ Поиск моделей...';
-      try {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
-        const data = await res.json();
-        if (data.error) {
-          explainAndFixApiError(data.error.message || 'Ошибка доступа');
-          return null;
-        }
-        const models = (data.models || [])
-          .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
-          .map(m => m.name.replace('models/', ''));
+      document.getElementById('deficitBadgeP').textContent = defP > 0 ? `(-${defP}г)` : '✅';
+      document.getElementById('deficitBadgeF').textContent = defF > 0 ? `(-${defF}г)` : '✅';
+      document.getElementById('deficitBadgeC').textContent = defC > 0 ? `(-${defC}г)` : '✅';
 
-        const preferredOrder = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.5-pro'];
-        let found = preferredOrder.find(p => models.includes(p)) || models.find(m => m.includes('flash')) || models[0];
-        if (found) {
-          state.preferredModel = found;
-          const sel = document.getElementById('geminiModelSelect');
-          if (![...sel.options].some(o => o.value === found)) {
-            const opt = document.createElement('option');
-            opt.value = found;
-            opt.textContent = `✨ ${found}`;
-            sel.appendChild(opt);
-          }
-          sel.value = found;
-          document.getElementById('aiActiveModelBadge').textContent = found;
-          document.getElementById('apiKeyStatus').textContent = `✅ ${found}`;
-          persistState();
-          showDiagnosticMessage('success', `✅ Подключена модель: ${found}`, 'Теперь сканер фото и поиск товаров работают напрямую через нейросеть!');
-          return found;
-        }
-      } catch (e) {
-        showDiagnosticMessage('error', '⚠️ Ошибка сети', 'Проверьте интернет или включите VPN.');
-      }
-      return null;
-    }
+      const statusEl = document.getElementById('smartDeficitStatus');
+      const descEl = document.getElementById('smartDeficitDescription');
+      const gridEl = document.getElementById('smartRecommendationsGrid');
+      gridEl.innerHTML = '';
 
-    function explainAndFixApiError(rawMessage) {
-      const msg = String(rawMessage || '');
-      const suggestedMatch = msg.match(/models\/([a-zA-Z0-9.\-_]+)/g);
-      if (msg.includes('no longer available') || msg.includes('not found') || msg.includes('not supported')) {
-        let suggestedModel = 'gemini-3.8-flash';
-        if (suggestedMatch && suggestedMatch.length > 0) {
-          const lastMatch = suggestedMatch[suggestedMatch.length - 1].replace('models/', '');
-          if (lastMatch && !msg.includes(`model models/${lastMatch} is no longer`)) suggestedModel = lastMatch;
-        }
-        state.preferredModel = suggestedModel;
-        document.getElementById('aiActiveModelBadge').textContent = suggestedModel;
-        persistState();
-        showDiagnosticMessage('warn', `🔄 Модель переключена на ${suggestedModel}`, `Сервер сообщил: <i>"${msg}"</i>`, `<button type="button" onclick="testGeminiKey()" class="px-3 py-1.5 themed-btn-primary text-xs">✅ Проверить</button>`);
+      if (defCal <= 60 && defP <= 8) {
+        statusEl.textContent = '🎉 Дневная норма выполнена!';
+        descEl.innerHTML = 'Вы закрыли план по калориям и БЖУ.';
         return;
       }
-      if (msg.toLowerCase().includes('location is not supported')) {
-        showDiagnosticMessage('warn', '🌍 Включите VPN для запросов к Google AI', 'Сервер вернул "User location is not supported". Включите VPN и повторите попытку.');
-        return;
-      }
-      showDiagnosticMessage('warn', 'ℹ️ Ответ от сервера Google API', msg, `<button type="button" onclick="autoDetectBestModel()" class="px-3 py-1.5 themed-btn-primary text-xs">✨ Авто-подбор модели</button>`);
-    }
 
-    async function testGeminiKey() {
-      const key = state.apiKey.trim();
-      if (!key) {
-        showDiagnosticMessage('warn', '🔑 Ключ не введен', 'Вставьте ваш ключ Gemini API выше.');
-        return;
-      }
-      const model = state.preferredModel || 'gemini-3.8-flash';
-      document.getElementById('apiKeyStatus').textContent = `⏳ Проверка...`;
-      try {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contents: [{ parts: [{ text: 'ОК' }] }] })
+      statusEl.textContent = goal === 'loss'
+        ? '🥗 ПП-Дефицит (фастфуд исключен)'
+        : goal === 'maint'
+          ? '⚖️ Поддержание (баланс)'
+          : '💪 Набор массы (энергия и белок)';
+
+      descEl.innerHTML = `Не хватает: <b class="text-sky-300">${defP}г Б</b>, <b class="text-amber-300">${defF}г Ж</b>, <b class="text-purple-300">${defC}г У</b> (<b>${defCal} ккал</b>). Рекомендуем:`;
+
+      const candidates = foodCatalog
+        .map((food, idx) => ({ food, idx }))
+        .filter(({ food }) => {
+          if (food.category === 'drinks' && food.cal < 25) return false;
+          if (goal === 'loss' && (!food.diet || food.category === 'fastfood' || food.category === 'bakery')) return false;
+          if (goal === 'maint' && food.category === 'fastfood' && defF < 18) return false;
+          return true;
         });
-        const data = await res.json();
-        if (data.candidates) {
-          document.getElementById('apiKeyStatus').textContent = `✅ ${model}`;
-          showDiagnosticMessage('success', `🎉 Модель ${model} активна!`, 'Сканер блюд, магазинных упаковок и текстовый ИИ готовы к работе.');
-        } else {
-          explainAndFixApiError(data.error?.message || 'Ошибка API');
+
+      const scoredFoods = candidates.map(({ food, idx }) => {
+        let recWeight = food.weight;
+        const mult = recWeight / 100;
+        const itemP = Math.round(food.p * mult);
+        const itemF = Math.round(food.f * mult);
+        const itemC = Math.round(food.c * mult);
+        const itemCal = Math.round(food.cal * mult);
+
+        let score = Math.min(defP, itemP) * 3.5 + Math.min(defC, itemC) * 1.6;
+        if (goal === 'loss' && food.category === 'fitness') score += 30;
+        if (itemCal > defCal + 140) score -= (itemCal - defCal);
+
+        return { food, idx, recWeight, itemP, itemF, itemC, itemCal, score };
+      });
+
+      scoredFoods.sort((a, b) => b.score - a.score);
+      scoredFoods.slice(0, 4).forEach(rec => {
+        const card = document.createElement('div');
+        card.className = 'themed-box p-2.5 flex items-center justify-between gap-2';
+        card.innerHTML = `
+          <div class="min-w-0 flex-1">
+            <div class="text-xs font-bold text-white truncate">${rec.food.name}</div>
+            <div class="text-[10px] text-slate-300">${rec.recWeight}г • <b>${rec.itemCal} ккал</b> • Б:${rec.itemP}г</div>
+          </div>
+          <button type="button" onclick="quickAddRecommendedFood(${rec.idx}, ${rec.recWeight})" class="px-2.5 py-1.5 themed-btn-primary text-[10px] flex-shrink-0">
+            + Внести
+          </button>
+        `;
+        gridEl.appendChild(card);
+      });
+    }
+
+    function quickAddRecommendedFood(catalogIdx, customWeight) {
+      const food = foodCatalog[catalogIdx];
+      if (!food) return;
+      const w = customWeight || food.weight;
+      const mult = w / 100;
+      const meal = getAutoMealType();
+      const item = {
+        id: Date.now() + Math.random(),
+        meal,
+        name: food.name,
+        weight: w,
+        cal: Math.round(food.cal * mult),
+        p: Math.round(food.p * mult),
+        f: Math.round(food.f * mult),
+        c: Math.round(food.c * mult),
+        badge: '🧠 Совет'
+      };
+      if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
+      state.days[activeDate].diary.unshift(item);
+      expandedMeals[meal] = true;
+      persistState();
+      renderActiveDay();
+      showToast(`Добавлено в ${meal}: ${food.name}`);
+    }
+
+    function toggleMealAccordion(mealName) {
+      expandedMeals[mealName] = !expandedMeals[mealName];
+      renderActiveDay();
+    }
+
+    function renderActiveDay() {
+      const targets = getCalculatedTargets();
+      document.getElementById('targetCalSmall').textContent = targets.cal;
+      document.getElementById('targetProt').textContent = targets.p;
+      document.getElementById('targetFat').textContent = targets.f;
+      document.getElementById('targetCarb').textContent = targets.c;
+      updateCalorieModeButtonsUI();
+
+      const dayData = state.days[activeDate] || { diary: [] };
+      let eatenCal = 0, eatenP = 0, eatenF = 0, eatenC = 0;
+      dayData.diary.forEach(i => { eatenCal += i.cal; eatenP += i.p; eatenF += i.f; eatenC += i.c; });
+
+      animateNumberValue('eatenCalBig', eatenCal, '', 500, prevDashboardValues.cal);
+      animateNumberValue('eatenProt', eatenP, '', 500, prevDashboardValues.p);
+      animateNumberValue('eatenFat', eatenF, '', 500, prevDashboardValues.f);
+      animateNumberValue('eatenCarb', eatenC, '', 500, prevDashboardValues.c);
+      prevDashboardValues = { cal: eatenCal, p: eatenP, f: eatenF, c: eatenC };
+
+      const pct = Math.min(1, eatenCal / targets.cal);
+      const ring = document.getElementById('calRing');
+      ring.style.strokeDashoffset = 251.2 - (251.2 * pct);
+      ring.setAttribute('stroke', eatenCal > targets.cal ? '#f43f5e' : 'var(--accent)');
+
+      document.getElementById('barProt').style.width = `${Math.min(100, (eatenP / targets.p) * 100)}%`;
+      document.getElementById('barFat').style.width = `${Math.min(100, (eatenF / targets.f) * 100)}%`;
+      document.getElementById('barCarb').style.width = `${Math.min(100, (eatenC / targets.c) * 100)}%`;
+
+      const diff = targets.cal - eatenCal;
+      document.getElementById('remainBanner').innerHTML = diff >= 0
+        ? `Осталось: <b style="color: var(--accent);">${diff} ккал</b>`
+        : `Превышение: <b class="text-rose-400">${Math.abs(diff)} ккал</b>`;
+
+      renderSmartDeficitAnalysis(targets, eatenCal, eatenP, eatenF, eatenC);
+
+      // Рендерим 4 компактные карточки приемов пищи (в стиле Yazio / Lifesum)
+      const mealConfigs = [
+        { key: 'Завтрак', icon: '🌅', sub: 'Утренний прием' },
+        { key: 'Обед', icon: '☀️', sub: 'Основной прием' },
+        { key: 'Ужин', icon: '🌙', sub: 'Вечерний прием' },
+        { key: 'Перекус', icon: '🍏', sub: 'Снеки и напитки' }
+      ];
+
+      const wrapper = document.getElementById('mealCardsWrapper');
+      wrapper.innerHTML = '';
+
+      mealConfigs.forEach(m => {
+        const items = dayData.diary.filter(d => d.meal === m.key);
+        let mCal = 0, mP = 0, mF = 0, mC = 0;
+        items.forEach(i => { mCal += i.cal; mP += i.p; mF += i.f; mC += i.c; });
+
+        const isOpen = !!expandedMeals[m.key];
+        const card = document.createElement('div');
+        card.className = 'glass-card px-4 py-3 transition-all';
+
+        let itemsHtml = '';
+        if (isOpen) {
+          if (items.length === 0) {
+            itemsHtml = `<div class="text-[11px] text-slate-400 py-2.5 border-t border-white/10 mt-2.5 text-center">Пока пусто. Нажмите <b>+</b>, чтобы добавить блюдо.</div>`;
+          } else {
+            itemsHtml = `<div class="space-y-1.5 border-t border-white/10 mt-2.5 pt-2.5">` +
+              items.map(item => `
+                <div class="themed-box px-3 py-2 flex items-center justify-between gap-2 text-xs">
+                  <div class="min-w-0 flex-1">
+                    <div class="font-bold text-white truncate">${item.name}</div>
+                    <div class="text-[10px] text-slate-300">
+                      ${item.weight}г • <b style="color: var(--accent);">${item.cal} ккал</b> • Б:${item.p} Ж:${item.f} У:${item.c}
+                    </div>
+                  </div>
+                  <button type="button" onclick="removeDiaryItem(${item.id})" class="w-7 h-7 themed-box flex items-center justify-center text-slate-300 hover:text-rose-400">✕</button>
+                </div>
+              `).join('') + `</div>`;
+          }
         }
-      } catch (e) {
-        showDiagnosticMessage('error', '🌐 Нет связи с Google API', 'Проверьте интернет или включите VPN.');
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-2">
+            <div onclick="toggleMealAccordion('${m.key}')" class="flex items-center gap-3 flex-1 cursor-pointer select-none">
+              <div class="w-10 h-10 themed-box flex items-center justify-center text-lg">${m.icon}</div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-extrabold text-white">${m.key}</span>
+                  <span class="text-[10px] text-slate-300">${items.length ? `(${items.length})` : ''}</span>
+                  <span class="text-[10px] text-slate-400">${isOpen ? '▲' : '▼'}</span>
+                </div>
+                <div class="text-[11px] text-slate-300">
+                  <b style="color: var(--accent);">${mCal} ккал</b> ${mCal > 0 ? `• Б:${mP}г Ж:${mF}г У:${mC}г` : `• ${m.sub}`}
+                </div>
+              </div>
+            </div>
+            <button type="button" onclick="openCatalogSheet('${m.key}')" class="w-9 h-9 themed-btn-primary flex items-center justify-center text-base font-extrabold flex-shrink-0">
+              +
+            </button>
+          </div>
+          ${itemsHtml}
+        `;
+        wrapper.appendChild(card);
+      });
+    }
+
+    // ================= ПРОФИЛЬ И КАТАЛОГ =================
+    function loadProfileToUI() {
+      const p = state.profile;
+      document.getElementById('profileName').value = p.name;
+      document.getElementById('profAge').value = p.age;
+      document.getElementById('profAgeLbl').textContent = p.age;
+      document.getElementById('profHeight').value = p.height;
+      document.getElementById('profHeightLbl').textContent = p.height;
+      document.getElementById('profWeight').value = p.weight;
+      document.getElementById('profWeightLbl').textContent = p.weight;
+      document.getElementById('profActivity').value = p.activity;
+      document.getElementById('profGoal').value = p.goal;
+
+      document.getElementById('profGenderMale').className = p.gender === 'male' ? 'py-2 text-xs font-bold themed-btn-primary' : 'py-2 text-xs font-bold themed-box text-slate-300';
+      document.getElementById('profGenderFemale').className = p.gender === 'female' ? 'py-2 text-xs font-bold themed-btn-primary' : 'py-2 text-xs font-bold themed-box text-slate-300';
+
+      const targets = getCalculatedTargets();
+      document.getElementById('profCustomCalInput').value = p.useCustomCal ? p.customCal : targets.cal;
+      document.getElementById('profCustomP').value = targets.p;
+      document.getElementById('profCustomF').value = targets.f;
+      document.getElementById('profCustomC').value = targets.c;
+
+      updateCalorieModeButtonsUI();
+      document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б:${targets.p} Ж:${targets.f} У:${targets.c})`;
+    }
+
+    function saveProfile() {
+      state.profile.name = document.getElementById('profileName').value;
+      state.profile.age = parseInt(document.getElementById('profAge').value);
+      state.profile.height = parseInt(document.getElementById('profHeight').value);
+      state.profile.weight = parseFloat(document.getElementById('profWeight').value);
+      state.profile.activity = parseFloat(document.getElementById('profActivity').value);
+      state.profile.goal = document.getElementById('profGoal').value;
+      loadProfileToUI();
+      persistState();
+      renderActiveDay();
+    }
+
+    function setGender(g) {
+      state.profile.gender = g;
+      saveProfile();
+    }
+
+    function populateFoodSelect() {
+      const sel = document.getElementById('dbFoodSelect');
+      sel.innerHTML = '';
+      document.getElementById('filteredCountLbl').textContent = filteredCatalog.length;
+
+      filteredCatalog.forEach((item, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.style.backgroundColor = '#18181b';
+        opt.style.color = '#ffffff';
+        const ppTag = item.diet ? '🥗 ' : '';
+        opt.textContent = `${ppTag}${item.name} (~${item.weight}г = ${Math.round(item.cal * (item.weight/100))} ккал)`;
+        sel.appendChild(opt);
+      });
+      updateDbPreview();
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategoryFilter = cat;
+      ['all', 'fitness', 'canteen', 'panasian', 'store', 'base', 'bakery', 'fastfood', 'drinks'].forEach(c => {
+        const btn = document.getElementById('cat_' + c);
+        if (btn) {
+          btn.className = (c === cat)
+            ? 'px-3 py-1.5 font-bold flex-shrink-0 themed-btn-primary'
+            : 'px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0';
+        }
+      });
+      filterFoodCatalog();
+    }
+
+    function filterFoodCatalog() {
+      const q = document.getElementById('foodSearchInput').value.toLowerCase().trim();
+      filteredCatalog = foodCatalog.filter(item => {
+        const matchCat = (currentCategoryFilter === 'all' || item.category === currentCategoryFilter);
+        const matchText = item.name.toLowerCase().includes(q);
+        return matchCat && matchText;
+      });
+      populateFoodSelect();
+    }
+
+    function updateDbPreview() {
+      const idx = document.getElementById('dbFoodSelect').value;
+      const food = filteredCatalog[idx];
+      if (!food) return;
+
+      if (document.activeElement.id !== 'dbWeightInput') {
+        document.getElementById('dbWeightInput').value = food.weight;
+      }
+      const w = parseFloat(document.getElementById('dbWeightInput').value) || 100;
+      const mult = w / 100;
+
+      document.getElementById('dbPrevCal').textContent = Math.round(food.cal * mult);
+      document.getElementById('dbPrevP').textContent = Math.round(food.p * mult);
+      document.getElementById('dbPrevF').textContent = Math.round(food.f * mult);
+      document.getElementById('dbPrevC').textContent = Math.round(food.c * mult);
+    }
+
+    function setPortionMultiplier(m) {
+      const idx = document.getElementById('dbFoodSelect').value;
+      const food = filteredCatalog[idx];
+      if (!food) return;
+      document.getElementById('dbWeightInput').value = Math.round(food.weight * m);
+      updateDbPreview();
+    }
+
+    function addDbFood() {
+      const idx = document.getElementById('dbFoodSelect').value;
+      const food = filteredCatalog[idx];
+      const weight = parseFloat(document.getElementById('dbWeightInput').value) || 100;
+      const meal = document.getElementById('mealTypeSelect').value;
+      if (!food) return;
+
+      const mult = weight / 100;
+      const item = {
+        id: Date.now() + Math.random(),
+        meal,
+        name: food.name,
+        weight,
+        cal: Math.round(food.cal * mult),
+        p: Math.round(food.p * mult),
+        f: Math.round(food.f * mult),
+        c: Math.round(food.c * mult),
+        badge: food.diet ? '🥗 ПП' : 'Каталог'
+      };
+
+      if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
+      state.days[activeDate].diary.unshift(item);
+      expandedMeals[meal] = true;
+      persistState();
+      closeCatalogSheet();
+      renderActiveDay();
+      showToast(`В ${meal}: ${food.name} (+${item.cal} ккал)`);
+    }
+
+    function changeActiveDate(newDate) {
+      activeDate = newDate;
+      if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
+      renderActiveDay();
+    }
+
+    function removeDiaryItem(id) {
+      if (!state.days[activeDate]) return;
+      state.days[activeDate].diary = state.days[activeDate].diary.filter(i => i.id !== id);
+      persistState();
+      renderActiveDay();
+      showToast('Запись удалена', '🗑️');
+    }
+
+    function changeCalendarMonth(delta) {
+      calendarCurrentMonth += delta;
+      if (calendarCurrentMonth > 11) { calendarCurrentMonth = 0; calendarCurrentYear++; }
+      if (calendarCurrentMonth < 0) { calendarCurrentMonth = 11; calendarCurrentYear--; }
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+      document.getElementById('calMonthTitle').textContent = `${months[calendarCurrentMonth]} ${calendarCurrentYear}`;
+
+      const grid = document.getElementById('calendarGrid');
+      grid.innerHTML = '';
+      const firstDay = new Date(calendarCurrentYear, calendarCurrentMonth, 1).getDay();
+      const startOffset = (firstDay === 0 ? 6 : firstDay - 1);
+      const totalDays = new Date(calendarCurrentYear, calendarCurrentMonth + 1, 0).getDate();
+      const targets = getCalculatedTargets();
+
+      for (let i = 0; i < startOffset; i++) grid.appendChild(document.createElement('div'));
+
+      for (let d = 1; d <= totalDays; d++) {
+        const mStr = String(calendarCurrentMonth + 1).padStart(2, '0');
+        const dStr = String(d).padStart(2, '0');
+        const dateKey = `${calendarCurrentYear}-${mStr}-${dStr}`;
+        const dayData = state.days[dateKey] || { diary: [] };
+        let eaten = 0;
+        dayData.diary.forEach(i => eaten += i.cal);
+        const pct = Math.round((eaten / targets.cal) * 100);
+
+        const cell = document.createElement('div');
+        cell.className = `themed-box p-2 flex flex-col items-center justify-between min-h-[68px] cursor-pointer hover-lift`;
+        if (dateKey === activeDate) {
+          cell.style.borderWidth = '2px';
+          cell.style.borderColor = 'var(--accent)';
+        }
+        cell.innerHTML = `
+          <div class="w-full flex justify-between text-[10px]"><span class="font-extrabold text-white">${d}</span>${eaten > 0 ? `<span class="text-[9px] font-bold" style="color: var(--accent);">${pct}%</span>` : ''}</div>
+          <div class="text-xs font-extrabold ${eaten > 0 ? '' : 'text-slate-500'}" style="${eaten > 0 ? 'color: var(--accent);' : ''}">${eaten || '—'}</div>
+          <div class="text-[9px] text-slate-400 font-medium">/${targets.cal}</div>
+        `;
+        cell.onclick = () => {
+          activeDate = dateKey;
+          document.getElementById('activeDateInput').value = activeDate;
+          switchMainTab('diary');
+          renderActiveDay();
+        };
+        grid.appendChild(cell);
       }
     }
 
-    function triggerPhotoSelect() {
-      const input = document.getElementById('photoInput');
-      input.value = '';
-      input.click();
+    function persistState() {
+      localStorage.setItem('rayuncalc_state_v19', JSON.stringify(state));
     }
 
-    function compressAndAnalyzeImage(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          const img = new Image();
-          img.onload = function() {
-            const canvas = document.createElement('canvas');
-            const maxDim = 800;
-            let w = img.width,
+    function resetAllData() {
+      if (confirm('Сбросить все сохраненные данные?')) {
+        localStorage.removeItem('rayuncalc_state_v19');
+        localStorage.removeItem('rayuncalc_state_v18');
+        localStorage.removeItem('rayuncalc_state_v17');
+        location.reload();
+      }
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
