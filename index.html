@@ -9,116 +9,107 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="RayunCalc">
   
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23f472b6'/%3E%3Cstop offset='100%25' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='118' fill='%23180910'/%3E%3Crect x='28' y='28' width='456' height='456' rx='96' fill='url(%23grad)' opacity='0.22'/%3E%3Cpath d='M280 64L144 272h96l-32 176L368 240h-96l8-176z' fill='%23f472b6'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23f472b6'/%3E%3Cstop offset='100%25' stop-color='%23be185d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='118' fill='%2314070e'/%3E%3Crect x='28' y='28' width='456' height='456' rx='96' fill='url(%23g)' opacity='0.22'/%3E%3Cpath d='M280 64L144 272h96l-32 176L368 240h-96l8-176z' fill='%23f472b6'/%3E%3C/svg%3E">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg-main: #160911;
-      --card-bg: rgba(38, 14, 28, 0.84);
-      --box-bg: rgba(24, 8, 18, 0.88);
+      --bg-main: #12070d;
+      --card-bg: rgba(32, 11, 23, 0.72);
+      --box-bg: rgba(20, 6, 15, 0.78);
       --accent: #f472b6;
-      --accent-soft: rgba(244, 114, 182, 0.18);
-      --accent-gradient: linear-gradient(135deg, #f472b6 0%, #db2777 100%);
+      --accent-soft: rgba(244, 114, 182, 0.22);
+      --accent-gradient: linear-gradient(135deg, #f472b6 0%, #ec4899 55%, #be185d 100%);
       --text-main: #fdf2f8;
-      --text-muted: #f9a8d4;
-      --border-color: rgba(244, 114, 182, 0.35);
-      --card-radius: 26px 10px 26px 10px;
-      --box-radius: 18px 6px 18px 6px;
-      --card-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23f472b6' stroke-width='1' stroke-opacity='0.12'%3E%3Cpath d='M160 0 C120 30, 90 50, 40 45 C70 70, 95 95, 85 140'/%3E%3C/g%3E%3Cg fill='%23f472b6' fill-opacity='0.09'%3E%3Cpath d='M45 45 C35 35, 35 20, 45 15 C55 20, 55 35, 45 45 Z'/%3E%3Cpath d='M45 45 C55 35, 70 35, 75 45 C70 55, 55 55, 45 45 Z'/%3E%3Cpath d='M45 45 C55 55, 55 70, 45 75 C35 70, 35 55, 45 45 Z'/%3E%3Cpath d='M45 45 C35 55, 20 55, 15 45 C20 35, 35 35, 45 45 Z'/%3E%3Ccircle cx='45' cy='45' r='4' fill='%23fbcfe8' fill-opacity='0.2'/%3E%3C/g%3E%3C/svg%3E");
+      --border-color: rgba(244, 114, 182, 0.32);
+      --card-radius: 26px 14px 26px 14px;
+      --box-radius: 16px 8px 16px 8px;
     }
 
-    /* 1. ТЕМА: САКУРА (ЦВЕТНАЯ) */
+    /* 1. ТЕМА: РЕАЛИСТИЧНАЯ САКУРА */
     body.theme-sakura {
-      --bg-main: #160911;
-      --card-bg: rgba(42, 14, 30, 0.82);
-      --box-bg: rgba(26, 8, 19, 0.85);
+      --bg-main: #12060c;
+      --card-bg: rgba(34, 11, 24, 0.72);
+      --box-bg: rgba(22, 6, 15, 0.76);
       --accent: #f472b6;
-      --accent-soft: rgba(244, 114, 182, 0.2);
-      --accent-gradient: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #be185d 100%);
+      --accent-soft: rgba(244, 114, 182, 0.22);
+      --accent-gradient: linear-gradient(135deg, #f9a8d4 0%, #f472b6 45%, #db2777 100%);
       --text-main: #fdf2f8;
-      --border-color: rgba(244, 114, 182, 0.38);
-      --card-radius: 28px 10px 28px 10px;
-      --box-radius: 18px 6px 18px 6px;
-      --card-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23f472b6' stroke-width='1.2' stroke-opacity='0.16'%3E%3Cpath d='M180 10 Q120 40 70 35 T10 90'/%3E%3Cpath d='M110 32 Q95 65 115 95'/%3E%3C/g%3E%3Cg fill='%23f472b6' fill-opacity='0.12'%3E%3Cpath d='M70 35 C60 22, 60 8, 70 2 C80 8, 80 22, 70 35 Z'/%3E%3Cpath d='M70 35 C83 25, 97 25, 103 35 C97 45, 83 45, 70 35 Z'/%3E%3Cpath d='M70 35 C80 48, 80 62, 70 68 C60 62, 60 48, 70 35 Z'/%3E%3Cpath d='M70 35 C57 45, 43 45, 37 35 C43 25, 57 25, 70 35 Z'/%3E%3Ccircle cx='70' cy='35' r='4' fill='%23ffffff' fill-opacity='0.25'/%3E%3Cpath d='M140 120 C133 110, 133 100, 140 95 C147 100, 147 110, 140 120 Z'/%3E%3Cpath d='M140 120 C150 113, 160 113, 165 120 C160 127, 150 127, 140 120 Z'/%3E%3C/g%3E%3C/svg%3E");
+      --border-color: rgba(244, 114, 182, 0.34);
+      --card-radius: 28px 12px 28px 12px;
+      --box-radius: 18px 8px 18px 8px;
     }
 
-    /* 2. ТЕМА: САКУРА ЧБ (MONOCHROME SAKURA) */
+    /* 2. ТЕМА: САКУРА ЧБ (ЯПОНСКАЯ ТУШЬ SUMI-E) */
     body.theme-sakura_bw {
-      --bg-main: #0c0c0e;
-      --card-bg: rgba(24, 24, 28, 0.86);
-      --box-bg: rgba(14, 14, 17, 0.9);
+      --bg-main: #0a0a0c;
+      --card-bg: rgba(22, 22, 26, 0.76);
+      --box-bg: rgba(14, 14, 17, 0.82);
       --accent: #f4f4f5;
-      --accent-soft: rgba(255, 255, 255, 0.14);
+      --accent-soft: rgba(255, 255, 255, 0.15);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
       --text-main: #fafafa;
-      --border-color: rgba(255, 255, 255, 0.3);
-      --card-radius: 28px 10px 28px 10px;
-      --box-radius: 18px 6px 18px 6px;
-      --card-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2' stroke-opacity='0.14'%3E%3Cpath d='M180 10 Q120 40 70 35 T10 90'/%3E%3Cpath d='M110 32 Q95 65 115 95'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M70 35 C60 22, 60 8, 70 2 C80 8, 80 22, 70 35 Z'/%3E%3Cpath d='M70 35 C83 25, 97 25, 103 35 C97 45, 83 45, 70 35 Z'/%3E%3Cpath d='M70 35 C80 48, 80 62, 70 68 C60 62, 60 48, 70 35 Z'/%3E%3Cpath d='M70 35 C57 45, 43 45, 37 35 C43 25, 57 25, 70 35 Z'/%3E%3Ccircle cx='70' cy='35' r='4' fill='%23ffffff' fill-opacity='0.3'/%3E%3C/g%3E%3C/svg%3E");
+      --border-color: rgba(255, 255, 255, 0.26);
+      --card-radius: 28px 12px 28px 12px;
+      --box-radius: 18px 8px 18px 8px;
     }
 
-    /* 3. ТЕМА: ДЗЕН (MATCHA & WOOD — ТЕКСТУРА ДЕРЕВА) */
+    /* 3. ТЕМА: ДЗЕН (МАТЧА И НАТУРАЛЬНОЕ ДЕРЕВО) */
     body.theme-matcha {
-      --bg-main: #14110c;
-      --card-bg: rgba(38, 29, 20, 0.88);
-      --box-bg: rgba(27, 20, 13, 0.92);
+      --bg-main: #0f130d;
+      --card-bg: rgba(34, 25, 17, 0.82);
+      --box-bg: rgba(24, 17, 11, 0.86);
       --accent: #a3e635;
-      --accent-soft: rgba(163, 230, 53, 0.18);
-      --accent-gradient: linear-gradient(135deg, #a3e635 0%, #65a30d 100%);
+      --accent-soft: rgba(163, 230, 53, 0.2);
+      --accent-gradient: linear-gradient(135deg, #bef264 0%, #84cc16 55%, #4d7c0f 100%);
       --text-main: #fefce8;
-      --border-color: rgba(180, 130, 80, 0.45);
-      --card-radius: 16px 24px 14px 24px;
-      --box-radius: 12px 18px 10px 18px;
-      /* Текстура натурального дерева (волокна и кольца) */
-      --card-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23b48250' stroke-width='1.2' stroke-opacity='0.18'%3E%3Cpath d='M0 25 Q60 15 120 28 T200 22'/%3E%3Cpath d='M0 55 Q80 40 140 58 T200 50'/%3E%3Cpath d='M0 85 Q50 95 100 80 T200 88'/%3E%3Cpath d='M0 115 Q90 105 150 125 T200 118'/%3E%3Cpath d='M0 145 Q40 160 110 142 T200 150'/%3E%3Cpath d='M0 175 Q70 165 130 182 T200 175'/%3E%3Cellipse cx='140' cy='85' rx='28' ry='10' stroke-opacity='0.14'/%3E%3Cellipse cx='140' cy='85' rx='14' ry='5' stroke-opacity='0.14'/%3E%3C/g%3E%3C/svg%3E");
+      --border-color: rgba(185, 135, 82, 0.42);
+      --card-radius: 18px 26px 16px 26px;
+      --box-radius: 12px 18px 12px 18px;
     }
 
-    /* 4. ТЕМА: КЛАССИКА (DARK PRO) */
+    /* 4. ТЕМА: КИБЕР-САКУРА (NEO TOKYO) */
+    body.theme-cyber {
+      --bg-main: #080312;
+      --card-bg: rgba(20, 8, 38, 0.76);
+      --box-bg: rgba(12, 4, 24, 0.84);
+      --accent: #f43f5e;
+      --accent-soft: rgba(244, 63, 94, 0.24);
+      --accent-gradient: linear-gradient(135deg, #fb7185 0%, #e11d48 45%, #9333ea 100%);
+      --text-main: #fae8ff;
+      --border-color: rgba(244, 63, 94, 0.42);
+      --card-radius: 6px 24px 6px 24px;
+      --box-radius: 4px 16px 4px 16px;
+    }
+
+    /* 5. ТЕМА: КЛАССИКА (DARK PRO) */
     body.theme-classic {
-      --bg-main: #070b14;
-      --card-bg: rgba(15, 23, 42, 0.85);
-      --box-bg: rgba(9, 14, 28, 0.9);
+      --bg-main: #060a12;
+      --card-bg: rgba(15, 23, 42, 0.78);
+      --box-bg: rgba(9, 14, 26, 0.85);
       --accent: #10b981;
-      --accent-soft: rgba(16, 185, 129, 0.16);
-      --accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --accent-soft: rgba(16, 185, 129, 0.18);
+      --accent-gradient: linear-gradient(135deg, #34d399 0%, #10b981 55%, #059669 100%);
       --text-main: #f1f5f9;
       --border-color: rgba(16, 185, 129, 0.28);
       --card-radius: 22px;
       --box-radius: 14px;
-      --card-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 40 L40 0 M-10 10 L10 -10 M30 50 L50 30' stroke='%2310b981' stroke-width='0.8' stroke-opacity='0.07'/%3E%3C/svg%3E");
     }
 
-    /* 5. ТЕМА: ЧИСТЫЙ ЧБ (TRUE NOIR) */
+    /* 6. ТЕМА: ЧИСТЫЙ ЧБ (TRUE NOIR) */
     body.theme-noir {
       --bg-main: #000000;
-      --card-bg: rgba(16, 16, 16, 0.92);
-      --box-bg: rgba(8, 8, 8, 0.96);
+      --card-bg: rgba(15, 15, 15, 0.88);
+      --box-bg: rgba(8, 8, 8, 0.94);
       --accent: #ffffff;
-      --accent-soft: rgba(255, 255, 255, 0.12);
+      --accent-soft: rgba(255, 255, 255, 0.14);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
       --text-main: #ffffff;
-      --border-color: rgba(255, 255, 255, 0.28);
-      --card-radius: 10px;
+      --border-color: rgba(255, 255, 255, 0.25);
+      --card-radius: 12px;
       --box-radius: 8px;
-      --card-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='1' fill='%23ffffff' fill-opacity='0.08'/%3E%3C/svg%3E");
-    }
-
-    /* 6. ТЕМА: КИБЕР-САКУРА (NEO TOKYO) */
-    body.theme-cyber {
-      --bg-main: #090314;
-      --card-bg: rgba(24, 10, 44, 0.85);
-      --box-bg: rgba(15, 5, 29, 0.9);
-      --accent: #f43f5e;
-      --accent-soft: rgba(244, 63, 94, 0.2);
-      --accent-gradient: linear-gradient(135deg, #f43f5e 0%, #a855f7 100%);
-      --text-main: #fae8ff;
-      --border-color: rgba(244, 63, 94, 0.45);
-      --card-radius: 6px 24px 6px 24px;
-      --box-radius: 4px 16px 4px 16px;
-      --card-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 50 H40 L50 40 H100 M50 0 V40 L60 50 V100' fill='none' stroke='%23a855f7' stroke-width='1' stroke-opacity='0.14'/%3E%3Ccircle cx='50' cy='40' r='2.5' fill='%23f43f5e' fill-opacity='0.25'/%3E%3C/svg%3E");
     }
 
     body {
@@ -134,51 +125,88 @@
       accent-color: var(--accent);
     }
 
-    /* Стилизованные карточки с текстурами */
+    /* ================= ИНДИВИДУАЛЬНЫЕ БЕСШОВНЫЕ ТЕКСТУРЫ КАРТОЧЕК (БЕЗ ПОВТОРОВ!) ================= */
     .glass-card {
       position: relative;
       background-color: var(--card-bg);
-      background-image: var(--card-texture);
-      background-repeat: repeat;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1.5px solid var(--border-color);
       border-radius: var(--card-radius);
-      box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
       transition: all 0.35s ease;
       overflow: hidden;
     }
 
-    /* Угловой штамп сакуры или дерева на главных карточках */
-    body.theme-sakura .glass-card::after,
-    body.theme-sakura_bw .glass-card::after {
-      content: '🌸';
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      font-size: 14px;
-      opacity: 0.28;
-      pointer-events: none;
-      filter: grayscale(var(--bw-filter, 0));
-    }
-    body.theme-sakura_bw { --bw-filter: 1; }
-    body.theme-matcha .glass-card::after {
-      content: '🎋';
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      font-size: 14px;
-      opacity: 0.25;
-      pointer-events: none;
+    /* Разные художественные композиции на карточках в теме Сакуры (не повторяются плиткой!) */
+    body.theme-sakura .glass-card:nth-of-type(odd),
+    body.theme-sakura header.glass-card {
+      background-image: 
+        radial-gradient(circle at 92% 12%, rgba(244, 114, 182, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 8% 88%, rgba(219, 39, 119, 0.14) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.28'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%239d174d' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M480 32 C450 60, 430 85, 390 105' stroke='%239d174d' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(415,28) scale(0.9)' fill='%23fbcfe8'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23db2777'/%3E%3C/g%3E%3Cg transform='translate(525,22) scale(1.1) rotate(25)' fill='%23f9a8d4'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23be185d'/%3E%3C/g%3E%3Cg transform='translate(390,105) scale(0.65) rotate(-15)' fill='%23fce7f3'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
-    /* Внутренние квадратики (инпуты, мини-карточки, ячейки) */
+    body.theme-sakura .glass-card:nth-of-type(even) {
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(244, 114, 182, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(236, 72, 153, 0.16) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300' preserveAspectRatio='xMinYMax slice'%3E%3Cg opacity='0.24'%3E%3Cpath d='M0 290 C80 260, 140 245, 220 265' stroke='%239d174d' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(95,255) scale(0.95) rotate(18)' fill='%23fbcfe8'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23db2777'/%3E%3C/g%3E%3Cg transform='translate(540,55) scale(0.75) rotate(40)' fill='%23f472b6'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Сакура ЧБ: монохромная тушь на карточках */
+    body.theme-sakura_bw .glass-card {
+      background-image: 
+        radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.12) 0%, transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.22'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%23a1a1aa' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(465,30) scale(0.95)' fill='%23ffffff'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%2352525b'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Тема Дзен (Матча и Дерево): бесшовный срез натурального дерева с волокнами */
+    body.theme-matcha .glass-card {
+      background-image: 
+        linear-gradient(135deg, rgba(62, 43, 27, 0.55) 0%, rgba(28, 22, 15, 0.75) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23d99b66' stroke-opacity='0.16' stroke-width='1.5'%3E%3Cpath d='M0,40 C220,10 450,80 800,30'/%3E%3Cpath d='M0,95 C180,65 390,130 800,85'/%3E%3Cpath d='M0,155 C260,120 510,185 800,140'/%3E%3Cpath d='M0,215 C190,250 480,190 800,225'/%3E%3Cpath d='M0,280 C300,310 550,250 800,290'/%3E%3Cpath d='M0,345 C240,370 520,320 800,355'/%3E%3Cellipse cx='620' cy='180' rx='95' ry='28' stroke-opacity='0.12'/%3E%3Cellipse cx='620' cy='180' rx='48' ry='14' stroke-opacity='0.12'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Внутренние квадратики (инпуты, БЖУ, кнопки) — чистые, с мягким градиентом и разными акцентами без штамповки */
     .themed-box {
+      position: relative;
       background-color: var(--box-bg);
-      background-image: var(--card-texture);
+      background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
       border: 1px solid var(--border-color);
       border-radius: var(--box-radius);
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
+    }
+
+    body.theme-sakura .themed-box:nth-child(1) {
+      background-image: radial-gradient(circle at 95% 20%, rgba(244, 114, 182, 0.16) 0%, transparent 55%);
+    }
+    body.theme-sakura .themed-box:nth-child(2) {
+      background-image: radial-gradient(circle at 5% 80%, rgba(236, 72, 153, 0.14) 0%, transparent 55%);
+    }
+    body.theme-sakura .themed-box:nth-child(3) {
+      background-image: radial-gradient(circle at 85% 85%, rgba(251, 207, 232, 0.14) 0%, transparent 55%);
+    }
+
+    body.theme-matcha .themed-box {
+      background-image: 
+        linear-gradient(90deg, rgba(180, 130, 80, 0.12) 0%, rgba(60, 42, 24, 0.22) 50%, rgba(163, 230, 53, 0.06) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q150,5 300,30 T400,20 M0,65 Q180,85 320,55 T400,70' fill='none' stroke='%23b48250' stroke-opacity='0.14' stroke-width='1.2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    body.theme-cyber .themed-box {
+      background-image: linear-gradient(135deg, rgba(244, 63, 94, 0.12) 0%, rgba(147, 51, 234, 0.08) 100%);
+      box-shadow: inset 0 0 12px rgba(244, 63, 94, 0.08);
     }
 
     .themed-btn-primary {
@@ -187,77 +215,23 @@
       border-radius: var(--box-radius);
       font-weight: 800;
       box-shadow: 0 6px 20px -4px var(--accent-soft);
-      transition: transform 0.15s ease, opacity 0.2s ease;
+      transition: transform 0.15s ease, filter 0.2s ease;
+    }
+    .themed-btn-primary:hover {
+      filter: brightness(1.06);
     }
     .themed-btn-primary:active {
       transform: scale(0.97);
     }
 
-    /* Анимированные обои на заднем плане */
-    #wallpaperLayer {
+    /* Полноэкранный живой холст с реалистичной сакурой и обоями */
+    #bgCanvas {
       position: fixed;
       inset: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: 0;
       pointer-events: none;
-      overflow: hidden;
-    }
-
-    @keyframes swayBranch {
-      0%, 100% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(2.2deg) scale(1.02); }
-    }
-    @keyframes swayBranchLeft {
-      0%, 100% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(-2.5deg) scale(1.03); }
-    }
-    @keyframes floatGlow {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.35; }
-      50% { transform: translate(30px, -25px) scale(1.15); opacity: 0.6; }
-    }
-    @keyframes cyberGridMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 60px; }
-    }
-
-    .sway-right {
-      transform-origin: top right;
-      animation: swayBranch 7s ease-in-out infinite;
-    }
-    .sway-left {
-      transform-origin: bottom left;
-      animation: swayBranchLeft 9s ease-in-out infinite;
-    }
-    .ambient-orb {
-      position: absolute;
-      border-radius: 9999px;
-      filter: blur(70px);
-      animation: floatGlow 10s ease-in-out infinite;
-    }
-
-    /* Падающие лепестки сакуры */
-    #petalsLayer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 20;
-      overflow: hidden;
-    }
-    @keyframes petalFall {
-      0% {
-        transform: translate3d(0, -10vh, 0) rotate(0deg) rotateY(0deg);
-        opacity: 0;
-      }
-      10% { opacity: 0.85; }
-      90% { opacity: 0.7; }
-      100% {
-        transform: translate3d(120px, 110vh, 0) rotate(360deg) rotateY(180deg);
-        opacity: 0;
-      }
-    }
-    .sakura-petal {
-      position: absolute;
-      top: -5vh;
-      animation: petalFall linear infinite;
     }
 
     /* Линия сканера */
@@ -291,13 +265,10 @@
 </head>
 <body class="min-h-screen p-3 sm:p-6 pb-28 theme-sakura">
 
-  <!-- 1. ЖИВЫЕ АНИМИРОВАННЫЕ ОБОИ -->
-  <div id="wallpaperLayer"></div>
+  <!-- РЕАЛИСТИЧНЫЕ ЖИВЫЕ ОБОИ НА HTML5 CANVAS -->
+  <canvas id="bgCanvas"></canvas>
 
-  <!-- 2. СЛОЙ ПАДАЮЩИХ ЛЕПЕСТКОВ (ОТКЛЮЧАЕМЫЙ) -->
-  <div id="petalsLayer"></div>
-
-  <!-- 3. ОСНОВНОЙ ИНТЕРФЕЙС -->
+  <!-- ОСНОВНОЙ ИНТЕРФЕЙС -->
   <div class="relative z-10 max-w-4xl mx-auto space-y-5">
     
     <!-- Шапка -->
@@ -309,12 +280,11 @@
           </div>
           <div>
             <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">Rayun<span style="color: var(--accent);">Calc</span></h1>
-            <p id="themeSubtitle" class="text-xs text-slate-300 font-medium">Живые обои • AI-сканер рациона</p>
+            <p id="themeSubtitle" class="text-xs text-slate-300 font-medium">Живая Сакура • AI-сканер рациона</p>
           </div>
         </div>
 
-        <!-- Быстрая кнопка включения/отключения лепестков прямо в шапке -->
-        <button type="button" onclick="togglePetals()" id="headerPetalsBtn" class="themed-box px-3 py-2 text-[11px] font-bold flex items-center gap-1.5 hover:opacity-90 active:scale-95">
+        <button type="button" onclick="togglePetals()" id="headerPetalsBtn" class="themed-box px-3.5 py-2 text-[11px] font-bold flex items-center gap-1.5 hover:opacity-90 active:scale-95">
           <span>🌸</span><span id="headerPetalsText">Лепестки: ВКЛ</span>
         </button>
       </div>
@@ -480,25 +450,33 @@
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
             <span>📸</span> AI-Сканер еды по фото
           </h2>
-          <span id="aiModeBadge" class="text-[10px] font-bold px-2.5 py-1 themed-box" style="color: var(--accent);">Умный режим</span>
+          <span id="aiActiveModelBadge" class="text-[10px] font-bold px-2.5 py-1 themed-box" style="color: var(--accent);">Модель: gemini-3.8-flash</span>
         </div>
 
-        <!-- Настройка API ключа с проверкой -->
-        <div class="themed-box p-4 space-y-2.5">
-          <div class="flex items-center justify-between text-xs font-bold" style="color: var(--accent);">
-            <span>🔑 Ключ Gemini API (необязательно)</span>
-            <span id="apiKeyStatus" class="text-[10px] text-slate-300 font-normal">Локальный ИИ + демо активны</span>
+        <!-- Настройка API ключа + Умный Помощник Ошибок -->
+        <div class="themed-box p-4 space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-bold" style="color: var(--accent);">
+            <span>🔑 Настройки Gemini API и модели</span>
+            <span id="apiKeyStatus" class="text-[11px] text-slate-300 font-normal">Готов к работе</span>
           </div>
-          <div class="flex flex-col sm:flex-row gap-2">
-            <input id="geminiApiKey" type="password" placeholder="Вставьте ключ AIzaSy... для облачного анализа" oninput="saveApiKey()" class="flex-1 themed-box px-3.5 py-2.5 text-xs text-white focus:outline-none">
-            <div class="flex gap-2">
-              <button type="button" onclick="testGeminiKey()" class="px-3.5 py-2 themed-btn-primary text-xs">Проверить</button>
-              <button type="button" onclick="clearApiKey()" class="px-3 py-2 themed-box text-slate-300 hover:text-white text-xs">Сброс</button>
-            </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input id="geminiApiKey" type="password" placeholder="Ключ AIzaSy... (для облачного ИИ)" oninput="saveApiKey()" class="sm:col-span-2 themed-box px-3.5 py-2.5 text-xs text-white focus:outline-none">
+            <select id="geminiModelSelect" onchange="saveModelChoice()" class="themed-box px-3 py-2.5 text-xs text-white font-semibold focus:outline-none">
+              <option value="gemini-3.8-flash">⚡ gemini-3.8-flash (Новая)</option>
+              <option value="gemini-2.5-flash">🚀 gemini-2.5-flash</option>
+              <option value="gemini-flash-latest">🔄 gemini-flash-latest (Авто)</option>
+            </select>
           </div>
-          <p class="text-[10px] text-slate-300/80 leading-relaxed">
-            Даже без ключа сканер работает: сожмет фото с камеры iPhone, проанализирует тарелку и откроет окно с редактированием названия, граммов и КБЖУ!
-          </p>
+
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="testGeminiKey()" class="px-4 py-2 themed-btn-primary text-xs">🔍 Проверить подключение и ключ</button>
+            <button type="button" onclick="autoDetectBestModel()" class="px-3.5 py-2 themed-box text-xs text-white font-semibold hover:opacity-90">✨ Авто-подбор рабочей модели</button>
+            <button type="button" onclick="clearApiKey()" class="px-3 py-2 themed-box text-slate-300 hover:text-white text-xs">Сбросить ключ</button>
+          </div>
+
+          <!-- УМНОЕ ОКНО ДИАГНОСТИКИ И РЕШЕНИЯ ОШИБОК -->
+          <div id="aiDiagnosticBox" class="hidden rounded-xl p-3.5 border text-xs space-y-2"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -513,15 +491,15 @@
             </div>
             <div id="uploadPrompt" class="relative z-0 space-y-2.5">
               <div class="w-14 h-14 mx-auto themed-box flex items-center justify-center text-3xl shadow-inner group-hover:scale-105 transition" style="color: var(--accent);">📷</div>
-              <div class="text-xs sm:text-sm font-extrabold text-white">Сфотографировать или выбрать из галереи</div>
-              <p class="text-[11px] text-slate-300 font-medium">Поддерживаются любые фото с iPhone и ПК</p>
+              <div class="text-xs sm:text-sm font-extrabold text-white">Сфотографировать или выбрать фото</div>
+              <p class="text-[11px] text-slate-300 font-medium">Любые снимки с iPhone и ПК (автосжатие в JPEG)</p>
             </div>
           </div>
 
-          <!-- Быстрые пресеты + ручной ввод для теста -->
+          <!-- Быстрые пресеты + текстовый расчет -->
           <div class="themed-box p-4 sm:p-5 space-y-3 flex flex-col justify-between">
             <div class="space-y-2.5">
-              <span class="text-xs font-bold text-slate-300 block uppercase tracking-wider">⚡ Мгновенное AI-распознавание (примеры):</span>
+              <span class="text-xs font-bold text-slate-300 block uppercase tracking-wider">⚡ Быстрые шаблоны блюд:</span>
               <div class="grid grid-cols-2 gap-2">
                 <button type="button" onclick="runDemoPhoto('poke')" class="p-2.5 themed-box hover:opacity-90 text-left flex items-center gap-2.5 transition">
                   <span class="text-2xl">🥗</span>
@@ -542,11 +520,10 @@
               </div>
             </div>
 
-            <!-- Текстовое описание для ИИ -->
             <div class="pt-2 border-t border-white/10 space-y-1.5">
-              <label class="block text-[11px] text-slate-300 font-semibold">Или напишите, что у вас на тарелке:</label>
+              <label class="block text-[11px] text-slate-300 font-semibold">Или напишите текстом, что на тарелке:</label>
               <div class="flex gap-2">
-                <input id="customAiDishInput" type="text" placeholder="Например: 2 куска пиццы пепперони" class="flex-1 themed-box px-3 py-2 text-xs text-white focus:outline-none">
+                <input id="customAiDishInput" type="text" placeholder="Например: шаурма и кола зеро" class="flex-1 themed-box px-3 py-2 text-xs text-white focus:outline-none">
                 <button type="button" onclick="analyzeTextDish()" class="px-3.5 py-2 themed-btn-primary text-xs">Рассчитать</button>
               </div>
             </div>
@@ -581,12 +558,12 @@
     <div id="view_profile" class="hidden space-y-5">
       <div class="glass-card p-5 sm:p-6 space-y-5">
         <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-          <span>🎨</span> Кастомизация тем, обоев и текстур
+          <span>🎨</span> Живые обои и текстуры карточек
         </h2>
 
         <div class="themed-box p-4 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-white">Выбор темы и текстуры карточек:</span>
+            <span class="text-xs font-bold text-white">Выберите тему (меняет живой фон и текстуру блоков):</span>
             <button type="button" onclick="togglePetals()" id="profilePetalsBtn" class="px-3 py-1.5 themed-btn-primary text-[11px]">
               🌸 Лепестки: ВКЛ
             </button>
@@ -596,43 +573,43 @@
             <button type="button" onclick="setTheme('sakura')" id="theme_sakura" class="p-3 themed-box text-left transition flex items-center gap-3">
               <span class="text-2xl">🌸</span>
               <div>
-                <div class="text-xs font-extrabold text-white">Сакура (Розовая)</div>
-                <div class="text-[10px] text-slate-300">Обои сакуры + узор цветов</div>
+                <div class="text-xs font-extrabold text-white">Сакура (Ботаника)</div>
+                <div class="text-[10px] text-slate-300">Живое дерево сакуры и 5-листные цветы</div>
               </div>
             </button>
             <button type="button" onclick="setTheme('sakura_bw')" id="theme_sakura_bw" class="p-3 themed-box text-left transition flex items-center gap-3">
               <span class="text-2xl">🏴</span>
               <div>
-                <div class="text-xs font-extrabold text-white">Сакура ЧБ (Монохром)</div>
-                <div class="text-[10px] text-slate-300">Черно-белая тушь и ветви</div>
+                <div class="text-xs font-extrabold text-white">Сакура ЧБ (Sumi-e)</div>
+                <div class="text-[10px] text-slate-300">Японская тушь и белые соцветия</div>
               </div>
             </button>
             <button type="button" onclick="setTheme('matcha')" id="theme_matcha" class="p-3 themed-box text-left transition flex items-center gap-3">
               <span class="text-2xl">🍵</span>
               <div>
-                <div class="text-xs font-extrabold text-white">Дзен (Матча и Дерево)</div>
-                <div class="text-[10px] text-slate-300">Квадратики с текстурой дерева</div>
+                <div class="text-xs font-extrabold text-white">Дзен (Матча & Дерево)</div>
+                <div class="text-[10px] text-slate-300">Роща бамбука и срез кедра на блоках</div>
               </div>
             </button>
             <button type="button" onclick="setTheme('cyber')" id="theme_cyber" class="p-3 themed-box text-left transition flex items-center gap-3">
               <span class="text-2xl">🌌</span>
               <div>
                 <div class="text-xs font-extrabold text-white">Кибер-Сакура</div>
-                <div class="text-[10px] text-slate-300">Неоновая сетка + кибер-рамки</div>
+                <div class="text-[10px] text-slate-300">Неоновые ветви и кибер-сетка</div>
               </div>
             </button>
             <button type="button" onclick="setTheme('classic')" id="theme_classic" class="p-3 themed-box text-left transition flex items-center gap-3">
               <span class="text-2xl">⚫</span>
               <div>
                 <div class="text-xs font-extrabold text-white">Классика (Dark Pro)</div>
-                <div class="text-[10px] text-slate-300">Карбон и изумрудный неон</div>
+                <div class="text-[10px] text-slate-300">Матовое стекло и изумрудное сияние</div>
               </div>
             </button>
             <button type="button" onclick="setTheme('noir')" id="theme_noir" class="p-3 themed-box text-left transition flex items-center gap-3">
               <span class="text-2xl">🏴‍☠️</span>
               <div>
                 <div class="text-xs font-extrabold text-white">Чистый ЧБ (Noir)</div>
-                <div class="text-[10px] text-slate-300">Строгий контраст без лишнего</div>
+                <div class="text-[10px] text-slate-300">Строгий монохром и серебряная пыль</div>
               </div>
             </button>
           </div>
@@ -704,13 +681,11 @@
       <div class="flex items-start justify-between gap-3 border-b border-white/10 pb-3">
         <div class="flex-1">
           <span id="popSourceLabel" class="text-[10px] font-extrabold uppercase tracking-wider block mb-1" style="color: var(--accent);">✨ AI Распознавание блюда</span>
-          <!-- Редактируемое название блюда -->
           <input id="popDishTitleInput" type="text" value="Боул с лососем" class="w-full themed-box px-3 py-1.5 text-sm sm:text-base font-extrabold text-white focus:outline-none" />
         </div>
         <button type="button" onclick="closeAiModal()" class="w-8 h-8 themed-box flex items-center justify-center text-slate-300 hover:text-white flex-shrink-0">✕</button>
       </div>
 
-      <!-- Прием пищи (автоопределение по часам) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
         <div>
           <label class="block text-[11px] text-slate-300 font-semibold mb-1">Прием пищи (по времени):</label>
@@ -735,7 +710,6 @@
         </div>
       </div>
 
-      <!-- Список ингредиентов с регулировкой веса и КБЖУ -->
       <div class="space-y-2">
         <div class="flex items-center justify-between">
           <label class="text-[11px] text-slate-300 font-semibold">Ингредиенты (вес и название можно менять):</label>
@@ -744,7 +718,6 @@
         <div id="popIngredientsList" class="space-y-2 max-h-52 overflow-y-auto custom-scrollbar pr-1"></div>
       </div>
 
-      <!-- Итоговая сводка КБЖУ во всплывающем окне -->
       <div class="themed-box p-3.5 space-y-2">
         <div class="flex items-center justify-between text-xs font-bold">
           <span>Общий вес: <b id="popTotalWeight" class="text-white">0 г</b></span>
@@ -757,7 +730,6 @@
         </div>
       </div>
 
-      <!-- Подтверждение -->
       <div class="grid grid-cols-2 gap-3 pt-1">
         <button type="button" onclick="closeAiModal()" class="py-3 themed-box text-slate-200 text-xs font-bold">
           Отмена
@@ -775,7 +747,7 @@
     let calendarCurrentYear = new Date().getFullYear();
     let calendarCurrentMonth = new Date().getMonth();
 
-    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v12')) || {
+    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v13')) || {
       profile: {
         name: 'Maksim',
         gender: 'male',
@@ -788,12 +760,16 @@
         petalsEnabled: true
       },
       days: {},
-      apiKey: ''
+      apiKey: '',
+      preferredModel: 'gemini-3.8-flash'
     };
 
     if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
     if (!state.profile.theme) state.profile.theme = 'sakura';
     if (state.profile.petalsEnabled === undefined) state.profile.petalsEnabled = true;
+    if (!state.preferredModel || state.preferredModel === 'gemini-2.0-flash') {
+      state.preferredModel = 'gemini-3.8-flash';
+    }
 
     const foodCatalog = [
       { category: 'canteen', name: 'Борщ украинский со сметаной', p: 5.2, f: 4.8, c: 8.5, cal: 92, weight: 350 },
@@ -872,142 +848,335 @@
       }
     };
 
+    // ================= РЕАЛИСТИЧНЫЙ БОТАНИЧЕСКИЙ CANVAS-ДВИЖОК (САКУРА, БАМБУК, НЕОН) =================
+    const bgCanvas = document.getElementById('bgCanvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    let cw = window.innerWidth;
+    let ch = window.innerHeight;
+    let animTime = 0;
+    let fallingParticles = [];
+
+    function resizeCanvas() {
+      cw = window.innerWidth;
+      ch = window.innerHeight;
+      bgCanvas.width = cw * window.devicePixelRatio;
+      bgCanvas.height = ch * window.devicePixelRatio;
+      bgCtx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function initParticles() {
+      fallingParticles = [];
+      for (let i = 0; i < 24; i++) {
+        fallingParticles.push({
+          x: Math.random() * cw,
+          y: Math.random() * ch,
+          size: Math.random() * 7 + 6,
+          speedY: Math.random() * 0.7 + 0.4,
+          speedX: Math.random() * 0.6 - 0.1,
+          angle: Math.random() * Math.PI * 2,
+          spin: (Math.random() - 0.5) * 0.025,
+          swayOffset: Math.random() * 100
+        });
+      }
+    }
+    initParticles();
+
+    // Рисование реалистичного 5-лепесткового цветка сакуры с выемкой на кончике лепестка и тычинками
+    function drawRealisticSakuraBlossom(ctx, x, y, radius, rotation, isBW, isCyber) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+
+      for (let i = 0; i < 5; i++) {
+        ctx.save();
+        ctx.rotate((i * Math.PI * 2) / 5);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-radius * 0.55, -radius * 0.35, -radius * 0.65, -radius * 0.95, -radius * 0.16, -radius * 1.15);
+        ctx.lineTo(0, -radius * 0.93); // Характерная выемка лепестка сакуры!
+        ctx.lineTo(radius * 0.16, -radius * 1.15);
+        ctx.bezierCurveTo(radius * 0.65, -radius * 0.95, radius * 0.55, -radius * 0.35, 0, 0);
+        ctx.closePath();
+
+        const grad = ctx.createRadialGradient(0, -radius * 0.2, 1, 0, -radius * 0.6, radius * 1.1);
+        if (isBW) {
+          grad.addColorStop(0, 'rgba(161, 161, 170, 0.9)');
+          grad.addColorStop(0.5, 'rgba(244, 244, 245, 0.85)');
+          grad.addColorStop(1, 'rgba(255, 255, 255, 0.95)');
+        } else if (isCyber) {
+          grad.addColorStop(0, 'rgba(147, 51, 234, 0.85)');
+          grad.addColorStop(0.6, 'rgba(244, 63, 94, 0.85)');
+          grad.addColorStop(1, 'rgba(253, 164, 175, 0.9)');
+        } else {
+          grad.addColorStop(0, 'rgba(219, 39, 119, 0.9)');
+          grad.addColorStop(0.45, 'rgba(249, 168, 212, 0.92)');
+          grad.addColorStop(1, 'rgba(253, 242, 248, 0.96)');
+        }
+        ctx.fillStyle = grad;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Тычинки в сердцевине цветка
+      ctx.strokeStyle = isBW ? 'rgba(82, 82, 91, 0.8)' : (isCyber ? '#fde047' : 'rgba(190, 24, 93, 0.75)');
+      ctx.lineWidth = 0.8;
+      for (let j = 0; j < 10; j++) {
+        const a = (j * Math.PI * 2) / 10 + 0.2;
+        const len = radius * (j % 2 === 0 ? 0.36 : 0.26);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(Math.cos(a) * len, Math.sin(a) * len);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(Math.cos(a) * len, Math.sin(a) * len, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = isBW ? '#e4e4e7' : '#fef08a';
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    // Рисование одного падающего лепестка с выемкой
+    function drawSinglePetal(ctx, x, y, size, angle, isBW, isCyber, isMatcha) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.scale(1, 0.75 + Math.sin(angle * 2) * 0.25);
+
+      ctx.beginPath();
+      ctx.moveTo(0, size * 0.5);
+      ctx.bezierCurveTo(-size * 0.6, size * 0.1, -size * 0.7, -size * 0.6, -size * 0.18, -size * 0.85);
+      ctx.lineTo(0, -size * 0.62);
+      ctx.lineTo(size * 0.18, -size * 0.85);
+      ctx.bezierCurveTo(size * 0.7, -size * 0.6, size * 0.6, size * 0.1, 0, size * 0.5);
+      ctx.closePath();
+
+      if (isMatcha) {
+        ctx.fillStyle = 'rgba(163, 230, 53, 0.65)';
+      } else if (isBW) {
+        ctx.fillStyle = 'rgba(244, 244, 245, 0.75)';
+      } else if (isCyber) {
+        ctx.fillStyle = 'rgba(244, 63, 94, 0.75)';
+      } else {
+        ctx.fillStyle = 'rgba(251, 207, 232, 0.82)';
+      }
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // Рисование органической ветви дерева сакуры с ответвлениями и соцветиями
+    function drawSakuraTreeBranch(ctx, startX, startY, swayAngle, scale, flipX, isBW, isCyber) {
+      ctx.save();
+      ctx.translate(startX, startY);
+      if (flipX) ctx.scale(-1, 1);
+      ctx.scale(scale, scale);
+      ctx.rotate(swayAngle);
+
+      const barkColor = isBW ? '#3f3f46' : (isCyber ? '#4c1d95' : '#3b1525');
+      const barkHighlight = isBW ? '#71717a' : (isCyber ? '#ec4899' : '#702444');
+
+      // Главный ствол ветви
+      ctx.strokeStyle = barkColor;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(-90, 40, -170, 35, -260, 85);
+      ctx.bezierCurveTo(-320, 115, -370, 110, -430, 145);
+      ctx.lineWidth = 11;
+      ctx.stroke();
+
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = barkHighlight;
+      ctx.stroke();
+
+      // Боковые веточки
+      const twigs = [
+        { x1: -110, y1: 36, cx: -140, cy: 95, x2: -195, y2: 140, w: 5.5 },
+        { x1: -210, y1: 58, cx: -250, cy: 20, x2: -320, y2: 15, w: 4.5 },
+        { x1: -260, y1: 85, cx: -290, cy: 145, x2: -350, y2: 195, w: 4 },
+        { x1: -155, y1: 105, cx: -135, cy: 155, x2: -160, y2: 200, w: 3 }
+      ];
+
+      twigs.forEach(t => {
+        ctx.beginPath();
+        ctx.moveTo(t.x1, t.y1);
+        ctx.quadraticCurveTo(t.cx, t.cy, t.x2, t.y2);
+        ctx.lineWidth = t.w;
+        ctx.strokeStyle = barkColor;
+        ctx.stroke();
+      });
+
+      // Пышные соцветия сакуры вдоль веток
+      const blossoms = [
+        { x: -85, y: 28, r: 16, rot: 0.2 },
+        { x: -105, y: 42, r: 12, rot: 1.1 },
+        { x: -165, y: 48, r: 19, rot: 0.5 },
+        { x: -190, y: 135, r: 15, rot: 0.8 },
+        { x: -155, y: 112, r: 14, rot: 2.1 },
+        { x: -255, y: 82, r: 21, rot: 0.3 },
+        { x: -275, y: 96, r: 15, rot: 1.7 },
+        { x: -315, y: 18, r: 16, rot: 0.9 },
+        { x: -345, y: 190, r: 15, rot: 1.4 },
+        { x: -375, y: 120, r: 18, rot: 0.6 },
+        { x: -425, y: 145, r: 14, rot: 2.3 },
+        { x: -160, y: 198, r: 12, rot: 0.4 }
+      ];
+
+      blossoms.forEach((b, idx) => {
+        const localSway = Math.sin(animTime * 1.5 + idx) * 0.08;
+        drawRealisticSakuraBlossom(ctx, b.x, b.y, b.r, b.rot + localSway, isBW, isCyber);
+      });
+
+      ctx.restore();
+    }
+
+    // Рисование бамбуковой рощи и солнечных лучей для темы Матча & Дерево
+    function drawMatchaForest(ctx) {
+      const stalks = [
+        { x: cw * 0.88, w: 12, sway: 0.015 },
+        { x: cw * 0.94, w: 9, sway: -0.02 },
+        { x: cw * 0.07, w: 10, sway: 0.018 }
+      ];
+
+      stalks.forEach((s, idx) => {
+        ctx.save();
+        const offset = Math.sin(animTime + idx * 2) * 12;
+        ctx.strokeStyle = 'rgba(132, 204, 22, 0.22)';
+        ctx.lineWidth = s.w;
+        ctx.lineCap = 'round';
+
+        for (let y = ch; y > -50; y -= 85) {
+          ctx.beginPath();
+          ctx.moveTo(s.x + (y / ch) * offset, y);
+          ctx.lineTo(s.x + ((y - 78) / ch) * offset, y - 78);
+          ctx.stroke();
+
+          // Листья бамбука на узлах
+          if (y % 170 === 0) {
+            ctx.save();
+            ctx.translate(s.x + (y / ch) * offset, y - 40);
+            ctx.rotate(Math.sin(animTime * 1.5 + y) * 0.12 + (idx % 2 === 0 ? -0.5 : 0.5));
+            ctx.fillStyle = 'rgba(163, 230, 53, 0.24)';
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.quadraticCurveTo(-35, -12, -75, 8);
+            ctx.quadraticCurveTo(-35, 18, 0, 0);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+        ctx.restore();
+      });
+    }
+
+    function animateWallpaper() {
+      animTime += 0.016;
+      bgCtx.clearRect(0, 0, cw, ch);
+
+      const theme = state.profile.theme;
+      const isBW = theme === 'sakura_bw' || theme === 'noir';
+      const isCyber = theme === 'cyber';
+      const isMatcha = theme === 'matcha';
+
+      // Фоновое мягкое свечение (Bokeh)
+      const grad1 = bgCtx.createRadialGradient(cw * 0.85, ch * 0.15, 10, cw * 0.85, ch * 0.15, Math.max(cw, ch) * 0.45);
+      if (theme === 'sakura') {
+        grad1.addColorStop(0, 'rgba(244, 114, 182, 0.18)');
+        grad1.addColorStop(1, 'transparent');
+      } else if (theme === 'sakura_bw' || theme === 'noir') {
+        grad1.addColorStop(0, 'rgba(255, 255, 255, 0.09)');
+        grad1.addColorStop(1, 'transparent');
+      } else if (theme === 'matcha') {
+        grad1.addColorStop(0, 'rgba(163, 230, 53, 0.14)');
+        grad1.addColorStop(1, 'transparent');
+      } else if (theme === 'cyber') {
+        grad1.addColorStop(0, 'rgba(244, 63, 94, 0.2)');
+        grad1.addColorStop(1, 'transparent');
+      } else {
+        grad1.addColorStop(0, 'rgba(16, 185, 129, 0.14)');
+        grad1.addColorStop(1, 'transparent');
+      }
+      bgCtx.fillStyle = grad1;
+      bgCtx.fillRect(0, 0, cw, ch);
+
+      // Рисуем ветви сакуры для тем Сакура, Сакура ЧБ и Кибер-Сакура
+      if (theme === 'sakura' || theme === 'sakura_bw' || theme === 'cyber') {
+        const sway1 = Math.sin(animTime * 0.9) * 0.035;
+        const sway2 = Math.cos(animTime * 0.75) * 0.04;
+        const branchScale = cw < 640 ? 0.72 : 1.05;
+
+        // Верхняя правая цветущая ветвь
+        drawSakuraTreeBranch(bgCtx, cw + 20, -10, sway1, branchScale, false, isBW, isCyber);
+        // Нижняя левая ветвь
+        drawSakuraTreeBranch(bgCtx, -20, ch - 260 * branchScale, sway2, branchScale * 0.85, true, isBW, isCyber);
+      } else if (theme === 'matcha') {
+        drawMatchaForest(bgCtx);
+      }
+
+      // Падающие лепестки (если включены)
+      if (state.profile.petalsEnabled) {
+        fallingParticles.forEach(p => {
+          p.y += p.speedY;
+          p.x += p.speedX + Math.sin(animTime + p.swayOffset) * 0.45;
+          p.angle += p.spin;
+
+          if (p.y > ch + 20) {
+            p.y = -20;
+            p.x = Math.random() * cw;
+          }
+          if (p.x > cw + 20) p.x = -20;
+          if (p.x < -20) p.x = cw + 20;
+
+          drawSinglePetal(bgCtx, p.x, p.y, p.size, p.angle, isBW, isCyber, isMatcha);
+        });
+      }
+
+      requestAnimationFrame(animateWallpaper);
+    }
+
     function initApp() {
       document.getElementById('activeDateInput').value = activeDate;
       if (state.apiKey) {
         document.getElementById('geminiApiKey').value = state.apiKey;
         document.getElementById('apiKeyStatus').textContent = 'Ключ сохранен в памяти';
       }
+      document.getElementById('geminiModelSelect').value = state.preferredModel;
+      document.getElementById('aiActiveModelBadge').textContent = `Модель: ${state.preferredModel}`;
+
       applyTheme(state.profile.theme);
       loadProfileToUI();
       populateFoodSelect();
       renderActiveDay();
       renderCalendar();
-    }
-
-    // ================= ЖИВЫЕ АНИМИРОВАННЫЕ ОБОИ =================
-    function renderAnimatedWallpaper(theme) {
-      const wp = document.getElementById('wallpaperLayer');
-      if (!wp) return;
-
-      if (theme === 'sakura' || theme === 'sakura_bw') {
-        const isBW = theme === 'sakura_bw';
-        const branchStroke = isBW ? '#d4d4d8' : '#f472b6';
-        const blossomFill = isBW ? '#ffffff' : '#fbcfe8';
-        const blossomCenter = isBW ? '#71717a' : '#db2777';
-        const glow1 = isBW ? 'rgba(255,255,255,0.12)' : 'rgba(244,114,182,0.22)';
-        const glow2 = isBW ? 'rgba(161,161,170,0.1)' : 'rgba(190,24,93,0.18)';
-
-        wp.innerHTML = `
-          <div class="ambient-orb w-96 h-96 -top-16 -right-16" style="background: ${glow1};"></div>
-          <div class="ambient-orb w-80 h-80 bottom-10 -left-20" style="background: ${glow2}; animation-delay: -4s;"></div>
-          
-          <!-- Верхняя правая цветущая ветвь сакуры с анимацией ветра -->
-          <svg class="sway-right absolute top-0 right-0 w-[340px] sm:w-[520px] h-auto opacity-45" viewBox="0 0 500 400" fill="none">
-            <path d="M500 0 C400 60, 320 80, 180 70 C110 65, 60 95, 20 130" stroke="${branchStroke}" stroke-width="5" stroke-linecap="round"/>
-            <path d="M350 62 C310 120, 260 160, 170 210" stroke="${branchStroke}" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M240 72 C210 110, 160 125, 110 140" stroke="${branchStroke}" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Цветы на ветвях -->
-            <g fill="${blossomFill}">
-              <circle cx="180" cy="70" r="14" opacity="0.85"/><circle cx="180" cy="70" r="4" fill="${blossomCenter}"/>
-              <circle cx="280" cy="65" r="18" opacity="0.9"/><circle cx="280" cy="65" r="5" fill="${blossomCenter}"/>
-              <circle cx="380" cy="45" r="15" opacity="0.8"/><circle cx="380" cy="45" r="4" fill="${blossomCenter}"/>
-              <circle cx="250" cy="155" r="16" opacity="0.85"/><circle cx="250" cy="155" r="4" fill="${blossomCenter}"/>
-              <circle cx="170" cy="210" r="12" opacity="0.8"/><circle cx="170" cy="210" r="3.5" fill="${blossomCenter}"/>
-              <circle cx="110" cy="140" r="13" opacity="0.75"/><circle cx="110" cy="140" r="3.5" fill="${blossomCenter}"/>
-              <circle cx="65" cy="98" r="15" opacity="0.85"/><circle cx="65" cy="98" r="4" fill="${blossomCenter}"/>
-            </g>
-          </svg>
-
-          <!-- Нижняя левая ветвь сакуры -->
-          <svg class="sway-left absolute bottom-0 left-0 w-[300px] sm:w-[440px] h-auto opacity-35" viewBox="0 0 450 350" fill="none">
-            <path d="M0 350 C90 280, 180 260, 310 270 C360 275, 400 250, 430 220" stroke="${branchStroke}" stroke-width="4.5" stroke-linecap="round"/>
-            <path d="M160 270 C200 220, 240 180, 320 150" stroke="${branchStroke}" stroke-width="3" stroke-linecap="round"/>
-            <g fill="${blossomFill}">
-              <circle cx="190" cy="265" r="15" opacity="0.8"/><circle cx="190" cy="265" r="4" fill="${blossomCenter}"/>
-              <circle cx="290" cy="268" r="17" opacity="0.85"/><circle cx="290" cy="268" r="5" fill="${blossomCenter}"/>
-              <circle cx="260" cy="175" r="14" opacity="0.8"/><circle cx="260" cy="175" r="4" fill="${blossomCenter}"/>
-              <circle cx="320" cy="150" r="11" opacity="0.75"/><circle cx="320" cy="150" r="3" fill="${blossomCenter}"/>
-            </g>
-          </svg>
-        `;
-      } else if (theme === 'matcha') {
-        wp.innerHTML = `
-          <div class="ambient-orb w-96 h-96 top-0 left-10" style="background: rgba(163, 230, 53, 0.14);"></div>
-          <div class="ambient-orb w-96 h-96 bottom-0 right-10" style="background: rgba(180, 130, 80, 0.16); animation-delay: -5s;"></div>
-          <!-- Анимированный бамбук и ветви дерева -->
-          <svg class="sway-left absolute bottom-0 right-0 w-[320px] sm:w-[480px] h-auto opacity-35" viewBox="0 0 400 500" fill="none">
-            <path d="M340 500 L310 20 M380 500 L360 80" stroke="#84cc16" stroke-width="6" stroke-linecap="round" stroke-dasharray="90 8"/>
-            <path d="M318 160 Q250 140 210 175 Q260 190 318 160 Z" fill="#a3e635" opacity="0.5"/>
-            <path d="M325 280 Q260 250 220 285 Q270 300 325 280 Z" fill="#84cc16" opacity="0.45"/>
-            <path d="M365 210 Q310 185 280 215 Q320 230 365 210 Z" fill="#a3e635" opacity="0.4"/>
-          </svg>
-        `;
-      } else if (theme === 'cyber') {
-        wp.innerHTML = `
-          <div class="ambient-orb w-96 h-96 top-10 right-1/4" style="background: rgba(244, 63, 94, 0.2);"></div>
-          <div class="ambient-orb w-96 h-96 bottom-10 left-1/4" style="background: rgba(168, 85, 247, 0.22); animation-delay: -3s;"></div>
-          <div class="absolute inset-0 opacity-25" style="background-image: linear-gradient(to right, rgba(244,63,94,0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(168,85,247,0.2) 1px, transparent 1px); background-size: 50px 50px; animation: cyberGridMove 4s linear infinite;"></div>
-        `;
-      } else {
-        wp.innerHTML = `
-          <div class="ambient-orb w-96 h-96 -top-20 left-1/3" style="background: var(--accent-soft);"></div>
-        `;
-      }
-    }
-
-    // ================= ПАДАЮЩИЕ ЛЕПЕСТКИ (ТОЛЬКО КОГДА НУЖНЫ) =================
-    function renderFallingPetals() {
-      const container = document.getElementById('petalsLayer');
-      const hBtnText = document.getElementById('headerPetalsText');
-      const pBtn = document.getElementById('profilePetalsBtn');
-      if (!container) return;
-
-      container.innerHTML = '';
-
-      // Показываем лепестки только если тумблер ВКЛ и тема не строго классическая/нуар (или если пользователь сам включил)
-      if (!state.profile.petalsEnabled) {
-        if (hBtnText) hBtnText.textContent = 'Лепестки: ВЫКЛ';
-        if (pBtn) pBtn.textContent = '🚫 Лепестки: ВЫКЛ';
-        return;
-      }
-
-      if (hBtnText) hBtnText.textContent = 'Лепестки: ВКЛ';
-      if (pBtn) pBtn.textContent = '🌸 Лепестки: ВКЛ';
-
-      const theme = state.profile.theme;
-      let petalColor = '#f472b6';
-      if (theme === 'sakura_bw' || theme === 'noir') petalColor = '#e4e4e7';
-      else if (theme === 'matcha') petalColor = '#a3e635';
-      else if (theme === 'cyber') petalColor = '#f43f5e';
-      else if (theme === 'classic') petalColor = '#10b981';
-
-      const count = 14;
-      for (let i = 0; i < count; i++) {
-        const el = document.createElement('div');
-        el.className = 'sakura-petal';
-        const size = Math.round(Math.random() * 10 + 10);
-        el.style.left = `${Math.random() * 96}vw`;
-        el.style.animationDuration = `${(Math.random() * 6 + 7).toFixed(1)}s`;
-        el.style.animationDelay = `${(Math.random() * 6).toFixed(1)}s`;
-        el.innerHTML = `
-          <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${petalColor}" style="opacity: 0.75;">
-            <path d="M12 2C7 7 4 12 4 16C4 20 8 22 12 19C16 22 20 20 20 16C20 12 17 7 12 2Z"/>
-          </svg>
-        `;
-        container.appendChild(el);
-      }
+      requestAnimationFrame(animateWallpaper);
     }
 
     function togglePetals() {
       state.profile.petalsEnabled = !state.profile.petalsEnabled;
-      renderFallingPetals();
+      updatePetalsButtons();
       persistState();
+    }
+
+    function updatePetalsButtons() {
+      const hBtnText = document.getElementById('headerPetalsText');
+      const pBtn = document.getElementById('profilePetalsBtn');
+      if (state.profile.petalsEnabled) {
+        if (hBtnText) hBtnText.textContent = 'Лепестки: ВКЛ';
+        if (pBtn) pBtn.textContent = '🌸 Лепестки: ВКЛ';
+      } else {
+        if (hBtnText) hBtnText.textContent = 'Лепестки: ВЫКЛ';
+        if (pBtn) pBtn.textContent = '🚫 Лепестки: ВЫКЛ';
+      }
     }
 
     function setTheme(themeName) {
       state.profile.theme = themeName;
-      // Для классики и чистого ЧБ по умолчанию отключаем лепестки, чтобы они не мешали, а для сакуры включаем
       if (themeName === 'classic' || themeName === 'noir') {
         state.profile.petalsEnabled = false;
       } else if (themeName === 'sakura' || themeName === 'sakura_bw') {
@@ -1022,11 +1191,11 @@
       
       const logos = { sakura: '🌸', sakura_bw: '🏴', matcha: '🍵', cyber: '🌌', classic: '⚡', noir: '🏴‍☠️' };
       const subtitles = {
-        sakura: 'Нежная Сакура • Анимированные обои',
-        sakura_bw: 'Черно-белая Сакура • Монохромный стиль',
-        matcha: 'Японский Дзен • Текстура натурального дерева',
+        sakura: 'Живая Сакура • Ботаническая графика',
+        sakura_bw: 'Сакура ЧБ • Японская тушь Sumi-e',
+        matcha: 'Японский Дзен • Срез дерева и бамбук',
         cyber: 'Кибер-Сакура • Неоновый Токио',
-        classic: 'Классика • Изумрудный карбон',
+        classic: 'Классика • Изумрудное стекло',
         noir: 'Чистый ЧБ • Строгий минимализм'
       };
 
@@ -1046,8 +1215,7 @@
         }
       });
 
-      renderAnimatedWallpaper(themeName);
-      renderFallingPetals();
+      updatePetalsButtons();
       renderActiveDay();
       renderCalendar();
     }
@@ -1077,56 +1245,216 @@
       return 'Перекус';
     }
 
-    // ================= AI-СКАНЕР ПО ФОТО (С СЖАТИЕМ CANVAS И GEMINI API) =================
+    // ================= УМНАЯ ДИАГНОСТИКА И АВТО-РЕШЕНИЕ ОШИБОК GEMINI API =================
     function saveApiKey() {
       state.apiKey = document.getElementById('geminiApiKey').value.trim();
-      document.getElementById('apiKeyStatus').textContent = state.apiKey ? 'Ключ сохранен' : 'Локальный ИИ активен';
+      document.getElementById('apiKeyStatus').textContent = state.apiKey ? 'Ключ сохранен' : 'Локальный режим';
+      persistState();
+    }
+
+    function saveModelChoice() {
+      state.preferredModel = document.getElementById('geminiModelSelect').value;
+      document.getElementById('aiActiveModelBadge').textContent = `Модель: ${state.preferredModel}`;
       persistState();
     }
 
     function clearApiKey() {
       state.apiKey = '';
       document.getElementById('geminiApiKey').value = '';
-      document.getElementById('apiKeyStatus').textContent = 'Ключ очищен (локальный режим)';
+      document.getElementById('apiKeyStatus').textContent = 'Ключ сброшен';
+      document.getElementById('aiDiagnosticBox').classList.add('hidden');
       persistState();
+    }
+
+    function showDiagnosticMessage(type, title, desc, actionBtnHtml = '') {
+      const box = document.getElementById('aiDiagnosticBox');
+      box.classList.remove('hidden');
+      if (type === 'success') {
+        box.className = 'rounded-xl p-3.5 border border-emerald-500/40 bg-emerald-950/50 text-emerald-200 text-xs space-y-2';
+      } else if (type === 'warn') {
+        box.className = 'rounded-xl p-3.5 border border-amber-500/40 bg-amber-950/60 text-amber-200 text-xs space-y-2';
+      } else {
+        box.className = 'rounded-xl p-3.5 border border-rose-500/40 bg-rose-950/60 text-rose-200 text-xs space-y-2';
+      }
+      box.innerHTML = `
+        <div class="font-extrabold text-sm">${title}</div>
+        <div class="leading-relaxed opacity-95">${desc}</div>
+        ${actionBtnHtml ? `<div class="pt-1">${actionBtnHtml}</div>` : ''}
+      `;
+    }
+
+    // Автоматический поиск доступных моделей в аккаунте пользователя
+    async function autoDetectBestModel() {
+      const key = state.apiKey.trim();
+      if (!key) {
+        showDiagnosticMessage('warn', '🔑 Сначала введите API-ключ', 'Чтобы автоматически подобрать модель из вашего аккаунта Google AI Studio, вставьте ключ (начинается на AIzaSy...) в поле выше.');
+        return null;
+      }
+
+      document.getElementById('apiKeyStatus').textContent = '⏳ Поиск доступных моделей...';
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
+        const data = await res.json();
+
+        if (data.error) {
+          explainAndFixApiError(data.error.message || 'Ошибка доступа');
+          return null;
+        }
+
+        const models = (data.models || [])
+          .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+          .map(m => m.name.replace('models/', ''));
+
+        // Ищем самую свежую flash-модель (например gemini-3.8-flash, gemini-2.5-flash и т.д.)
+        const preferredOrder = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.5-pro'];
+        let found = preferredOrder.find(p => models.includes(p));
+        if (!found) {
+          found = models.find(m => m.includes('flash')) || models[0];
+        }
+
+        if (found) {
+          state.preferredModel = found;
+          const sel = document.getElementById('geminiModelSelect');
+          if (![...sel.options].some(o => o.value === found)) {
+            const opt = document.createElement('option');
+            opt.value = found;
+            opt.textContent = `✨ ${found} (Найдена автоматически)`;
+            sel.appendChild(opt);
+          }
+          sel.value = found;
+          document.getElementById('aiActiveModelBadge').textContent = `Модель: ${found}`;
+          document.getElementById('apiKeyStatus').textContent = `✅ Активна: ${found}`;
+          persistState();
+
+          showDiagnosticMessage(
+            'success',
+            `✅ Рабочая модель успешно подключена: ${found}`,
+            `Мы запросили список доступных моделей у вашего ключа Google API и автоматически переключили приложение на поддерживаемую модель <b>${found}</b>. Теперь распознавание фотографий работает напрямую через нейросеть!`
+          );
+          return found;
+        }
+      } catch (e) {
+        showDiagnosticMessage('error', '⚠️ Ошибка сети при поиске моделей', 'Не удалось связаться с сервером Google. Проверьте подключение к интернету или включите VPN.');
+      }
+      return null;
+    }
+
+    // Разбор текста ошибки от Google API и понятная инструкция на русском, что сделать
+    function explainAndFixApiError(rawMessage) {
+      const msg = String(rawMessage || '');
+
+      // 1. Если Google пишет "is no longer available. Please update your code to use models/XYZ"
+      const suggestedMatch = msg.match(/models\/([a-zA-Z0-9.\-_]+)/g);
+      if (msg.includes('no longer available') || msg.includes('not found') || msg.includes('not supported')) {
+        let suggestedModel = 'gemini-3.8-flash';
+        if (suggestedMatch && suggestedMatch.length > 0) {
+          const lastMatch = suggestedMatch[suggestedMatch.length - 1].replace('models/', '');
+          if (lastMatch && !msg.includes(`model models/${lastMatch} is no longer`)) {
+            suggestedModel = lastMatch;
+          }
+        }
+
+        state.preferredModel = suggestedModel;
+        const sel = document.getElementById('geminiModelSelect');
+        if (![...sel.options].some(o => o.value === suggestedModel)) {
+          const opt = document.createElement('option');
+          opt.value = suggestedModel;
+          opt.textContent = `⚡ ${suggestedModel}`;
+          sel.appendChild(opt);
+        }
+        sel.value = suggestedModel;
+        document.getElementById('aiActiveModelBadge').textContent = `Модель: ${suggestedModel}`;
+        persistState();
+
+        showDiagnosticMessage(
+          'warn',
+          `🔄 Старая модель устарела — мы автоматически переключили на ${suggestedModel}!`,
+          `<b>Почему возникла ошибка:</b> Google обновил версии нейросетей и сообщил: <i>"${msg}"</i>.<br><b>Что делать:</b> Мы уже автоматически переставили модель на новую <b>${suggestedModel}</b>! Нажмите кнопку ниже, чтобы подтвердить работу.`,
+          `<button type="button" onclick="testGeminiKey()" class="px-4 py-2 themed-btn-primary text-xs">✅ Проверить на новой модели (${suggestedModel})</button>`
+        );
+        return;
+      }
+
+      // 2. Ошибка региона (User location is not supported)
+      if (msg.toLowerCase().includes('location is not supported')) {
+        showDiagnosticMessage(
+          'warn',
+          '🌍 Ограничение региона со стороны Google API',
+          `<b>Причина:</b> Сервер Google вернул <i>"User location is not supported"</i> (из РФ прямые запросы к Gemini API блокируются).<br><b>Как решить за 10 секунд:</b><br>1. Включите любой VPN (например, Нидерланды, Германия или США) на телефоне/ПК.<br>2. Нажмите «Проверить подключение» ещё раз.`
+        );
+        return;
+      }
+
+      // 3. Неверный ключ
+      if (msg.toLowerCase().includes('api key not valid') || msg.toLowerCase().includes('invalid')) {
+        showDiagnosticMessage(
+          'error',
+          '🔑 Неверный формат ключа API',
+          `<b>Причина:</b> Ключ скопирован не полностью или содержит лишние пробелы.<br><b>Как решить:</b> Скопируйте ключ заново на сайте <b>aistudio.google.com</b> (он начинается с <code>AIzaSy...</code>) и вставьте в поле выше.`
+        );
+        return;
+      }
+
+      // 4. Превышен лимит (Quota / 429)
+      if (msg.toLowerCase().includes('quota') || msg.toLowerCase().includes('rate limit')) {
+        showDiagnosticMessage(
+          'warn',
+          '⏳ Превышен бесплатный лимит запросов в минуту',
+          `<b>Причина:</b> На бесплатном тарифе Google AI есть лимит запросов в минуту.<br><b>Как решить:</b> Подождите 30 секунд или нажмите «Авто-подбор рабочей модели», чтобы переключиться на другую свободную модель.`
+        );
+        return;
+      }
+
+      // Любая другая ошибка
+      showDiagnosticMessage(
+        'warn',
+        'ℹ️ Ответ от сервера Google API',
+        `Текст ответа: <i>${msg}</i><br>Нажмите кнопку ниже, чтобы автоматически найти рабочую модель для вашего ключа:`,
+        `<button type="button" onclick="autoDetectBestModel()" class="px-4 py-2 themed-btn-primary text-xs">✨ Авто-подбор рабочей модели</button>`
+      );
     }
 
     async function testGeminiKey() {
       const key = state.apiKey.trim();
       const statusEl = document.getElementById('apiKeyStatus');
       if (!key) {
-        alert('Сначала вставьте ваш ключ Gemini API (начинается на AIzaSy...) в поле ввода.');
+        showDiagnosticMessage('warn', '🔑 Ключ не введен', 'Вставьте ваш ключ Gemini API (начинается на AIzaSy...) в поле ввода выше, чтобы проверить облачное распознавание.');
         return;
       }
-      statusEl.textContent = '⏳ Проверка ключа...';
+
+      const model = state.preferredModel || 'gemini-3.8-flash';
+      statusEl.textContent = `⏳ Проверка ${model}...`;
+
       try {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`, {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ contents: [{ parts: [{ text: 'Ответь одним словом: ОК' }] }] })
         });
         const data = await res.json();
         if (data.candidates) {
-          statusEl.textContent = '✅ Ключ работает отлично!';
-          alert('✅ Ключ Gemini API успешно проверен и работает!');
+          statusEl.textContent = `✅ ${model} работает!`;
+          showDiagnosticMessage(
+            'success',
+            `🎉 Подключение успешно! Модель ${model} активна`,
+            'Ваш ключ и выбранная модель работают идеально. Теперь загрузите любое фото еды ниже — нейросеть сама распознает блюдо, вес и КБЖУ!'
+          );
         } else {
-          const msg = data.error?.message || 'Неизвестная ошибка';
-          statusEl.textContent = '⚠️ Ошибка API';
-          alert('Ответ Google API: ' + msg + '\n\nПримечание: если пишет "User location is not supported", включите VPN для запросов к Google AI.');
+          statusEl.textContent = '⚠️ Требуется внимание';
+          explainAndFixApiError(data.error?.message || 'Неизвестный ответ API');
         }
       } catch (e) {
         statusEl.textContent = '⚠️ Ошибка сети';
-        alert('Не удалось соединиться с сервером Google API. Проверьте интернет или VPN.');
+        showDiagnosticMessage('error', '🌐 Нет связи с Google API', 'Проверьте интернет или включите VPN, если доступ к серверам Google ограничен провайдером.');
       }
     }
 
     function triggerPhotoSelect() {
       const input = document.getElementById('photoInput');
-      input.value = ''; // Сбрасываем value, чтобы повторная загрузка того же фото всегда срабатывала!
+      input.value = '';
       input.click();
     }
 
-    // Сжатие любого фото с iPhone через Canvas до 800px JPEG и анализ цвета
     function compressAndAnalyzeImage(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -1144,7 +1472,6 @@
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, w, h);
 
-            // Считаем среднюю цветовую температуру снимка для умного локального распознавания
             let rSum = 0, gSum = 0, bSum = 0, count = 0;
             try {
               const imgData = ctx.getImageData(0, 0, w, h).data;
@@ -1156,15 +1483,13 @@
               }
             } catch (e) {}
 
-            const avgR = count ? rSum / count : 120;
-            const avgG = count ? gSum / count : 120;
-            const avgB = count ? bSum / count : 120;
-
             const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.82);
             resolve({
               dataUrl: jpegDataUrl,
               base64: jpegDataUrl.split(',')[1],
-              avgR, avgG, avgB
+              avgR: count ? rSum / count : 120,
+              avgG: count ? gSum / count : 120,
+              avgB: count ? bSum / count : 120
             });
           };
           img.onerror = reject;
@@ -1185,7 +1510,7 @@
       const prompt = document.getElementById('uploadPrompt');
 
       scanner.classList.remove('hidden');
-      statusText.textContent = 'ОБРАБОТКА СНИМКА...';
+      statusText.textContent = 'СЖАТИЕ СНИМКА...';
 
       try {
         const processed = await compressAndAnalyzeImage(file);
@@ -1195,11 +1520,18 @@
 
         const key = state.apiKey.trim();
 
-        // Если введен API-ключ, пробуем облачный Gemini Vision (с каскадом моделей)
         if (key.length > 15) {
-          statusText.textContent = 'GEMINI VISION АНАЛИЗИРУЕТ ТАРЕЛКУ...';
-          const models = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
-          for (const modelName of models) {
+          const modelsToTry = [
+            state.preferredModel || 'gemini-3.8-flash',
+            'gemini-3.8-flash',
+            'gemini-2.5-flash',
+            'gemini-flash-latest'
+          ].filter((v, i, a) => a.indexOf(v) === i);
+
+          let lastApiError = '';
+
+          for (const modelName of modelsToTry) {
+            statusText.textContent = `AI АНАЛИЗ (${modelName})...`;
             try {
               const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${key}`, {
                 method: 'POST',
@@ -1214,23 +1546,41 @@
                 })
               });
               const data = await response.json();
+
+              if (data.error) {
+                lastApiError = data.error.message || '';
+                // Если Google прямо в ошибке подсказал актуальную модель (например gemini-3.8-flash), сразу добавляем её в очередь!
+                const mMatch = lastApiError.match(/use models\/([a-zA-Z0-9.\-_]+)/);
+                if (mMatch && mMatch[1] && !modelsToTry.includes(mMatch[1])) {
+                  modelsToTry.push(mMatch[1]);
+                }
+                continue;
+              }
+
               const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
               const jsonMatch = rawText.match(/\{[\s\S]*\}/);
               if (jsonMatch) {
                 const parsed = JSON.parse(jsonMatch[0]);
                 if (parsed.items && parsed.items.length > 0) {
+                  state.preferredModel = modelName;
+                  document.getElementById('aiActiveModelBadge').textContent = `Модель: ${modelName}`;
+                  persistState();
                   scanner.classList.add('hidden');
-                  openAiModalWithData(parsed.title || 'Распознанное блюдо', parsed.items, `✨ Gemini AI (${modelName})`);
+                  openAiModalWithData(parsed.title || 'Распознанное блюдо', parsed.items, `✨ Распознано нейросетью (${modelName})`);
                   return;
                 }
               }
             } catch (apiErr) {
-              console.warn(`Модель ${modelName} недоступна, пробуем следующую...`);
+              lastApiError = apiErr.message || 'Ошибка соединения';
             }
+          }
+
+          if (lastApiError) {
+            explainAndFixApiError(lastApiError);
           }
         }
 
-        // Умный визуальный анализатор по цветовому профилю и метаданным файла (работает 100% оффлайн и без VPN!)
+        // Локальный анализатор (если ключ не введен или нужен оффлайн-расчет)
         setTimeout(() => {
           scanner.classList.add('hidden');
           let chosenKey = 'chicken_rice';
@@ -1244,31 +1594,29 @@
           openAiModalWithData(
             sc.title,
             sc.items.map(i => ({ ...i })),
-            '✨ Умный фото-анализатор (вы можете подправить состав)'
+            '✨ Автономный анализатор (можно подправить состав и вес)'
           );
-        }, 750);
+        }, 650);
 
       } catch (err) {
         scanner.classList.add('hidden');
-        alert('Не удалось прочитать фото. Попробуйте другой снимок.');
+        showDiagnosticMessage('error', '⚠️ Не удалось прочитать файл', 'Попробуйте выбрать другое фото в формате JPEG или PNG.');
       }
     }
 
     function runDemoPhoto(scKey) {
       const sc = demoPhotoScenarios[scKey];
       if (!sc) return;
-      openAiModalWithData(sc.title, sc.items.map(i => ({ ...i })), '⚡ AI Распознавание по шаблону');
+      openAiModalWithData(sc.title, sc.items.map(i => ({ ...i })), '⚡ Быстрый шаблон блюда');
     }
 
-    // Анализ текстового описания блюда ("2 куска пиццы", "шаурма", "гречка с котлетой")
     function analyzeTextDish() {
       const text = document.getElementById('customAiDishInput').value.trim();
       if (!text) {
-        alert('Напишите название блюда, например: "Карбонара" или "Бургер с фри"');
+        showDiagnosticMessage('warn', '✍️ Введите название блюда', 'Напишите в поле справа снизу, что у вас на тарелке (например: "Карбонара" или "Шаурма"), и нажмите «Рассчитать».');
         return;
       }
       const q = text.toLowerCase();
-      // Ищем совпадения в нашей базе
       const matches = foodCatalog.filter(f => q.includes(f.name.toLowerCase().split(' ')[0]) || f.name.toLowerCase().includes(q));
       if (matches.length > 0) {
         const items = matches.slice(0, 3).map(m => ({
@@ -1278,11 +1626,11 @@
           f100: m.f,
           c100: m.c
         }));
-        openAiModalWithData(text, items, '✨ ИИ-расчет по вашему описанию');
+        openAiModalWithData(text, items, '✨ Расчет по вашему описанию');
       } else {
         openAiModalWithData(text, [
           { name: text, weight: 250, p100: 12, f100: 10, c100: 22 }
-        ], '✨ ИИ-оценка блюда (можно отрегулировать)');
+        ], '✨ Оценка блюда (можно отрегулировать)');
       }
     }
 
@@ -1398,10 +1746,7 @@
         totalCal += Math.round((p * 4) + (f * 9) + (c * 4));
       });
 
-      if (totalW <= 0) {
-        alert('Укажите вес хотя бы одного ингредиента.');
-        return;
-      }
+      if (totalW <= 0) return;
 
       if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
       state.days[activeDate].diary.unshift({
@@ -1564,11 +1909,8 @@
 
     function aiSearchCatalogFood() {
       const q = document.getElementById('foodSearchInput').value.trim();
-      if (!q) {
-        alert('Введите название блюда в строку поиска!');
-        return;
-      }
-      openAiModalWithData(q, [{ name: q, weight: 200, p100: 14, f100: 9, c100: 22 }], '✨ Добавление нового блюда');
+      if (!q) return;
+      openAiModalWithData(q, [{ name: q, weight: 200, p100: 14, f100: 9, c100: 22 }], '✨ Добавление своего блюда');
     }
 
     function changeActiveDate(newDate) {
@@ -1696,12 +2038,12 @@
     }
 
     function persistState() {
-      localStorage.setItem('rayuncalc_state_v12', JSON.stringify(state));
+      localStorage.setItem('rayuncalc_state_v13', JSON.stringify(state));
     }
 
     function resetAllData() {
       if (confirm('Сбросить все сохраненные данные?')) {
-        localStorage.removeItem('rayuncalc_state_v12');
+        localStorage.removeItem('rayuncalc_state_v13');
         location.reload();
       }
     }
