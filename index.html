@@ -30,8 +30,8 @@
 
     body.theme-sakura {
       --bg-main: #12060c;
-      --card-bg: rgba(34, 11, 24, 0.78);
-      --box-bg: rgba(22, 6, 15, 0.84);
+      --card-bg: rgba(34, 11, 24, 0.76);
+      --box-bg: rgba(22, 6, 15, 0.82);
       --accent: #f472b6;
       --accent-soft: rgba(244, 114, 182, 0.22);
       --accent-gradient: linear-gradient(135deg, #f9a8d4 0%, #f472b6 45%, #db2777 100%);
@@ -43,8 +43,8 @@
 
     body.theme-sakura_bw {
       --bg-main: #0a0a0c;
-      --card-bg: rgba(22, 22, 26, 0.82);
-      --box-bg: rgba(14, 14, 17, 0.88);
+      --card-bg: rgba(22, 22, 26, 0.80);
+      --box-bg: rgba(14, 14, 17, 0.86);
       --accent: #f4f4f5;
       --accent-soft: rgba(255, 255, 255, 0.15);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
@@ -55,9 +55,9 @@
     }
 
     body.theme-matcha {
-      --bg-main: #0f130d;
-      --card-bg: rgba(34, 25, 17, 0.85);
-      --box-bg: rgba(24, 17, 11, 0.9);
+      --bg-main: #0c110a;
+      --card-bg: rgba(32, 24, 16, 0.82);
+      --box-bg: rgba(22, 16, 10, 0.86);
       --accent: #a3e635;
       --accent-soft: rgba(163, 230, 53, 0.2);
       --accent-gradient: linear-gradient(135deg, #bef264 0%, #84cc16 55%, #4d7c0f 100%);
@@ -69,8 +69,8 @@
 
     body.theme-cyber {
       --bg-main: #080312;
-      --card-bg: rgba(20, 8, 38, 0.82);
-      --box-bg: rgba(12, 4, 24, 0.88);
+      --card-bg: rgba(20, 8, 38, 0.80);
+      --box-bg: rgba(12, 4, 24, 0.86);
       --accent: #f43f5e;
       --accent-soft: rgba(244, 63, 94, 0.24);
       --accent-gradient: linear-gradient(135deg, #fb7185 0%, #e11d48 45%, #9333ea 100%);
@@ -82,8 +82,8 @@
 
     body.theme-classic {
       --bg-main: #060a12;
-      --card-bg: rgba(15, 23, 42, 0.82);
-      --box-bg: rgba(9, 14, 26, 0.88);
+      --card-bg: rgba(15, 23, 42, 0.80);
+      --box-bg: rgba(9, 14, 26, 0.86);
       --accent: #10b981;
       --accent-soft: rgba(16, 185, 129, 0.18);
       --accent-gradient: linear-gradient(135deg, #34d399 0%, #10b981 55%, #059669 100%);
@@ -95,8 +95,8 @@
 
     body.theme-noir {
       --bg-main: #000000;
-      --card-bg: rgba(15, 15, 15, 0.9);
-      --box-bg: rgba(8, 8, 8, 0.95);
+      --card-bg: rgba(15, 15, 15, 0.88);
+      --box-bg: rgba(8, 8, 8, 0.94);
       --accent: #ffffff;
       --accent-soft: rgba(255, 255, 255, 0.14);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
@@ -129,30 +129,6 @@
       box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
       transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
       overflow: hidden;
-    }
-
-    body.theme-sakura .glass-card:nth-of-type(odd),
-    body.theme-sakura header.glass-card {
-      background-image: 
-        radial-gradient(circle at 92% 12%, rgba(244, 114, 182, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 8% 88%, rgba(219, 39, 119, 0.14) 0%, transparent 50%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.28'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%239d174d' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M480 32 C450 60, 430 85, 390 105' stroke='%239d174d' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(415,28) scale(0.9)' fill='%23fbcfe8'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23db2777'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-    body.theme-sakura_bw .glass-card {
-      background-image: 
-        radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.12) 0%, transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260' preserveAspectRatio='xMaxYMin slice'%3E%3Cg opacity='0.22'%3E%3Cpath d='M600 0 C530 35, 470 40, 410 25 C370 15, 330 30, 290 55' stroke='%23a1a1aa' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(465,30) scale(0.95)' fill='%23ffffff'%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%2352525b'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-    body.theme-matcha .glass-card {
-      background-image: 
-        linear-gradient(135deg, rgba(62, 43, 27, 0.55) 0%, rgba(28, 22, 15, 0.75) 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23d99b66' stroke-opacity='0.16' stroke-width='1.5'%3E%3Cpath d='M0,40 C220,10 450,80 800,30'/%3E%3Cpath d='M0,95 C180,65 390,130 800,85'/%3E%3Cpath d='M0,155 C260,120 510,185 800,140'/%3E%3Cpath d='M0,215 C190,250 480,190 800,225'/%3E%3C/g%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -160,10 +136,11 @@
     .themed-box {
       position: relative;
       background-color: var(--box-bg);
-      background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
       border: 1px solid var(--border-color);
       border-radius: var(--box-radius);
       transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
     .hover-lift:hover {
@@ -199,7 +176,6 @@
       pointer-events: none;
     }
 
-    /* Нижний мобильный бар в стиле Yazio / Lifesum */
     .bottom-nav-glass {
       background: var(--card-bg);
       backdrop-filter: blur(22px);
@@ -209,7 +185,6 @@
       padding-bottom: env(safe-area-inset-bottom, 8px);
     }
 
-    /* Выезжающая снизу шторка (Bottom Sheet) */
     @keyframes sheetSlideUp {
       from { transform: translateY(100%); opacity: 0.4; }
       to { transform: translateY(0); opacity: 1; }
@@ -295,6 +270,16 @@
       animation: goofyWobble 1.8s ease-in-out infinite;
     }
 
+    @keyframes searchPulseAnim {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      35% { transform: scale(1.12) rotate(-8deg); }
+      70% { transform: scale(1.06) rotate(8deg); }
+    }
+    .search-emoji-anim {
+      display: inline-block;
+      animation: searchPulseAnim 2.2s ease-in-out infinite;
+    }
+
     @keyframes errorShake {
       0%, 100% { transform: translateX(0); }
       20% { transform: translateX(-10px) rotate(-1deg); }
@@ -334,7 +319,7 @@
     </div>
   </div>
 
-  <!-- ОСНОВНОЙ ИНТЕРФЕЙС (КОМПАКТНЫЙ MOBILE-FIRST КАК В YAZIO / LIFESUM) -->
+  <!-- ОСНОВНОЙ ИНТЕРФЕЙС -->
   <div class="relative z-10 max-w-2xl mx-auto space-y-4">
     
     <!-- Компактная шапка -->
@@ -354,16 +339,16 @@
 
       <div class="flex items-center gap-1.5">
         <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="themed-box px-2.5 py-1.5 text-[11px] font-bold focus:outline-none" style="color: var(--accent);">
-        <button type="button" onclick="togglePetals()" id="headerPetalsBtn" title="Вкл/Выкл лепестки" class="themed-box px-2.5 py-1.5 text-xs font-bold hover-lift">
+        <button type="button" onclick="togglePetals()" id="headerPetalsBtn" title="Вкл/Выкл частицы" class="themed-box px-2.5 py-1.5 text-xs font-bold hover-lift">
           🌸
         </button>
       </div>
     </header>
 
-    <!-- ================= ВКЛАДКА 1: ДНЕВНИК В СТИЛЕ YAZIO (БЕЗ ДЛИННОГО СКРОЛЛА!) ================= -->
+    <!-- ================= ВКЛАДКА 1: ДНЕВНИК ================= -->
     <div id="view_diary" class="space-y-3.5 tab-view-enter">
       
-      <!-- Верхняя карточка с переключателем: [📊 Сводка КБЖУ] ↔️ [🧠 Что съесть (Рекомендации)] -->
+      <!-- Верхняя карточка с переключателем: [📊 Сводка КБЖУ] ↔️ [🧠 Что съесть] -->
       <div class="glass-card p-4 sm:p-5 space-y-4">
         <div class="flex items-center justify-between gap-2 border-b border-white/10 pb-2.5">
           <div class="grid grid-cols-2 gap-1 bg-black/40 p-1 rounded-xl border border-white/10 flex-1">
@@ -383,7 +368,6 @@
         <!-- СЛАЙД 1: КОМПАКТНАЯ СВОДКА ДНЯ -->
         <div id="heroSlide_summary" class="space-y-3.5">
           <div class="flex items-center gap-4 sm:gap-6">
-            <!-- Кольцо калорий -->
             <div onclick="openCustomCalModal()" class="relative w-28 h-28 sm:w-32 sm:h-32 flex-shrink-0 themed-box p-1.5 flex items-center justify-center cursor-pointer hover-lift">
               <svg class="w-full h-full -rotate-90 ring-glow" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="10" fill="none" />
@@ -397,7 +381,6 @@
               </div>
             </div>
 
-            <!-- 3 полоски БЖУ -->
             <div class="flex-1 grid grid-cols-1 gap-2">
               <div class="themed-box px-3 py-2">
                 <div class="flex justify-between text-[11px] mb-1">
@@ -439,7 +422,7 @@
           </div>
         </div>
 
-        <!-- СЛАЙД 2: УМНЫЕ РЕКОМЕНДАЦИИ ПО ЦЕЛИ (ДЕФИЦИТ / ПОДДЕРЖАНИЕ / НАБОР) -->
+        <!-- СЛАЙД 2: УМНЫЕ РЕКОМЕНДАЦИИ ПО ЦЕЛИ -->
         <div id="heroSlide_coach" class="hidden space-y-3">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <span id="smartDeficitStatus" class="text-xs font-extrabold" style="color: var(--accent);">Анализ рациона...</span>
@@ -461,7 +444,7 @@
         </div>
       </div>
 
-      <!-- 4 КАРТОЧКИ ПРИЕМОВ ПИЩИ (КАК В YAZIO / LIFESUM — РАСКРЫВАЮТСЯ ПО ТАПУ, КНОПКА + ОТКРЫВАЕТ ШТОРКУ) -->
+      <!-- 4 КАРТОЧКИ ПРИЕМОВ ПИЩИ -->
       <div id="mealCardsWrapper" class="space-y-2.5"></div>
 
     </div>
@@ -474,12 +457,11 @@
             <h2 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
               <span>📸</span> AI-Сканер еды и товаров
             </h2>
-            <p class="text-[11px] text-slate-300">Распознает блюда на тарелке, пачки лапши, батончики и таблицы КБЖУ</p>
+            <p class="text-[11px] text-slate-300">Распознает блюда на тарелке, роллы, пачки лапши, батончики и этикетки</p>
           </div>
           <span id="aiActiveModelBadge" class="text-[10px] font-bold px-2.5 py-1 themed-box" style="color: var(--accent);">gemini-3.8-flash</span>
         </div>
 
-        <!-- Настройка API ключа -->
         <div class="themed-box p-3.5 space-y-2.5">
           <div class="flex items-center justify-between text-xs font-bold" style="color: var(--accent);">
             <span>🔑 Ключ Gemini API</span>
@@ -504,7 +486,6 @@
           <div id="aiDiagnosticBox" class="hidden rounded-xl p-3 border text-xs space-y-2"></div>
         </div>
 
-        <!-- Зона съемки: Тарелка ИЛИ Упаковка товара из магазина -->
         <div id="dropZone" onclick="triggerPhotoSelect()" class="relative group cursor-pointer border-2 border-dashed themed-box p-6 sm:p-8 flex flex-col items-center justify-center text-center min-h-[230px] overflow-hidden transition-all hover-lift" style="border-color: var(--border-color);">
           <input id="photoInput" type="file" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
           <img id="photoPreview" src="" alt="Preview" class="hidden absolute inset-0 w-full h-full object-cover opacity-85" />
@@ -520,16 +501,15 @@
             </div>
             <div class="text-sm sm:text-base font-extrabold text-white">Сфотографировать блюдо или упаковку товара</div>
             <p class="text-[11px] text-slate-300 font-medium max-w-md mx-auto">
-              Наведите на тарелку с едой, пачку лапши из магазина, батончик или этикетку с КБЖУ — ИИ сам определит бренд и калории!
+              Наведите на тарелку с едой, пачку лапши, ролл из магазина или таблицу КБЖУ — ИИ сам определит бренд и калории!
             </p>
           </div>
         </div>
 
-        <!-- Умный текстовый расчет (с поддержкой Gemini AI и без ложных срабатываний на "котлету") -->
         <div class="themed-box p-4 space-y-2">
           <label class="block text-xs text-slate-200 font-bold">✍️ Описать словами блюдо или магазинный товар:</label>
           <div class="flex flex-col sm:flex-row gap-2">
-            <input id="customAiDishInput" type="text" placeholder="Например: 2 котлеты с пюре и компот ИЛИ лапша Булдак пачка" class="flex-1 themed-box px-3.5 py-2.5 text-xs text-white focus:outline-none">
+            <input id="customAiDishInput" type="text" placeholder="Например: фило ролл с ветчиной и сыром из магазина верный" class="flex-1 themed-box px-3.5 py-2.5 text-xs text-white focus:outline-none">
             <button type="button" id="textAnalyzeBtn" onclick="analyzeTextDish()" class="py-2.5 px-5 themed-btn-primary text-xs flex-shrink-0">✨ Найти и рассчитать</button>
           </div>
         </div>
@@ -562,21 +542,21 @@
     <div id="view_profile" class="hidden space-y-4">
       <div class="glass-card p-5 space-y-5">
         <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-          <span>🎨</span> Живые обои и текстуры
+          <span>🎨</span> Живые обои и уникальные текстуры
         </h2>
 
         <div class="themed-box p-4 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-white">Тема оформления:</span>
+            <span class="text-xs font-bold text-white">Тема оформления (у каждого блока свой узор):</span>
             <button type="button" onclick="togglePetals()" id="profilePetalsBtn" class="px-3 py-1.5 themed-btn-primary text-[11px]">
-              🌸 Лепестки: ВКЛ
+              🌸 Частицы: ВКЛ
             </button>
           </div>
 
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
             <button type="button" onclick="setTheme('sakura')" id="theme_sakura" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🌸</span>
-              <div><div class="text-xs font-extrabold text-white">Сакура</div><div class="text-[9px] text-slate-300">Ботаника</div></div>
+              <div><div class="text-xs font-extrabold text-white">Сакура</div><div class="text-[9px] text-slate-300">Разные соцветия</div></div>
             </button>
             <button type="button" onclick="setTheme('sakura_bw')" id="theme_sakura_bw" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🏴</span>
@@ -584,7 +564,7 @@
             </button>
             <button type="button" onclick="setTheme('matcha')" id="theme_matcha" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🍵</span>
-              <div><div class="text-xs font-extrabold text-white">Дзен</div><div class="text-[9px] text-slate-300">Матча & Дерево</div></div>
+              <div><div class="text-xs font-extrabold text-white">Дзен</div><div class="text-[9px] text-slate-300">Живой лес и дерево</div></div>
             </button>
             <button type="button" onclick="setTheme('cyber')" id="theme_cyber" class="p-2.5 themed-box text-left transition flex items-center gap-2.5 hover-lift">
               <span class="text-xl">🌌</span>
@@ -700,7 +680,7 @@
 
   </div>
 
-  <!-- ================= НИЖНИЙ ТАБ-БАР КАК В YAZIO / LIFESUM (ПОД БОЛЬШОЙ ПАЛЕЦ) ================= -->
+  <!-- ================= НИЖНИЙ ТАБ-БАР ================= -->
   <nav class="fixed bottom-0 left-0 right-0 z-40 bottom-nav-glass">
     <div class="max-w-lg mx-auto px-3 py-2 grid grid-cols-5 items-center gap-1">
       <button type="button" onclick="switchMainTab('diary')" id="mainTab_diary" class="py-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 text-[10px] font-extrabold transition" style="color: var(--accent);">
@@ -709,7 +689,6 @@
       <button type="button" onclick="openCatalogSheet()" class="py-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold text-slate-300 hover:text-white transition">
         <span class="text-lg">🍲</span><span>Каталог</span>
       </button>
-      <!-- Центральная кнопка быстрого AI-Скана -->
       <div class="flex justify-center -mt-5">
         <button type="button" onclick="switchMainTab('scanner')" id="mainTab_scanner" class="w-14 h-14 rounded-2xl themed-btn-primary flex flex-col items-center justify-center shadow-2xl border-2 border-white/20">
           <span class="text-xl leading-none">📸</span>
@@ -725,7 +704,7 @@
     </div>
   </nav>
 
-  <!-- ================= ВЫЕЗЖАЮЩАЯ ШТОРКА КАТАЛОГА БЛЮД (BOTTOM SHEET) ================= -->
+  <!-- ================= ВЫЕЗЖАЮЩАЯ ШТОРКА КАТАЛОГА БЛЮД ================= -->
   <div id="catalogSheetModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="glass-card w-full max-w-xl rounded-t-3xl sm:rounded-3xl p-4 sm:p-6 space-y-3.5 sheet-animate max-h-[88vh] flex flex-col">
       <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
@@ -733,7 +712,7 @@
           <span class="text-lg">🍲</span>
           <div>
             <h3 class="text-sm sm:text-base font-extrabold text-white">Добавить в <span id="sheetMealLabel" style="color: var(--accent);">Завтрак</span></h3>
-            <span id="catalogTotalCountBadge" class="text-[10px] text-slate-300">База: 160+ блюд и товаров</span>
+            <span id="catalogTotalCountBadge" class="text-[10px] text-slate-300">База: 170+ блюд и товаров</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
@@ -747,24 +726,22 @@
         </div>
       </div>
 
-      <!-- Поиск + Кнопка "+ Своё блюдо" (Ручной ввод или ИИ) -->
       <div class="flex gap-2">
         <div class="relative flex-1">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">🔍</span>
-          <input id="foodSearchInput" type="text" placeholder="Поиск (котлета, борщ, том ям, творог...)" oninput="filterFoodCatalog()" class="w-full themed-box pl-9 pr-3 py-2.5 text-xs text-white focus:outline-none">
+          <input id="foodSearchInput" type="text" placeholder="Поиск (фило ролл, котлета, борщ, том ям...)" oninput="filterFoodCatalog()" class="w-full themed-box pl-9 pr-3 py-2.5 text-xs text-white focus:outline-none">
         </div>
         <button type="button" onclick="aiSearchCatalogFood()" class="px-3.5 py-2.5 themed-btn-primary text-xs flex-shrink-0">
           ✨ + Своё
         </button>
       </div>
 
-      <!-- Категории -->
       <div class="flex gap-1.5 overflow-x-auto pb-1 custom-scrollbar text-[11px]">
         <button type="button" onclick="setCategoryFilter('all')" id="cat_all" class="px-3 py-1.5 font-bold flex-shrink-0 themed-btn-primary">Все</button>
         <button type="button" onclick="setCategoryFilter('fitness')" id="cat_fitness" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥗 ПП и 0-ккал</button>
+        <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🛒 Магазины (Верный/Самокат)</button>
         <button type="button" onclick="setCategoryFilter('canteen')" id="cat_canteen" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍲 Столовая</button>
         <button type="button" onclick="setCategoryFilter('panasian')" id="cat_panasian" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍜 Паназия</button>
-        <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🛒 Магазины</button>
         <button type="button" onclick="setCategoryFilter('base')" id="cat_base" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥩 Базовые</button>
         <button type="button" onclick="setCategoryFilter('bakery')" id="cat_bakery" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🥐 Выпечка</button>
         <button type="button" onclick="setCategoryFilter('fastfood')" id="cat_fastfood" class="px-3 py-1.5 font-bold themed-box text-slate-200 flex-shrink-0">🍔 Фастфуд</button>
@@ -773,7 +750,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
         <div class="sm:col-span-2">
-          <label class="block text-[10px] text-slate-300 font-semibold mb-1">Выберите блюдо (<span id="filteredCountLbl">160</span> найдено)</label>
+          <label class="block text-[10px] text-slate-300 font-semibold mb-1">Выберите блюдо (<span id="filteredCountLbl">170</span> найдено)</label>
           <select id="dbFoodSelect" onchange="updateDbPreview()" class="w-full themed-box px-3 py-2.5 text-xs text-white focus:outline-none"></select>
         </div>
         <div>
@@ -801,7 +778,7 @@
     </div>
   </div>
 
-  <!-- ================= НОВОЕ ОКНО: ДОБАВИТЬ СВОЁ БЛЮДО ИЛИ ТОВАР (ВРУЧНУЮ ИЛИ ЧЕРЕЗ ИИ) ================= -->
+  <!-- ================= ОКНО: ДОБАВИТЬ СВОЁ БЛЮДО ИЛИ ТОВАР ================= -->
   <div id="customFoodModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
     <div class="glass-card w-full max-w-md p-5 sm:p-6 space-y-4 popup-animate shadow-2xl">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
@@ -812,7 +789,6 @@
         <button type="button" onclick="closeCustomFoodModal()" class="w-8 h-8 themed-box flex items-center justify-center text-slate-300 hover:text-white">✕</button>
       </div>
 
-      <!-- Переключатель: [🤖 ИИ сам найдет КБЖУ] / [✍️ Ввести КБЖУ вручную] -->
       <div class="grid grid-cols-2 gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10">
         <button type="button" onclick="switchCustomFoodTab('ai')" id="cfTab_ai" class="py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary">
           🤖 ИИ найдет сам
@@ -822,11 +798,10 @@
         </button>
       </div>
 
-      <!-- РЕЖИМ 1: ИИ САМ ИЩЕТ И ОПРЕДЕЛЯЕТ КБЖУ -->
       <div id="cfBody_ai" class="space-y-3">
         <div>
           <label class="block text-xs text-slate-200 font-bold mb-1">Напишите название блюда или товара из магазина:</label>
-          <input id="cfAiQueryInput" type="text" placeholder="Например: Лапша Buldak 140г или домашняя котлета" class="w-full themed-box px-3.5 py-3 text-xs text-white focus:outline-none">
+          <input id="cfAiQueryInput" type="text" placeholder="Например: фило ролл с ветчиной и сыром верный" class="w-full themed-box px-3.5 py-3 text-xs text-white focus:outline-none">
         </div>
         <p class="text-[11px] text-slate-300 leading-relaxed">
           ИИ сам определит вес порции, калории, белки, жиры и углеводы, а затем откроет окно проверки, где всё можно подрегулировать.
@@ -836,16 +811,15 @@
         </button>
       </div>
 
-      <!-- РЕЖИМ 2: РУЧНОЙ ВВОД СВОЕГО БЛЮДА / ТОВАРА -->
       <div id="cfBody_manual" class="hidden space-y-3">
         <div class="grid grid-cols-3 gap-2">
           <div class="col-span-2">
             <label class="block text-[11px] text-slate-300 font-bold mb-1">Название блюда / товара</label>
-            <input id="cfManualName" type="text" placeholder="Например: Протеиновый пудинг" class="w-full themed-box px-3 py-2 text-xs text-white focus:outline-none">
+            <input id="cfManualName" type="text" placeholder="Например: Фило ролл с ветчиной" class="w-full themed-box px-3 py-2 text-xs text-white focus:outline-none">
           </div>
           <div>
             <label class="block text-[11px] text-slate-300 font-bold mb-1">Вес (г/мл)</label>
-            <input id="cfManualWeight" type="number" value="200" min="1" max="3000" class="w-full themed-box px-3 py-2 text-xs text-white font-bold focus:outline-none">
+            <input id="cfManualWeight" type="number" value="180" min="1" max="3000" class="w-full themed-box px-3 py-2 text-xs text-white font-bold focus:outline-none">
           </div>
         </div>
 
@@ -860,31 +834,90 @@
         <div class="grid grid-cols-4 gap-2">
           <div class="themed-box p-2">
             <label class="block text-[9px] font-bold" style="color: var(--accent);">🔥 Ккал</label>
-            <input id="cfManualCal" type="number" value="180" min="0" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+            <input id="cfManualCal" type="number" value="235" min="0" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
           </div>
           <div class="themed-box p-2">
             <label class="block text-[9px] text-sky-300 font-bold">🥩 Белки</label>
-            <input id="cfManualP" type="number" value="15" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+            <input id="cfManualP" type="number" value="9.5" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
           </div>
           <div class="themed-box p-2">
             <label class="block text-[9px] text-amber-300 font-bold">🥑 Жиры</label>
-            <input id="cfManualF" type="number" value="6" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+            <input id="cfManualF" type="number" value="11.5" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
           </div>
           <div class="themed-box p-2">
             <label class="block text-[9px] text-purple-300 font-bold">🍚 Углев.</label>
-            <input id="cfManualC" type="number" value="18" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
+            <input id="cfManualC" type="number" value="24" min="0" step="0.5" class="w-full bg-black/40 rounded px-2 py-1 text-xs font-extrabold text-white focus:outline-none mt-0.5">
           </div>
         </div>
 
         <label class="flex items-center gap-2 text-xs text-slate-200 cursor-pointer pt-1">
           <input id="cfSaveToCatalog" type="checkbox" checked class="rounded accent-pink-500">
-          <span>Сохранить блюдо в мой каталог для быстрого поиска</span>
+          <span>Сохранить в мой каталог для быстрого поиска</span>
         </label>
 
         <button type="button" onclick="saveManualCustomFood()" class="w-full py-3.5 themed-btn-primary text-xs">
           ✅ Добавить в рацион
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- ================= НОВОЕ ОТДЕЛЬНОЕ ОКНО ОШИБКИ ДЛЯ ТЕКСТОВОГО ПОИСКА ================= -->
+  <div id="textSearchErrorModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div id="textSearchErrorCard" class="glass-card w-full max-w-md p-6 text-center space-y-4 border-2 border-amber-400/50 shadow-2xl">
+      <div class="text-5xl sm:text-6xl py-1 select-none">
+        <span id="textSearchEmoji" class="search-emoji-anim">🧐</span>
+      </div>
+      <div class="space-y-1.5">
+        <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-extrabold uppercase tracking-widest">
+          🔎 Умный поиск • Запрос не распознан
+        </span>
+        <h3 class="text-base sm:text-lg font-extrabold text-white pt-1">
+          Хм, по такому тексту блюдо не нашлось 🤔
+        </h3>
+        <p id="textSearchErrorDesc" class="text-xs text-slate-300 leading-relaxed">
+          Похоже, в названии опечатка или указан несъедобный предмет.
+        </p>
+      </div>
+
+      <div class="themed-box p-3 text-[11px] text-slate-300 text-left space-y-1">
+        <div class="font-bold text-amber-300">💡 Что можно сделать:</div>
+        <div>• Уточните название продукта (например: <i>«ролл с ветчиной»</i> или <i>«творог 5%»</i>).</div>
+        <div>• Или нажмите кнопку ниже, чтобы занести свои цифры КБЖУ с упаковки вручную!</div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+        <button type="button" onclick="closeTextSearchErrorModal()" class="py-3 themed-box text-slate-200 text-xs font-bold hover-lift">
+          🔄 Исправить текст
+        </button>
+        <button type="button" onclick="switchFromErrorToManualEntry()" class="py-3 themed-btn-primary text-xs font-extrabold">
+          ✍️ Занести КБЖУ самому
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ОКНО ОШИБКИ ТОЛЬКО ДЛЯ ФОТО-СКАНЕРА ("ЭТО НЕ ЕДА НА ФОТО") ================= -->
+  <div id="notFoodModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div id="notFoodCard" class="glass-card w-full max-w-md p-6 text-center space-y-4 border-2 border-rose-500/50 shadow-2xl">
+      <div class="text-6xl sm:text-7xl py-2 select-none">
+        <span id="goofyEmojiDisplay" class="goofy-emoji-anim">🤪</span>
+      </div>
+      <div class="space-y-1.5">
+        <span class="px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[10px] font-extrabold uppercase tracking-widest">
+          📸 Камера • Объект на фото не съедобен
+        </span>
+        <h3 class="text-lg sm:text-xl font-extrabold text-white pt-1">
+          На фото не еда! Определять нечего 🗿
+        </h3>
+        <p id="notFoodReasonText" class="text-xs text-slate-300 leading-relaxed">
+          Камера увидела предмет, который нельзя съесть.
+        </p>
+      </div>
+
+      <button type="button" onclick="closeNotFoodModal()" class="w-full py-3.5 themed-btn-primary text-xs font-extrabold">
+        Понял, сфоткаю тарелку или упаковку еды 📷
+      </button>
     </div>
   </div>
 
@@ -953,35 +986,6 @@
         <button type="button" onclick="closeCustomCalModal()" class="py-3 themed-box text-slate-200 text-xs font-bold hover-lift">Отмена</button>
         <button type="button" onclick="saveCustomCalModal()" class="py-3 themed-btn-primary text-xs">✅ Сохранить норму</button>
       </div>
-    </div>
-  </div>
-
-  <!-- ================= МОДАЛЬНОЕ ОКНО ОШИБКИ: "ЭТО НЕ ЕДА!" ================= -->
-  <div id="notFoodModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
-    <div id="notFoodCard" class="glass-card w-full max-w-md p-6 text-center space-y-4 border-2 border-rose-500/50 shadow-2xl">
-      <div class="text-6xl sm:text-7xl py-2 select-none">
-        <span id="goofyEmojiDisplay" class="goofy-emoji-anim">🤪</span>
-      </div>
-      <div class="space-y-1.5">
-        <span class="px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[10px] font-extrabold uppercase tracking-widest">
-          ⚠️ AI-Сканер • Объект не съедобен
-        </span>
-        <h3 class="text-lg sm:text-xl font-extrabold text-white pt-1">
-          Эй, это же не еда! Определять тут нечего 🗿
-        </h3>
-        <p id="notFoodReasonText" class="text-xs text-slate-300 leading-relaxed">
-          ИИ внимательно посмотрел на запрос и понял, что такое есть нельзя.
-        </p>
-      </div>
-
-      <div class="themed-box p-3.5 text-[11px] text-slate-300 space-y-1">
-        <div class="font-bold text-rose-300">Результат сканирования:</div>
-        <div>Калории: <b>0 ккал</b> • Белки: <b>0 г</b> • Жиры: <b>0 г</b> • Углеводы: <b>0 г</b></div>
-      </div>
-
-      <button type="button" onclick="closeNotFoodModal()" class="w-full py-3.5 themed-btn-primary text-xs font-extrabold">
-        Понял, сейчас загружу нормальную еду 🍔
-      </button>
     </div>
   </div>
 
@@ -1064,9 +1068,9 @@
     let calendarCurrentYear = new Date().getFullYear();
     let calendarCurrentMonth = new Date().getMonth();
 
-    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v19')) ||
-                JSON.parse(localStorage.getItem('rayuncalc_state_v18')) ||
-                JSON.parse(localStorage.getItem('rayuncalc_state_v17')) || {
+    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v20')) ||
+                JSON.parse(localStorage.getItem('rayuncalc_state_v19')) ||
+                JSON.parse(localStorage.getItem('rayuncalc_state_v18')) || {
       profile: {
         name: 'Maksim',
         gender: 'male',
@@ -1104,10 +1108,35 @@
     let prevDashboardValues = { cal: 0, p: 0, f: 0, c: 0 };
     let modalTempUseCustom = false;
     let modalCustomMacrosDirty = false;
+    let lastFailedSearchQuery = '';
     let expandedMeals = { 'Завтрак': true, 'Обед': false, 'Ужин': false, 'Перекус': false };
 
-    // ================= БАЗА БЛЮД И МАГАЗИННЫХ ТОВАРОВ (165+ ПОЗИЦИЙ) =================
+    // ================= БАЗА БЛЮД И МАГАЗИННЫХ ТОВАРОВ (172 ПОЗИЦИИ) =================
     const foodCatalog = [
+      // МАГАЗИНЫ (ВЕРНЫЙ, ПЯТЕРОЧКА, САМОКАТ, ПЕРЕКРЕСТОК)
+      { category: 'store', name: 'Фило ролл с ветчиной и сыром (Верный / Пекарня)', p: 9.2, f: 13.5, c: 26.8, cal: 265, weight: 160, diet: false },
+      { category: 'store', name: 'Фило ролл с курицей и шпинатом (Верный / Пекарня)', p: 10.5, f: 11.8, c: 25.0, cal: 248, weight: 160, diet: false },
+      { category: 'store', name: 'Фило ролл с брынзой и зеленью', p: 8.8, f: 12.4, c: 26.0, cal: 251, weight: 150, diet: false },
+      { category: 'store', name: 'Улитка греческая из теста фило с сыром и ветчиной', p: 9.6, f: 14.0, c: 27.5, cal: 274, weight: 150, diet: false },
+      { category: 'store', name: 'Самокат: Куриное филе с гречкой и овощами', p: 14.5, f: 3.8, c: 18.2, cal: 165, weight: 280, diet: true },
+      { category: 'store', name: 'Самокат: Индейка терияки с рисом басмати', p: 13.2, f: 3.5, c: 22.0, cal: 172, weight: 260, diet: true },
+      { category: 'store', name: 'Самокат: Сырники из фермерского творога', p: 14.8, f: 8.5, c: 19.0, cal: 212, weight: 150, diet: false },
+      { category: 'store', name: 'Самокат: Боул с курицей, киноа и овощами', p: 12.5, f: 5.2, c: 16.4, cal: 162, weight: 250, diet: true },
+      { category: 'store', name: 'Самокат: Ролл Цезарь в пшеничной тортилье', p: 11.8, f: 9.5, c: 23.5, cal: 227, weight: 210, diet: false },
+      { category: 'store', name: 'Самокат: Блинчики с ветчиной и сыром', p: 10.2, f: 11.4, c: 24.5, cal: 241, weight: 180, diet: false },
+      { category: 'store', name: 'Самокат: Блинчики с творогом', p: 9.5, f: 6.8, c: 26.0, cal: 203, weight: 180, diet: false },
+      { category: 'store', name: 'Сэндвич треугольный с ветчиной и сыром', p: 10.8, f: 11.5, c: 25.0, cal: 247, weight: 180, diet: false },
+      { category: 'store', name: 'Сэндвич треугольный с курицей и яйцом', p: 11.5, f: 9.2, c: 24.5, cal: 227, weight: 190, diet: false },
+      { category: 'store', name: 'Сэндвич цельнозерновой с лососем и творожным сыром', p: 12.2, f: 7.4, c: 21.0, cal: 199, weight: 180, diet: true },
+      { category: 'store', name: 'Салат Цезарь с куриной грудкой и сухариками', p: 12.8, f: 9.6, c: 7.5, cal: 168, weight: 210, diet: true },
+      { category: 'store', name: 'Салат Греческий с сыром фета и маслинами', p: 4.5, f: 7.8, c: 4.2, cal: 105, weight: 220, diet: true },
+      { category: 'store', name: 'Котлеты из щуки / трески с картофельным пюре', p: 10.5, f: 4.2, c: 13.5, cal: 134, weight: 260, diet: true },
+      { category: 'store', name: 'Каша овсяная на молоке с ягодами', p: 3.8, f: 2.9, c: 15.5, cal: 103, weight: 250, diet: true },
+      { category: 'store', name: 'Запеканка творожная классическая', p: 13.5, f: 5.8, c: 16.5, cal: 172, weight: 180, diet: true },
+      { category: 'store', name: 'Ветчина из индейки нежная 3% жирности', p: 19.5, f: 3.0, c: 1.5, cal: 111, weight: 100, diet: true },
+      { category: 'store', name: 'Сыр легкий 15% жирности (нарезка)', p: 30.0, f: 15.0, c: 0.0, cal: 255, weight: 60, diet: true },
+      { category: 'store', name: 'Окрошка на кефире с куриной грудкой', p: 6.2, f: 2.4, c: 5.5, cal: 68, weight: 350, diet: true },
+
       // ПП, ФИТНЕС И 0-КАЛОРИЙ
       { category: 'fitness', name: 'Куриная грудка су-вид со специями', p: 29.8, f: 2.1, c: 0.5, cal: 140, weight: 160, diet: true },
       { category: 'fitness', name: 'Филе индейки на пару с брокколи', p: 22.5, f: 1.8, c: 3.5, cal: 120, weight: 250, diet: true },
@@ -1133,8 +1162,6 @@
       { category: 'fitness', name: 'Хлебцы цельнозерновые гречневые Dr.Korner (2 шт)', p: 12.0, f: 2.5, c: 62.0, cal: 318, weight: 24, diet: true },
       { category: 'fitness', name: 'Овсяноблин с творожным сыром и курицей', p: 15.8, f: 5.8, c: 16.5, cal: 182, weight: 220, diet: true },
       { category: 'fitness', name: 'Сывороточный протеин Изолят (на воде)', p: 8.5, f: 0.4, c: 0.6, cal: 40, weight: 300, diet: true },
-      { category: 'fitness', name: 'Желе фруктовое Zero (0 сахара)', p: 1.5, f: 0.0, c: 1.2, cal: 11, weight: 150, diet: true },
-      { category: 'fitness', name: 'Паровая котлета из индейки с кабачком', p: 17.5, f: 3.8, c: 3.2, cal: 117, weight: 150, diet: true },
 
       // СТОЛОВАЯ И ДОМАШНЯЯ ЕДА
       { category: 'canteen', name: 'Борщ украинский с говядиной и сметаной', p: 5.2, f: 4.8, c: 8.5, cal: 92, weight: 350, diet: true },
@@ -1142,159 +1169,74 @@
       { category: 'canteen', name: 'Щи из свежей капусты с курицей', p: 4.5, f: 2.5, c: 5.8, cal: 64, weight: 350, diet: true },
       { category: 'canteen', name: 'Уха из красной рыбы и судака', p: 7.8, f: 3.2, c: 4.1, cal: 76, weight: 320, diet: true },
       { category: 'canteen', name: 'Солянка сборная мясная', p: 6.8, f: 7.9, c: 4.2, cal: 115, weight: 320, diet: false },
-      { category: 'canteen', name: 'Гороховый суп с копченостями', p: 6.5, f: 4.5, c: 11.2, cal: 112, weight: 330, diet: false },
-      { category: 'canteen', name: 'Крем-суп грибной из шампиньонов', p: 3.5, f: 6.8, c: 7.5, cal: 105, weight: 300, diet: false },
       { category: 'canteen', name: 'Котлета куриная паровая', p: 18.5, f: 5.2, c: 5.0, cal: 141, weight: 120, diet: true },
       { category: 'canteen', name: 'Котлета домашняя мясная (свинина-говядина)', p: 15.2, f: 16.5, c: 7.5, cal: 239, weight: 120, diet: false },
       { category: 'canteen', name: 'Котлета по-киевски в панировке', p: 14.2, f: 18.5, c: 12.0, cal: 271, weight: 140, diet: false },
       { category: 'canteen', name: 'Гуляш из говядины с подливкой', p: 16.8, f: 9.5, c: 4.5, cal: 171, weight: 180, diet: true },
-      { category: 'canteen', name: 'Бефстроганов из говядины в сметанном соусе', p: 15.5, f: 11.2, c: 4.8, cal: 182, weight: 180, diet: false },
       { category: 'canteen', name: 'Тефтели мясные с рисом в томатном соусе', p: 12.4, f: 7.8, c: 9.2, cal: 156, weight: 180, diet: true },
-      { category: 'canteen', name: 'Голубцы классические с мясом и рисом', p: 8.5, f: 6.2, c: 7.8, cal: 121, weight: 250, diet: true },
       { category: 'canteen', name: 'Плов узбекский с говядиной', p: 9.2, f: 10.5, c: 25.4, cal: 233, weight: 280, diet: false },
       { category: 'canteen', name: 'Пельмени домашние отварные', p: 11.8, f: 12.4, c: 23.5, cal: 253, weight: 220, diet: false },
-      { category: 'canteen', name: 'Вареники с картофелем и луком', p: 4.8, f: 4.5, c: 26.0, cal: 164, weight: 220, diet: false },
-      { category: 'canteen', name: 'Вареники с творогом несладкие', p: 11.5, f: 4.2, c: 21.0, cal: 168, weight: 200, diet: true },
       { category: 'canteen', name: 'Гречка отварная рассыпчатая', p: 4.5, f: 1.5, c: 24.0, cal: 128, weight: 200, diet: true },
       { category: 'canteen', name: 'Пюре картофельное на молоке', p: 2.2, f: 4.2, c: 16.5, cal: 112, weight: 200, diet: false },
       { category: 'canteen', name: 'Рис бурый / басмати отварной', p: 2.8, f: 0.8, c: 27.5, cal: 128, weight: 200, diet: true },
       { category: 'canteen', name: 'Макароны из твердых сортов пшеницы отварные', p: 4.2, f: 0.9, c: 26.5, cal: 131, weight: 200, diet: true },
-      { category: 'canteen', name: 'Капуста тушеная с индейкой', p: 9.8, f: 3.5, c: 6.2, cal: 95, weight: 250, diet: true },
-      { category: 'canteen', name: 'Салат Винегрет овощной', p: 1.6, f: 4.8, c: 8.2, cal: 82, weight: 180, diet: true },
       { category: 'canteen', name: 'Салат Оливье с курицей', p: 7.2, f: 12.5, c: 8.4, cal: 175, weight: 180, diet: false },
 
       // ПАНАЗИЯ, ЛАПША И ИТАЛИЯ
       { category: 'panasian', name: 'Суп Том Ям с креветками и грибами', p: 7.2, f: 4.8, c: 4.5, cal: 90, weight: 350, diet: true },
       { category: 'panasian', name: 'Суп Том Ям с индейкой', p: 8.5, f: 4.2, c: 4.6, cal: 91, weight: 350, diet: true },
       { category: 'panasian', name: 'Суп Фо Бо вьетнамский с говядиной', p: 8.2, f: 2.9, c: 9.5, cal: 97, weight: 450, diet: true },
-      { category: 'panasian', name: 'Мисо-суп с тофу, вакаме и лососем', p: 5.5, f: 2.2, c: 3.8, cal: 57, weight: 280, diet: true },
       { category: 'panasian', name: 'Лапша Samyang Buldak Cheese / Carbonara (пачка 140г)', p: 9.5, f: 14.2, c: 61.0, cal: 410, weight: 140, diet: false },
       { category: 'panasian', name: 'Лапша Доширак / Шин Рамен (пачка 90-120г)', p: 8.5, f: 16.0, c: 64.0, cal: 435, weight: 110, diet: false },
       { category: 'panasian', name: 'Рамен со свининой чашу и маринованным яйцом', p: 9.2, f: 7.5, c: 15.8, cal: 168, weight: 420, diet: false },
       { category: 'panasian', name: 'Гречневая лапша Соба со свининой и овощами', p: 10.8, f: 7.8, c: 25.5, cal: 215, weight: 300, diet: false },
       { category: 'panasian', name: 'Гречневая лапша Соба с куриным филе и овощами', p: 12.5, f: 3.6, c: 24.0, cal: 178, weight: 280, diet: true },
-      { category: 'panasian', name: 'Лапша Удон WOK с морепродуктами в соусе терияки', p: 11.4, f: 4.5, c: 27.0, cal: 194, weight: 300, diet: true },
       { category: 'panasian', name: 'Унаги Дон (Угорь на рисе с соусом унаги)', p: 11.5, f: 8.8, c: 28.5, cal: 239, weight: 280, diet: false },
       { category: 'panasian', name: 'Поке боул с лососем, рисом, авокадо и эдамаме', p: 11.8, f: 6.4, c: 18.2, cal: 178, weight: 290, diet: true },
-      { category: 'panasian', name: 'Поке боул с креветками и манго', p: 12.2, f: 3.8, c: 19.5, cal: 161, weight: 280, diet: true },
       { category: 'panasian', name: 'Ролл Филадельфия с лососем и сливочным сыром', p: 9.8, f: 8.2, c: 24.0, cal: 209, weight: 240, diet: false },
       { category: 'panasian', name: 'Ролл Калифорния с крабом и тобико', p: 8.5, f: 6.0, c: 25.5, cal: 190, weight: 220, diet: true },
-      { category: 'panasian', name: 'Маки-ролл с огурцом и лососем (легкий)', p: 9.2, f: 3.1, c: 22.0, cal: 153, weight: 160, diet: true },
-      { category: 'panasian', name: 'Сашими из лосося и тунца со свежим огурцом', p: 21.5, f: 7.5, c: 1.5, cal: 159, weight: 160, diet: true },
       { category: 'panasian', name: 'Онигири с лососем терияки в нори', p: 8.2, f: 3.5, c: 31.0, cal: 188, weight: 120, diet: true },
-      { category: 'panasian', name: 'Гедза с креветками и курицей на пару', p: 11.5, f: 5.2, c: 21.0, cal: 177, weight: 180, diet: true },
       { category: 'panasian', name: 'Паста Карбонара с беконом и пармезаном', p: 10.5, f: 13.8, c: 26.5, cal: 272, weight: 270, diet: false },
-      { category: 'panasian', name: 'Паста Болоньезе с мясным рагу и томатами', p: 11.2, f: 7.8, c: 24.5, cal: 213, weight: 280, diet: false },
-      { category: 'panasian', name: 'Паста Феттуччине с курицей и грибами в сливках', p: 11.8, f: 11.5, c: 23.0, cal: 243, weight: 270, diet: false },
       { category: 'panasian', name: 'Равиоли с рикоттой и шпинатом', p: 9.8, f: 8.5, c: 25.0, cal: 216, weight: 230, diet: false },
-      { category: 'panasian', name: 'Ризотто с белыми грибами и пармезаном', p: 6.5, f: 8.2, c: 24.8, cal: 199, weight: 260, diet: false },
-      { category: 'panasian', name: 'Лазанья мясная классическая', p: 12.5, f: 11.8, c: 18.5, cal: 230, weight: 260, diet: false },
-      { category: 'panasian', name: 'Салат Капрезе с моцареллой, томатами и песто', p: 9.5, f: 10.2, c: 3.8, cal: 145, weight: 200, diet: true },
 
-      // МАГАЗИНЫ И ГОТОВАЯ ДОСТАВКА
-      { category: 'store', name: 'Самокат: Куриное филе с гречкой и овощами', p: 14.5, f: 3.8, c: 18.2, cal: 165, weight: 280, diet: true },
-      { category: 'store', name: 'Самокат: Индейка терияки с рисом басмати', p: 13.2, f: 3.5, c: 22.0, cal: 172, weight: 260, diet: true },
-      { category: 'store', name: 'Самокат: Сырники из фермерского творога', p: 14.8, f: 8.5, c: 19.0, cal: 212, weight: 150, diet: false },
-      { category: 'store', name: 'Самокат: Боул с курицей, киноа и овощами', p: 12.5, f: 5.2, c: 16.4, cal: 162, weight: 250, diet: true },
-      { category: 'store', name: 'Самокат: Ролл Цезарь в пшеничной тортилье', p: 11.8, f: 9.5, c: 23.5, cal: 227, weight: 210, diet: false },
-      { category: 'store', name: 'Самокат: Блинчики с ветчиной и сыром', p: 10.2, f: 11.4, c: 24.5, cal: 241, weight: 180, diet: false },
-      { category: 'store', name: 'Самокат: Блинчики с творогом', p: 9.5, f: 6.8, c: 26.0, cal: 203, weight: 180, diet: false },
-      { category: 'store', name: 'Сэндвич треугольный с курицей и яйцом', p: 11.5, f: 9.2, c: 24.5, cal: 227, weight: 190, diet: false },
-      { category: 'store', name: 'Сэндвич цельнозерновой с лососем и творожным сыром', p: 12.2, f: 7.4, c: 21.0, cal: 199, weight: 180, diet: true },
-      { category: 'store', name: 'Салат Цезарь с куриной грудкой и сухариками', p: 12.8, f: 9.6, c: 7.5, cal: 168, weight: 210, diet: true },
-      { category: 'store', name: 'Салат Греческий с сыром фета и маслинами', p: 4.5, f: 7.8, c: 4.2, cal: 105, weight: 220, diet: true },
-      { category: 'store', name: 'Котлеты из щуки / трески с картофельным пюре', p: 10.5, f: 4.2, c: 13.5, cal: 134, weight: 260, diet: true },
-      { category: 'store', name: 'Каша овсяная на молоке с ягодами', p: 3.8, f: 2.9, c: 15.5, cal: 103, weight: 250, diet: true },
-      { category: 'store', name: 'Каша пшенная с тыквой на молоке', p: 3.4, f: 3.1, c: 17.2, cal: 110, weight: 250, diet: true },
-      { category: 'store', name: 'Запеканка творожная классическая', p: 13.5, f: 5.8, c: 16.5, cal: 172, weight: 180, diet: true },
-      { category: 'store', name: 'Куриный рулет запеченный (нарезка)', p: 21.0, f: 4.5, c: 1.0, cal: 129, weight: 120, diet: true },
-      { category: 'store', name: 'Ветчина из индейки нежная 3% жирности', p: 19.5, f: 3.0, c: 1.5, cal: 111, weight: 100, diet: true },
-      { category: 'store', name: 'Сыр легкий 15% жирности (нарезка)', p: 30.0, f: 15.0, c: 0.0, cal: 255, weight: 60, diet: true },
-      { category: 'store', name: 'Хумус классический из нута с овощными палочками', p: 7.5, f: 9.8, c: 14.0, cal: 174, weight: 150, diet: true },
-      { category: 'store', name: 'Окрошка на кефире с куриной грудкой', p: 6.2, f: 2.4, c: 5.5, cal: 68, weight: 350, diet: true },
-
-      // МЯСО, РЫБА, ЯЙЦА, ОВОЩИ И БАЗОВЫЕ ПРОДУКТЫ
+      // БАЗОВЫЕ ПРОДУКТЫ
       { category: 'base', name: 'Куриная грудка запеченная в духовке', p: 29.5, f: 3.2, c: 0.0, cal: 147, weight: 160, diet: true },
-      { category: 'base', name: 'Куриное бедро без кожи тушеное', p: 21.5, f: 7.8, c: 0.0, cal: 156, weight: 150, diet: true },
       { category: 'base', name: 'Филе грудки индейки на гриле', p: 28.5, f: 2.2, c: 0.0, cal: 134, weight: 160, diet: true },
       { category: 'base', name: 'Говядина постная отварная / тушеная', p: 25.8, f: 6.5, c: 0.0, cal: 162, weight: 150, diet: true },
-      { category: 'base', name: 'Стейк Рибай из мраморной говядины', p: 19.5, f: 21.0, c: 0.0, cal: 267, weight: 220, diet: false },
       { category: 'base', name: 'Стейк из семги / лосося запеченный', p: 21.5, f: 13.5, c: 0.0, cal: 208, weight: 160, diet: true },
-      { category: 'base', name: 'Филе форели слабосоленой', p: 20.5, f: 9.8, c: 0.0, cal: 170, weight: 100, diet: true },
       { category: 'base', name: 'Яйца куриные вареные (2 шт)', p: 12.7, f: 11.5, c: 0.7, cal: 157, weight: 110, diet: true },
-      { category: 'base', name: 'Яичница-глазунья из 3 яиц', p: 13.0, f: 14.2, c: 0.8, cal: 183, weight: 165, diet: false },
-      { category: 'base', name: 'Овсяные хлопья Геркулес (на воде)', p: 3.2, f: 1.7, c: 15.4, cal: 88, weight: 250, diet: true },
-      { category: 'base', name: 'Киноа отварная', p: 4.4, f: 1.9, c: 21.3, cal: 120, weight: 180, diet: true },
-      { category: 'base', name: 'Булгур отварной с зеленью', p: 3.5, f: 0.8, c: 18.6, cal: 96, weight: 200, diet: true },
-      { category: 'base', name: 'Чечевица красная отварная (высокий белок)', p: 9.0, f: 0.4, c: 20.1, cal: 116, weight: 200, diet: true },
-      { category: 'base', name: 'Картофель молодой запеченный в мундире', p: 2.1, f: 0.4, c: 18.5, cal: 86, weight: 200, diet: true },
-      { category: 'base', name: 'Авокадо Хасс свежее', p: 2.0, f: 14.7, c: 1.8, cal: 160, weight: 100, diet: true },
-      { category: 'base', name: 'Овощи гриль (цукини, баклажан, перец, томат)', p: 1.5, f: 2.5, c: 6.2, cal: 53, weight: 220, diet: true },
-      { category: 'base', name: 'Сыр Моцарелла рассольный лайт', p: 20.0, f: 11.5, c: 1.0, cal: 188, weight: 100, diet: true },
-      { category: 'base', name: 'Сыр Гауда / Российский 45%', p: 24.0, f: 27.0, c: 0.0, cal: 339, weight: 50, diet: false },
       { category: 'base', name: 'Банан спелый (1 шт)', p: 1.5, f: 0.2, c: 21.8, cal: 95, weight: 120, diet: true },
       { category: 'base', name: 'Яблоко зеленое Гренни Смит', p: 0.4, f: 0.4, c: 9.8, cal: 47, weight: 180, diet: true },
-      { category: 'base', name: 'Голубика / Клубника свежая', p: 0.8, f: 0.4, c: 7.5, cal: 39, weight: 150, diet: true },
-      { category: 'base', name: 'Миндаль / Грецкий орех (горсть)', p: 18.6, f: 53.7, c: 13.0, cal: 609, weight: 30, diet: true },
-      { category: 'base', name: 'Арахисовая паста без сахара', p: 26.0, f: 49.0, c: 13.0, cal: 597, weight: 30, diet: false },
-      { category: 'base', name: 'Хлеб цельнозерновой ржаной (2 ломтика)', p: 7.5, f: 1.8, c: 41.0, cal: 210, weight: 70, diet: true },
 
-      // ВЫПЕЧКА И ПЕРЕКУСЫ
+      // ВЫПЕЧКА
       { category: 'bakery', name: 'Самса тандырная с говядиной', p: 11.8, f: 16.5, c: 32.0, cal: 324, weight: 140, diet: false },
-      { category: 'bakery', name: 'Самса слоеная с курицей', p: 12.4, f: 14.2, c: 30.5, cal: 299, weight: 135, diet: false },
       { category: 'bakery', name: 'Чебурек сочный с мясом', p: 9.5, f: 18.0, c: 30.5, cal: 322, weight: 150, diet: false },
-      { category: 'bakery', name: 'Чебурек с сыром и зеленью', p: 10.2, f: 16.8, c: 29.0, cal: 308, weight: 140, diet: false },
       { category: 'bakery', name: 'Улитка слоеная со шпинатом и сыром', p: 8.5, f: 14.2, c: 29.0, cal: 278, weight: 130, diet: false },
       { category: 'bakery', name: 'Улитка с ветчиной и сыром', p: 9.8, f: 15.5, c: 28.5, cal: 293, weight: 130, diet: false },
       { category: 'bakery', name: 'Хачапури по-аджарски с сыром и яйцом', p: 12.2, f: 14.8, c: 29.5, cal: 300, weight: 280, diet: false },
-      { category: 'bakery', name: 'Хачапури по-мегрельски', p: 13.0, f: 15.2, c: 31.0, cal: 313, weight: 250, diet: false },
       { category: 'bakery', name: 'Круассан сливочный классический', p: 8.2, f: 21.0, c: 45.0, cal: 402, weight: 80, diet: false },
-      { category: 'bakery', name: 'Круассан с миндальным кремом', p: 9.0, f: 22.5, c: 46.0, cal: 423, weight: 110, diet: false },
-      { category: 'bakery', name: 'Сосиска в тесте запеченная', p: 9.5, f: 16.0, c: 28.0, cal: 294, weight: 110, diet: false },
-      { category: 'bakery', name: 'Пирожок печеный с капустой и яйцом', p: 5.8, f: 6.2, c: 34.0, cal: 215, weight: 90, diet: false },
-      { category: 'bakery', name: 'Пирожок с мясом', p: 9.2, f: 11.5, c: 32.0, cal: 268, weight: 95, diet: false },
-      { category: 'bakery', name: 'Синнабон (булочка с корицей и кремом)', p: 5.5, f: 16.5, c: 52.0, cal: 379, weight: 140, diet: false },
 
       // ФАСТФУД И ПИЦЦА
       { category: 'fastfood', name: 'Воппер (Burger King) классический с говядиной', p: 11.5, f: 14.2, c: 18.5, cal: 248, weight: 270, diet: false },
-      { category: 'fastfood', name: 'Двойной Воппер с сыром', p: 14.8, f: 18.0, c: 14.5, cal: 279, weight: 375, diet: false },
-      { category: 'fastfood', name: 'Воппер Ролл в лепешке', p: 12.0, f: 15.0, c: 22.0, cal: 271, weight: 210, diet: false },
-      { category: 'fastfood', name: 'Чизбургер классический', p: 13.2, f: 12.5, c: 25.0, cal: 265, weight: 120, diet: false },
       { category: 'fastfood', name: 'Кинг Наггетсы куриные (6 шт)', p: 15.8, f: 16.0, c: 16.5, cal: 273, weight: 105, diet: false },
-      { category: 'fastfood', name: 'Кинг Наггетсы куриные (9 шт)', p: 15.8, f: 16.0, c: 16.5, cal: 273, weight: 155, diet: false },
       { category: 'fastfood', name: 'Кинг Фри / Картофель фри (стандарт)', p: 3.5, f: 14.8, c: 37.0, cal: 295, weight: 115, diet: false },
-      { category: 'fastfood', name: 'Крылышки куриные острые в панировке', p: 18.5, f: 17.5, c: 9.0, cal: 268, weight: 180, diet: false },
       { category: 'fastfood', name: 'Шаурма классическая с курицей на углях', p: 12.8, f: 11.2, c: 23.5, cal: 246, weight: 340, diet: false },
       { category: 'fastfood', name: 'Пицца Мясная (2 куска)', p: 12.2, f: 13.5, c: 28.0, cal: 282, weight: 240, diet: false },
       { category: 'fastfood', name: 'Пицца Пепперони (2 куска)', p: 11.5, f: 14.0, c: 29.5, cal: 290, weight: 220, diet: false },
-      { category: 'fastfood', name: 'Пицца Карбонара с беконом (2 куска)', p: 11.8, f: 13.0, c: 27.5, cal: 274, weight: 230, diet: false },
-      { category: 'fastfood', name: 'Пицца Четыре сыра (2 куска)', p: 13.5, f: 14.8, c: 26.5, cal: 293, weight: 220, diet: false },
-      { category: 'fastfood', name: 'Пицца Маргарита на тонком тесте (2 куска)', p: 9.5, f: 8.5, c: 27.0, cal: 223, weight: 200, diet: false },
-      { category: 'fastfood', name: 'Хот-дог датский с сосиской и луком фри', p: 9.8, f: 16.5, c: 24.0, cal: 284, weight: 170, diet: false },
-      { category: 'fastfood', name: 'Луковые кольца в панировке (6 шт)', p: 4.5, f: 16.0, c: 38.0, cal: 314, weight: 100, diet: false },
-      { category: 'fastfood', name: 'Сырные медальоны с халапеньо (5 шт)', p: 12.5, f: 18.5, c: 22.0, cal: 305, weight: 100, diet: false },
-      { category: 'fastfood', name: 'Кесадилья с курицей и чеддером', p: 14.0, f: 13.5, c: 24.5, cal: 275, weight: 200, diet: false },
 
-      // НАПИТКИ И КОФЕ
+      // НАПИТКИ
       { category: 'drinks', name: 'Американо / Эспрессо без сахара', p: 0.2, f: 0.1, c: 0.3, cal: 3, weight: 250, diet: true },
       { category: 'drinks', name: 'Зеленый чай / Матча на воде без сахара', p: 0.5, f: 0.0, c: 0.5, cal: 4, weight: 300, diet: true },
-      { category: 'drinks', name: 'Капучино на обезжиренном / кокосовом молоке без сахара', p: 2.4, f: 1.2, c: 3.5, cal: 34, weight: 300, diet: true },
-      { category: 'drinks', name: 'Матча-латте на миндальном молоке без сахара', p: 1.5, f: 1.4, c: 2.2, cal: 28, weight: 300, diet: true },
       { category: 'drinks', name: 'Кола Зеро / Напиток без сахара (0 ккал)', p: 0.0, f: 0.0, c: 0.0, cal: 1, weight: 330, diet: true },
       { category: 'drinks', name: 'Компот домашний из ягод и сухофруктов', p: 0.3, f: 0.1, c: 11.5, cal: 48, weight: 250, diet: true },
-      { category: 'drinks', name: 'Кефир 1% био', p: 3.0, f: 1.0, c: 4.0, cal: 37, weight: 250, diet: true },
-      { category: 'drinks', name: 'Латте классический с сиропом', p: 2.8, f: 2.6, c: 9.5, cal: 73, weight: 350, diet: false },
-      { category: 'drinks', name: 'Раф кофе ванильный на сливках', p: 2.5, f: 8.5, c: 12.0, cal: 135, weight: 350, diet: false },
-      { category: 'drinks', name: 'Свежевыжатый апельсиновый сок', p: 0.7, f: 0.2, c: 10.4, cal: 45, weight: 250, diet: true },
-      { category: 'drinks', name: 'Белковый коктейль клубничный на молоке 1.5%', p: 10.5, f: 1.5, c: 4.8, cal: 75, weight: 300, diet: true }
+      { category: 'drinks', name: 'Кефир 1% био', p: 3.0, f: 1.0, c: 4.0, cal: 37, weight: 250, diet: true }
     ];
 
-    // Добавляем сохраненные пользователем блюда в начало каталога
     if (state.customFoods && state.customFoods.length > 0) {
       state.customFoods.forEach(cf => foodCatalog.unshift(cf));
     }
 
-    // ИСПРАВЛЕННЫЙ СПИСОК НЕСЪЕДОБНЫХ СЛОВ (ПРОВЕРКА СТРОГО ПО ЦЕЛЫМ СЛОВАМ!)
+    // Словарь несъедобных слов (проверяется только если в строке нет съедобных слов!)
     const nonFoodExactWords = new Set([
       'кот', 'кошка', 'кота', 'собака', 'пес', 'машина', 'автомобиль', 'телефон', 'айфон',
       'компьютер', 'пк', 'монитор', 'клавиатура', 'мышка', 'наушники', 'микрофон',
@@ -1307,9 +1249,134 @@
       'cat', 'dog', 'car', 'phone', 'keyboard', 'mouse', 'shoe', 'wall', 'selfie', 'screenshot'
     ]);
 
+    // Словарь съедобных корней (гарантирует, что любой запрос с едой пройдет проверку!)
+    const foodHintRoots = [
+      'рол', 'фило', 'ветчин', 'сыр', 'котлет', 'суп', 'борщ', 'лапш', 'макарон', 'паст',
+      'пицц', 'бургер', 'воппер', 'шаурм', 'сэндвич', 'бутер', 'хлеб', 'булк', 'круассан',
+      'самс', 'чебурек', 'улитк', 'хачапур', 'пирог', 'пирож', 'торт', 'чизкейк', 'эклер',
+      'печень', 'батонч', 'шоколад', 'конфет', 'морожен', 'пудинг', 'желе', 'варен', 'мед',
+      'мяс', 'куриц', 'курин', 'грудк', 'индейк', 'говяд', 'свинин', 'бекон', 'колбас', 'сосиск',
+      'рыб', 'лосос', 'семг', 'форел', 'тунец', 'треск', 'креветк', 'кальмар', 'краб', 'угор',
+      'рис', 'греч', 'овсян', 'каш', 'пюре', 'картоф', 'фри', 'булгур', 'киноа', 'чечевиц', 'нут',
+      'яйц', 'омлет', 'глазун', 'скрэмбл', 'творог', 'творож', 'сырник', 'запеканк', 'йогурт',
+      'кефир', 'молок', 'сливк', 'сметан', 'масл', 'салат', 'овощ', 'огур', 'томат', 'помидор',
+      'капуст', 'броккол', 'шпинат', 'авокад', 'гриб', 'яблок', 'банан', 'ягод', 'фрукт',
+      'орех', 'миндал', 'арахис', 'чай', 'кофе', 'капучин', 'латте', 'раф', 'матч', 'компот',
+      'сок', 'кол', 'вода', 'напиток', 'протеин', 'экспонент', 'пельмен', 'вареник', 'хинren',
+      'мант', 'плов', 'гуляш', 'тефтел', 'голубц', 'блин', 'оладь', 'драник', 'поке', 'боул',
+      'онигир', 'рамен', 'том', 'фо', 'мисо', 'удон', 'соба', 'вок', 'wok', 'равиол', 'лазань'
+    ];
+
     let currentCategoryFilter = 'all';
     let filteredCatalog = [...foodCatalog];
     let popupAiItems = [];
+
+    // ================= ПРОЦЕДУРНЫЙ ГЕНЕРАТОР УНИКАЛЬНЫХ ТЕКСТУР ДЛЯ КАЖДОГО КВАДРАТИКА =================
+    // Ни один блок больше не повторяет соседний!
+    function applyUniqueProceduralTextures() {
+      const theme = state.profile.theme || 'sakura';
+      const elements = document.querySelectorAll('.glass-card, .themed-box');
+
+      elements.forEach((el, idx) => {
+        const isCard = el.classList.contains('glass-card');
+        // Детерминированный сдвиг по индексу элемента, чтобы каждый блок имел свой собственный рисунок
+        const seed = (idx * 73 + 19) % 100;
+        const seed2 = (idx * 41 + 7) % 100;
+        const angle = (idx * 53) % 360;
+
+        if (theme === 'matcha') {
+          // Уникальный срез дерева, кольца и тени бамбука под разными углами для каждого квадратика
+          const y1 = 15 + (seed % 30);
+          const y2 = 55 + (seed2 % 35);
+          const c1 = 20 + (seed2 % 60);
+          const c2 = 10 + (seed % 70);
+          const knotX = 60 + (seed * 2.8);
+          const knotY = 25 + (seed2 * 0.6);
+          const hasKnot = idx % 3 === 0;
+          const hasLeaf = idx % 2 === 1;
+
+          const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 140' preserveAspectRatio='none'>
+            <g fill='none' stroke='#d99b66' stroke-opacity='${isCard ? 0.16 : 0.12}' stroke-width='${isCard ? 1.4 : 1.1}'>
+              <path d='M0,${y1} Q${120 + seed},${c1} ${240 - seed2},${y1 + 12} T400,${y1 - 8}'/>
+              <path d='M0,${y2} Q${160 - seed2},${c2 + 40} ${280 + seed},${y2 - 10} T400,${y2 + 14}'/>
+              ${isCard ? `<path d='M0,${y2 + 35} C${110 + seed},${y2 + 10} ${260 - seed},${y2 + 55} 400,${y2 + 25}'/>` : ''}
+              ${hasKnot ? `<ellipse cx='${knotX}' cy='${knotY}' rx='${22 + (seed % 18)}' ry='${7 + (seed2 % 6)}' stroke-opacity='0.14'/>` : ''}
+            </g>
+            ${hasLeaf ? `<path d='M${320 - seed},0 Q${350 - seed},28 ${390 - seed},16 Q${360 - seed},4 ${320 - seed},0 Z' fill='#a3e635' fill-opacity='0.07'/>` : ''}
+          </svg>`;
+
+          el.style.backgroundImage = `
+            radial-gradient(circle at ${seed}% ${seed2}%, rgba(163, 230, 53, 0.09) 0%, transparent 55%),
+            linear-gradient(${angle}deg, rgba(185, 135, 82, 0.12) 0%, transparent 65%),
+            url("data:image/svg+xml,${encodeURIComponent(svg)}")
+          `;
+        } else if (theme === 'sakura' || theme === 'sakura_bw') {
+          const isBW = theme === 'sakura_bw';
+          const petalCol = isBW ? '#ffffff' : '#fbcfe8';
+          const branchCol = isBW ? '#a1a1aa' : '#f472b6';
+          const glowCol = isBW ? 'rgba(255,255,255,0.09)' : 'rgba(244,114,182,0.16)';
+
+          const bx = 50 + (seed * 3);
+          const by = 15 + (seed2 * 0.9);
+          const rot = (idx * 67) % 360;
+          const variant = idx % 4;
+
+          let deco = '';
+          if (variant === 0) {
+            // Изящный пятилистный цветок сакуры в индивидуальной позиции
+            deco = `<g transform='translate(${bx},${by}) rotate(${rot}) scale(${isCard ? 0.85 : 0.55})' fill='${petalCol}' fill-opacity='${isCard ? 0.18 : 0.13}'>
+              <path d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z'/>
+              <path d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(72)'/>
+              <path d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(144)'/>
+              <path d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(216)'/>
+              <path d='M0,0 C-6,-10 -10,-22 -3,-27 L0,-22 L3,-27 C10,-22 6,-10 0,0 Z' transform='rotate(288)'/>
+            </g>`;
+          } else if (variant === 1) {
+            // Пара кружащихся отдельных лепестков
+            deco = `<g fill='${petalCol}' fill-opacity='0.15'>
+              <path transform='translate(${bx},${by}) rotate(${rot})' d='M0,8 C-7,2 -8,-8 -2,-12 L0,-8 L2,-12 C8,-8 7,2 0,8 Z'/>
+              <path transform='translate(${(bx + 110) % 360},${(by + 35) % 110}) rotate(${rot + 55}) scale(0.75)' d='M0,8 C-7,2 -8,-8 -2,-12 L0,-8 L2,-12 C8,-8 7,2 0,8 Z'/>
+            </g>`;
+          } else if (variant === 2) {
+            // Тонкая веточка с бутонами
+            deco = `<g stroke='${branchCol}' stroke-opacity='0.18' fill='none' stroke-width='1.5' stroke-linecap='round'>
+              <path d='M${variant * 180},${seed} Q${bx},${by} ${bx + 70},${by + 25}'/>
+              <circle cx='${bx + 30}' cy='${by + 10}' r='3.5' fill='${petalCol}' fill-opacity='0.2' stroke='none'/>
+            </g>`;
+          } else {
+            // Мягкое акварельное боке из созвездия лепестков
+            deco = `<g fill='${petalCol}' fill-opacity='0.11'>
+              <circle cx='${bx}' cy='${by}' r='${14 + (seed % 12)}'/>
+              <circle cx='${(bx + 140) % 380}' cy='${100 - by * 0.5}' r='${8 + (seed2 % 9)}'/>
+            </g>`;
+          }
+
+          const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 130' preserveAspectRatio='xMidYMid slice'>${deco}</svg>`;
+          el.style.backgroundImage = `
+            radial-gradient(circle at ${seed}% ${seed2}%, ${glowCol} 0%, transparent 60%),
+            url("data:image/svg+xml,${encodeURIComponent(svg)}")
+          `;
+        } else if (theme === 'cyber') {
+          const x1 = 30 + (seed * 3);
+          const y1 = 15 + (seed2 % 70);
+          const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'>
+            <path d='M${x1},0 V${y1} L${x1 + 25},${y1 + 20} H400' fill='none' stroke='#f43f5e' stroke-opacity='0.16' stroke-width='1.2'/>
+            <circle cx='${x1}' cy='${y1}' r='2.5' fill='#a855f7' fill-opacity='0.35'/>
+          </svg>`;
+          el.style.backgroundImage = `
+            linear-gradient(${angle}deg, rgba(244, 63, 94, 0.12) 0%, rgba(147, 51, 234, 0.06) 100%),
+            url("data:image/svg+xml,${encodeURIComponent(svg)}")
+          `;
+        } else {
+          // Классика и Нуар: индивидуальные световые блики под разными углами
+          const glow = theme === 'noir' ? 'rgba(255,255,255,0.07)' : 'rgba(16,185,129,0.12)';
+          el.style.backgroundImage = `
+            radial-gradient(circle at ${seed}% ${seed2}%, ${glow} 0%, transparent 58%),
+            linear-gradient(${angle}deg, rgba(255,255,255,0.04) 0%, transparent 60%)
+          `;
+        }
+      });
+    }
 
     // ================= ВСПЛЫВАЮЩИЙ ТОСТ =================
     let toastTimeout = null;
@@ -1326,7 +1393,7 @@
       }, 2400);
     }
 
-    // ================= РЕАЛИСТИЧНЫЙ БОТАНИЧЕСКИЙ CANVAS-ДВИЖОК =================
+    // ================= ПОЛНОЭКРАННЫЙ ЖИВОЙ ФОН НА HTML5 CANVAS (ДЛЯ ВСЕХ ТЕМ!) =================
     const bgCanvas = document.getElementById('bgCanvas');
     const bgCtx = bgCanvas.getContext('2d');
     let cw = window.innerWidth;
@@ -1346,12 +1413,12 @@
 
     function initParticles() {
       fallingParticles = [];
-      for (let i = 0; i < 22; i++) {
+      for (let i = 0; i < 24; i++) {
         fallingParticles.push({
           x: Math.random() * cw,
           y: Math.random() * ch,
           size: Math.random() * 7 + 6,
-          speedY: Math.random() * 0.7 + 0.4,
+          speedY: Math.random() * 0.65 + 0.35,
           speedX: Math.random() * 0.6 - 0.1,
           angle: Math.random() * Math.PI * 2,
           spin: (Math.random() - 0.5) * 0.025,
@@ -1443,6 +1510,8 @@
       ctx.rotate(swayAngle);
 
       const barkColor = isBW ? '#3f3f46' : (isCyber ? '#4c1d95' : '#3b1525');
+      const barkHighlight = isBW ? '#71717a' : (isCyber ? '#ec4899' : '#702444');
+
       ctx.strokeStyle = barkColor;
       ctx.lineCap = 'round';
 
@@ -1453,11 +1522,16 @@
       ctx.lineWidth = 10;
       ctx.stroke();
 
+      ctx.lineWidth = 3.5;
+      ctx.strokeStyle = barkHighlight;
+      ctx.stroke();
+
       const blossoms = [
-        { x: -85, y: 28, r: 15, rot: 0.2 },
-        { x: -165, y: 48, r: 18, rot: 0.5 },
-        { x: -255, y: 82, r: 20, rot: 0.3 },
-        { x: -375, y: 120, r: 17, rot: 0.6 }
+        { x: -85, y: 28, r: 16, rot: 0.2 },
+        { x: -165, y: 48, r: 19, rot: 0.5 },
+        { x: -255, y: 82, r: 21, rot: 0.3 },
+        { x: -320, y: 108, r: 15, rot: 1.4 },
+        { x: -375, y: 120, r: 18, rot: 0.6 }
       ];
 
       blossoms.forEach((b, idx) => {
@@ -1466,6 +1540,44 @@
       });
 
       ctx.restore();
+    }
+
+    function drawMatchaBambooForest(ctx) {
+      const stalks = [
+        { x: cw * 0.90, w: 11 },
+        { x: cw * 0.95, w: 8 },
+        { x: cw * 0.06, w: 10 },
+        { x: cw * 0.11, w: 7 }
+      ];
+
+      stalks.forEach((s, idx) => {
+        ctx.save();
+        const offset = Math.sin(animTime * 0.9 + idx * 1.7) * 14;
+        ctx.strokeStyle = 'rgba(132, 204, 22, 0.22)';
+        ctx.lineWidth = s.w;
+        ctx.lineCap = 'round';
+
+        for (let y = ch; y > -60; y -= 85) {
+          ctx.beginPath();
+          ctx.moveTo(s.x + (y / ch) * offset, y);
+          ctx.lineTo(s.x + ((y - 78) / ch) * offset, y - 78);
+          ctx.stroke();
+
+          if (y % 170 === 0) {
+            ctx.save();
+            ctx.translate(s.x + (y / ch) * offset, y - 40);
+            ctx.rotate(Math.sin(animTime * 1.4 + y) * 0.12 + (idx % 2 === 0 ? -0.45 : 0.45));
+            ctx.fillStyle = 'rgba(163, 230, 53, 0.24)';
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.quadraticCurveTo(-35, -12, -75, 8);
+            ctx.quadraticCurveTo(-35, 18, 0, 0);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+        ctx.restore();
+      });
     }
 
     function animateWallpaper() {
@@ -1477,10 +1589,39 @@
       const isCyber = theme === 'cyber';
       const isMatcha = theme === 'matcha';
 
+      // Атмосферное живое свечение на фоне
+      const gx = cw * (0.5 + Math.sin(animTime * 0.4) * 0.25);
+      const gy = ch * (0.25 + Math.cos(animTime * 0.3) * 0.15);
+      const grad = bgCtx.createRadialGradient(gx, gy, 10, gx, gy, Math.max(cw, ch) * 0.55);
+      if (theme === 'matcha') {
+        grad.addColorStop(0, 'rgba(163, 230, 53, 0.14)');
+        grad.addColorStop(0.5, 'rgba(180, 130, 80, 0.08)');
+        grad.addColorStop(1, 'transparent');
+      } else if (theme === 'sakura') {
+        grad.addColorStop(0, 'rgba(244, 114, 182, 0.18)');
+        grad.addColorStop(1, 'transparent');
+      } else if (theme === 'cyber') {
+        grad.addColorStop(0, 'rgba(244, 63, 94, 0.20)');
+        grad.addColorStop(0.6, 'rgba(147, 51, 234, 0.12)');
+        grad.addColorStop(1, 'transparent');
+      } else if (theme === 'classic') {
+        grad.addColorStop(0, 'rgba(16, 185, 129, 0.15)');
+        grad.addColorStop(1, 'transparent');
+      } else {
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.08)');
+        grad.addColorStop(1, 'transparent');
+      }
+      bgCtx.fillStyle = grad;
+      bgCtx.fillRect(0, 0, cw, ch);
+
       if (theme === 'sakura' || theme === 'sakura_bw' || theme === 'cyber') {
         const sway1 = Math.sin(animTime * 0.9) * 0.035;
+        const sway2 = Math.cos(animTime * 0.75) * 0.04;
         const branchScale = cw < 640 ? 0.68 : 1.0;
         drawSakuraTreeBranch(bgCtx, cw + 20, -10, sway1, branchScale, false, isBW, isCyber);
+        drawSakuraTreeBranch(bgCtx, -20, ch - 240 * branchScale, sway2, branchScale * 0.85, true, isBW, isCyber);
+      } else if (theme === 'matcha') {
+        drawMatchaBambooForest(bgCtx);
       }
 
       if (state.profile.petalsEnabled) {
@@ -1496,7 +1637,7 @@
       requestAnimationFrame(animateWallpaper);
     }
 
-    // ================= ИНИЦИАЛИЗАЦИЯ И UX ПЕРЕКЛЮЧАТЕЛИ =================
+    // ================= ИНИЦИАЛИЗАЦИЯ =================
     function initApp() {
       document.getElementById('activeDateInput').value = activeDate;
       document.getElementById('catalogTotalCountBadge').textContent = `База: ${foodCatalog.length} блюд и товаров`;
@@ -1533,6 +1674,7 @@
       document.getElementById('heroTab_coach').className = !isSum
         ? 'py-1.5 px-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
         : 'py-1.5 px-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+      applyUniqueProceduralTextures();
     }
 
     function openCatalogSheet(mealName) {
@@ -1542,6 +1684,7 @@
       const modal = document.getElementById('catalogSheetModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      applyUniqueProceduralTextures();
     }
 
     function closeCatalogSheet() {
@@ -1558,16 +1701,16 @@
 
     function updatePetalsButtons() {
       const pBtn = document.getElementById('profilePetalsBtn');
-      if (pBtn) pBtn.textContent = state.profile.petalsEnabled ? '🌸 Лепестки: ВКЛ' : '🚫 Лепестки: ВЫКЛ';
+      if (pBtn) pBtn.textContent = state.profile.petalsEnabled ? '🌸 Частицы: ВКЛ' : '🚫 Частицы: ВЫКЛ';
     }
 
     function setTheme(themeName) {
       state.profile.theme = themeName;
       if (themeName === 'classic' || themeName === 'noir') state.profile.petalsEnabled = false;
-      else if (themeName === 'sakura' || themeName === 'sakura_bw') state.profile.petalsEnabled = true;
+      else if (themeName === 'sakura' || themeName === 'sakura_bw' || themeName === 'matcha') state.profile.petalsEnabled = true;
       applyTheme(themeName);
       persistState();
-      showToast('Тема обновлена!', '🎨');
+      showToast('Тема и текстуры обновлены!', '🎨');
     }
 
     function applyTheme(themeName) {
@@ -1586,6 +1729,7 @@
       updatePetalsButtons();
       renderActiveDay();
       renderCalendar();
+      applyUniqueProceduralTextures();
     }
 
     function switchMainTab(tabId) {
@@ -1606,6 +1750,7 @@
         }
       });
       if (tabId === 'calendar') renderCalendar();
+      applyUniqueProceduralTextures();
     }
 
     function getAutoMealType() {
@@ -1616,35 +1761,74 @@
       return 'Перекус';
     }
 
-    // ================= ИСПРАВЛЕННЫЙ АНТИ-СПАМ ФИЛЬТР (БЕЗ ЛОЖНЫХ СРАБАТЫВАНИЙ НА "КОТЛЕТУ"!) =================
-    function isNonFoodOrGibberishText(str) {
+    // ================= ИСПРАВЛЕННАЯ ПРОВЕРКА ТЕКСТА (С ПОДДЕРЖКОЙ РУССКОГО ЯЗЫКА И МАГАЗИННЫХ ТОВАРОВ!) =================
+    function validateTextFoodQuery(str) {
       const clean = str.toLowerCase().trim();
-      if (clean.length < 2) return 'Слишком короткая надпись';
-      if (/^[0-9\W_]+$/.test(clean)) return 'Набор цифр и символов';
-      if (/(йцук|фыва|ячсм|qwerty|asdf|zxcv|ахах|бред|хрень|фигня)/i.test(clean)) {
-        return `Абракадабра («${str}»)`;
+      if (clean.length < 2) {
+        return 'Запрос слишком короткий (менее 2 букв).';
       }
-      if (!/[аеёиоуыэюяaeiouy]/i.test(clean) && clean.length > 3) {
-        return `Непонятный набор букв («${str}»)`;
+      // Исправлено: проверяем наличие русских ИЛИ английских букв!
+      if (!/[a-zA-Zа-яА-ЯёЁ]/.test(clean)) {
+        return `Запрос «${str}» состоит только из цифр и знаков препинания без букв.`;
       }
-      // Разбиваем строку строго на отдельные слова (чтобы "котлета" не считалась словом "кот")
-      const words = clean.split(/[^a-zа-яё0-9]+/i).filter(Boolean);
+      if (/(йцук|фыва|ячсм|qwerty|asdf|zxcv)/i.test(clean)) {
+        return `Похоже на случайный набор клавиш («${str}»).`;
+      }
+      if (!/[аеёиоуыэюяaeiouy]/i.test(clean) && clean.length > 4) {
+        return `В слове «${str}» нет ни одной гласной буквы.`;
+      }
+
+      // Если в запросе есть хотя бы один съедобный корень (ролл, ветчина, сыр, фило, котлета и т.д.) — сразу пропускаем!
+      const hasFoodRoot = foodHintRoots.some(root => clean.includes(root));
+      if (hasFoodRoot) {
+        return null;
+      }
+
+      // Иначе проверяем, не ввел ли пользователь явно несъедобный предмет целиком
+      const words = clean.split(/[^a-zA-Zа-яА-ЯёЁ0-9]+/).filter(Boolean);
       for (const w of words) {
         if (nonFoodExactWords.has(w)) {
-          return str;
+          return `Объект «${w}» в запросе «${str}» не является едой или продуктом.`;
         }
       }
       return null;
     }
 
+    // Ошибка для ТЕКСТОВОГО и РУЧНОГО поиска (отдельное стильное окно)
+    function triggerTextSearchError(queryText, reasonDesc) {
+      lastFailedSearchQuery = queryText || '';
+      document.getElementById('textSearchErrorDesc').innerHTML = reasonDesc;
+      const modal = document.getElementById('textSearchErrorModal');
+      const card = document.getElementById('textSearchErrorCard');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      card.classList.remove('error-modal-shake');
+      void card.offsetWidth;
+      card.classList.add('error-modal-shake');
+      applyUniqueProceduralTextures();
+    }
+
+    function closeTextSearchErrorModal() {
+      const modal = document.getElementById('textSearchErrorModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function switchFromErrorToManualEntry() {
+      closeTextSearchErrorModal();
+      openCustomFoodModal(lastFailedSearchQuery);
+      switchCustomFoodTab('manual');
+    }
+
+    // Ошибка для КАМЕРЫ (когда сфотографировали не еду)
     function triggerNotFoodError(detectedThing = 'Непонятный несъедобный объект') {
       const goofyEmojis = ['🤪', '🗿', '🤡', '🤨', '🫠', '🥴'];
       const chosenEmoji = goofyEmojis[Math.floor(Math.random() * goofyEmojis.length)];
       document.getElementById('goofyEmojiDisplay').textContent = chosenEmoji;
 
       document.getElementById('notFoodReasonText').innerHTML = `
-        ИИ обнаружил на вашем запросе: <b class="text-rose-300">«${detectedThing}»</b>.<br>
-        Это явно не еда, жевать это мы категорически не советуем и считать тут нечего! ${chosenEmoji}
+        Камера обнаружила на снимке: <b class="text-rose-300">«${detectedThing}»</b>.<br>
+        Это явно не еда и не упаковка продукта! ${chosenEmoji}
       `;
 
       const modal = document.getElementById('notFoodModal');
@@ -1663,7 +1847,7 @@
       modal.classList.remove('flex');
     }
 
-    // ================= ДОБАВЛЕНИЕ СВОЕГО БЛЮДА ИЛИ ТОВАРА (ИИ ИЛИ ВРУЧНУЮ) =================
+    // ================= ДОБАВЛЕНИЕ СВОЕГО БЛЮДА ИЛИ ТОВАРА =================
     function aiSearchCatalogFood() {
       const q = document.getElementById('foodSearchInput').value.trim();
       closeCatalogSheet();
@@ -1677,6 +1861,7 @@
       const modal = document.getElementById('customFoodModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      applyUniqueProceduralTextures();
     }
 
     function closeCustomFoodModal() {
@@ -1713,10 +1898,10 @@
         showToast('Введите название блюда!', '✍️');
         return;
       }
-      const nonFood = isNonFoodOrGibberishText(name);
-      if (nonFood) {
+      const errReason = validateTextFoodQuery(name);
+      if (errReason) {
         closeCustomFoodModal();
-        triggerNotFoodError(nonFood);
+        triggerTextSearchError(name, errReason);
         return;
       }
 
@@ -1785,7 +1970,7 @@
       showToast(`Добавлено: ${name} (+${finalCal} ккал)`);
     }
 
-    // ================= GEMINI AI РАСЧЕТ ТЕКСТА И ТОВАРОВ =================
+    // ================= УМНЫЙ РАСЧЕТ ПО ТЕКСТОВОМУ ЗАПРОСУ =================
     async function analyzeTextDish() {
       const text = document.getElementById('customAiDishInput').value.trim();
       if (!text) {
@@ -1796,14 +1981,14 @@
     }
 
     async function processSmartTextFoodQuery(text) {
-      const nonFoodReason = isNonFoodOrGibberishText(text);
-      if (nonFoodReason) {
-        triggerNotFoodError(nonFoodReason);
+      const errReason = validateTextFoodQuery(text);
+      if (errReason) {
+        triggerTextSearchError(text, errReason);
         return;
       }
 
       const btn = document.getElementById('textAnalyzeBtn');
-      if (btn) btn.textContent = '⏳ ИИ считает...';
+      if (btn) btn.textContent = '⏳ ИИ ищет...';
 
       const key = state.apiKey.trim();
       if (key.length > 15) {
@@ -1815,7 +2000,7 @@
             body: JSON.stringify({
               contents: [{
                 parts: [{
-                  text: `Ты эксперт-диетолог и база магазинных товаров. Пользователь написал: "${text}". Если это НЕ съедобно (например, мебель, техника, камень, животное), верни СТРОГО JSON без markdown: {"isFood": false, "detectedObject": "название предмета"}. Если это еда, напиток или магазинный товар (лапша, снэк, блюдо), найди его реальные КБЖУ и верни СТРОГО JSON без markdown: {"isFood": true, "title": "Точное название блюда или товара", "items": [{"name": "Компонент / Продукт", "weight": 200, "p100": 12, "f100": 8, "c100": 25}]}`
+                  text: `Ты эксперт-диетолог и каталог продуктов из супермаркетов РФ (Верный, Пятерочка, Перекресток, Самокат, ВкусВилл). Пользователь ввел: "${text}". Если это НЕ съедобный предмет (например, кирпич, мебель, обувь), верни СТРОГО JSON без markdown: {"isFood": false, "reason": "почему это не еда"}. Если это блюдо, выпечка, ролл, напиток или магазинный товар, найди его реальные КБЖУ и верни СТРОГО JSON без markdown: {"isFood": true, "title": "Красивое название продукта", "items": [{"name": "Продукт / компонент", "weight": 160, "p100": 9.5, "f100": 13.5, "c100": 26.8}]}`
                 }]
               }]
             })
@@ -1827,7 +2012,7 @@
             const parsed = JSON.parse(jsonMatch[0]);
             if (btn) btn.textContent = '✨ Найти и рассчитать';
             if (parsed.isFood === false) {
-              triggerNotFoodError(parsed.detectedObject || text);
+              triggerTextSearchError(text, parsed.reason || `Запрос «${text}» не распознан как продукт питания.`);
               return;
             }
             if (parsed.items && parsed.items.length > 0) {
@@ -1840,31 +2025,48 @@
 
       if (btn) btn.textContent = '✨ Найти и рассчитать';
 
-      // Умный локальный поиск по 165+ позициям и ключевым корням
+      // Умный локальный парсер по ключевым словам (даже без API ключа!)
       const q = text.toLowerCase();
-      const words = q.split(/[^a-zа-яё0-9]+/i).filter(w => w.length >= 3);
-      const matches = foodCatalog.filter(f => {
-        const fn = f.name.toLowerCase();
-        return fn.includes(q) || words.some(w => fn.includes(w.slice(0, Math.max(3, w.length - 1))));
-      });
 
-      if (matches.length > 0) {
-        const items = matches.slice(0, 3).map(m => ({
-          name: m.name,
-          weight: m.weight,
-          p100: m.p,
-          f100: m.f,
-          c100: m.c
-        }));
-        openAiModalWithData(text, items, '✨ Найдено в базе продуктов');
+      // Специальное распознавание для фило роллов, выпечки и популярных магазинных позиций
+      if (q.includes('фило') || (q.includes('рол') && (q.includes('ветчин') || q.includes('сыр')))) {
+        openAiModalWithData(
+          'Фило ролл с ветчиной и сыром (Верный)',
+          [{ name: 'Фило ролл с ветчиной и сыром в хрустящем тесте', weight: 160, p100: 9.2, f100: 13.5, c100: 26.8 }],
+          '🛒 Найдено в каталоге супермаркетов'
+        );
+        return;
+      }
+
+      const words = q.split(/[^a-zA-Zа-яА-ЯёЁ0-9]+/).filter(w => w.length >= 3 && !['магаз', 'магазина', 'верный', 'пятерочка', 'самокат'].includes(w));
+      const scoredMatches = foodCatalog.map(f => {
+        const fn = f.name.toLowerCase();
+        let hits = 0;
+        if (fn.includes(q)) hits += 5;
+        words.forEach(w => {
+          const stem = w.slice(0, Math.max(3, w.length - 1));
+          if (fn.includes(stem)) hits += 2;
+        });
+        return { f, hits };
+      }).filter(x => x.hits > 0).sort((a, b) => b.hits - a.hits);
+
+      if (scoredMatches.length > 0) {
+        const best = scoredMatches[0].f;
+        openAiModalWithData(text, [{
+          name: best.name,
+          weight: best.weight,
+          p100: best.p,
+          f100: best.f,
+          c100: best.c
+        }], '✨ Найдено совпадение в базе продуктов');
       } else {
         openAiModalWithData(text, [
-          { name: text, weight: 220, p100: 13, f100: 9, c100: 21 }
-        ], '✨ Оценка КБЖУ (можно подрегулировать)');
+          { name: text, weight: 180, p100: 11, f100: 10, c100: 22 }
+        ], '✨ Расчет КБЖУ (при необходимости подкорректируйте)');
       }
     }
 
-    // ================= AI-СКАНЕР ФОТО (ТАРЕЛКИ + МАГАЗИННЫЕ ТОВАРЫ И УПАКОВКИ) =================
+    // ================= AI-СКАНЕР ФОТО =================
     function saveApiKey() {
       state.apiKey = document.getElementById('geminiApiKey').value.trim();
       document.getElementById('apiKeyStatus').textContent = state.apiKey ? 'Ключ сохранен' : 'Ключ не введен';
@@ -2069,7 +2271,7 @@
                 body: JSON.stringify({
                   contents: [{
                     parts: [
-                      { text: 'Ты эксперт-диетолог и сканер магазинных товаров. Посмотри на фото. 1) Если на фото НЕ ЕДА, НЕ НАПИТОК и НЕ УПАКОВКА ПРОДУКТА (например: человек, кот, собака, клавиатура, обувь, машина, мебель, пустая комната), верни СТРОГО чистый JSON без markdown: {"isFood": false, "detectedObject": "краткое название предмета на русском"}. 2) Если на фото МАГАЗИННЫЙ ТОВАР В УПАКОВКЕ (например: пачка лапши, батончик, йогурт, снек, напиток, готовый лоток или таблица КБЖУ на этикетке), прочитай бренд, название, вес упаковки и найди его КБЖУ на 100г. 3) Если на фото ГОТОВОЕ БЛЮДО на тарелке, разложи его на ингредиенты. Верни СТРОГО чистый JSON без markdown: {"isFood": true, "isPackagedProduct": true/false, "title": "Точное название блюда или Брендового товара", "items": [{"name": "Название продукта / ингредиента", "weight": 140, "p100": 10, "f100": 14, "c100": 58}]}' },
+                      { text: 'Ты эксперт-диетолог и сканер магазинных товаров. Посмотри на фото. 1) Если на фото НЕ ЕДА, НЕ НАПИТОК и НЕ УПАКОВКА ПРОДУКТА (например: человек, кот, собака, клавиатура, обувь, машина, мебель, пустая комната), верни СТРОГО чистый JSON без markdown: {"isFood": false, "detectedObject": "краткое название предмета на русском"}. 2) Если на фото МАГАЗИННЫЙ ТОВАР В УПАКОВКЕ (например: пачка лапши, ролл в упаковке, батончик, йогурт, снек, напиток или таблица КБЖУ на этикетке), прочитай бренд, название, вес упаковки и найди его КБЖУ на 100г. 3) Если на фото ГОТОВОЕ БЛЮДО на тарелке, разложи его на ингредиенты. Верни СТРОГО чистый JSON без markdown: {"isFood": true, "isPackagedProduct": true/false, "title": "Точное название блюда или Брендового товара", "items": [{"name": "Название продукта / ингредиента", "weight": 160, "p100": 10, "f100": 13, "c100": 26}]}' },
                       { inline_data: { mime_type: 'image/jpeg', data: processed.base64 } }
                     ]
                   }]
@@ -2246,6 +2448,7 @@
       const modal = document.getElementById('customCalModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      applyUniqueProceduralTextures();
     }
 
     function closeCustomCalModal() {
@@ -2317,7 +2520,7 @@
       showToast(`Норма сохранена: ${getCalculatedTargets().cal} ккал!`, '🎯');
     }
 
-    // ================= ПЛАВНАЯ АНИМАЦИЯ ЦИФР И ОКНО РЕЗУЛЬТАТОВ СКАНЕРА =================
+    // ================= ОКНО РЕЗУЛЬТАТОВ СКАНЕРА =================
     function animateNumberValue(elId, endVal, suffix = '', duration = 650, startVal = 0) {
       const el = document.getElementById(elId);
       if (!el) return;
@@ -2345,6 +2548,7 @@
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       renderPopupModalItems(true);
+      applyUniqueProceduralTextures();
     }
 
     function addBlankIngredientToPopup() {
@@ -2405,6 +2609,7 @@
       } else {
         updatePopupTotalsOnly();
       }
+      applyUniqueProceduralTextures();
     }
 
     function updatePopupTotalsOnly() {
@@ -2626,7 +2831,6 @@
 
       renderSmartDeficitAnalysis(targets, eatenCal, eatenP, eatenF, eatenC);
 
-      // Рендерим 4 компактные карточки приемов пищи (в стиле Yazio / Lifesum)
       const mealConfigs = [
         { key: 'Завтрак', icon: '🌅', sub: 'Утренний прием' },
         { key: 'Обед', icon: '☀️', sub: 'Основной прием' },
@@ -2689,6 +2893,8 @@
         `;
         wrapper.appendChild(card);
       });
+
+      applyUniqueProceduralTextures();
     }
 
     // ================= ПРОФИЛЬ И КАТАЛОГ =================
@@ -2762,6 +2968,7 @@
         }
       });
       filterFoodCatalog();
+      applyUniqueProceduralTextures();
     }
 
     function filterFoodCatalog() {
@@ -2890,17 +3097,18 @@
         };
         grid.appendChild(cell);
       }
+      applyUniqueProceduralTextures();
     }
 
     function persistState() {
-      localStorage.setItem('rayuncalc_state_v19', JSON.stringify(state));
+      localStorage.setItem('rayuncalc_state_v20', JSON.stringify(state));
     }
 
     function resetAllData() {
       if (confirm('Сбросить все сохраненные данные?')) {
+        localStorage.removeItem('rayuncalc_state_v20');
         localStorage.removeItem('rayuncalc_state_v19');
         localStorage.removeItem('rayuncalc_state_v18');
-        localStorage.removeItem('rayuncalc_state_v17');
         location.reload();
       }
     }
