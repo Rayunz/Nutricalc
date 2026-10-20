@@ -323,7 +323,6 @@
       animation: summaryPulseGlow 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
     }
 
-    /* Анимация тупого смайлика для ошибки "Не еда!" */
     @keyframes goofyWobble {
       0%, 100% { transform: rotate(-12deg) scale(1); }
       25% { transform: rotate(14deg) scale(1.12); }
@@ -346,7 +345,6 @@
       animation: errorShake 0.45s ease-in-out;
     }
 
-    /* Всплывающее уведомление (Toast) */
     @keyframes toastPop {
       0% { opacity: 0; transform: translate(-50%, -24px) scale(0.9); }
       15% { opacity: 1; transform: translate(-50%, 0) scale(1.02); }
@@ -416,22 +414,34 @@
     <!-- ================= ВКЛАДКА 1: РАЦИОН ================= -->
     <div id="view_diary" class="space-y-5 tab-view-enter">
       <div class="glass-card p-5 sm:p-6 space-y-5">
-        <div class="flex items-center justify-between">
-          <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-            <span>📅</span> Сводка рациона
-          </h2>
-          <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="themed-box px-3.5 py-2 text-xs font-bold focus:outline-none hover-lift" style="color: var(--accent);">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+              <span>📅</span> Сводка рациона
+            </h2>
+            <span id="normModeBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-white/10" style="color: var(--accent);">Авто-норма</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="openCustomCalModal()" class="themed-box px-3 py-2 text-xs font-extrabold flex items-center gap-1.5 hover-lift" style="color: var(--accent);">
+              <span>🎯</span><span>Своя норма ✏️</span>
+            </button>
+            <input type="date" id="activeDateInput" onchange="changeActiveDate(this.value)" class="themed-box px-3 py-2 text-xs font-bold focus:outline-none hover-lift" style="color: var(--accent);">
+          </div>
         </div>
 
         <div class="flex flex-col sm:flex-row items-center gap-6">
-          <div class="relative w-36 h-36 flex-shrink-0 themed-box p-2 flex items-center justify-center hover-lift">
+          <!-- Кольцо калорий (при клике тоже открывает настройку своей нормы) -->
+          <div onclick="openCustomCalModal()" title="Нажмите, чтобы изменить норму калорий" class="relative w-36 h-36 flex-shrink-0 themed-box p-2 flex items-center justify-center hover-lift cursor-pointer group">
             <svg class="w-full h-full -rotate-90 ring-glow" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="10" fill="none" />
               <circle id="calRing" cx="50" cy="50" r="40" stroke="var(--accent)" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2" class="transition-all duration-700 ease-out" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
               <span id="eatenCalBig" class="text-2xl font-extrabold text-white tracking-tight">0</span>
-              <span class="text-[10px] text-slate-300 font-medium">из <span id="targetCalSmall">2400</span></span>
+              <span class="text-[10px] text-slate-300 font-medium flex items-center gap-1">
+                из <b id="targetCalSmall" class="text-white underline decoration-dotted">2400</b> <span>✏️</span>
+              </span>
             </div>
           </div>
 
@@ -470,13 +480,28 @@
           Осталось на день: <b id="remainCal" style="color: var(--accent);">2400 ккал</b>
         </div>
 
-        <!-- 🧠 УМНЫЙ АНАЛИЗ ДЕФИЦИТА И РЕКОМЕНДАЦИИ (ЧТО СЪЕСТЬ, ЧТОБЫ ЗАКРЫТЬ НЕХВАТКУ) -->
+        <!-- 🧠 УМНЫЙ АНАЛИЗ НЕХВАТКИ БЖУ С ФИЛЬТРАЦИЕЙ ПО ЦЕЛИ -->
         <div class="themed-box p-4 space-y-3 border-t-2" style="border-top-color: var(--accent);">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-            <h3 class="text-xs sm:text-sm font-extrabold text-white flex items-center gap-2">
-              <span>🧠</span> Анализ нехватки БЖУ и что съесть
-            </h3>
-            <span id="smartDeficitStatus" class="text-[11px] font-bold" style="color: var(--accent);">Анализ рациона...</span>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-xs sm:text-sm font-extrabold text-white flex items-center gap-2">
+                <span>🧠</span> Персональные рекомендации по цели
+              </h3>
+              <span id="smartDeficitStatus" class="text-[11px] font-bold block mt-0.5" style="color: var(--accent);">Анализ рациона...</span>
+            </div>
+
+            <!-- Быстрый переключатель режима питания прямо в сводке -->
+            <div class="flex items-center gap-1 bg-black/35 p-1 rounded-xl border border-white/10 self-start sm:self-auto">
+              <button type="button" onclick="setGoalQuick('loss')" id="quickGoal_loss" class="px-2.5 py-1.5 rounded-lg text-[10px] font-extrabold transition">
+                🥗 Дефицит (ПП)
+              </button>
+              <button type="button" onclick="setGoalQuick('maint')" id="quickGoal_maint" class="px-2.5 py-1.5 rounded-lg text-[10px] font-extrabold transition">
+                ⚖️ Поддержание
+              </button>
+              <button type="button" onclick="setGoalQuick('gain')" id="quickGoal_gain" class="px-2.5 py-1.5 rounded-lg text-[10px] font-extrabold transition">
+                💪 Набор
+              </button>
+            </div>
           </div>
 
           <p id="smartDeficitDescription" class="text-xs text-slate-300 leading-relaxed"></p>
@@ -486,11 +511,11 @@
         </div>
       </div>
 
-      <!-- Каталог блюд -->
+      <!-- Каталог блюд (160+ позиций) -->
       <div class="glass-card p-5 sm:p-6 space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h2 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-            <span>🍲</span> Каталог блюд
+            <span>🍲</span> Каталог блюд <span id="catalogTotalCountBadge" class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-white/10" style="color: var(--accent);">160 блюд</span>
           </h2>
           <select id="mealTypeSelect" class="themed-box px-3.5 py-2 text-xs font-bold focus:outline-none" style="color: var(--accent);">
             <option value="Завтрак">🌅 Завтрак</option>
@@ -503,7 +528,7 @@
         <div class="space-y-3">
           <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">🔍</span>
-            <input id="foodSearchInput" type="text" placeholder="Поиск (борщ, самса, воппер, том ям, карбонара...)" oninput="filterFoodCatalog()" class="w-full themed-box pl-10 pr-24 py-3 text-xs text-white focus:outline-none">
+            <input id="foodSearchInput" type="text" placeholder="Поиск из 160+ блюд (борщ, том ям, равиоли, чизкейк 0 ккал, воппер...)" oninput="filterFoodCatalog()" class="w-full themed-box pl-10 pr-24 py-3 text-xs text-white focus:outline-none">
             <button type="button" onclick="aiSearchCatalogFood()" class="absolute right-2 top-1.5 bottom-1.5 px-3 themed-btn-primary text-[11px]">
               ✨ + Своё
             </button>
@@ -511,23 +536,24 @@
 
           <div class="flex gap-1.5 overflow-x-auto pb-1.5 custom-scrollbar text-[11px]">
             <button type="button" onclick="setCategoryFilter('all')" id="cat_all" class="px-3.5 py-2 font-bold flex-shrink-0 themed-btn-primary">Все</button>
+            <button type="button" onclick="setCategoryFilter('fitness')" id="cat_fitness" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🥗 ПП и 0-калорий</button>
             <button type="button" onclick="setCategoryFilter('canteen')" id="cat_canteen" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🍲 Столовая</button>
-            <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🛒 Магазины</button>
+            <button type="button" onclick="setCategoryFilter('panasian')" id="cat_panasian" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🍜 Паназия и Италия</button>
+            <button type="button" onclick="setCategoryFilter('store')" id="cat_store" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🛒 Магазины и Доставка</button>
+            <button type="button" onclick="setCategoryFilter('base')" id="cat_base" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🥩 Мясо, Рыба, База</button>
             <button type="button" onclick="setCategoryFilter('bakery')" id="cat_bakery" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🥐 Выпечка</button>
             <button type="button" onclick="setCategoryFilter('fastfood')" id="cat_fastfood" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🍔 Фастфуд</button>
-            <button type="button" onclick="setCategoryFilter('panasian')" id="cat_panasian" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🍜 Паназия</button>
-            <button type="button" onclick="setCategoryFilter('fitness')" id="cat_fitness" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🍫 ПП и Спорт</button>
-            <button type="button" onclick="setCategoryFilter('base')" id="cat_base" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🥩 Базовые</button>
+            <button type="button" onclick="setCategoryFilter('drinks')" id="cat_drinks" class="px-3.5 py-2 font-bold themed-box text-slate-200 flex-shrink-0 hover-lift">🥤 Напитки</button>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="sm:col-span-2">
-            <label class="block text-[11px] text-slate-300 font-semibold mb-1">Выберите блюдо</label>
+            <label class="block text-[11px] text-slate-300 font-semibold mb-1">Выберите блюдо (<span id="filteredCountLbl">160</span> найдено)</label>
             <select id="dbFoodSelect" onchange="updateDbPreview()" class="w-full themed-box px-3.5 py-3 text-xs text-white focus:outline-none"></select>
           </div>
           <div>
-            <label class="block text-[11px] text-slate-300 font-semibold mb-1">Вес порции (г)</label>
+            <label class="block text-[11px] text-slate-300 font-semibold mb-1">Вес порции (г / мл)</label>
             <input id="dbWeightInput" type="number" value="250" min="10" max="2000" step="10" oninput="updateDbPreview()" class="w-full themed-box px-3.5 py-3 text-xs text-white font-bold focus:outline-none">
           </div>
         </div>
@@ -565,7 +591,7 @@
       </div>
     </div>
 
-    <!-- ================= ВКЛАДКА 2: ИИ-СКАНЕР (БЕЗ ШАБЛОНОВ) ================= -->
+    <!-- ================= ВКЛАДКА 2: ИИ-СКАНЕР ================= -->
     <div id="view_scanner" class="hidden space-y-5">
       <div class="glass-card p-5 sm:p-6 space-y-5">
         <div class="flex items-center justify-between">
@@ -575,7 +601,6 @@
           <span id="aiActiveModelBadge" class="text-[10px] font-bold px-2.5 py-1 themed-box" style="color: var(--accent);">Модель: gemini-3.8-flash</span>
         </div>
 
-        <!-- Настройка API ключа + Умный Помощник Ошибок -->
         <div class="themed-box p-4 space-y-3">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-bold" style="color: var(--accent);">
             <span>🔑 Настройки Gemini API и модели</span>
@@ -597,11 +622,9 @@
             <button type="button" onclick="clearApiKey()" class="px-3 py-2 themed-box text-slate-300 hover:text-white text-xs hover-lift">Сбросить ключ</button>
           </div>
 
-          <!-- УМНОЕ ОКНО ДИАГНОСТИКИ И РЕШЕНИЯ ОШИБОК -->
           <div id="aiDiagnosticBox" class="hidden rounded-xl p-3.5 border text-xs space-y-2"></div>
         </div>
 
-        <!-- Большая чистая зона загрузки / съемки фото на всю ширину -->
         <div id="dropZone" onclick="triggerPhotoSelect()" class="relative group cursor-pointer border-2 border-dashed themed-box p-6 sm:p-10 flex flex-col items-center justify-center text-center min-h-[260px] overflow-hidden transition-all hover-lift" style="border-color: var(--border-color);">
           <input id="photoInput" type="file" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
           <img id="photoPreview" src="" alt="Preview" class="hidden absolute inset-0 w-full h-full object-cover opacity-85" />
@@ -619,7 +642,6 @@
           </div>
         </div>
 
-        <!-- Строка текстового описания для ИИ -->
         <div class="themed-box p-4 space-y-2">
           <label class="block text-xs text-slate-300 font-bold">✍️ Или опишите словами, что у вас на тарелке:</label>
           <div class="flex flex-col sm:flex-row gap-2">
@@ -713,7 +735,73 @@
           </div>
         </div>
 
-        <h3 class="text-sm font-bold text-white pt-2">👤 Параметры тела для расчета КБЖУ</h3>
+        <!-- ================= БЛОК УСТАНОВКИ СВОЕЙ НОРМЫ КАЛОРИЙ В ПРОФИЛЕ ================= -->
+        <div class="themed-box p-4 space-y-4 border-l-4" style="border-left-color: var(--accent);">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                <span>🎯</span> Режим расчета суточной нормы калорий
+              </h3>
+              <p class="text-[11px] text-slate-300">Вы можете доверить расчет формуле или поставить свою норму вручную</p>
+            </div>
+            <div class="grid grid-cols-2 gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10">
+              <button type="button" onclick="setCalorieMode(false)" id="modeBtn_auto" class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition">
+                🧮 Авто-формула
+              </button>
+              <button type="button" onclick="setCalorieMode(true)" id="modeBtn_custom" class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition">
+                ✏️ Своя норма
+              </button>
+            </div>
+          </div>
+
+          <!-- Поле ручного ввода нормы калорий (активно в ручном режиме или включает его при вводе) -->
+          <div id="profileCustomCalBlock" class="space-y-3 pt-2 border-t border-white/10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
+              <div>
+                <label class="block text-xs text-slate-200 font-bold mb-1">Ваша норма калорий в день (ккал):</label>
+                <div class="flex items-center gap-2">
+                  <input id="profCustomCalInput" type="number" min="800" max="7000" step="50" value="2200" oninput="onProfileCustomCalInput(this.value)" class="w-full themed-box px-3.5 py-2.5 text-sm font-extrabold text-white focus:outline-none" style="color: var(--accent);">
+                  <span class="text-xs font-bold text-slate-300">ккал</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-300 font-semibold mb-1.5">Быстрый выбор нормы:</label>
+                <div class="flex flex-wrap gap-1.5">
+                  <button type="button" onclick="setCustomCalPreset(1500)" class="px-2.5 py-1.5 themed-box text-[11px] font-bold hover-lift">1500</button>
+                  <button type="button" onclick="setCustomCalPreset(1800)" class="px-2.5 py-1.5 themed-box text-[11px] font-bold hover-lift">1800</button>
+                  <button type="button" onclick="setCustomCalPreset(2000)" class="px-2.5 py-1.5 themed-box text-[11px] font-bold hover-lift">2000</button>
+                  <button type="button" onclick="setCustomCalPreset(2200)" class="px-2.5 py-1.5 themed-box text-[11px] font-bold hover-lift">2200</button>
+                  <button type="button" onclick="setCustomCalPreset(2500)" class="px-2.5 py-1.5 themed-box text-[11px] font-bold hover-lift">2500</button>
+                  <button type="button" onclick="setCustomCalPreset(3000)" class="px-2.5 py-1.5 themed-box text-[11px] font-bold hover-lift">3000</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Опциональная ручная подстройка БЖУ -->
+            <div class="pt-1">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[11px] text-slate-300 font-semibold">Граммы БЖУ (считаются автоматически от вашей нормы или задаются вручную):</span>
+                <button type="button" onclick="resetCustomMacrosToAuto()" class="text-[10px] font-bold underline" style="color: var(--accent);">Сбросить БЖУ на авто</button>
+              </div>
+              <div class="grid grid-cols-3 gap-2.5">
+                <div class="themed-box p-2.5">
+                  <label class="block text-[10px] text-sky-300 font-bold mb-1">🥩 Белки (г)</label>
+                  <input id="profCustomP" type="number" min="20" max="450" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs font-extrabold text-white focus:outline-none">
+                </div>
+                <div class="themed-box p-2.5">
+                  <label class="block text-[10px] text-amber-300 font-bold mb-1">🥑 Жиры (г)</label>
+                  <input id="profCustomF" type="number" min="20" max="300" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs font-extrabold text-white focus:outline-none">
+                </div>
+                <div class="themed-box p-2.5">
+                  <label class="block text-[10px] text-purple-300 font-bold mb-1">🍚 Углеводы (г)</label>
+                  <input id="profCustomC" type="number" min="20" max="700" oninput="onProfileCustomMacroInput()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs font-extrabold text-white focus:outline-none">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-sm font-bold text-white pt-1">👤 Параметры тела и цель питания</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
@@ -748,24 +836,24 @@
           <div>
             <label class="block text-xs text-slate-300 font-semibold mb-1">Активность</label>
             <select id="profActivity" onchange="saveProfile()" class="w-full themed-box px-3.5 py-2.5 text-xs text-white font-medium">
-              <option value="1.2">Сидячий (1.2)</option>
-              <option value="1.375" selected>Легкие трен. 1-3 р. (1.375)</option>
-              <option value="1.55">Умеренная 3-5 р. (1.55)</option>
-              <option value="1.725">Высокая (1.725)</option>
+              <option value="1.2">Сидячий образ жизни (1.2)</option>
+              <option value="1.375" selected>Легкие тренировки 1-3 р/нед (1.375)</option>
+              <option value="1.55">Умеренная активность 3-5 р/нед (1.55)</option>
+              <option value="1.725">Высокая нагрузка 6-7 р/нед (1.725)</option>
             </select>
           </div>
           <div>
-            <label class="block text-xs text-slate-300 font-semibold mb-1">Цель</label>
-            <select id="profGoal" onchange="saveProfile()" class="w-full themed-box px-3.5 py-2.5 text-xs text-white font-medium">
-              <option value="loss">Похудение (-15%)</option>
-              <option value="maint" selected>Поддержание</option>
-              <option value="gain">Набор (+15%)</option>
+            <label class="block text-xs text-slate-300 font-semibold mb-1">Цель (влияет на калории и рекомендации блюд)</label>
+            <select id="profGoal" onchange="saveProfile()" class="w-full themed-box px-3.5 py-2.5 text-xs text-white font-bold">
+              <option value="loss">🥗 Дефицит / Диета (-15% ккал • Только ПП)</option>
+              <option value="maint" selected>⚖️ Поддержание веса (Баланс рациона)</option>
+              <option value="gain">💪 Набор массы (+15% ккал • Сытные блюда)</option>
             </select>
           </div>
         </div>
 
         <div class="themed-box p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-          <div>Суточная норма: <b id="profCalcSummary" class="font-bold" style="color: var(--accent);">2400 ккал</b></div>
+          <div>Активная суточная норма: <b id="profCalcSummary" class="font-bold" style="color: var(--accent);">2400 ккал</b></div>
           <button type="button" onclick="resetAllData()" class="px-3.5 py-2 rounded-xl bg-rose-500/25 hover:bg-rose-500/35 text-rose-300 border border-rose-500/40 font-bold transition">Сбросить данные</button>
         </div>
       </div>
@@ -773,7 +861,84 @@
 
   </div>
 
-  <!-- ================= МОДАЛЬНОЕ ОКНО ОШИБКИ: "ЭТО НЕ ЕДА!" (БЕЗ "ОШИБКИ ЖЕЛУДКА") ================= -->
+  <!-- ================= МОДАЛЬНОЕ ОКНО БЫСТРОЙ НАСТРОЙКИ СВОЕЙ НОРМЫ КАЛОРИЙ ================= -->
+  <div id="customCalModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div id="customCalCard" class="glass-card w-full max-w-md p-6 space-y-4 popup-animate shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider block" style="color: var(--accent);">🎯 Персональная цель</span>
+          <h3 class="text-base sm:text-lg font-extrabold text-white">Настройка своей нормы калорий</h3>
+        </div>
+        <button type="button" onclick="closeCustomCalModal()" class="w-8 h-8 themed-box flex items-center justify-center text-slate-300 hover:text-white">✕</button>
+      </div>
+
+      <!-- Переключатель Авто / Вручную -->
+      <div class="grid grid-cols-2 gap-2 bg-black/40 p-1.5 rounded-xl border border-white/10">
+        <button type="button" onclick="setModalCalMode(false)" id="modalMode_auto" class="py-2 rounded-lg text-xs font-extrabold transition">
+          🧮 Авто по формуле
+        </button>
+        <button type="button" onclick="setModalCalMode(true)" id="modalMode_custom" class="py-2 rounded-lg text-xs font-extrabold transition">
+          ✏️ Своя норма
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs text-slate-300 font-bold mb-1.5">Введите желаемую норму калорий на день:</label>
+          <div class="flex items-center gap-2">
+            <input id="modalCustomCalInput" type="number" min="800" max="7000" step="50" value="2200" oninput="onModalCalInput(this.value)" class="flex-1 themed-box px-4 py-3 text-lg font-extrabold text-white text-center focus:outline-none" style="color: var(--accent);">
+            <span class="text-sm font-extrabold text-slate-300">ккал</span>
+          </div>
+          <input id="modalCustomCalRange" type="range" min="1000" max="4500" step="25" value="2200" oninput="onModalCalInput(this.value)" class="w-full mt-2.5">
+        </div>
+
+        <div>
+          <span class="block text-[11px] text-slate-300 font-semibold mb-1.5">Быстрые пресеты:</span>
+          <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+            <button type="button" onclick="onModalCalInput(1500)" class="py-1.5 themed-box text-xs font-bold hover-lift">1500</button>
+            <button type="button" onclick="onModalCalInput(1800)" class="py-1.5 themed-box text-xs font-bold hover-lift">1800</button>
+            <button type="button" onclick="onModalCalInput(2000)" class="py-1.5 themed-box text-xs font-bold hover-lift">2000</button>
+            <button type="button" onclick="onModalCalInput(2200)" class="py-1.5 themed-box text-xs font-bold hover-lift">2200</button>
+            <button type="button" onclick="onModalCalInput(2500)" class="py-1.5 themed-box text-xs font-bold hover-lift">2500</button>
+            <button type="button" onclick="onModalCalInput(3000)" class="py-1.5 themed-box text-xs font-bold hover-lift">3000</button>
+          </div>
+        </div>
+
+        <!-- Предпросмотр и редактирование БЖУ в модальном окне -->
+        <div class="themed-box p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] text-slate-300 font-bold">Норма БЖУ (можно подправить):</span>
+            <button type="button" onclick="recalcModalMacrosFromCal()" class="text-[10px] font-bold underline" style="color: var(--accent);">Пересчитать авто</button>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="block text-[10px] text-sky-300 font-bold mb-1">🥩 Белки (г)</label>
+              <input id="modalCustomP" type="number" min="20" max="450" oninput="modalCustomMacrosDirty = true" class="w-full bg-black/40 border border-white/15 rounded-lg px-2 py-1.5 text-center text-xs font-extrabold text-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[10px] text-amber-300 font-bold mb-1">🥑 Жиры (г)</label>
+              <input id="modalCustomF" type="number" min="20" max="300" oninput="modalCustomMacrosDirty = true" class="w-full bg-black/40 border border-white/15 rounded-lg px-2 py-1.5 text-center text-xs font-extrabold text-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[10px] text-purple-300 font-bold mb-1">🍚 Углеводы (г)</label>
+              <input id="modalCustomC" type="number" min="20" max="700" oninput="modalCustomMacrosDirty = true" class="w-full bg-black/40 border border-white/15 rounded-lg px-2 py-1.5 text-center text-xs font-extrabold text-white focus:outline-none">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 pt-1">
+        <button type="button" onclick="closeCustomCalModal()" class="py-3 themed-box text-slate-200 text-xs font-bold hover-lift">
+          Отмена
+        </button>
+        <button type="button" onclick="saveCustomCalModal()" class="py-3 themed-btn-primary text-xs">
+          ✅ Сохранить норму
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= МОДАЛЬНОЕ ОКНО ОШИБКИ: "ЭТО НЕ ЕДА!" ================= -->
   <div id="notFoodModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
     <div id="notFoodCard" class="glass-card w-full max-w-md p-6 text-center space-y-4 border-2 border-rose-500/50 shadow-2xl">
       <div class="text-6xl sm:text-7xl py-2 select-none">
@@ -813,7 +978,6 @@
         <button type="button" onclick="closeAiModal()" class="w-8 h-8 themed-box flex items-center justify-center text-slate-300 hover:text-white flex-shrink-0">✕</button>
       </div>
 
-      <!-- Анимированная карточка главных цифр КБЖУ и Веса -->
       <div id="popMacroHero" class="themed-box p-4 space-y-3 animate-summary-card">
         <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
           <div>
@@ -886,7 +1050,9 @@
     let calendarCurrentYear = new Date().getFullYear();
     let calendarCurrentMonth = new Date().getMonth();
 
-    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v16')) || {
+    // Подхватываем данные из новой или прошлой версии без потери дневника
+    let state = JSON.parse(localStorage.getItem('rayuncalc_state_v18')) ||
+                JSON.parse(localStorage.getItem('rayuncalc_state_v17')) || {
       profile: {
         name: 'Maksim',
         gender: 'male',
@@ -896,7 +1062,13 @@
         activity: 1.375,
         goal: 'maint',
         theme: 'sakura',
-        petalsEnabled: true
+        petalsEnabled: true,
+        useCustomCal: false,
+        customCal: 2200,
+        useCustomMacros: false,
+        customP: 165,
+        customF: 73,
+        customC: 220
       },
       days: {},
       apiKey: '',
@@ -906,38 +1078,194 @@
     if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
     if (!state.profile.theme) state.profile.theme = 'sakura';
     if (state.profile.petalsEnabled === undefined) state.profile.petalsEnabled = true;
+    if (state.profile.useCustomCal === undefined) state.profile.useCustomCal = false;
+    if (!state.profile.customCal) state.profile.customCal = 2200;
+    if (state.profile.useCustomMacros === undefined) state.profile.useCustomMacros = false;
     if (!state.preferredModel || state.preferredModel === 'gemini-2.0-flash') {
       state.preferredModel = 'gemini-3.8-flash';
     }
 
-    // Состояние для плавной анимации цифр на главной сводке
     let prevDashboardValues = { cal: 0, p: 0, f: 0, c: 0 };
+    let modalTempUseCustom = false;
+    let modalCustomMacrosDirty = false;
 
+    // ================= РАСШИРЕННАЯ БАЗА БЛЮД (160 ПОЗИЦИЙ) =================
     const foodCatalog = [
-      { category: 'canteen', name: 'Борщ украинский со сметаной', p: 5.2, f: 4.8, c: 8.5, cal: 92, weight: 350 },
-      { category: 'canteen', name: 'Суп куриный с лапшой', p: 6.1, f: 3.2, c: 7.4, cal: 78, weight: 300 },
-      { category: 'canteen', name: 'Котлета куриная паровая', p: 18.5, f: 7.2, c: 6.0, cal: 162, weight: 100 },
-      { category: 'canteen', name: 'Пюре картофельное', p: 2.2, f: 4.1, c: 16.5, cal: 106, weight: 200 },
-      { category: 'canteen', name: 'Гречка отварная', p: 4.5, f: 1.8, c: 24.5, cal: 132, weight: 200 },
-      { category: 'canteen', name: 'Рис отварной', p: 2.7, f: 0.8, c: 28.0, cal: 130, weight: 200 },
-      { category: 'canteen', name: 'Сырники творожные (2 шт)', p: 15.2, f: 9.8, c: 18.4, cal: 215, weight: 160 },
-      { category: 'store', name: 'Сэндвич с курицей', p: 11.5, f: 9.2, c: 24.5, cal: 225, weight: 200 },
-      { category: 'store', name: 'Готовое блюдо: Курица с гречкой', p: 14.5, f: 3.8, c: 18.2, cal: 164, weight: 300 },
-      { category: 'bakery', name: 'Самса с говядиной', p: 11.8, f: 16.5, c: 32.0, cal: 318, weight: 140 },
-      { category: 'bakery', name: 'Чебурек с мясом', p: 9.5, f: 18.0, c: 30.5, cal: 325, weight: 150 },
-      { category: 'bakery', name: 'Улитка со шпинатом и сыром', p: 8.5, f: 14.2, c: 29.0, cal: 280, weight: 130 },
-      { category: 'fastfood', name: 'Воппер / Бургер с говядиной', p: 12.5, f: 15.2, c: 26.5, cal: 284, weight: 270 },
-      { category: 'fastfood', name: 'Куриные наггетсы (6 шт)', p: 15.8, f: 16.0, c: 16.5, cal: 273, weight: 110 },
-      { category: 'fastfood', name: 'Картофель фри (стандарт)', p: 3.5, f: 14.8, c: 37.0, cal: 295, weight: 115 },
-      { category: 'fastfood', name: 'Пицца мясная / Карбонара', p: 11.8, f: 12.4, c: 28.0, cal: 272, weight: 250 },
-      { category: 'panasian', name: 'Суп Том Ям с креветками', p: 6.8, f: 5.5, c: 4.8, cal: 95, weight: 350 },
-      { category: 'panasian', name: 'Лапша WOK гречневая со свининой', p: 11.2, f: 8.4, c: 26.5, cal: 226, weight: 300 },
-      { category: 'panasian', name: 'Рамен с курицей и яйцом', p: 8.5, f: 6.0, c: 14.2, cal: 145, weight: 400 },
-      { category: 'panasian', name: 'Паста Карбонара', p: 9.5, f: 12.5, c: 26.0, cal: 254, weight: 260 },
-      { category: 'fitness', name: 'Протеиновый батончик', p: 32.0, f: 8.5, c: 14.0, cal: 256, weight: 60 },
-      { category: 'fitness', name: 'Чизкейк / Десерт без сахара', p: 10.5, f: 6.2, c: 12.0, cal: 146, weight: 120 },
-      { category: 'base', name: 'Куриная грудка запеченная', p: 29.5, f: 3.2, c: 0.0, cal: 152, weight: 150 },
-      { category: 'base', name: 'Яйцо вареное (2 шт)', p: 12.8, f: 11.5, c: 0.7, cal: 158, weight: 110 }
+      // 1. ПП, ФИТНЕС И 0-КАЛОРИЙ (fitness) - 26 блюд
+      { category: 'fitness', name: 'Куриная грудка су-вид со специями', p: 29.8, f: 2.1, c: 0.5, cal: 140, weight: 160, diet: true },
+      { category: 'fitness', name: 'Филе индейки на пару с брокколи', p: 22.5, f: 1.8, c: 3.5, cal: 120, weight: 250, diet: true },
+      { category: 'fitness', name: 'Творог обезжиренный 0.2%', p: 18.0, f: 0.2, c: 1.8, cal: 81, weight: 200, diet: true },
+      { category: 'fitness', name: 'Творог рассыпчатый 5%', p: 17.2, f: 5.0, c: 1.8, cal: 121, weight: 180, diet: true },
+      { category: 'fitness', name: 'Греческий йогурт Teos / Белый 2%', p: 8.0, f: 2.0, c: 4.2, cal: 67, weight: 140, diet: true },
+      { category: 'fitness', name: 'Экспонента (Exponenta High-Pro) обезжиренная', p: 12.0, f: 0.1, c: 2.5, cal: 59, weight: 250, diet: true },
+      { category: 'fitness', name: 'Протеиновый пудинг Ehrmann High Protein', p: 10.0, f: 1.5, c: 5.5, cal: 76, weight: 200, diet: true },
+      { category: 'fitness', name: 'Протеиновый батончик Bombbar (без сахара)', p: 33.0, f: 8.2, c: 7.0, cal: 234, weight: 60, diet: true },
+      { category: 'fitness', name: 'Протеиновое печенье Chikalab (без сахара)', p: 25.0, f: 9.5, c: 12.0, cal: 235, weight: 60, diet: true },
+      { category: 'fitness', name: 'Протеиновый шоколадный торт (без сахара)', p: 18.5, f: 7.5, c: 11.0, cal: 186, weight: 110, diet: true },
+      { category: 'fitness', name: 'Чизкейк Zero (0 калорий / без сахара)', p: 9.5, f: 2.8, c: 6.5, cal: 89, weight: 120, diet: true },
+      { category: 'fitness', name: 'Пирожное Наполеон Zero (низкокалорийный)', p: 8.2, f: 3.1, c: 8.0, cal: 93, weight: 110, diet: true },
+      { category: 'fitness', name: 'Сырники ПП из рисовой муки (запеченные)', p: 16.5, f: 4.5, c: 12.0, cal: 155, weight: 160, diet: true },
+      { category: 'fitness', name: 'Омлет белковый из 4 белков со шпинатом', p: 11.2, f: 0.8, c: 1.5, cal: 58, weight: 200, diet: true },
+      { category: 'fitness', name: 'Скрэмбл с томатами и слабосоленой семгой', p: 14.5, f: 9.2, c: 2.8, cal: 152, weight: 220, diet: true },
+      { category: 'fitness', name: 'Тунец консервированный в собственном соку', p: 23.5, f: 0.8, c: 0.0, cal: 101, weight: 150, diet: true },
+      { category: 'fitness', name: 'Белая рыба (треска / минтай) на пару', p: 19.2, f: 1.1, c: 0.0, cal: 87, weight: 200, diet: true },
+      { category: 'fitness', name: 'Креветки тигровые отварные с лимоном', p: 21.8, f: 1.4, c: 0.5, cal: 102, weight: 180, diet: true },
+      { category: 'fitness', name: 'Кальмар отварной (чистый белок)', p: 18.5, f: 1.8, c: 1.5, cal: 96, weight: 160, diet: true },
+      { category: 'fitness', name: 'Зеленый салат с огурцом, сельдереем и зеленью', p: 1.4, f: 0.3, c: 3.6, cal: 23, weight: 200, diet: true },
+      { category: 'fitness', name: 'Салат с тунцом, яйцом и листьями айсберг', p: 13.8, f: 3.9, c: 3.2, cal: 103, weight: 240, diet: true },
+      { category: 'fitness', name: 'Хлебцы цельнозерновые гречневые Dr.Korner (2 шт)', p: 12.0, f: 2.5, c: 62.0, cal: 318, weight: 24, diet: true },
+      { category: 'fitness', name: 'Овсяноблин с творожным сыром и курицей', p: 15.8, f: 5.8, c: 16.5, cal: 182, weight: 220, diet: true },
+      { category: 'fitness', name: 'Сывороточный протеин Изолят (на воде)', p: 8.5, f: 0.4, c: 0.6, cal: 40, weight: 300, diet: true },
+      { category: 'fitness', name: 'Желе фруктовое Zero (0 сахара)', p: 1.5, f: 0.0, c: 1.2, cal: 11, weight: 150, diet: true },
+      { category: 'fitness', name: 'Паровая котлета из индейки с кабачком', p: 17.5, f: 3.8, c: 3.2, cal: 117, weight: 150, diet: true },
+
+      // 2. СТОЛОВАЯ И ДОМАШНЯЯ ЕДА (canteen) - 24 блюда
+      { category: 'canteen', name: 'Борщ украинский с говядиной и сметаной', p: 5.2, f: 4.8, c: 8.5, cal: 92, weight: 350, diet: true },
+      { category: 'canteen', name: 'Суп куриный с домашней лапшой', p: 6.1, f: 2.8, c: 7.4, cal: 75, weight: 320, diet: true },
+      { category: 'canteen', name: 'Щи из свежей капусты с курицей', p: 4.5, f: 2.5, c: 5.8, cal: 64, weight: 350, diet: true },
+      { category: 'canteen', name: 'Уха из красной рыбы и судака', p: 7.8, f: 3.2, c: 4.1, cal: 76, weight: 320, diet: true },
+      { category: 'canteen', name: 'Солянка сборная мясная', p: 6.8, f: 7.9, c: 4.2, cal: 115, weight: 320, diet: false },
+      { category: 'canteen', name: 'Гороховый суп с копченостями', p: 6.5, f: 4.5, c: 11.2, cal: 112, weight: 330, diet: false },
+      { category: 'canteen', name: 'Крем-суп грибной из шампиньонов', p: 3.5, f: 6.8, c: 7.5, cal: 105, weight: 300, diet: false },
+      { category: 'canteen', name: 'Котлета куриная паровая', p: 18.5, f: 5.2, c: 5.0, cal: 141, weight: 120, diet: true },
+      { category: 'canteen', name: 'Котлета по-киевски в панировке', p: 14.2, f: 18.5, c: 12.0, cal: 271, weight: 140, diet: false },
+      { category: 'canteen', name: 'Гуляш из говядины с подливкой', p: 16.8, f: 9.5, c: 4.5, cal: 171, weight: 180, diet: true },
+      { category: 'canteen', name: 'Бефстроганов из говядины в сметанном соусе', p: 15.5, f: 11.2, c: 4.8, cal: 182, weight: 180, diet: false },
+      { category: 'canteen', name: 'Тефтели мясные с рисом в томатном соусе', p: 12.4, f: 7.8, c: 9.2, cal: 156, weight: 180, diet: true },
+      { category: 'canteen', name: 'Голубцы классические с мясом и рисом', p: 8.5, f: 6.2, c: 7.8, cal: 121, weight: 250, diet: true },
+      { category: 'canteen', name: 'Плов узбекский с говядиной', p: 9.2, f: 10.5, c: 25.4, cal: 233, weight: 280, diet: false },
+      { category: 'canteen', name: 'Пельмени домашние отварные', p: 11.8, f: 12.4, c: 23.5, cal: 253, weight: 220, diet: false },
+      { category: 'canteen', name: 'Вареники с картофелем и луком', p: 4.8, f: 4.5, c: 26.0, cal: 164, weight: 220, diet: false },
+      { category: 'canteen', name: 'Вареники с творогом несладкие', p: 11.5, f: 4.2, c: 21.0, cal: 168, weight: 200, diet: true },
+      { category: 'canteen', name: 'Гречка отварная рассыпчатая', p: 4.5, f: 1.5, c: 24.0, cal: 128, weight: 200, diet: true },
+      { category: 'canteen', name: 'Пюре картофельное на молоке', p: 2.2, f: 4.2, c: 16.5, cal: 112, weight: 200, diet: false },
+      { category: 'canteen', name: 'Рис бурый / басмати отварной', p: 2.8, f: 0.8, c: 27.5, cal: 128, weight: 200, diet: true },
+      { category: 'canteen', name: 'Макароны из твердых сортов пшеницы отварные', p: 4.2, f: 0.9, c: 26.5, cal: 131, weight: 200, diet: true },
+      { category: 'canteen', name: 'Капуста тушеная с индейкой', p: 9.8, f: 3.5, c: 6.2, cal: 95, weight: 250, diet: true },
+      { category: 'canteen', name: 'Салат Винегрет овощной', p: 1.6, f: 4.8, c: 8.2, cal: 82, weight: 180, diet: true },
+      { category: 'canteen', name: 'Салат Оливье с курицей', p: 7.2, f: 12.5, c: 8.4, cal: 175, weight: 180, diet: false },
+
+      // 3. ПАНАЗИЯ, СУШИ И ИТАЛИЯ (panasian) - 24 блюда
+      { category: 'panasian', name: 'Суп Том Ям с креветками и грибами', p: 7.2, f: 4.8, c: 4.5, cal: 90, weight: 350, diet: true },
+      { category: 'panasian', name: 'Суп Том Ям с индейкой', p: 8.5, f: 4.2, c: 4.6, cal: 91, weight: 350, diet: true },
+      { category: 'panasian', name: 'Суп Фо Бо вьетнамский с говядиной', p: 8.2, f: 2.9, c: 9.5, cal: 97, weight: 450, diet: true },
+      { category: 'panasian', name: 'Мисо-суп с тофу, вакаме и лососем', p: 5.5, f: 2.2, c: 3.8, cal: 57, weight: 280, diet: true },
+      { category: 'panasian', name: 'Рамен со свининой чашу и маринованным яйцом', p: 9.2, f: 7.5, c: 15.8, cal: 168, weight: 420, diet: false },
+      { category: 'panasian', name: 'Гречневая лапша Соба со свининой и овощами', p: 10.8, f: 7.8, c: 25.5, cal: 215, weight: 300, diet: false },
+      { category: 'panasian', name: 'Гречневая лапша Соба с куриным филе и овощами', p: 12.5, f: 3.6, c: 24.0, cal: 178, weight: 280, diet: true },
+      { category: 'panasian', name: 'Лапша Удон WOK с морепродуктами в соусе терияки', p: 11.4, f: 4.5, c: 27.0, cal: 194, weight: 300, diet: true },
+      { category: 'panasian', name: 'Унаги Дон (Угорь на рисе с соусом унаги)', p: 11.5, f: 8.8, c: 28.5, cal: 239, weight: 280, diet: false },
+      { category: 'panasian', name: 'Поке боул с лососем, рисом, авокадо и эдамаме', p: 11.8, f: 6.4, c: 18.2, cal: 178, weight: 290, diet: true },
+      { category: 'panasian', name: 'Поке боул с креветками и манго', p: 12.2, f: 3.8, c: 19.5, cal: 161, weight: 280, diet: true },
+      { category: 'panasian', name: 'Ролл Филадельфия с лососем и сливочным сыром', p: 9.8, f: 8.2, c: 24.0, cal: 209, weight: 240, diet: false },
+      { category: 'panasian', name: 'Ролл Калифорния с крабом и тобико', p: 8.5, f: 6.0, c: 25.5, cal: 190, weight: 220, diet: true },
+      { category: 'panasian', name: 'Маки-ролл с огурцом и лососем (легкий)', p: 9.2, f: 3.1, c: 22.0, cal: 153, weight: 160, diet: true },
+      { category: 'panasian', name: 'Сашими из лосося и тунца со свежим огурцом', p: 21.5, f: 7.5, c: 1.5, cal: 159, weight: 160, diet: true },
+      { category: 'panasian', name: 'Онигири с лососем терияки в нори', p: 8.2, f: 3.5, c: 31.0, cal: 188, weight: 120, diet: true },
+      { category: 'panasian', name: 'Гедза с креветками и курицей на пару', p: 11.5, f: 5.2, c: 21.0, cal: 177, weight: 180, diet: true },
+      { category: 'panasian', name: 'Паста Карбонара с беконом и пармезаном', p: 10.5, f: 13.8, c: 26.5, cal: 272, weight: 270, diet: false },
+      { category: 'panasian', name: 'Паста Болоньезе с мясным рагу и томатами', p: 11.2, f: 7.8, c: 24.5, cal: 213, weight: 280, diet: false },
+      { category: 'panasian', name: 'Паста Феттуччине с курицей и грибами в сливках', p: 11.8, f: 11.5, c: 23.0, cal: 243, weight: 270, diet: false },
+      { category: 'panasian', name: 'Равиоли с рикоттой и шпинатом', p: 9.8, f: 8.5, c: 25.0, cal: 216, weight: 230, diet: false },
+      { category: 'panasian', name: 'Ризотто с белыми грибами и пармезаном', p: 6.5, f: 8.2, c: 24.8, cal: 199, weight: 260, diet: false },
+      { category: 'panasian', name: 'Лазанья мясная классическая', p: 12.5, f: 11.8, c: 18.5, cal: 230, weight: 260, diet: false },
+      { category: 'panasian', name: 'Салат Капрезе с моцареллой, томатами и песто', p: 9.5, f: 10.2, c: 3.8, cal: 145, weight: 200, diet: true },
+
+      // 4. МАГАЗИНЫ И ГОТОВАЯ ДОСТАВКА (store) - 20 блюд
+      { category: 'store', name: 'Самокат: Куриное филе с гречкой и овощами', p: 14.5, f: 3.8, c: 18.2, cal: 165, weight: 280, diet: true },
+      { category: 'store', name: 'Самокат: Индейка терияки с рисом басмати', p: 13.2, f: 3.5, c: 22.0, cal: 172, weight: 260, diet: true },
+      { category: 'store', name: 'Самокат: Сырники из фермерского творога', p: 14.8, f: 8.5, c: 19.0, cal: 212, weight: 150, diet: false },
+      { category: 'store', name: 'Самокат: Боул с курицей, киноа и овощами', p: 12.5, f: 5.2, c: 16.4, cal: 162, weight: 250, diet: true },
+      { category: 'store', name: 'Самокат: Ролл Цезарь в пшеничной тортилье', p: 11.8, f: 9.5, c: 23.5, cal: 227, weight: 210, diet: false },
+      { category: 'store', name: 'Самокат: Блинчики с ветчиной и сыром', p: 10.2, f: 11.4, c: 24.5, cal: 241, weight: 180, diet: false },
+      { category: 'store', name: 'Самокат: Блинчики с творогом', p: 9.5, f: 6.8, c: 26.0, cal: 203, weight: 180, diet: false },
+      { category: 'store', name: 'Сэндвич треугольный с курицей и яйцом', p: 11.5, f: 9.2, c: 24.5, cal: 227, weight: 190, diet: false },
+      { category: 'store', name: 'Сэндвич цельнозерновой с лососем и творожным сыром', p: 12.2, f: 7.4, c: 21.0, cal: 199, weight: 180, diet: true },
+      { category: 'store', name: 'Салат Цезарь с куриной грудкой и сухариками', p: 12.8, f: 9.6, c: 7.5, cal: 168, weight: 210, diet: true },
+      { category: 'store', name: 'Салат Греческий с сыром фета и маслинами', p: 4.5, f: 7.8, c: 4.2, cal: 105, weight: 220, diet: true },
+      { category: 'store', name: 'Котлеты из щуки / трески с картофельным пюре', p: 10.5, f: 4.2, c: 13.5, cal: 134, weight: 260, diet: true },
+      { category: 'store', name: 'Каша овсяная на молоке с ягодами', p: 3.8, f: 2.9, c: 15.5, cal: 103, weight: 250, diet: true },
+      { category: 'store', name: 'Каша пшенная с тыквой на молоке', p: 3.4, f: 3.1, c: 17.2, cal: 110, weight: 250, diet: true },
+      { category: 'store', name: 'Запеканка творожная классическая', p: 13.5, f: 5.8, c: 16.5, cal: 172, weight: 180, diet: true },
+      { category: 'store', name: 'Куриный рулет запеченный (нарезка)', p: 21.0, f: 4.5, c: 1.0, cal: 129, weight: 120, diet: true },
+      { category: 'store', name: 'Ветчина из индейки нежная 3% жирности', p: 19.5, f: 3.0, c: 1.5, cal: 111, weight: 100, diet: true },
+      { category: 'store', name: 'Сыр легкий 15% жирности (нарезка)', p: 30.0, f: 15.0, c: 0.0, cal: 255, weight: 60, diet: true },
+      { category: 'store', name: 'Хумус классический из нута с овощными палочками', p: 7.5, f: 9.8, c: 14.0, cal: 174, weight: 150, diet: true },
+      { category: 'store', name: 'Окрошка на кефире с куриной грудкой', p: 6.2, f: 2.4, c: 5.5, cal: 68, weight: 350, diet: true },
+
+      // 5. МЯСО, РЫБА, ЯЙЦА, ОВОЩИ И БАЗОВЫЕ ПРОДУКТЫ (base) - 24 продукта
+      { category: 'base', name: 'Куриная грудка запеченная в духовке', p: 29.5, f: 3.2, c: 0.0, cal: 147, weight: 160, diet: true },
+      { category: 'base', name: 'Куриное бедро без кожи тушеное', p: 21.5, f: 7.8, c: 0.0, cal: 156, weight: 150, diet: true },
+      { category: 'base', name: 'Филе грудки индейки на гриле', p: 28.5, f: 2.2, c: 0.0, cal: 134, weight: 160, diet: true },
+      { category: 'base', name: 'Говядина постная отварная / тушеная', p: 25.8, f: 6.5, c: 0.0, cal: 162, weight: 150, diet: true },
+      { category: 'base', name: 'Стейк Рибай из мраморной говядины', p: 19.5, f: 21.0, c: 0.0, cal: 267, weight: 220, diet: false },
+      { category: 'base', name: 'Стейк из семги / лосося запеченный', p: 21.5, f: 13.5, c: 0.0, cal: 208, weight: 160, diet: true },
+      { category: 'base', name: 'Филе форели слабосоленой', p: 20.5, f: 9.8, c: 0.0, cal: 170, weight: 100, diet: true },
+      { category: 'base', name: 'Яйца куриные вареные (2 шт)', p: 12.7, f: 11.5, c: 0.7, cal: 157, weight: 110, diet: true },
+      { category: 'base', name: 'Яичница-глазунья из 3 яиц', p: 13.0, f: 14.2, c: 0.8, cal: 183, weight: 165, diet: false },
+      { category: 'base', name: 'Овсяные хлопья Геркулес (на воде)', p: 3.2, f: 1.7, c: 15.4, cal: 88, weight: 250, diet: true },
+      { category: 'base', name: 'Киноа отварная', p: 4.4, f: 1.9, c: 21.3, cal: 120, weight: 180, diet: true },
+      { category: 'base', name: 'Булгур отварной с зеленью', p: 3.5, f: 0.8, c: 18.6, cal: 96, weight: 200, diet: true },
+      { category: 'base', name: 'Чечевица красная отварная (высокий белок)', p: 9.0, f: 0.4, c: 20.1, cal: 116, weight: 200, diet: true },
+      { category: 'base', name: 'Картофель молодой запеченный в мундире', p: 2.1, f: 0.4, c: 18.5, cal: 86, weight: 200, diet: true },
+      { category: 'base', name: 'Авокадо Хасс свежее', p: 2.0, f: 14.7, c: 1.8, cal: 160, weight: 100, diet: true },
+      { category: 'base', name: 'Овощи гриль (цукини, баклажан, перец, томат)', p: 1.5, f: 2.5, c: 6.2, cal: 53, weight: 220, diet: true },
+      { category: 'base', name: 'Сыр Моцарелла рассольный лайт', p: 20.0, f: 11.5, c: 1.0, cal: 188, weight: 100, diet: true },
+      { category: 'base', name: 'Сыр Гауда / Российский 45%', p: 24.0, f: 27.0, c: 0.0, cal: 339, weight: 50, diet: false },
+      { category: 'base', name: 'Банан спелый (1 шт)', p: 1.5, f: 0.2, c: 21.8, cal: 95, weight: 120, diet: true },
+      { category: 'base', name: 'Яблоко зеленое Гренни Смит', p: 0.4, f: 0.4, c: 9.8, cal: 47, weight: 180, diet: true },
+      { category: 'base', name: 'Голубика / Клубника свежая', p: 0.8, f: 0.4, c: 7.5, cal: 39, weight: 150, diet: true },
+      { category: 'base', name: 'Миндаль / Грецкий орех (горсть)', p: 18.6, f: 53.7, c: 13.0, cal: 609, weight: 30, diet: true },
+      { category: 'base', name: 'Арахисовая паста без сахара', p: 26.0, f: 49.0, c: 13.0, cal: 597, weight: 30, diet: false },
+      { category: 'base', name: 'Хлеб цельнозерновой ржаной (2 ломтика)', p: 7.5, f: 1.8, c: 41.0, cal: 210, weight: 70, diet: true },
+
+      // 6. ВЫПЕЧКА И ПЕРЕКУСЫ (bakery) - 14 блюд
+      { category: 'bakery', name: 'Самса тандырная с говядиной', p: 11.8, f: 16.5, c: 32.0, cal: 324, weight: 140, diet: false },
+      { category: 'bakery', name: 'Самса слоеная с курицей', p: 12.4, f: 14.2, c: 30.5, cal: 299, weight: 135, diet: false },
+      { category: 'bakery', name: 'Чебурек сочный с мясом', p: 9.5, f: 18.0, c: 30.5, cal: 322, weight: 150, diet: false },
+      { category: 'bakery', name: 'Чебурек с сыром и зеленью', p: 10.2, f: 16.8, c: 29.0, cal: 308, weight: 140, diet: false },
+      { category: 'bakery', name: 'Улитка слоеная со шпинатом и сыром', p: 8.5, f: 14.2, c: 29.0, cal: 278, weight: 130, diet: false },
+      { category: 'bakery', name: 'Улитка с ветчиной и сыром', p: 9.8, f: 15.5, c: 28.5, cal: 293, weight: 130, diet: false },
+      { category: 'bakery', name: 'Хачапури по-аджарски с сыром и яйцом', p: 12.2, f: 14.8, c: 29.5, cal: 300, weight: 280, diet: false },
+      { category: 'bakery', name: 'Хачапури по-мегрельски', p: 13.0, f: 15.2, c: 31.0, cal: 313, weight: 250, diet: false },
+      { category: 'bakery', name: 'Круассан сливочный классический', p: 8.2, f: 21.0, c: 45.0, cal: 402, weight: 80, diet: false },
+      { category: 'bakery', name: 'Круассан с миндальным кремом', p: 9.0, f: 22.5, c: 46.0, cal: 423, weight: 110, diet: false },
+      { category: 'bakery', name: 'Сосиска в тесте запеченная', p: 9.5, f: 16.0, c: 28.0, cal: 294, weight: 110, diet: false },
+      { category: 'bakery', name: 'Пирожок печеный с капустой и яйцом', p: 5.8, f: 6.2, c: 34.0, cal: 215, weight: 90, diet: false },
+      { category: 'bakery', name: 'Пирожок с мясом', p: 9.2, f: 11.5, c: 32.0, cal: 268, weight: 95, diet: false },
+      { category: 'bakery', name: 'Синнабон (булочка с корицей и кремом)', p: 5.5, f: 16.5, c: 52.0, cal: 379, weight: 140, diet: false },
+
+      // 7. ФАСТФУД И ПИЦЦА (fastfood) - 18 блюд
+      { category: 'fastfood', name: 'Воппер (Burger King) классический с говядиной', p: 11.5, f: 14.2, c: 18.5, cal: 248, weight: 270, diet: false },
+      { category: 'fastfood', name: 'Двойной Воппер с сыром', p: 14.8, f: 18.0, c: 14.5, cal: 279, weight: 375, diet: false },
+      { category: 'fastfood', name: 'Воппер Ролл в лепешке', p: 12.0, f: 15.0, c: 22.0, cal: 271, weight: 210, diet: false },
+      { category: 'fastfood', name: 'Чизбургер классический', p: 13.2, f: 12.5, c: 25.0, cal: 265, weight: 120, diet: false },
+      { category: 'fastfood', name: 'Кинг Наггетсы куриные (6 шт)', p: 15.8, f: 16.0, c: 16.5, cal: 273, weight: 105, diet: false },
+      { category: 'fastfood', name: 'Кинг Наггетсы куриные (9 шт)', p: 15.8, f: 16.0, c: 16.5, cal: 273, weight: 155, diet: false },
+      { category: 'fastfood', name: 'Кинг Фри / Картофель фри (стандарт)', p: 3.5, f: 14.8, c: 37.0, cal: 295, weight: 115, diet: false },
+      { category: 'fastfood', name: 'Крылышки куриные острые в панировке', p: 18.5, f: 17.5, c: 9.0, cal: 268, weight: 180, diet: false },
+      { category: 'fastfood', name: 'Шаурма классическая с курицей на углях', p: 12.8, f: 11.2, c: 23.5, cal: 246, weight: 340, diet: false },
+      { category: 'fastfood', name: 'Пицца Мясная (2 куска)', p: 12.2, f: 13.5, c: 28.0, cal: 282, weight: 240, diet: false },
+      { category: 'fastfood', name: 'Пицца Пепперони (2 куска)', p: 11.5, f: 14.0, c: 29.5, cal: 290, weight: 220, diet: false },
+      { category: 'fastfood', name: 'Пицца Карбонара с беконом (2 куска)', p: 11.8, f: 13.0, c: 27.5, cal: 274, weight: 230, diet: false },
+      { category: 'fastfood', name: 'Пицца Четыре сыра (2 куска)', p: 13.5, f: 14.8, c: 26.5, cal: 293, weight: 220, diet: false },
+      { category: 'fastfood', name: 'Пицца Маргарита на тонком тесте (2 куска)', p: 9.5, f: 8.5, c: 27.0, cal: 223, weight: 200, diet: false },
+      { category: 'fastfood', name: 'Хот-дог датский с сосиской и луком фри', p: 9.8, f: 16.5, c: 24.0, cal: 284, weight: 170, diet: false },
+      { category: 'fastfood', name: 'Луковые кольца в панировке (6 шт)', p: 4.5, f: 16.0, c: 38.0, cal: 314, weight: 100, diet: false },
+      { category: 'fastfood', name: 'Сырные медальоны с халапеньо (5 шт)', p: 12.5, f: 18.5, c: 22.0, cal: 305, weight: 100, diet: false },
+      { category: 'fastfood', name: 'Кесадилья с курицей и чеддером', p: 14.0, f: 13.5, c: 24.5, cal: 275, weight: 200, diet: false },
+
+      // 8. НАПИТКИ И КОФЕ (drinks) - 10 позиций
+      { category: 'drinks', name: 'Американо / Эспрессо без сахара', p: 0.2, f: 0.1, c: 0.3, cal: 3, weight: 250, diet: true },
+      { category: 'drinks', name: 'Зеленый чай / Матча на воде без сахара', p: 0.5, f: 0.0, c: 0.5, cal: 4, weight: 300, diet: true },
+      { category: 'drinks', name: 'Капучино на обезжиренном / кокосовом молоке без сахара', p: 2.4, f: 1.2, c: 3.5, cal: 34, weight: 300, diet: true },
+      { category: 'drinks', name: 'Матча-латте на миндальном молоке без сахара', p: 1.5, f: 1.4, c: 2.2, cal: 28, weight: 300, diet: true },
+      { category: 'drinks', name: 'Кола Зеро / Напиток без сахара (0 ккал)', p: 0.0, f: 0.0, c: 0.0, cal: 1, weight: 330, diet: true },
+      { category: 'drinks', name: 'Кефир 1% био', p: 3.0, f: 1.0, c: 4.0, cal: 37, weight: 250, diet: true },
+      { category: 'drinks', name: 'Латте классический с сиропом', p: 2.8, f: 2.6, c: 9.5, cal: 73, weight: 350, diet: false },
+      { category: 'drinks', name: 'Раф кофе ванильный на сливках', p: 2.5, f: 8.5, c: 12.0, cal: 135, weight: 350, diet: false },
+      { category: 'drinks', name: 'Свежевыжатый апельсиновый сок', p: 0.7, f: 0.2, c: 10.4, cal: 45, weight: 250, diet: true },
+      { category: 'drinks', name: 'Белковый коктейль клубничный на молоке 1.5%', p: 10.5, f: 1.5, c: 4.8, cal: 75, weight: 300, diet: true }
     ];
 
     const nonFoodKeywords = [
@@ -1250,6 +1578,8 @@
 
     function initApp() {
       document.getElementById('activeDateInput').value = activeDate;
+      document.getElementById('catalogTotalCountBadge').textContent = `${foodCatalog.length} блюд`;
+
       if (state.apiKey) {
         document.getElementById('geminiApiKey').value = state.apiKey;
         document.getElementById('apiKeyStatus').textContent = 'Ключ сохранен в памяти';
@@ -1366,6 +1696,239 @@
       if (hour >= 12 && hour < 16) return 'Обед';
       if (hour >= 16 && hour < 22) return 'Ужин';
       return 'Перекус';
+    }
+
+    // ================= УПРАВЛЕНИЕ СВОЕЙ НОРМОЙ КАЛОРИЙ И БЖУ =================
+    function getAutoMacrosForCalories(calValue) {
+      const p = state.profile;
+      const protShare = p.goal === 'loss' ? 0.33 : 0.30;
+      const fatShare = p.goal === 'loss' ? 0.27 : 0.30;
+      const carbShare = 1 - protShare - fatShare;
+      return {
+        p: Math.round((calValue * protShare) / 4),
+        f: Math.round((calValue * fatShare) / 9),
+        c: Math.round((calValue * carbShare) / 4)
+      };
+    }
+
+    function getFormulaTargets() {
+      const p = state.profile;
+      let bmr = 10 * p.weight + 6.25 * p.height - 5 * p.age + (p.gender === 'male' ? 5 : -161);
+      let tdee = bmr * parseFloat(p.activity);
+      let mult = p.goal === 'loss' ? 0.85 : (p.goal === 'gain' ? 1.15 : 1.0);
+      let targetCal = Math.round(tdee * mult);
+      const macros = getAutoMacrosForCalories(targetCal);
+      return { cal: targetCal, ...macros };
+    }
+
+    function getCalculatedTargets() {
+      const p = state.profile;
+      if (p.useCustomCal && p.customCal > 0) {
+        const cal = Math.round(p.customCal);
+        if (p.useCustomMacros && p.customP > 0 && p.customF > 0 && p.customC > 0) {
+          return {
+            cal,
+            p: Math.round(p.customP),
+            f: Math.round(p.customF),
+            c: Math.round(p.customC)
+          };
+        }
+        const macros = getAutoMacrosForCalories(cal);
+        return { cal, ...macros };
+      }
+      return getFormulaTargets();
+    }
+
+    // Управление из вкладки Профиль
+    function setCalorieMode(useCustom) {
+      state.profile.useCustomCal = useCustom;
+      if (useCustom && !state.profile.customCal) {
+        const autoT = getFormulaTargets();
+        state.profile.customCal = autoT.cal;
+      }
+      loadProfileToUI();
+      persistState();
+      renderActiveDay();
+      renderCalendar();
+      showToast(useCustom ? 'Включена своя норма калорий 🎯' : 'Включен авто-расчет по формуле 🧮', '⚡');
+    }
+
+    function onProfileCustomCalInput(val) {
+      const num = parseInt(val);
+      if (!num || num < 500) return;
+      state.profile.useCustomCal = true;
+      state.profile.customCal = num;
+      if (!state.profile.useCustomMacros) {
+        const m = getAutoMacrosForCalories(num);
+        state.profile.customP = m.p;
+        state.profile.customF = m.f;
+        state.profile.customC = m.c;
+        document.getElementById('profCustomP').value = m.p;
+        document.getElementById('profCustomF').value = m.f;
+        document.getElementById('profCustomC').value = m.c;
+      }
+      updateCalorieModeButtonsUI();
+      const targets = getCalculatedTargets();
+      document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б: ${targets.p}г, Ж: ${targets.f}г, У: ${targets.c}г)`;
+      persistState();
+      renderActiveDay();
+      renderCalendar();
+    }
+
+    function setCustomCalPreset(calVal) {
+      document.getElementById('profCustomCalInput').value = calVal;
+      state.profile.useCustomMacros = false;
+      onProfileCustomCalInput(calVal);
+      showToast(`Установлена норма: ${calVal} ккал`, '🎯');
+    }
+
+    function onProfileCustomMacroInput() {
+      const pVal = parseInt(document.getElementById('profCustomP').value) || 0;
+      const fVal = parseInt(document.getElementById('profCustomF').value) || 0;
+      const cVal = parseInt(document.getElementById('profCustomC').value) || 0;
+      if (pVal > 0 && fVal > 0 && cVal > 0) {
+        state.profile.useCustomCal = true;
+        state.profile.useCustomMacros = true;
+        state.profile.customP = pVal;
+        state.profile.customF = fVal;
+        state.profile.customC = cVal;
+        updateCalorieModeButtonsUI();
+        const targets = getCalculatedTargets();
+        document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б: ${targets.p}г, Ж: ${targets.f}г, У: ${targets.c}г)`;
+        persistState();
+        renderActiveDay();
+      }
+    }
+
+    function resetCustomMacrosToAuto() {
+      state.profile.useCustomMacros = false;
+      const targets = getCalculatedTargets();
+      document.getElementById('profCustomP').value = targets.p;
+      document.getElementById('profCustomF').value = targets.f;
+      document.getElementById('profCustomC').value = targets.c;
+      document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б: ${targets.p}г, Ж: ${targets.f}г, У: ${targets.c}г)`;
+      persistState();
+      renderActiveDay();
+      showToast('БЖУ рассчитаны автоматически от калорий', '🔄');
+    }
+
+    function updateCalorieModeButtonsUI() {
+      const isCustom = !!state.profile.useCustomCal;
+      const btnAuto = document.getElementById('modeBtn_auto');
+      const btnCustom = document.getElementById('modeBtn_custom');
+      const badge = document.getElementById('normModeBadge');
+
+      if (btnAuto && btnCustom) {
+        btnAuto.className = !isCustom
+          ? 'px-3 py-1.5 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+          : 'px-3 py-1.5 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+        btnCustom.className = isCustom
+          ? 'px-3 py-1.5 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+          : 'px-3 py-1.5 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+      }
+      if (badge) {
+        badge.textContent = isCustom ? '🎯 Своя норма' : '🧮 Авто-норма';
+      }
+    }
+
+    // Управление быстрым модальным окном со сводки
+    function openCustomCalModal() {
+      const targets = getCalculatedTargets();
+      modalTempUseCustom = !!state.profile.useCustomCal;
+      modalCustomMacrosDirty = !!state.profile.useCustomMacros;
+
+      document.getElementById('modalCustomCalInput').value = targets.cal;
+      document.getElementById('modalCustomCalRange').value = Math.min(4500, Math.max(1000, targets.cal));
+      document.getElementById('modalCustomP').value = targets.p;
+      document.getElementById('modalCustomF').value = targets.f;
+      document.getElementById('modalCustomC').value = targets.c;
+
+      updateModalCalModeButtons();
+
+      const modal = document.getElementById('customCalModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCustomCalModal() {
+      const modal = document.getElementById('customCalModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function setModalCalMode(useCustom) {
+      modalTempUseCustom = useCustom;
+      if (!useCustom) {
+        const autoT = getFormulaTargets();
+        document.getElementById('modalCustomCalInput').value = autoT.cal;
+        document.getElementById('modalCustomCalRange').value = Math.min(4500, Math.max(1000, autoT.cal));
+        document.getElementById('modalCustomP').value = autoT.p;
+        document.getElementById('modalCustomF').value = autoT.f;
+        document.getElementById('modalCustomC').value = autoT.c;
+        modalCustomMacrosDirty = false;
+      }
+      updateModalCalModeButtons();
+    }
+
+    function updateModalCalModeButtons() {
+      document.getElementById('modalMode_auto').className = !modalTempUseCustom
+        ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+      document.getElementById('modalMode_custom').className = modalTempUseCustom
+        ? 'py-2 rounded-lg text-xs font-extrabold transition themed-btn-primary'
+        : 'py-2 rounded-lg text-xs font-extrabold transition text-slate-300 hover:text-white';
+    }
+
+    function onModalCalInput(val) {
+      const num = parseInt(val) || 2000;
+      modalTempUseCustom = true;
+      updateModalCalModeButtons();
+      document.getElementById('modalCustomCalInput').value = num;
+      document.getElementById('modalCustomCalRange').value = Math.min(4500, Math.max(1000, num));
+
+      if (!modalCustomMacrosDirty) {
+        const m = getAutoMacrosForCalories(num);
+        document.getElementById('modalCustomP').value = m.p;
+        document.getElementById('modalCustomF').value = m.f;
+        document.getElementById('modalCustomC').value = m.c;
+      }
+    }
+
+    function recalcModalMacrosFromCal() {
+      modalCustomMacrosDirty = false;
+      const num = parseInt(document.getElementById('modalCustomCalInput').value) || 2000;
+      const m = getAutoMacrosForCalories(num);
+      document.getElementById('modalCustomP').value = m.p;
+      document.getElementById('modalCustomF').value = m.f;
+      document.getElementById('modalCustomC').value = m.c;
+    }
+
+    function saveCustomCalModal() {
+      const calVal = Math.max(800, Math.min(8000, parseInt(document.getElementById('modalCustomCalInput').value) || 2000));
+      const pVal = Math.max(20, parseInt(document.getElementById('modalCustomP').value) || 120);
+      const fVal = Math.max(20, parseInt(document.getElementById('modalCustomF').value) || 65);
+      const cVal = Math.max(20, parseInt(document.getElementById('modalCustomC').value) || 200);
+
+      state.profile.useCustomCal = modalTempUseCustom;
+      state.profile.customCal = calVal;
+      state.profile.useCustomMacros = modalCustomMacrosDirty;
+      state.profile.customP = pVal;
+      state.profile.customF = fVal;
+      state.profile.customC = cVal;
+
+      loadProfileToUI();
+      persistState();
+      renderActiveDay();
+      renderCalendar();
+      closeCustomCalModal();
+
+      const finalTargets = getCalculatedTargets();
+      showToast(
+        modalTempUseCustom
+          ? `Установлена своя норма: ${finalTargets.cal} ккал!`
+          : `Включен авто-расчет: ${finalTargets.cal} ккал`,
+        '🎯'
+      );
     }
 
     // ================= ВЫЗОВ ОШИБКИ "ЭТО НЕ ЕДА!" =================
@@ -1962,14 +2525,44 @@
       showToast(`«${customTitle || 'Блюдо'}» (+${totalCal} ккал) внесено!`);
     }
 
-    // ================= УМНЫЙ АНАЛИЗ ДЕФИЦИТА И РЕКОМЕНДАЦИИ ЕДЫ =================
+    // ================= БЫСТРОЕ ПЕРЕКЛЮЧЕНИЕ ЦЕЛИ И УМНЫЕ РЕКОМЕНДАЦИИ =================
+    function setGoalQuick(newGoal) {
+      state.profile.goal = newGoal;
+      document.getElementById('profGoal').value = newGoal;
+      loadProfileToUI();
+      persistState();
+      renderActiveDay();
+
+      const names = {
+        loss: '🥗 Режим Дефицита (только ПП и белковые блюда)',
+        maint: '⚖️ Режим Поддержания веса (сбалансированный рацион)',
+        gain: '💪 Режим Набора массы (сытные блюда и энергия)'
+      };
+      showToast(names[newGoal], '🎯');
+    }
+
+    function updateQuickGoalButtonsUI() {
+      const currentGoal = state.profile.goal || 'maint';
+      ['loss', 'maint', 'gain'].forEach(g => {
+        const btn = document.getElementById('quickGoal_' + g);
+        if (!btn) return;
+        if (g === currentGoal) {
+          btn.className = 'px-2.5 py-1.5 rounded-lg text-[10px] font-extrabold transition themed-btn-primary';
+        } else {
+          btn.className = 'px-2.5 py-1.5 rounded-lg text-[10px] font-extrabold transition text-slate-300 hover:text-white';
+        }
+      });
+    }
+
     function renderSmartDeficitAnalysis(targets, eatenCal, eatenP, eatenF, eatenC) {
+      updateQuickGoalButtonsUI();
+
       const defCal = Math.max(0, targets.cal - eatenCal);
       const defP = Math.max(0, targets.p - eatenP);
       const defF = Math.max(0, targets.f - eatenF);
       const defC = Math.max(0, targets.c - eatenC);
+      const goal = state.profile.goal || 'maint';
 
-      // Подписи нехватки прямо на полосках БЖУ
       document.getElementById('deficitBadgeP').textContent = defP > 0 ? `(не хватает ${defP}г)` : '✅';
       document.getElementById('deficitBadgeF').textContent = defF > 0 ? `(не хватает ${defF}г)` : '✅';
       document.getElementById('deficitBadgeC').textContent = defC > 0 ? `(не хватает ${defC}г)` : '✅';
@@ -1980,41 +2573,50 @@
       gridEl.innerHTML = '';
 
       if (defCal <= 60 && defP <= 8 && defC <= 15) {
-        statusEl.textContent = '🎉 Все нормы закрыты!';
-        descEl.innerHTML = 'Отличная работа! Вы полностью закрыли дневную потребность в калориях и макронутриентах. Если проголодаетесь вечером, выпейте воды или зеленого чая.';
+        statusEl.textContent = '🎉 Все нормы на сегодня закрыты!';
+        descEl.innerHTML = 'Вы полностью выполнили дневной план по калориям и БЖУ. Если захочется перекусить вечером — отлично подойдет зеленый чай или десерт 0 калорий.';
         return;
       }
 
-      // Формируем список чего не хватает
       const missingParts = [];
       if (defP > 5) missingParts.push(`<b class="text-sky-300">${defP} г белков</b>`);
       if (defC > 10) missingParts.push(`<b class="text-purple-300">${defC} г углеводов</b>`);
       if (defF > 5) missingParts.push(`<b class="text-amber-300">${defF} г жиров</b>`);
 
-      // Определяем приоритетный макронутриент, которого не хватает сильнее всего (в % от нормы)
-      const pctMissingP = defP / Math.max(1, targets.p);
-      const pctMissingC = defC / Math.max(1, targets.c);
-      const pctMissingF = defF / Math.max(1, targets.f);
-
-      let priorityTag = 'Баланс КБЖУ';
-      if (pctMissingP >= pctMissingC && pctMissingP >= pctMissingF && defP > 10) {
-        priorityTag = '🥩 Упор на белок';
-      } else if (pctMissingC >= pctMissingP && pctMissingC >= pctMissingF && defC > 20) {
-        priorityTag = '🍚 Упор на сложные углеводы';
-      } else if (defF > 10) {
-        priorityTag = '🥑 Полезные жиры и сытость';
+      if (goal === 'loss') {
+        statusEl.textContent = '🥗 Активен режим Дефицита (Строго ПП • Фастфуд скрыт)';
+        descEl.innerHTML = `Вам осталось закрыть: ${missingParts.length ? missingParts.join(', ') : `<b>${defCal} ккал</b>`}. Так как выбран <b>Дефицит</b>, мы исключили вопперы, пиццу, самсу и жирную еду — рекомендуем только легкие белковые и ПП-блюда:`;
+      } else if (goal === 'maint') {
+        statusEl.textContent = '⚖️ Режим Поддержания (Сбалансированные блюда)';
+        descEl.innerHTML = `Для ровного баланса сегодня не хватает: ${missingParts.length ? missingParts.join(', ') : `<b>${defCal} ккал</b>`}. Подобрали оптимальные повседневные блюда на выбор:`;
+      } else {
+        statusEl.textContent = '💪 Режим Набора массы (Высокая питательность и белок)';
+        descEl.innerHTML = `Для профицита и роста мышц осталось добрать: ${missingParts.length ? missingParts.join(', ') : `<b>${defCal} ккал</b>`}. Рекомендуем сытные порции с высоким содержанием белка и энергии:`;
       }
 
-      statusEl.textContent = priorityTag;
-      descEl.innerHTML = `До идеальной дневной нормы вам не хватает: ${missingParts.length ? missingParts.join(', ') : `<b>${defCal} ккал</b>`}. Вот лучшие варианты из базы, которые закроют эту нехватку в 1 клик:`;
+      const candidates = foodCatalog
+        .map((food, idx) => ({ food, idx }))
+        .filter(({ food }) => {
+          if (food.category === 'drinks' && food.cal < 25) return false;
+          if (goal === 'loss') {
+            if (!food.diet) return false;
+            if (food.category === 'fastfood' || food.category === 'bakery') return false;
+            if (food.f > 14 && !food.name.toLowerCase().includes('лосос') && !food.name.toLowerCase().includes('семг') && !food.name.toLowerCase().includes('авокад')) return false;
+          }
+          if (goal === 'maint') {
+            if (food.category === 'fastfood' && defF < 18) return false;
+          }
+          return true;
+        });
 
-      // Подбираем 4 лучших блюда под текущий дефицит
-      const scoredFoods = foodCatalog.map((food, idx) => {
-        // Оптимальный вес порции, чтобы не превысить оставшиеся калории
+      const scoredFoods = candidates.map(({ food, idx }) => {
         let recWeight = food.weight;
         const stdCal = (food.cal * food.weight) / 100;
-        if (defCal > 100 && stdCal > defCal * 1.15) {
-          recWeight = Math.max(60, Math.round(((defCal * 0.85) / food.cal) * 100 / 10) * 10);
+
+        if (goal === 'loss' && defCal > 90 && stdCal > defCal * 1.05) {
+          recWeight = Math.max(70, Math.round(((defCal * 0.85) / food.cal) * 100 / 10) * 10);
+        } else if (goal === 'gain' && defCal > 450 && food.weight < 260 && food.category !== 'fitness') {
+          recWeight = Math.round(food.weight * 1.25 / 10) * 10;
         }
 
         const mult = recWeight / 100;
@@ -2023,21 +2625,36 @@
         const itemC = Math.round(food.c * mult);
         const itemCal = Math.round(food.cal * mult);
 
-        // Оценка полезности блюда для закрытия текущего дефицита
         let score = 0;
-        if (defP > 10) score += Math.min(defP, itemP) * 3.2;
-        if (defC > 15) score += Math.min(defC, itemC) * 1.8;
-        if (defF > 8) score += Math.min(defF, itemF) * 1.5;
 
-        // Штраф за сильный перебор по калориям или макронутриентам, которые уже закрыты
-        if (itemCal > defCal + 150) score -= (itemCal - defCal) * 0.8;
-        if (defF <= 5 && itemF > 15) score -= itemF * 2;
-        if (defC <= 15 && itemC > 30) score -= itemC * 1.5;
+        if (goal === 'loss') {
+          score += Math.min(defP, itemP) * 4.5;
+          if (food.category === 'fitness') score += 35;
+          if (food.diet) score += 20;
+          score -= itemF * 2.2;
+          if (defC > 20) score += Math.min(defC, itemC) * 1.4;
+        } else if (goal === 'maint') {
+          score += Math.min(defP, itemP) * 3.0;
+          score += Math.min(defC, itemC) * 2.0;
+          score += Math.min(defF, itemF) * 1.5;
+          if (food.category === 'canteen' || food.category === 'store' || food.category === 'panasian') score += 28;
+        } else {
+          score += Math.min(defP, itemP) * 3.5;
+          score += Math.min(defC, itemC) * 2.8;
+          if (itemCal >= 280) score += 30;
+          if (food.category === 'panasian' || food.category === 'canteen' || food.category === 'base') score += 22;
+        }
 
-        let reasonBadge = 'Закрывает дефицит';
-        if (food.p >= 18) reasonBadge = `🥩 +${itemP}г белка`;
-        else if (food.c >= 22) reasonBadge = `🍚 +${itemC}г углеводов`;
-        else reasonBadge = `⚡ +${itemCal} ккал`;
+        if (itemCal > defCal + 140) score -= (itemCal - defCal) * 0.9;
+
+        let reasonBadge = 'Закрывает норму';
+        if (goal === 'loss') {
+          reasonBadge = food.p >= 16 ? `🥗 ПП • +${itemP}г белка` : `🍃 Легкое ПП (${itemCal} ккал)`;
+        } else if (goal === 'maint') {
+          reasonBadge = `⚖️ Баланс • +${itemP}г Б / +${itemC}г У`;
+        } else {
+          reasonBadge = `💪 Масса • +${itemCal} ккал (+${itemP}г Б)`;
+        }
 
         return { food, idx, recWeight, itemP, itemF, itemC, itemCal, score, reasonBadge };
       });
@@ -2051,7 +2668,7 @@
         card.style.animationDelay = `${i * 75}ms`;
         card.innerHTML = `
           <div class="min-w-0 flex-1 space-y-0.5">
-            <div class="flex items-center gap-1.5">
+            <div class="flex items-center gap-1.5 flex-wrap">
               <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-white/10" style="color: var(--accent);">${rec.reasonBadge}</span>
               <span class="text-[10px] text-slate-300 font-semibold">${rec.recWeight} г</span>
             </div>
@@ -2082,7 +2699,7 @@
         p: Math.round(food.p * mult),
         f: Math.round(food.f * mult),
         c: Math.round(food.c * mult),
-        badge: '🧠 Рекомендация'
+        badge: state.profile.goal === 'loss' ? '🥗 ПП-Выбор' : '🧠 Рекомендация'
       };
 
       if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
@@ -2109,6 +2726,12 @@
       document.getElementById('profGenderFemale').className = p.gender === 'female' ? 'py-2.5 text-xs font-bold themed-btn-primary' : 'py-2.5 text-xs font-bold themed-box text-slate-300';
 
       const targets = getCalculatedTargets();
+      document.getElementById('profCustomCalInput').value = p.useCustomCal ? p.customCal : targets.cal;
+      document.getElementById('profCustomP').value = targets.p;
+      document.getElementById('profCustomF').value = targets.f;
+      document.getElementById('profCustomC').value = targets.c;
+
+      updateCalorieModeButtonsUI();
       document.getElementById('profCalcSummary').textContent = `${targets.cal} ккал (Б: ${targets.p}г, Ж: ${targets.f}г, У: ${targets.c}г)`;
     }
 
@@ -2130,29 +2753,18 @@
       saveProfile();
     }
 
-    function getCalculatedTargets() {
-      const p = state.profile;
-      let bmr = 10 * p.weight + 6.25 * p.height - 5 * p.age + (p.gender === 'male' ? 5 : -161);
-      let tdee = bmr * parseFloat(p.activity);
-      let mult = p.goal === 'loss' ? 0.85 : (p.goal === 'gain' ? 1.15 : 1.0);
-      let targetCal = Math.round(tdee * mult);
-      return {
-        cal: targetCal,
-        p: Math.round((targetCal * 0.3) / 4),
-        f: Math.round((targetCal * 0.3) / 9),
-        c: Math.round((targetCal * 0.4) / 4)
-      };
-    }
-
     function populateFoodSelect() {
       const sel = document.getElementById('dbFoodSelect');
       sel.innerHTML = '';
+      document.getElementById('filteredCountLbl').textContent = filteredCatalog.length;
+
       filteredCatalog.forEach((item, idx) => {
         const opt = document.createElement('option');
         opt.value = idx;
         opt.style.backgroundColor = '#18181b';
         opt.style.color = '#ffffff';
-        opt.textContent = `${item.name} (~${item.weight}г = ${Math.round(item.cal * (item.weight/100))} ккал)`;
+        const ppTag = item.diet ? '🥗 ' : '';
+        opt.textContent = `${ppTag}${item.name} (~${item.weight}г = ${Math.round(item.cal * (item.weight/100))} ккал)`;
         sel.appendChild(opt);
       });
       updateDbPreview();
@@ -2160,7 +2772,7 @@
 
     function setCategoryFilter(cat) {
       currentCategoryFilter = cat;
-      ['all', 'canteen', 'store', 'bakery', 'fastfood', 'panasian', 'fitness', 'base'].forEach(c => {
+      ['all', 'fitness', 'canteen', 'panasian', 'store', 'base', 'bakery', 'fastfood', 'drinks'].forEach(c => {
         const btn = document.getElementById('cat_' + c);
         if (btn) {
           btn.className = (c === cat)
@@ -2223,7 +2835,7 @@
         p: Math.round(food.p * mult),
         f: Math.round(food.f * mult),
         c: Math.round(food.c * mult),
-        badge: 'Каталог'
+        badge: food.diet ? '🥗 ПП-База' : 'Каталог'
       };
 
       if (!state.days[activeDate]) state.days[activeDate] = { diary: [] };
@@ -2264,12 +2876,12 @@
       document.getElementById('targetProt').textContent = targets.p;
       document.getElementById('targetFat').textContent = targets.f;
       document.getElementById('targetCarb').textContent = targets.c;
+      updateCalorieModeButtonsUI();
 
       const dayData = state.days[activeDate] || { diary: [] };
       let eatenCal = 0, eatenP = 0, eatenF = 0, eatenC = 0;
       dayData.diary.forEach(i => { eatenCal += i.cal; eatenP += i.p; eatenF += i.f; eatenC += i.c; });
 
-      // Плавная анимация цифр в сводке
       animateNumberValue('eatenCalBig', eatenCal, '', 600, prevDashboardValues.cal);
       animateNumberValue('eatenProt', eatenP, '', 600, prevDashboardValues.p);
       animateNumberValue('eatenFat', eatenF, '', 600, prevDashboardValues.f);
@@ -2290,14 +2902,13 @@
         ? `Осталось на день: <b style="color: var(--accent);">${diff} ккал</b>`
         : `Превышение нормы: <b class="text-rose-400">${Math.abs(diff)} ккал</b>`;
 
-      // Запускаем умный анализ дефицита и рекомендации блюд
       renderSmartDeficitAnalysis(targets, eatenCal, eatenP, eatenF, eatenC);
 
       const cont = document.getElementById('diaryContainer');
       document.getElementById('diaryCountBadge').textContent = `${dayData.diary.length} поз.`;
 
       if (dayData.diary.length === 0) {
-        cont.innerHTML = `<div class="themed-box text-center py-8 text-xs text-slate-300 font-medium">Дневник пуст. Выберите блюдо из рекомендаций выше, каталога или через 📸 AI-Фото.</div>`;
+        cont.innerHTML = `<div class="themed-box text-center py-8 text-xs text-slate-300 font-medium">Дневник пуст. Выберите блюдо из рекомендаций выше, каталога (160 блюд) или через 📸 AI-Фото.</div>`;
         return;
       }
 
@@ -2377,12 +2988,13 @@
     }
 
     function persistState() {
-      localStorage.setItem('rayuncalc_state_v16', JSON.stringify(state));
+      localStorage.setItem('rayuncalc_state_v18', JSON.stringify(state));
     }
 
     function resetAllData() {
       if (confirm('Сбросить все сохраненные данные?')) {
-        localStorage.removeItem('rayuncalc_state_v16');
+        localStorage.removeItem('rayuncalc_state_v18');
+        localStorage.removeItem('rayuncalc_state_v17');
         location.reload();
       }
     }
